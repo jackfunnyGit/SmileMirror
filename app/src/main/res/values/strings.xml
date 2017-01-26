@@ -1,0 +1,19 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <!-- Camera -->
+    <string name="app_name">"SmileMirror"</string>
+    <string name="ok">"OK"</string>
+    <string name="permission_camera_rationale">"Access to the camera is needed for detection"</string>
+    <string name="no_camera_permission">"This application cannot run because it does not have the camera permission.  The application will now exit."</string>
+    <string name="low_storage_error">"Face detector dependencies cannot be downloaded due to low device storage"</string>
+    <!-- Smile Mirror -->
+    <string name="smile_level_one_text">"Are you smiling?"</string>
+    <string name="smile_level_two_text">"Getting better!"</string>
+    <string name="smile_level_three_text">"Nice!"</string>
+    <string name="smile_level_four_text">"Perfect!"</string>
+
+    <string name="text_title">"Self-Intro (1 minute)"</string>
+    <string name="text_content">"has no content,it should be Chinese local"</string>
+    <string name="smile_mode">"Smile Mode"</string>
+    <string name="coach_mode">"Coach Mode"</string>
+</resources>

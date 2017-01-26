@@ -1,0 +1,17 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <!-- Smile Mirror -->
+    <string name="smile_level_one_text">"你有在微笑嗎?"</string>
+    <string name="smile_level_two_text">"還不錯"</string>
+    <string name="smile_level_three_text">"漂亮!"</string>
+    <string name="smile_level_four_text">"完美!!"</string>
+
+    <string name="text_title">"自我介紹 (一分鐘)"</string>
+    <string name="text_content">"您好，我是(名字)。我具備三項特質：第一，我是一個team player，我善於激勵士氣，帶領全隊達成目標，我曾經擔任台灣大學羽球隊的隊長，帶領球隊拿到當年度大專盃的亞軍，是校隊有史以來的最好成績。
+第二，我非常的結果導向，不管是在哪一個單位、哪一個公司，我總是能在最短時間內排除困難，創造績效。我在雀巢公司擔任專案經理的時候，就從接到任務開始，連續24個月都達成業績目標。
+最後，我具有創業的精神，常常被賦予新事業的任務，上一季度，我在雀巢公司導入「咖啡教育訓練活動」，到年底前的所有報名場次已經一位難求。
+基於以上特質，我相信我能為本公司做出一定的貢獻。謝謝。"</string>
+    <string name="smile_mode">"微笑模式"</string>
+    <string name="coach_mode">"對談模式"</string>
+
+</resources>
