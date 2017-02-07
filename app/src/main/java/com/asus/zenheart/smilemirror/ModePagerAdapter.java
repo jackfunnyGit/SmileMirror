@@ -2,6 +2,7 @@ package com.asus.zenheart.smilemirror;
 
 import android.content.Context;
 import android.content.res.Resources;
+import android.content.Intent;
 import android.support.v4.view.PagerAdapter;
 import android.util.Log;
 import android.view.Gravity;
@@ -14,7 +15,7 @@ import android.widget.FrameLayout;
 import android.widget.ImageView;
 
 import com.asus.zenheart.smilemirror.Util.AnimationUtil;
-
+import com.asus.zenheart.smilemirror.editor.SpeechEditorActivity;
 import java.util.ArrayList;
 
 public class ModePagerAdapter extends PagerAdapter {
@@ -90,10 +91,24 @@ public class ModePagerAdapter extends PagerAdapter {
             final ImageView imageViewRecord = (ImageView) view.findViewById(R.id.video_image_view);
             final ImageView imageViewRecordText = (ImageView) view.findViewById(R.id.rec_text);
             final ImageView imageViewPlay = (ImageView) view.findViewById(R.id.image_play);
+            // ShihJie: Intent to Editor
+            final ImageView imageViewList = (ImageView) view.findViewById(R.id.image_list);
             final VerticalScrollTextView verticalScrollTextView =
                     (VerticalScrollTextView) view.findViewById(R.id.vertical_scroll_textview);
             final Animation blinkAnimation = AnimationUtil.blinkFactory();
 
+            if (imageViewList != null) {
+                imageViewList.setOnClickListener(new View.OnClickListener() {
+                    @Override
+                    public void onClick(View v) {
+                        Intent intent = new Intent(mContext,
+                                SpeechEditorActivity.class);
+                        intent.addFlags(Intent.FLAG_ACTIVITY_NEW_TASK | Intent.FLAG_ACTIVITY_CLEAR_TOP);
+                        mContext.startActivity(intent);
+                    }
+                });
+
+            }
             if (imageViewPlay != null) {
                 imageViewPlay.setOnClickListener(new View.OnClickListener() {
                     @Override

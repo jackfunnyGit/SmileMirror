@@ -69,4 +69,19 @@
     <dimen name="presentation_title_text_size">24dp</dimen>
     <dimen name="chart_page_statistics_title_text_size">24dp</dimen>
     <dimen name="chart_page_duration_text_size">16dp</dimen>
+    <!-- Editor value -->
+    <dimen name="editor_card_padding">16dp</dimen>
+    <dimen name="editor_card_scrolling_view_height">400dp</dimen>
+    <dimen name="editor_card_seek_bar_height">40dp</dimen>
+    <dimen name="editor_list_card_padding">23dp</dimen>
+    <dimen name="editor_list_card_padding_top">8dp</dimen>
+    <dimen name="editor_list_type_img_padding_left">16dp</dimen>
+    <dimen name="editor_list_text_layout_padding">8dp</dimen>
+    <dimen name="editor_list_text_layout_padding_left">80dp</dimen>
+    <!-- Editor text value -->
+    <dimen name="editor_dialog_title_size">40dp</dimen>
+    <dimen name="editor_dialog_click_text_size">30dp</dimen>
+    <dimen name="editor_list_title_text_size">16dp</dimen>
+    <dimen name="editor_list_date_text_size">14dp</dimen>
+    <dimen name="editor_list_title_date_size">16dp</dimen>
 </resources>

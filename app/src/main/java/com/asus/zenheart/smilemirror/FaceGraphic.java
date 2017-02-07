@@ -78,9 +78,6 @@ public class FaceGraphic extends GraphicOverlay.Graphic {
     private BitmapFactory.Options mDoubleScaleOptions;
     private BitmapFactory.Options mNoScaleOptions;
 
-    // ShihJie: Open or Close single face effect
-    public static boolean sFaceEffect = true;
-
     // ShihJie: draw the crown or not
     private boolean mCrown = false;
 
@@ -181,7 +178,7 @@ public class FaceGraphic extends GraphicOverlay.Graphic {
         final float smileTextPadding = context.getResources().getDimension(
                 R.dimen.smile_text_padding);
         // ++ShihJie: Draw face effect(one face).
-        if (sFaceEffect) {
+        if (getAddingEffect()) {
             // Draw smile icon and smile text.
             drawSmileLevelIcon(mResources, canvas, faceWindowWidth, faceWindowHeight,
                     right, top, mNoScaleOptions);
@@ -306,6 +303,9 @@ public class FaceGraphic extends GraphicOverlay.Graphic {
                 R.color.smile_level_three_face_color);
         final int smileLevelFourColor = ContextCompat.getColor(context,
                 R.color.smile_level_four_face_color);
+        final int smileLineShadowColor = ContextCompat
+                .getColor(context, R.color.smile_window_line_shadow_color);
+        final int smileLineShadowStroke = 1;
 
         if (smilingProbability >= SMILE_LEVEL_L4) {
             paint.setColor(smileLevelFourColor);
@@ -316,6 +316,7 @@ public class FaceGraphic extends GraphicOverlay.Graphic {
         } else if (smilingProbability < SMILE_LEVEL_L2) {
             paint.setColor(smileLevelOneColor);
         }
+        paint.setShadowLayer(0, smileLineShadowStroke, smileLineShadowStroke, smileLineShadowColor);
     }
 
     /**
@@ -496,5 +497,6 @@ public class FaceGraphic extends GraphicOverlay.Graphic {
     public void drawTheCrown() {
         mCrown = true;
     }
+
 }
 

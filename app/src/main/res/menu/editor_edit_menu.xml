@@ -1,0 +1,11 @@
+<?xml version="1.0" encoding="utf-8"?>
+<menu xmlns:android="http://schemas.android.com/apk/res/android"
+      xmlns:App="http://schemas.android.com/apk/res-auto">
+
+    <item
+            android:id="@+id/editor_edit_menu_save"
+            android:icon="@drawable/save"
+            android:title="@string/editor_menu_title_save"
+            App:showAsAction="ifRoom"/>
+
+</menu>

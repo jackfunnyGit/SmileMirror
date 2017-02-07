@@ -13,24 +13,24 @@
 基於以上特質，我相信我能為本公司做出一定的貢獻。謝謝。"</string>
     <string name="smile_mode">"微笑模式"</string>
     <string name="coach_mode">"對談模式"</string>
-
     <!-- chart page -->
     <string name="chart_page_smile_statistics">"微笑統計"</string>
     <string name="chart_page_smile_duration">"總長度: %1$s秒"</string>
-    <!-- Editor -->
-    <string name="editor_dialog_title">"另存新檔"</string>
-    <string name="editor_menu_save">"存檔"</string>
-    <string name="editor_menu_yes">確定</string>
-    <string name="editor_menu_cancel">"取消"</string>
-    <string name="editor_dialog_save_remind">"請輸入標題以及文字"</string>
-    <string name="edit_script">"編輯腳本"</string>
-    <string name="delete_script">"刪除腳本"</string>
-    <string name="delete_list_script">"   刪除腳本"</string>
+    <!-- Editor Menu-->
+    <string name="editor_save_new_file_title">"另存新檔"</string>
+    <string name="editor_save_file_title">"存檔"</string>
+    <string name="editor_check_yes">確定</string>
+    <string name="editor_check_cancel">"取消"</string>
+    <string name="editor_save_file_hint">"請輸入標題以及文字"</string>
+    <string name="editor_edit_script">"編輯腳本"</string>
+    <string name="editor_delete_script">"刪除腳本"</string>
+    <string name="editor_delete_list_script">"   刪除腳本"</string>
     <string name="delete_script_description">"確定是否刪除字幕?"</string>
     <string name="conversation_scripts">"對談腳本"</string>
     <string name="font_size">"字體大小"</string>
     <string name="font_size_large">"大型"</string>
     <string name="font_size_default">"預設"</string>
     <string name="font_size_small">"小型"</string>
-
+    <string name="editor_menu_title_select">"選取"</string>
+    <string name="editor_menu_title_rename">"重新命名"</string>
 </resources>

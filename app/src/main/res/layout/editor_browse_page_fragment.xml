@@ -1,0 +1,53 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:orientation="vertical">
+
+    <android.support.v7.widget.Toolbar
+            android:id="@+id/editor_browse_page_toolbar"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:background="@android:color/black"
+            android:layout_alignParentTop="true"/>
+
+    <com.asus.zenheart.smilemirror.VerticalScrollTextView
+            android:id="@+id/presetText"
+            android:layout_below="@+id/editor_browse_page_toolbar"
+            android:layout_above="@+id/seekBarLayout"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:background="@color/teleprompter_background_color"
+            android:textColor="@android:color/white"/>
+
+    <RelativeLayout
+            android:id="@+id/seekBarLayout"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_alignParentBottom="true">
+
+        <ImageView
+                android:id="@+id/seekBarSpeed"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_alignParentLeft="true"
+                android:src="@drawable/speed"/>
+
+        <SeekBar
+                android:id="@+id/marqueeSeekBar"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_toLeftOf="@+id/seekBarTextSize"
+                android:layout_toRightOf="@+id/seekBarSpeed"
+                android:max="3"
+                android:progress="0"/>
+
+        <ImageView
+                android:id="@+id/seekBarTextSize"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_alignParentRight="true"
+                android:src="@drawable/text"/>
+    </RelativeLayout>
+
+</RelativeLayout>

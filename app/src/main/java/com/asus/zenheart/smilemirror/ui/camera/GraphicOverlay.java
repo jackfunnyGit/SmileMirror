@@ -46,6 +46,7 @@ import java.util.Set;
  * </ol>
  */
 public class GraphicOverlay extends View {
+    private static final float MIN_FACE_WINDOW_SIZE = 300.0f;
     private final Object mLock = new Object();
     private int mPreviewWidth;
     private float mWidthScaleFactor = 1.0f;
@@ -59,10 +60,10 @@ public class GraphicOverlay extends View {
     private long mTimeStampStart;
     private long mTimeStampEnd;
     private Mode mMode = Mode.SMILE;
-
     public enum Mode {SMILE, CONVERSATION}
 
-    //Jack ---
+
+    private boolean mAddingEffect = false;
     public GraphicOverlay(Context context, AttributeSet attrs) {
         super(context, attrs);
     }
@@ -155,6 +156,16 @@ public class GraphicOverlay extends View {
     }
     // Jack ---
 
+    // ++ShihJie
+    public boolean getAddingEffectState() {
+        return mAddingEffect;
+    }
+
+    public void setAddingEffectState(boolean isAddingEffect) {
+        mAddingEffect = isAddingEffect;
+    }
+    // --ShihJie
+
     /**
      * Draws the overlay with its associated graphic objects.
      */
@@ -168,8 +179,15 @@ public class GraphicOverlay extends View {
                 mHeightScaleFactor = (float) canvas.getHeight() / (float) mPreviewHeight;
             }
 
-            // ShihJie: faces is more than one in the view
+            //TODO: Wating for multi-player mode UIRS lock down
             FaceGraphic Array[] = mGraphics.toArray(new FaceGraphic[mGraphics.size()]);
+
+            //TODO: Waiting for multi-player mode UIRS lock down
+            for (FaceGraphic aArray : Array) {
+                if (aArray.getFaceData().getWidth() < MIN_FACE_WINDOW_SIZE) {
+                    mGraphics.remove(aArray);
+                }
+            }
             if (mGraphics.size() > 1) {
                 // ShihJie: just only draw the crown on the face1 or face2
                 float face1SmileProbability = Array[0].getFaceData().getIsSmilingProbability();
@@ -182,11 +200,7 @@ public class GraphicOverlay extends View {
             }
             for (Graphic graphic : mGraphics) {
                 // ShihJie: more than one face
-                if (mGraphics.size() > 1) {
-                    FaceGraphic.sFaceEffect = false;
-                } else {
-                    FaceGraphic.sFaceEffect = true;
-                }
+                setAddingEffectState(mGraphics.size() <= 1);
                 graphic.draw(canvas, getContext());
             }
         }
@@ -267,6 +281,13 @@ public class GraphicOverlay extends View {
 
         public SmileDegreeCounter getSmileDegreeCounter() {
             return mSmileDegreeCounter;
+        }
+
+        /**
+         * Adjusts the smile effect from the preview's face detector to the face window
+         */
+        public boolean getAddingEffect() {
+            return mOverlay.getAddingEffectState();
         }
     }
 }

@@ -4,12 +4,18 @@
     <color name="colorPrimaryDark">#303F9f</color>
     <color name="colorAccent">#ff4081</color>
     <!-- SmileMirror -->
-    <color name="smile_level_one_face_color">#43deec</color>
-    <color name="smile_level_two_face_color">#fe9933</color>
-    <color name="smile_level_three_face_color">#ffe362</color>
-    <color name="smile_level_four_face_color">#98d745</color>
+    <color name="smile_level_one_face_color">#9943deec</color>
+    <color name="smile_level_two_face_color">#99fe9933</color>
+    <color name="smile_level_three_face_color">#99ffe362</color>
+    <color name="smile_level_four_face_color">#9998d745</color>
+    <color name="smile_window_line_shadow_color">#0D000000</color>
     <color name="smile_text_color">#ffffff</color>
     <color name="countdown_text_color">#98d745</color>
     <color name="teleprompter_background_color">#D8000000</color>
     <color name="smile_text_shadow_color">#cc000000</color>
+    <!-- Editor -->
+    <color name = "editor_list_background_color">#66000000</color>
+    <color name = "editor_list_title_text_color">#ffffff</color>
+    <color name = "editor_list_date_text_color">#969696</color>
+    <color name = "editor_add_plus_color">#7ebc5c</color>
 </resources>

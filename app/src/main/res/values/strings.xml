@@ -37,7 +37,7 @@
     <!-- No need translate -->
     <string name="editor_menu_title_save">"Save"</string>
     <string name="editor_menu_title_select">"Select"</string>
+    <string name="editor_menu_title_rename">"Rename"</string>
     <string name="editor_menu_title_edit_text">"Edit"</string>
     <string name="editor_menu_title_delete">"Delete"</string>
-
 </resources>
