@@ -1,0 +1,50 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout android:id="@+id/chart_page"
+                xmlns:android="http://schemas.android.com/apk/res/android"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:background="@color/teleprompter_background_color"
+                >
+
+    <TextView
+        android:id="@+id/statistics_text_view"
+        android:layout_width="wrap_content"
+        android:layout_height="@dimen/chart_page_statistics_text_height"
+        android:layout_centerHorizontal="true"
+        android:layout_marginTop="@dimen/chart_page_upper_layout_padding"
+        android:text="@string/chart_page_smile_statistics"
+        android:textAlignment="center"
+        android:textColor="@android:color/white"
+        android:textSize="@dimen/chart_page_statistics_title_text_size"/>
+
+    <com.asus.zenheart.smilemirror.HistogramChart
+        android:id="@+id/histogram_chart"
+        android:layout_width="match_parent"
+        android:layout_height="@dimen/chart_page_histogram_height"
+        android:layout_below="@id/statistics_text_view"
+        android:layout_centerVertical="true"
+        android:layout_marginTop="@dimen/chart_page_upper_layout_padding"/>
+
+    <TextView
+        android:id="@+id/duration_text_view"
+        android:layout_width="wrap_content"
+        android:layout_height="@dimen/chart_page_duration_text_height"
+        android:layout_below="@id/histogram_chart"
+        android:layout_centerHorizontal="true"
+        android:layout_marginTop="@dimen/chart_page_middle_layout_padding"
+        android:text="@string/chart_page_smile_duration"
+        android:textAlignment="center"
+        android:textColor="@android:color/white"
+        android:textSize="@dimen/chart_page_duration_text_size"/>
+
+    <ImageView
+        android:id="@+id/chart_close_view"
+        android:layout_width="@dimen/chart_page_close_image_width"
+        android:layout_height="@dimen/chart_page_close_image_height"
+        android:layout_alignParentBottom="true"
+        android:layout_centerHorizontal="true"
+        android:layout_marginBottom="@dimen/chart_page_lower_layout_padding"
+        android:src="@drawable/close"/>
+
+
+</RelativeLayout>

@@ -1,10 +1,11 @@
 <?xml version="1.0" encoding="utf-8"?>
-<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<RelativeLayout android:id="@+id/coach_mode_layout"
+                xmlns:android="http://schemas.android.com/apk/res/android"
                 android:layout_width="match_parent"
                 android:layout_height="match_parent">
 
     <RelativeLayout
-        android:id="@+id/linear_layout"
+        android:id="@+id/title_layout"
         android:layout_width="match_parent"
         android:layout_height="@dimen/coach_mode_height"
         android:background="@android:color/black">
@@ -49,42 +50,41 @@
         android:id="@+id/vertical_scroll_textview"
         android:layout_width="match_parent"
         android:layout_height="@dimen/teleprompter_height"
-        android:layout_alignParentLeft="true"
         android:layout_alignParentStart="true"
-        android:layout_below="@+id/linear_layout"
+        android:layout_below="@id/title_layout"
         android:background="@color/teleprompter_background_color"
         android:text="@string/text_content"
         android:textColor="@android:color/white"/>
 
-
     <RelativeLayout
         android:layout_width="match_parent"
-        android:layout_height="@dimen/coach_mode_upper_layout_height"
+        android:layout_height="@dimen/coach_mode_lower_layout_height"
         android:layout_alignParentStart="true"
         android:layout_below="@+id/vertical_scroll_textview"
         android:background="@color/teleprompter_background_color">
 
-        <ImageView
-            android:id="@+id/image_drag"
-            android:layout_width="@dimen/coach_mode_drag_icon_width"
-            android:layout_height="@dimen/coach_mode_drag_icon_height"
-            android:layout_alignParentEnd="true"
-            android:layout_centerVertical="true"
-            android:layout_marginEnd="@dimen/coach_mode_drag_icon_padding"
-            android:src="@drawable/drag"/>
 
         <ImageView
             android:id="@+id/image_play"
             android:layout_width="@dimen/coach_mode_play_icon_width"
             android:layout_height="@dimen/coach_mode_play_icon_height"
-            android:layout_alignBottom="@+id/image_drag"
             android:layout_centerHorizontal="true"
+            android:layout_marginTop="@dimen/coach_mode_drag_icon_padding"
             android:src="@drawable/play"/>
 
+        <ImageView
+            android:id="@+id/image_drag"
+            android:layout_width="@dimen/coach_mode_drag_icon_width"
+            android:layout_height="@dimen/coach_mode_drag_icon_height"
+
+            android:layout_alignParentEnd="true"
+            android:layout_alignTop="@id/image_play"
+            android:layout_marginEnd="@dimen/coach_mode_drag_icon_padding"
+            android:src="@drawable/drag"/>
     </RelativeLayout>
 
     <ImageView
-        android:id="@+id/video"
+        android:id="@+id/video_image_view"
         android:layout_width="@dimen/coach_mode_video_icon_width"
         android:layout_height="@dimen/coach_mode_video_icon_height"
         android:layout_alignParentBottom="true"
@@ -92,7 +92,7 @@
         android:layout_marginBottom="@dimen/coach_mode_video_icon_padding"
         android:layout_marginStart="@dimen/coach_mode_video_icon_padding"
         android:src="@drawable/video"
-        android:visibility="visible"/>
+        android:visibility="invisible"/>
 
     <ImageView
         android:id="@+id/rec_text"

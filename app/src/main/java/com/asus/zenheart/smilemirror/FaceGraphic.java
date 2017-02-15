@@ -42,6 +42,7 @@ public class FaceGraphic extends GraphicOverlay.Graphic {
     private static final int BOX_STROKE_ALPHA = 102;// 60% opacity
 
     // ShihJie: add the value for L1 to L4
+    //TODO: it should be combined or extracted with those in SmileDegreeCounter
     private static final float SMILE_LEVEL_L4 = 0.7f;
     private static final float SMILE_LEVEL_L3 = 0.5f;
     private static final float SMILE_LEVEL_L2 = 0.3f;
@@ -66,11 +67,11 @@ public class FaceGraphic extends GraphicOverlay.Graphic {
 
     private Context mContext;
     private Resources mResources;
+    private GraphicOverlay mGraphicOverlay;
     private Paint mBoxPaint;
     private Paint mFaceTextPaint;
     private volatile Face mFace;
     private int mFaceId;
-
 
     private int mSmileEffectFrame[];// Store smile effect frame
     private int mSmileEffectFrameCount = 0;//Calculate which frame is showing now
@@ -108,7 +109,10 @@ public class FaceGraphic extends GraphicOverlay.Graphic {
         super(overlay);
         mContext = context;
         mResources = context.getResources();
+        mGraphicOverlay = overlay;
         initPaint();
+
+        //TODO: fix in the future below
         mSmileEffectFrame = getSmileEffectResourceIndex(context, SMILE_EFFECT_FRAME_NUMBER);
 
         mDoubleScaleOptions = new BitmapFactory.Options();
@@ -129,6 +133,7 @@ public class FaceGraphic extends GraphicOverlay.Graphic {
      * relevant portions of the overlay to trigger a redraw.
      */
     void updateFace(Face face) {
+        //Log.e("faceGraphic"," thread is = " + Thread.currentThread().getId());
         mFace = face;
         postInvalidate();
     }
@@ -143,16 +148,18 @@ public class FaceGraphic extends GraphicOverlay.Graphic {
         if (face == null) {
             return;
         }
-        if (FaceTrackerActivity.sIfDraw == FaceTrackerActivity.MODE_COUCH) {
-            return;
-        }
 
         // Declare each values in the face window.
-        float smileScore = AverageUtil.movingAverage(face.getIsSmilingProbability());
+        float smileScore = mSmileDegreeCounter.setIsRecording(getIsRecording()).
+                setSmileDegree(face.getIsSmilingProbability()).getSimpleMovingAverage();
         float rightEye = face.getIsRightEyeOpenProbability();
         float leftEye = face.getIsLeftEyeOpenProbability();
         float faceWidth = face.getWidth();
         float faceHeight = face.getHeight();
+
+        if (mGraphicOverlay.getMode() == GraphicOverlay.Mode.CONVERSATION) {
+            return;
+        }
 
         // Draws a circle at the position of the detected face, with the face's track id below.
         float x = translateX(face.getPosition().x + faceWidth / 2);
@@ -168,11 +175,10 @@ public class FaceGraphic extends GraphicOverlay.Graphic {
         float faceWindowWidth = right - left;
         float faceWindowHeight = bottom - top;
 
-
         setDrawPaint(context, mBoxPaint, smileScore);
         canvas.drawRect(left, top, right, bottom, mBoxPaint);
 
-        final float smileTextPadding = context.getResources().getDimensionPixelSize(
+        final float smileTextPadding = context.getResources().getDimension(
                 R.dimen.smile_text_padding);
         // ++ShihJie: Draw face effect(one face).
         if (sFaceEffect) {
@@ -203,7 +209,6 @@ public class FaceGraphic extends GraphicOverlay.Graphic {
             }
         }
         // --ShihJie
-
 
     }
 
@@ -292,7 +297,7 @@ public class FaceGraphic extends GraphicOverlay.Graphic {
      * @param smilingProbability The score of the face smile.
      */
     private void setDrawPaint(@NonNull Context context, @NonNull Paint paint,
-                              float smilingProbability) {
+            float smilingProbability) {
         final int smileLevelOneColor = ContextCompat.getColor(context,
                 R.color.smile_level_one_face_color);
         final int smileLevelTwoColor = ContextCompat.getColor(context,
@@ -324,7 +329,7 @@ public class FaceGraphic extends GraphicOverlay.Graphic {
      */
     //TODO: This feature maybe will be used in the future and this function is not ready yet.
     private void drawHeart(@NonNull Canvas canvas, ArrayList<Bitmap> bitmapArrayList, int count,
-                           float positionX, float positionY) {
+            float positionX, float positionY) {
         Random r = new Random();
         // Pop heart range
         int Low = -(HEART_APPEAR_HEIGHT);
@@ -337,7 +342,6 @@ public class FaceGraphic extends GraphicOverlay.Graphic {
         }
     }
 
-
     /**
      * Smile effect bitmap each frame data.
      *
@@ -349,8 +353,8 @@ public class FaceGraphic extends GraphicOverlay.Graphic {
      * @param drawPositionY Max effect frame number.
      */
     private void drawSmileEffectBitmap(@NonNull Context context, @NonNull Canvas canvas,
-                                       float width, float height, float drawPositionX,
-                                       float drawPositionY, BitmapFactory.Options options) {
+            float width, float height, float drawPositionX,
+            float drawPositionY, BitmapFactory.Options options) {
         final float scaleWidth = width / ORIGINAL_FACE_WIDTH;
         final float scaleHeight = height / ORIGINAL_FACE_HEIGHT;
 
@@ -376,8 +380,8 @@ public class FaceGraphic extends GraphicOverlay.Graphic {
      * @param options   The options which can set resource size.
      */
     private void drawSmileLevelIcon(@NonNull Resources resources, @NonNull Canvas canvas,
-                                    float width, float height, float x, float y,
-                                    BitmapFactory.Options options) {
+            float width, float height, float x, float y,
+            BitmapFactory.Options options) {
         final float smileProbability = mFace.getIsSmilingProbability();
         final int smileLevelFour = R.drawable.l4;
         final int smileLevelThree = R.drawable.l3;
@@ -414,7 +418,7 @@ public class FaceGraphic extends GraphicOverlay.Graphic {
      * @param y                The Y coordinate of the toast_text on the face window.
      */
     private void drawSmileText(@NonNull Resources resources, @NonNull Canvas canvas, Paint paint,
-                               float smileProbability, float x, float y) {
+            float smileProbability, float x, float y) {
         final String smileL4 = resources.getString(R.string.smile_level_four_text);
         final String smileL3 = resources.getString(R.string.smile_level_three_text);
         final String smileL2 = resources.getString(R.string.smile_level_two_text);
@@ -446,7 +450,7 @@ public class FaceGraphic extends GraphicOverlay.Graphic {
      * @param y         The Y coordinate of the toast_text on the face window.
      */
     private void drawCrown(@NonNull Resources resources, @NonNull Canvas canvas, float width,
-                           float height, float padding, float x, float y) {
+            float height, float padding, float x, float y) {
         final int crownResource = R.drawable.crown;
 
         Bitmap crown = BitmapFactory.decodeResource(resources, crownResource, mNoScaleOptions);

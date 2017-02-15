@@ -1,14 +1,21 @@
 <?xml version="1.0" encoding="utf-8"?>
-<FrameLayout android:id="@+id/mirror_framelayout"
-             xmlns:android="http://schemas.android.com/apk/res/android"
-             android:layout_width="match_parent"
-             android:layout_height="match_parent">
+<RelativeLayout android:id="@+id/mirror_main_layout"
+                xmlns:android="http://schemas.android.com/apk/res/android"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent">
 
 
     <com.asus.zenheart.smilemirror.ui.camera.CameraSourcePreview
+
         android:id="@+id/preview"
         android:layout_width="match_parent"
         android:layout_height="match_parent">
+
+        <TextureView
+            android:id="@+id/texture_view"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"/>
+
 
         <com.asus.zenheart.smilemirror.ui.camera.GraphicOverlay
             android:id="@+id/face_overlay"
@@ -16,7 +23,35 @@
             android:layout_height="match_parent"/>
 
     </com.asus.zenheart.smilemirror.ui.camera.CameraSourcePreview>
+    
 
+    <com.asus.zenheart.smilemirror.SmileIndicatorView
+        android:id="@+id/smile_indicator"
+        android:layout_width="@dimen/smile_indicator_width"
+        android:layout_height="@dimen/smile_indicator_height"
+        android:layout_alignParentBottom="true"
+        android:layout_centerHorizontal="true"
+        android:layout_margin="@dimen/smile_indicator_bottom_padding"/>
+
+    <TextView
+        android:id="@+id/toast_text"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_above="@id/smile_indicator"
+        android:layout_centerHorizontal="true"
+        android:layout_margin="@dimen/mode_toast_padding"
+        android:drawableTop="@drawable/smile_mode"
+        android:text="@string/smile_mode"
+        android:textColor="@android:color/white"
+        android:textSize="@dimen/mode_text_size"/>
+
+    <ImageView
+        android:id="@+id/image_close"
+        android:layout_width="@dimen/close_icon_width"
+        android:layout_height="@dimen/close_icon_height"
+        android:layout_alignParentBottom="true"
+        android:layout_alignParentEnd="true"
+        android:src="@drawable/glass_close"/>
 
     <android.support.v4.view.ViewPager
         android:id="@+id/viewpager"
@@ -25,39 +60,4 @@
 
     </android.support.v4.view.ViewPager>
 
-
-    <com.asus.zenheart.smilemirror.HistogramChart
-        android:id="@+id/panel_pie_chart"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:background="@drawable/chart_page"
-        android:visibility="invisible"/>
-
-
-    <TextView
-        android:id="@+id/toast_text"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_gravity="center_horizontal"
-        android:layout_marginTop="@dimen/mode_toast_padding"
-        android:drawableTop="@drawable/smile_mode"
-        android:text="@string/smile_mode"
-        android:textColor="@android:color/white"
-        android:textSize="@dimen/mode_text_size"/>
-
-
-    <com.asus.zenheart.smilemirror.SmileIndicatorView
-        android:id="@+id/smile_indicator"
-        android:layout_width="@dimen/smile_indicator_width"
-        android:layout_height="@dimen/smile_indicator_height"
-        android:layout_gravity="center_horizontal"
-        android:layout_marginTop="@dimen/smile_indicator_padding"/>
-
-    <ImageView
-        android:id="@+id/image_close"
-        android:layout_width="@dimen/close_icon_width"
-        android:layout_height="@dimen/close_icon_height"
-        android:layout_gravity="bottom|end"
-        android:src="@drawable/glass_close"/>
-
-</FrameLayout>
+</RelativeLayout>

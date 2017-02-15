@@ -18,13 +18,13 @@ package com.asus.zenheart.smilemirror.ui.camera;
 
 import android.content.Context;
 import android.content.res.Configuration;
+import android.graphics.SurfaceTexture;
 import android.util.AttributeSet;
 import android.util.Log;
+import android.util.Size;
 import android.view.SurfaceHolder;
-import android.view.SurfaceView;
+import android.view.TextureView;
 import android.view.ViewGroup;
-
-import com.google.android.gms.common.images.Size;
 
 import java.io.IOException;
 
@@ -32,7 +32,7 @@ public class CameraSourcePreview extends ViewGroup {
     private static final String TAG = "CameraSourcePreview";
 
     private Context mContext;
-    private SurfaceView mSurfaceView;
+    private TextureView mTextureView;
     private boolean mStartRequested;
     private boolean mSurfaceAvailable;
     private CameraSource mCameraSource;
@@ -43,11 +43,8 @@ public class CameraSourcePreview extends ViewGroup {
         super(context, attrs);
         mContext = context;
         mStartRequested = false;
-        mSurfaceAvailable = false;
+        mSurfaceAvailable = false;//be careful of if surfaceTexture is ready
 
-        mSurfaceView = new SurfaceView(context);
-        mSurfaceView.getHolder().addCallback(new SurfaceCallback());
-        addView(mSurfaceView);
     }
 
     public void start(CameraSource cameraSource) throws IOException {
@@ -68,6 +65,19 @@ public class CameraSourcePreview extends ViewGroup {
         start(cameraSource);
     }
 
+    //Jack +++
+    public void start(CameraSource cameraSource, GraphicOverlay overlay, TextureView textureView)
+            throws IOException {
+        Log.i(TAG, "startCameraSource .....CameraPreview.start");
+        mTextureView = textureView;
+        if (mTextureView.isAvailable()) {
+            mSurfaceAvailable = true;
+        }
+        mTextureView.setSurfaceTextureListener(new SurfaceTextureCallback());
+        start(cameraSource, overlay);
+    }
+
+    //Jack ---
     public void stop() {
         if (mCameraSource != null) {
             mCameraSource.stop();
@@ -82,16 +92,20 @@ public class CameraSourcePreview extends ViewGroup {
     }
 
     private void startIfReady() throws IOException {
+        Log.i(TAG, "startIfReady ..........");
+        Log.i(TAG,
+                "mStartRequested = " + mStartRequested + " SurfaceAvailable = " + mSurfaceAvailable);
         if (mStartRequested && mSurfaceAvailable) {
-            mCameraSource.start(mSurfaceView.getHolder());
+            mCameraSource.start(mTextureView);
             if (mOverlay != null) {
-                Size size = mCameraSource.getPreviewSize();
-
+                android.util.Size size = mCameraSource.getVideoSize();
+                Log.i(TAG, "startIfReady");
                 int min = Math.min(size.getWidth(), size.getHeight());
                 int max = Math.max(size.getWidth(), size.getHeight());
                 if (isPortraitMode()) {
                     // Swap width and height sizes when in portrait, since it will be rotated by
                     // 90 degrees
+                    //TODO fix CameraFacing ... getCameraFacing
                     mOverlay.setCameraInfo(min, max, mCameraSource.getCameraFacing());
                 } else {
                     mOverlay.setCameraInfo(max, min, mCameraSource.getCameraFacing());
@@ -102,6 +116,40 @@ public class CameraSourcePreview extends ViewGroup {
         }
     }
 
+    private class SurfaceTextureCallback implements TextureView.SurfaceTextureListener {
+        @Override
+        public void onSurfaceTextureAvailable(SurfaceTexture surface, int width, int height) {
+
+            //Log.i(TAG, "onSurfaceTextureAvailable...");
+            mSurfaceAvailable = true;
+            try {
+                startIfReady();
+            } catch (IOException e) {
+                e.printStackTrace();
+            }
+
+        }
+
+        @Override
+        public boolean onSurfaceTextureDestroyed(SurfaceTexture surface) {
+            //Log.i(TAG, "onSurfaceTextureDestroyed...");
+            mSurfaceAvailable = false;
+            return true;
+        }
+
+        @Override
+        public void onSurfaceTextureSizeChanged(SurfaceTexture surface, int width, int height) {
+            Log.i(TAG, "onSurfaceTextureSizeChanged...");
+        }
+
+        @Override
+        public void onSurfaceTextureUpdated(SurfaceTexture surface) {
+            //Log.i(TAG, "onSurfaceTextureUpdated...");
+        }
+
+    }
+
+    /*unused*/
     private class SurfaceCallback implements SurfaceHolder.Callback {
         @Override
         public void surfaceCreated(SurfaceHolder surface) {
@@ -128,11 +176,11 @@ public class CameraSourcePreview extends ViewGroup {
         int width = 320;
         int height = 240;
         if (mCameraSource != null) {
-            Size size = mCameraSource.getPreviewSize();
+            Size size = mCameraSource.getVideoSize();
             if (size != null) {
                 width = size.getWidth();
                 height = size.getHeight();
-                Log.i("CameraSource", "width = " + width + " height = " + height);
+                Log.i("CameraSource", "video width = " + width + " video height = " + height);
             }
         }
 
@@ -150,6 +198,7 @@ public class CameraSourcePreview extends ViewGroup {
         // Computes height and width for potentially doing fit width.
         int childWidth = layoutWidth;
         int childHeight = (int) (((float) layoutWidth / (float) width) * height);
+
         //Jack +++
         // If height is too short using fit width, does fit height instead.
         if (childHeight < layoutHeight) {
@@ -162,6 +211,7 @@ public class CameraSourcePreview extends ViewGroup {
                     (layoutWidth + childWidth) / 2, (layoutHeight + childHeight) / 2);
         }
         //Jack ---
+
         try {
             startIfReady();
         } catch (IOException e) {
@@ -181,4 +231,5 @@ public class CameraSourcePreview extends ViewGroup {
         Log.d(TAG, "isPortraitMode returning false by default");
         return false;
     }
+
 }

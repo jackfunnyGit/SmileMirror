@@ -1,5 +1,4 @@
-package com.asus.zenheart.smilemirror;
-
+package com.asus.zenheart.smilemirror.Util;
 
 import android.support.annotation.NonNull;
 import android.view.View;
@@ -7,6 +6,7 @@ import android.view.animation.AlphaAnimation;
 import android.view.animation.Animation;
 import android.view.animation.LinearInterpolator;
 
+//TODO rename in the future,factory should not be used like this
 public class AnimationUtil {
     private static final String LOG_TAG = "AnimationUtil";
     private static final int TOAST_ANIMATION_TIME_MILL = 3000;

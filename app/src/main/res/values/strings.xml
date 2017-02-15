@@ -16,4 +16,28 @@
     <string name="text_content">"has no content,it should be Chinese local"</string>
     <string name="smile_mode">"Smile Mode"</string>
     <string name="coach_mode">"Coach Mode"</string>
+    <!-- chart page -->
+    <string name="chart_page_smile_statistics">"Smile Statistics"</string>
+    <string name="chart_page_smile_duration">"Duration: %1$s seconds"</string>
+    <!-- Editor -->
+    <string name="editor_save_new_file_title">"Save the file"</string>
+    <string name="editor_save_file_title">"Save"</string>
+    <string name="editor_check_yes">"Yes"</string>
+    <string name="editor_check_cancel">"Cancel"</string>
+    <string name="editor_save_file_hint">"Please enter the title and the content"</string>
+    <string name="editor_edit_script">"Edit script"</string>
+    <string name="editor_delete_script">Delete script</string>
+    <string name="editor_delete_list_script">"   Delete script"</string>
+    <string name="delete_script_description">"Do you want to delete the script?"</string>
+    <string name="conversation_scripts">Conversation scripts</string>
+    <string name="font_size">Font size</string>
+    <string name="font_size_large">"Large"</string>
+    <string name="font_size_default">"Default"</string>
+    <string name="font_size_small">"Small"</string>
+    <!-- No need translate -->
+    <string name="editor_menu_title_save">"Save"</string>
+    <string name="editor_menu_title_select">"Select"</string>
+    <string name="editor_menu_title_edit_text">"Edit"</string>
+    <string name="editor_menu_title_delete">"Delete"</string>
+
 </resources>

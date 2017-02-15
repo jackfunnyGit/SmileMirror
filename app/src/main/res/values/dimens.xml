@@ -14,13 +14,13 @@
     <dimen name="gallery_icon_padding">23dp</dimen>
     <dimen name="close_icon_width">84dp</dimen>
     <dimen name="close_icon_height">84dp</dimen>
+    <!-- smile indicator -->
     <dimen name="smile_indicator_width">120dp</dimen>
     <dimen name="smile_indicator_height">44dp</dimen>
-    <dimen name="smile_indicator_padding">500dp</dimen>
-    <dimen name="mode_toast_height">70dp</dimen>
-    <dimen name="mode_toast_padding">430dp</dimen>
-    <dimen name="mode_toast_icon_padding">25dp</dimen>
-    <dimen name="mode_toast_text_padding">10dp</dimen>
+    <dimen name="smile_indicator_bottom_padding">23dp</dimen>
+    <!-- toast text and image -->
+    <dimen name="mode_toast_padding">3dp</dimen>
+    <!-- couch mode -->
     <dimen name="coach_mode_height">56dp</dimen>
     <dimen name="coach_mode_setting_icon_width">32dp</dimen>
     <dimen name="coach_mode_setting_icon_height">32dp</dimen>
@@ -29,10 +29,11 @@
     <dimen name="coach_mode_list_icon_height">32dp</dimen>
     <dimen name="coach_mode_list_icon_padding">10dp</dimen>
     <dimen name="presentation_title_padding">23dp</dimen>
-    <dimen name="coach_mode_upper_layout_height">57dp</dimen>
+    <dimen name="coach_mode_lower_layout_height">57dp</dimen>
     <dimen name="coach_mode_drag_icon_width">32dp</dimen>
     <dimen name="coach_mode_drag_icon_height">32dp</dimen>
     <dimen name="coach_mode_drag_icon_padding">13dp</dimen>
+    <dimen name="coach_mode_drag_icon_top_padding">13dp</dimen>
     <dimen name="coach_mode_play_icon_width">34dp</dimen>
     <dimen name="coach_mode_play_icon_height">34dp</dimen>
     <dimen name="coach_mode_video_icon_width">32dp</dimen>
@@ -41,10 +42,31 @@
     <dimen name="coach_mode_recording_icon_width">64dp</dimen>
     <dimen name="coach_mode_recording_icon_height">32dp</dimen>
     <dimen name="coach_mode_recording_icon_padding">23dp</dimen>
-    <!-- SmileMirror sp value -->
-    <dimen name="smile_text_size">24sp</dimen>
-    <dimen name="mode_text_size">16sp</dimen>
-    <dimen name="teleprompter_text_size">16sp</dimen>
-    <dimen name="countdown_text_size">133sp</dimen>
-    <dimen name="presentation_title_text_size">24sp</dimen>
+    <!-- Vertical text view padding-->
+    <dimen name="vertical_text_view_width_padding">23dp</dimen>
+    <!-- histogram chart -->
+    <dimen name="histogram_chart_bar_width">70dp</dimen>
+    <dimen name="histogram_chart_bar_height">320dp</dimen>
+    <dimen name="histogram_chart_bar_image_width">70dp</dimen>
+    <dimen name="histogram_chart_bar_image_height">70dp</dimen>
+    <!-- chart page-->
+    <dimen name="chart_page_upper_layout_padding">26dp</dimen>
+    <dimen name="chart_page_middle_layout_padding">24dp</dimen>
+    <dimen name="chart_page_lower_layout_padding">27dp</dimen>
+    <dimen name="chart_page_histogram_height">414dp</dimen>
+    <dimen name="chart_page_statistics_text_height">32dp</dimen>
+    <dimen name="chart_page_duration_text_height">24dp</dimen>
+    <dimen name="chart_page_close_image_width">44dp</dimen>
+    <dimen name="chart_page_close_image_height">44dp</dimen>
+    <!-- count down page -->
+    <dimen name="count_down_page_width_size">190dp</dimen>
+    <dimen name="count_down_page_height_size">190dp</dimen>
+    <!-- SmileMirror text in dp value -->
+    <dimen name="smile_text_size">24dp</dimen>
+    <dimen name="mode_text_size">16dp</dimen>
+    <dimen name="teleprompter_text_size">16dp</dimen>
+    <dimen name="countdown_text_size">133dp</dimen>
+    <dimen name="presentation_title_text_size">24dp</dimen>
+    <dimen name="chart_page_statistics_title_text_size">24dp</dimen>
+    <dimen name="chart_page_duration_text_size">16dp</dimen>
 </resources>

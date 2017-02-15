@@ -1,7 +1,7 @@
 package com.asus.zenheart.smilemirror;
 
-
 import android.content.Context;
+import android.content.res.Resources;
 import android.graphics.Canvas;
 import android.graphics.Color;
 import android.graphics.Paint;
@@ -19,23 +19,44 @@ import java.util.ArrayList;
 import java.util.Collections;
 import java.util.List;
 
-
 public class VerticalScrollTextView extends TextView implements View.OnTouchListener {
+    /**
+     * Scrolling speed constant concern with four speed level ,slow,normal,fast and superFast
+     */
+    public interface TEXT_SPEED {
+        int SLOW = 1;
+        int NORMAL = 5;
+        int FAST = 10;
+        int TURBO = 20;
+    }
+
+    /**
+     * Three options of size measured in dp to set text size
+     */
+    public interface TEXT_SIZE {
+        float SMALL = 16;
+        float DEFAULT = 18;
+        float BIG = 22;
+    }
+
+    /**
+     * Used for the first postDelay time
+     * @see #start()
+     * @see #start(int)
+     */
+    public static final int FIRST_DELAY_TIME_MILLS = 5000;
+
     //TODO remove all the log in the future
     private static final String LOG_TAG = "VerticalScrollTextView";
     private static final boolean LOG_FLAG = true;
-
-
-    private static final float WIDTH_PADDING_DP = 23f;
-    private static final float STROKE_WIDTH = 1f;
+    private static final float STROKE_WIDTH = 1f;//for bottom line painting
 
     /**
-     * used to control teleprompter toast_text size and scroll speed
+     * Used to control teleprompter scrolling speed
      */
-    private static final int TEXT_STEP = 1;//scrolled toast_text speed
-    private static final float TEXT_ROW_SPACE = 1.5f;
-    private static final float TEXT_SIZE_SP = 16f;
-    private static final int TEXT_INTERVAL_TIME_MILL = 10;
+    private static float TEXT_ROW_SPACE = 1.2f;
+    private static final int TEXT_INTERVAL_TIME_MILL = 40;
+    private int mTextStep = 1;//scrolled toast_text speed
 
     private Paint mPaint;
     private DisplayMetrics mDisplayMetrics;
@@ -46,10 +67,14 @@ public class VerticalScrollTextView extends TextView implements View.OnTouchList
     private float mHeight;
     private List<String> mTextList = new ArrayList<>();
     private AnimRunnable mRunnable = new AnimRunnable();
-    private boolean isStarted;
 
+    private boolean mIsScrolling;
     private float mFirstLineY;
-
+    //TODO above will be delete in the future, it is for demo
+    private static int I;
+    private static final float TextSize[] = new float[]{
+            TEXT_SIZE.BIG, TEXT_SIZE.DEFAULT, TEXT_SIZE.SMALL
+    };
 
     public VerticalScrollTextView(Context context) {
         super(context);
@@ -62,17 +87,20 @@ public class VerticalScrollTextView extends TextView implements View.OnTouchList
     }
 
     private void initVerticalScrollTextView(Context context) {
-        mDisplayMetrics = context.getResources().getDisplayMetrics();
-        mText = (String) getText();
-        mPaddingShift = (int) TypedValue.applyDimension(TypedValue.COMPLEX_UNIT_DIP,
-                WIDTH_PADDING_DP, mDisplayMetrics);
+        final Resources resources = context.getResources();
+        mDisplayMetrics = resources.getDisplayMetrics();
+        mPaddingShift = (int) resources.getDimension(R.dimen.vertical_text_view_width_padding);
         mPaint = getPaint();
-        setTextSize(TEXT_SIZE_SP);
-
+        //TODO: read textContent,textSize,textSpeed from the preference
+        mText = (String) getText();
+        setTextSize(TEXT_SIZE.SMALL);
+        //TODO: delete in the future, it is for demo
+        setOnTouchListener(this);
     }
 
     @Override
     protected void onMeasure(int widthMeasureSpec, int heightMeasureSpec) {
+
         super.onMeasure(widthMeasureSpec, heightMeasureSpec);
         final int widthMode = MeasureSpec.getMode(widthMeasureSpec);
         if (widthMode != MeasureSpec.EXACTLY) {
@@ -81,20 +109,14 @@ public class VerticalScrollTextView extends TextView implements View.OnTouchList
         mHeight = MeasureSpec.getSize(heightMeasureSpec);
         mWidth = MeasureSpec.getSize(widthMeasureSpec);
         mWidth = mWidth - mPaddingShift * 2;//fix viewWidth to actual toast_text row width
-        if (mTextList.size() > 0) {
-            return;
-        }
-        String newText = autoSplitText(mText, mWidth, mPaint);
-        if (!TextUtils.isEmpty(newText)) {
-            stringToList(newText, mTextList);
-        }
+        Log.i(LOG_TAG, "onMeasure mHeight = " + mHeight + " mWidth = " + mWidth);
+        initTextList();
     }
-
 
     @Override
     public void onDraw(Canvas canvas) {
         if (mTextList.size() == 0) {
-            Log.e(LOG_TAG, "toast_text content should not be empty");
+            Log.w(LOG_TAG, "toast_text content should not be empty");
             return;
         }
         for (int i = 0; i < mTextList.size(); i++) {
@@ -107,6 +129,18 @@ public class VerticalScrollTextView extends TextView implements View.OnTouchList
     }
 
     /**
+     * Control the text scrolling speed
+     *
+     * @param textSpeed The text scrolling speed,supposed to fed by values in {@link TEXT_SPEED}
+     */
+    public void setTextScrollSpeed(int textSpeed) {
+        if (textSpeed < 0) {
+            textSpeed = TEXT_SPEED.SLOW;
+        }
+        mTextStep = textSpeed;
+    }
+
+    /**
      * Customized textView does not need to call super method
      * This TextView will never change toast_text size with the system toast_text setting
      *
@@ -114,25 +148,42 @@ public class VerticalScrollTextView extends TextView implements View.OnTouchList
      */
     @Override
     public void setTextSize(float size) {
-        //TODO it will be replace by three quality textSize concerned with little,medium and large
-        final float px = TypedValue.applyDimension(TypedValue.COMPLEX_UNIT_SP, size,
+        final float px = TypedValue.applyDimension(TypedValue.COMPLEX_UNIT_DIP, size,
                 mDisplayMetrics);
         mPaint.setTextSize(px);
         mPaint.setColor(Color.WHITE);
         mPaint.setStrokeWidth(STROKE_WIDTH);
         mFontHeight = getFontHeight(mPaint);
         mFirstLineY = mFontHeight;
+        initTextList();
+        invalidate();
     }
 
     /**
-     * to measure the height of a word with this method
+     * Sets the string value of the TextView
      *
-     * @param paint the textSize
-     * @return an integer corresponding to row space
+     * @param text The new text to place in the text view.
      */
-    public int getFontHeight(Paint paint) {
-        Paint.FontMetrics fm = paint.getFontMetrics();
-        return (int) Math.ceil(fm.bottom - fm.top);
+    public void setText(String text) {
+        mText = text;
+        initTextList();
+        super.setText(text);
+    }
+
+    public void setTextRowSpace(float rowSpace) {
+        TEXT_ROW_SPACE = rowSpace;
+        invalidate();
+    }
+
+    /**
+     * split toast_text content into String List to init {@link #mTextList}
+     */
+    private void initTextList() {
+        String newText = autoSplitText(mText, mWidth, mPaint);
+        if (!TextUtils.isEmpty(newText)) {
+            stringToList(newText, mTextList);
+        }
+
     }
 
     /**
@@ -157,8 +208,9 @@ public class VerticalScrollTextView extends TextView implements View.OnTouchList
                 //if the length of the content toast_text is shorter than the view width,do nothing
                 sbNewText.append(rawTextLine);
             } else {
-                //if the length of the content toast_text is longer than the view width,the content toast_text
-                //is measured with word by word and append "\n" before exceeding available width
+                //if the length of the content toast_text is longer than the view width,
+                // the content toast_text is measured with word by word and
+                // append "\n" before exceeding available width
                 float lineWidth = 0;
                 for (int cnt = 0; cnt != rawTextLine.length(); ++cnt) {
                     char ch = rawTextLine.charAt(cnt);
@@ -196,12 +248,23 @@ public class VerticalScrollTextView extends TextView implements View.OnTouchList
     }
 
     /**
-     * start toast_text auto scrolled
+     * start toast_text auto scrolled after interval time
      */
     public void start() {
-        if (!isStarted) {
-            isStarted = true;
+        if (!mIsScrolling) {
+            mIsScrolling = true;
             postDelayed(mRunnable, TEXT_INTERVAL_TIME_MILL);
+        }
+    }
+
+    /**
+     * start toast_text auto scrolled after delay milli seconds
+     *
+     */
+    public void start(int delayMillis) {
+        if (!mIsScrolling) {
+            mIsScrolling = true;
+            postDelayed(mRunnable, delayMillis);
         }
     }
 
@@ -211,10 +274,9 @@ public class VerticalScrollTextView extends TextView implements View.OnTouchList
     public void stop() {
         removeCallbacks(mRunnable);
         mFirstLineY = mFontHeight;
-        isStarted = false;
+        mIsScrolling = false;
         invalidate();
     }
-
 
     /*unused*/
     //TODO do not delete until you figure out the textSize,it will remove in the future
@@ -230,27 +292,45 @@ public class VerticalScrollTextView extends TextView implements View.OnTouchList
     /*unused*/
     @Override
     public boolean onTouch(View v, MotionEvent event) {
-        Log.e(LOG_TAG, "is Start = " + isStarted);
+        Log.e(LOG_TAG, "is Start = " + mIsScrolling);
         switch (event.getAction()) {
             case MotionEvent.ACTION_DOWN:
-                if (isStarted) {
-                    stop();
-                } else {
-                    start();
-                }
+//                if (mIsScrolling) {
+//                    stop();
+//                } else {
+//                    start();
+//                }
                 return true;
             case MotionEvent.ACTION_MOVE:
                 return true;
             case MotionEvent.ACTION_UP:
+                setTextSize(TextSize[I]);
+                I++;
+                if (I > 2) {
+                    I = I % 3;
+                }
+
                 return true;
         }
         return true;
     }
 
+    /**
+     * to measure the height of a word with this method
+     *
+     * @param paint the textSize
+     * @return an integer corresponding to row space
+     */
+    private static int getFontHeight(Paint paint) {
+        Paint.FontMetrics fm = paint.getFontMetrics();
+        Log.i(LOG_TAG, "text height = " + (int) Math.ceil(fm.bottom - fm.top));
+        return (int) Math.ceil(fm.bottom - fm.top);
+    }
+
     private class AnimRunnable implements Runnable {
         @Override
         public void run() {
-            mFirstLineY = mFirstLineY - TEXT_STEP;
+            mFirstLineY = mFirstLineY - mTextStep;
             if ((mFirstLineY + TEXT_ROW_SPACE * mTextList.size() * mFontHeight) < 0) {
                 //start from bottom
                 mFirstLineY = mHeight;

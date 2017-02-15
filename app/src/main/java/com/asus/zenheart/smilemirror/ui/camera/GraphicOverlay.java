@@ -22,6 +22,7 @@ import android.util.AttributeSet;
 import android.view.View;
 
 import com.asus.zenheart.smilemirror.FaceGraphic;
+import com.asus.zenheart.smilemirror.SmileDegreeCounter;
 
 import java.util.HashSet;
 import java.util.Set;
@@ -30,11 +31,11 @@ import java.util.Set;
  * A view which renders a series of custom graphics to be overlayed on top of an associated preview
  * (i.e., the camera preview).  The creator can add graphics objects, update the objects, and remove
  * them, triggering the appropriate drawing and invalidation within the view.<p>
- *
+ * <p>
  * Supports scaling and mirroring of the graphics relative the camera's preview properties.  The
  * idea is that detection items are expressed in terms of a preview size, but need to be scaled up
  * to the full view size, and also mirrored in the case of the front-facing camera.<p>
- *
+ * <p>
  * Associated {@link Graphic} items should use the following methods to convert to view coordinates
  * for the graphics that are drawn:
  * <ol>
@@ -53,6 +54,144 @@ public class GraphicOverlay extends View {
     private int mFacing = CameraSource.CAMERA_FACING_BACK;
     private Set<Graphic> mGraphics = new HashSet<>();
 
+    // Jack +++
+    private boolean mIsRecording = false;
+    private long mTimeStampStart;
+    private long mTimeStampEnd;
+    private Mode mMode = Mode.SMILE;
+
+    public enum Mode {SMILE, CONVERSATION}
+
+    //Jack ---
+    public GraphicOverlay(Context context, AttributeSet attrs) {
+        super(context, attrs);
+    }
+
+    /**
+     * Removes all graphics from the overlay.
+     */
+    public void clear() {
+        synchronized (mLock) {
+            mGraphics.clear();
+        }
+        postInvalidate();
+    }
+
+    /**
+     * Adds a graphic to the overlay,usually called by processingThread
+     */
+    public void add(Graphic graphic) {
+        synchronized (mLock) {
+            mGraphics.add(graphic);
+        }
+        postInvalidate();
+    }
+
+    /**
+     * Removes a graphic from the overlay,usually called by processingThread
+     */
+    public void remove(Graphic graphic) {
+        synchronized (mLock) {
+            mGraphics.remove(graphic);
+        }
+        postInvalidate();
+    }
+
+    /**
+     * Sets the camera attributes for size and facing direction, which informs how to transform
+     * image coordinates later.
+     */
+    public void setCameraInfo(int previewWidth, int previewHeight, int facing) {
+        synchronized (mLock) {
+            mPreviewWidth = previewWidth;
+            mPreviewHeight = previewHeight;
+            mFacing = facing;
+        }
+        postInvalidate();
+    }
+    // Jack +++
+
+    /**
+     * Set the state to tell if recording now
+     */
+    public void setRecordingState(boolean isRecording) {
+        mIsRecording = isRecording;
+    }
+
+    /**
+     * Get the state to tell if recording now
+     */
+    public boolean getRecordingState() {
+        return mIsRecording;
+    }
+
+    public Graphic getGraphic() {
+
+        for (Graphic graphic : mGraphics) {
+            //return the first graphic because there is only one person in couch mode
+            return graphic;
+        }
+        return null;
+    }
+
+    public void setRecordingStartTime(long mills) {
+        mTimeStampStart = mills;
+    }
+
+    public void setRecordingEndTime(long mills) {
+        mTimeStampEnd = mills;
+    }
+
+    public float getRecordingTime() {
+        return (mTimeStampEnd - mTimeStampStart) / (float) 1000;
+    }
+
+    public void setMode(Mode mode) {
+        mMode = mode;
+    }
+
+    public Mode getMode() {
+        return mMode;
+    }
+    // Jack ---
+
+    /**
+     * Draws the overlay with its associated graphic objects.
+     */
+    @Override
+    protected void onDraw(Canvas canvas) {
+        super.onDraw(canvas);
+        //Log.e("Graphic Overlay onDraw", " thread is = " + Thread.currentThread().getId());
+        synchronized (mLock) {
+            if ((mPreviewWidth != 0) && (mPreviewHeight != 0)) {
+                mWidthScaleFactor = (float) canvas.getWidth() / (float) mPreviewWidth;
+                mHeightScaleFactor = (float) canvas.getHeight() / (float) mPreviewHeight;
+            }
+
+            // ShihJie: faces is more than one in the view
+            FaceGraphic Array[] = mGraphics.toArray(new FaceGraphic[mGraphics.size()]);
+            if (mGraphics.size() > 1) {
+                // ShihJie: just only draw the crown on the face1 or face2
+                float face1SmileProbability = Array[0].getFaceData().getIsSmilingProbability();
+                float face2SmileProbability = Array[1].getFaceData().getIsSmilingProbability();
+                if (face1SmileProbability > face2SmileProbability) {
+                    Array[0].drawTheCrown();
+                } else if (face1SmileProbability < face2SmileProbability) {
+                    Array[1].drawTheCrown();
+                }
+            }
+            for (Graphic graphic : mGraphics) {
+                // ShihJie: more than one face
+                if (mGraphics.size() > 1) {
+                    FaceGraphic.sFaceEffect = false;
+                } else {
+                    FaceGraphic.sFaceEffect = true;
+                }
+                graphic.draw(canvas, getContext());
+            }
+        }
+    }
+
     /**
      * Base class for a custom graphics object to be rendered within the graphic overlay.  Subclass
      * this and implement the {@link Graphic#draw(Canvas)} method to define the
@@ -60,9 +199,13 @@ public class GraphicOverlay extends View {
      */
     public static abstract class Graphic {
         private GraphicOverlay mOverlay;
+        protected SmileDegreeCounter mSmileDegreeCounter;
+
+        private static final int MOVING_WINDOW_SIZE = 10;
 
         public Graphic(GraphicOverlay overlay) {
             mOverlay = overlay;
+            mSmileDegreeCounter = new SmileDegreeCounter(MOVING_WINDOW_SIZE);
         }
 
         /**
@@ -117,89 +260,13 @@ public class GraphicOverlay extends View {
         public void postInvalidate() {
             mOverlay.postInvalidate();
         }
-    }
 
-    public GraphicOverlay(Context context, AttributeSet attrs) {
-        super(context, attrs);
-    }
-
-    /**
-     * Removes all graphics from the overlay.
-     */
-    public void clear() {
-        synchronized (mLock) {
-            mGraphics.clear();
+        public boolean getIsRecording() {
+            return mOverlay.getRecordingState();
         }
-        postInvalidate();
-    }
 
-    /**
-     * Adds a graphic to the overlay.
-     */
-    public void add(Graphic graphic) {
-        synchronized (mLock) {
-            mGraphics.add(graphic);
-        }
-        postInvalidate();
-    }
-
-    /**
-     * Removes a graphic from the overlay.
-     */
-    public void remove(Graphic graphic) {
-        synchronized (mLock) {
-            mGraphics.remove(graphic);
-        }
-        postInvalidate();
-    }
-
-    /**
-     * Sets the camera attributes for size and facing direction, which informs how to transform
-     * image coordinates later.
-     */
-    public void setCameraInfo(int previewWidth, int previewHeight, int facing) {
-        synchronized (mLock) {
-            mPreviewWidth = previewWidth;
-            mPreviewHeight = previewHeight;
-            mFacing = facing;
-        }
-        postInvalidate();
-    }
-
-    /**
-     * Draws the overlay with its associated graphic objects.
-     */
-    @Override
-    protected void onDraw(Canvas canvas) {
-        super.onDraw(canvas);
-
-        synchronized (mLock) {
-            if ((mPreviewWidth != 0) && (mPreviewHeight != 0)) {
-                mWidthScaleFactor = (float) canvas.getWidth() / (float) mPreviewWidth;
-                mHeightScaleFactor = (float) canvas.getHeight() / (float) mPreviewHeight;
-            }
-
-            // ShihJie: faces is more than one in the view
-            FaceGraphic Array[] = mGraphics.toArray(new FaceGraphic[mGraphics.size()]);
-            if ( mGraphics.size() > 1) {
-                // ShihJie: just only draw the crown on the face1 or face2
-                float face1SmileProbability = Array[0].getFaceData().getIsSmilingProbability();
-                float face2SmileProbability = Array[1].getFaceData().getIsSmilingProbability();
-                if (face1SmileProbability > face2SmileProbability) {
-                    Array[0].drawTheCrown();
-                } else if (face1SmileProbability < face2SmileProbability){
-                    Array[1].drawTheCrown();
-                }
-            }
-            for (Graphic graphic : mGraphics) {
-                // ShihJie: more than one face
-                if(mGraphics.size() > 1) {
-                    FaceGraphic.sFaceEffect = false;
-                } else {
-                    FaceGraphic.sFaceEffect = true;
-                }
-                graphic.draw(canvas, getContext());
-            }
+        public SmileDegreeCounter getSmileDegreeCounter() {
+            return mSmileDegreeCounter;
         }
     }
 }

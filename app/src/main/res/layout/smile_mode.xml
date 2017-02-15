@@ -4,13 +4,14 @@
     android:layout_height="match_parent">
 
     <ImageView
-        android:id="@+id/video"
+        android:id="@+id/video_image_view"
         android:layout_width="@dimen/gallery_icon_width"
         android:layout_height="@dimen/gallery_icon_height"
         android:layout_alignParentBottom="true"
         android:layout_alignParentStart="true"
         android:layout_marginBottom="@dimen/gallery_icon_padding"
         android:layout_marginStart="@dimen/gallery_icon_padding"
-        android:src="@drawable/gallery" />
+        android:src="@drawable/gallery"
+        android:visibility="invisible"/>
 
 </RelativeLayout>
