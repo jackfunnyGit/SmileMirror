@@ -217,25 +217,28 @@ public class SpeechListFragment extends Fragment implements LoaderManager.Loader
 
     @Override
     public boolean onActionItemClicked(ActionMode actionMode, MenuItem menuItem) {
-        switch (menuItem.getItemId()) {
-            case R.id.editor_action_menu_select:
-                // TODO: Rename file feature
-                mAdapter.clearSelections();
-                if (!mMenuIsSelected) {
-                    for (int i = mAdapter.getItemCount() - 1; i >= 0; i--) {
-                        mAdapter.toggleSelection(i);
-                    }
-                    mMenuIsSelected = true;
-                } else {
-                    mMenuIsSelected = false;
+        int i1 = menuItem.getItemId();
+        if (i1 == R.id.editor_action_menu_select) {
+            // TODO: Rename file feature
+            mAdapter.clearSelections();
+            if (!mMenuIsSelected) {
+                for (int i = mAdapter.getItemCount() - 1; i >= 0; i--) {
+                    mAdapter.toggleSelection(i);
                 }
-            case R.id.editor_action_menu_delete:
-                showDeleteCheckDialog(mAdapter.getSelectedItem());
-                actionMode.finish();
-                return true;
+                mMenuIsSelected = true;
+            } else {
+                mMenuIsSelected = false;
+            }
 
-            default:
-                return false;
+            showDeleteCheckDialog(mAdapter.getSelectedItem());
+            actionMode.finish();
+            return true;
+        } else if (i1 == R.id.editor_action_menu_delete) {
+            showDeleteCheckDialog(mAdapter.getSelectedItem());
+            actionMode.finish();
+            return true;
+        } else {
+            return false;
         }
     }
 

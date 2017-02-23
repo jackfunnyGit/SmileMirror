@@ -1,6 +1,6 @@
 # Add project specific ProGuard rules here.
 # By default, the flags in this file are appended to flags specified
-# in D:\AppData\Local\Android\sdk2/tools/proguard/proguard-android.txt
+# in C:\Users\jack_tsai\AppData\Local\Android\sdk/tools/proguard/proguard-android.txt
 # You can edit the include path and order by changing the proguardFiles
 # directive in build.gradle.
 #
@@ -15,21 +15,3 @@
 #-keepclassmembers class fqcn.of.javascript.interface.for.webview {
 #   public *;
 #}
-# Basic
--keepclassmembers class **.R$* {
-    public static <fields>;
-}
-
--keepclassmembers class * implements android.os.Parcelable {
-    public static final android.os.Parcelable$Creator CREATOR;
-}
-
--keepattributes InnerClasses, EnclosingMethod
-
-# For debugging
--keepattributes LineNumberTable, SourceFile
-
-# SmileMirror SDK
--keep class com.asus.zenheart.smilemirror.** {
-    public *;
-}
