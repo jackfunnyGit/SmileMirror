@@ -15,6 +15,7 @@
         <item name="android:windowBackground">@android:color/background_dark</item>
         <item name="android:windowFullscreen">true</item>
         <item name="android:windowContentOverlay">@null</item>
+        <item name="android:alertDialogTheme">@style/Theme.AsusRes.Dialog.Alert</item>
     </style>
 
     <!-- Coach editor theme -->
@@ -27,6 +28,7 @@
         <item name="windowActionModeOverlay">true</item>
         <item name="actionModeStyle">@style/ActionMode</item>
         <item name="actionModeCloseDrawable">@drawable/back</item>
+        <item name="android:alertDialogTheme">@style/Theme.AsusRes.Dialog.Alert</item>
     </style>
 
     <style name="ToolBarStyle" parent="Base.Widget.AppCompat.Toolbar">
