@@ -1,5 +1,11 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
+    <!-- Menu Item Names -->
+    <string name="editor_menu_item_save">"Save"</string>
+    <string name="editor_menu_item_rename">"Rename"</string>
+    <string name="editor_menu_item_edit">"Edit"</string>
+    <string name="editor_menu_item_delete">"Delete"</string>
+    <string name="editor_menu_item_mirror">"Mirror"</string>
     <!-- Camera -->
     <string name="app_name">"SmileMirror"</string>
     <string name="ok">"OK"</string>
@@ -20,24 +26,37 @@
     <string name="chart_page_smile_statistics">"Smile Statistics"</string>
     <string name="chart_page_smile_duration">"Duration: %1$s seconds"</string>
     <!-- Editor -->
-    <string name="editor_save_new_file_title">"Save the file"</string>
+    <string name="editor_save_new_file_title">"Save script"</string>
     <string name="editor_save_file_title">"Save"</string>
+    <string name="editor_modify_file_title">"Script modified"</string>
+    <string name="editor_save_file_description">"Do you want to save your modification?"</string>
     <string name="editor_check_yes">"Yes"</string>
     <string name="editor_check_cancel">"Cancel"</string>
+    <string name="editor_check_discard">"Discard"</string>
     <string name="editor_save_file_hint">"Please enter the title and the content"</string>
     <string name="editor_edit_script">"Edit script"</string>
-    <string name="editor_delete_script">Delete script</string>
-    <string name="editor_delete_list_script">"   Delete script"</string>
-    <string name="delete_script_description">"Do you want to delete the script?"</string>
+    <string name="editor_delete_script">"Delete script"</string>
+    <string name="delete_script_description">"Delete selected script(s)?"</string>
+    <string name="delete_script_toast">"%1$s script(s) have been deleted"</string>
     <string name="conversation_scripts">Conversation scripts</string>
     <string name="font_size">Font size</string>
     <string name="font_size_large">"Large"</string>
     <string name="font_size_default">"Default"</string>
     <string name="font_size_small">"Small"</string>
-    <!-- No need translate -->
-    <string name="editor_menu_title_save">"Save"</string>
+    <string name="editor_select_item">"%1$s selected"</string>
+    <string name="editor_default_date">"Preloaded script"</string>
+    <string name="editor_content_hint">"Input text"</string>
+    <string name="editor_title_hint">"New script"</string>
     <string name="editor_menu_title_select">"Select"</string>
     <string name="editor_menu_title_rename">"Rename"</string>
-    <string name="editor_menu_title_edit_text">"Edit"</string>
-    <string name="editor_menu_title_delete">"Delete"</string>
+    <string name="sm_editor_add_script_remind">"Click the "+" button to create a new script."</string>
+    <!-- Example Speeches -->
+    <string name="editor_example_one_title">"Bump into someone"</string>
+    <string name="editor_example_one_content">Hi (name)! I haven\'\'t seen you in ages! What have you been up to lately?\nSorry, but I have to get going. It was great chatting with you. Let\'\'s get together again sometime!</string>
+    <string name="editor_example_two_title">"Self-intro (15 seconds)"</string>
+    <string name="editor_example_two_content">"Good morning. My name is (name). I have been working on rocket science in Professor Smith\'\'s lab at MIT for the past three years. I am very excited to explore my career options here at NASA and see how my expertise can contribute to the team"</string>
+    <string name="editor_example_three_title">"Self-intro (1 minute)"</string>
+    <string name="editor_example_three_content">"Hello, I am (name). I have three advantages:\nFirst, I am a team player. I am good at inspiring morale, lead the team to achieve their goals. I once served as captain of Taiwan University badminton team, and led the team to get the year\'\'s college cup runner-up. It was the school team\'\'s best ever.\nSecond, I am very results-oriented. No matter which field, I can always conquer difficulties in the shortest possible time, create performance and achieve goals. When I was a project manager at Nestlé, I was able to meet performance targets for 24 consecutive months.\nFinally, I have the entrepreneurial spirit. I am often given the task of new business. Last season, I introduced the "coffee education and training activities" in Nestlé, it was very successful and all the classes were fully registered until end of the year.\nBased on the above characteristics, I believe I can make a great contribution to the company. Thank you."</string>
+    <string name="editor_example_four_title">"Hotel front desk"</string>
+    <string name="editor_example_four_content">"Good morning sir. How may I help you?\nDo you have a reservation?\nMay I have your ID or passport please?\nWould you like a single room or a double room?\nHow many days are you staying?\nPlease let us know if you need anything else, and have a wonderful stay!"</string>
 </resources>

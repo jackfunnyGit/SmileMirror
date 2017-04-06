@@ -193,42 +193,42 @@ public final class FaceTrackerActivity extends AppCompatActivity implements
 
             }
         });
-        addTutorialView();
+        //addTutorialView();
 
     }
     // Jack +++
 
-    /**
-     * It depends on the preferences if show OOBE/help to the users at the first time
-     */
-    private void addTutorialView() {
-        //TODO sShowTutorial should be change to preference in the future
-
-        if (sShowTutorial) {
-            hideGuiElement();
-            final ImageView imageTutorial = new ImageView(mContext);
-            imageTutorial.setImageResource(R.drawable.tutorial_page);
-            final RelativeLayout mainLayout = (RelativeLayout) findViewById(
-                    R.id.mirror_main_layout);
-            mainLayout.addView(imageTutorial);
-            final Configuration configuration = mContext.getResources().getConfiguration();
-            if (configuration.orientation == Configuration.ORIENTATION_PORTRAIT) {
-                imageTutorial.setOnTouchListener(new View.OnTouchListener() {
-                    @Override
-                    public boolean onTouch(View v, MotionEvent event) {
-                        //TODO Tutorial View should be remove
-                        v.setVisibility(View.GONE);
-                        showGuiElement();
-                        return true;
-                    }
-                });
-                sShowTutorial = false;
-            } else {
-                imageTutorial.setVisibility(View.GONE);
-            }
-        }
-
-    }
+//    /**
+//     * It depends on the preferences if show OOBE/help to the users at the first time
+//     */
+//    private void addTutorialView() {
+//        //TODO sShowTutorial should be change to preference in the future
+//
+//        if (sShowTutorial) {
+//            hideGuiElement();
+//            final ImageView imageTutorial = new ImageView(mContext);
+//            imageTutorial.setImageResource(R.drawable.tutorial_page);
+//            final RelativeLayout mainLayout = (RelativeLayout) findViewById(
+//                    R.id.mirror_main_layout);
+//            mainLayout.addView(imageTutorial);
+//            final Configuration configuration = mContext.getResources().getConfiguration();
+//            if (configuration.orientation == Configuration.ORIENTATION_PORTRAIT) {
+//                imageTutorial.setOnTouchListener(new View.OnTouchListener() {
+//                    @Override
+//                    public boolean onTouch(View v, MotionEvent event) {
+//                        //TODO Tutorial View should be remove
+//                        v.setVisibility(View.GONE);
+//                        showGuiElement();
+//                        return true;
+//                    }
+//                });
+//                sShowTutorial = false;
+//            } else {
+//                imageTutorial.setVisibility(View.GONE);
+//            }
+//        }
+//
+//    }
 
     private void addChartPageView(SmileDegreeCounter smileDegreeCounter) {
         mChartPage = LayoutInflater.from(mContext).inflate(R.layout.chart_page, mContainer, false);

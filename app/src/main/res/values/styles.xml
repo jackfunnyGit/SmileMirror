@@ -8,6 +8,7 @@
         <item name="colorAccent">@color/colorAccent</item>
     </style>
 
+    <!-- Face detector main theme. -->
     <style name="AppTheme.NoTitleBar" parent="@style/Theme.AppCompat.Light">
         <item name="windowNoTitle">true</item>
         <item name="windowActionBar">false</item>
@@ -16,12 +17,24 @@
         <item name="android:windowContentOverlay">@null</item>
     </style>
 
-    <style name="ToolBarTheme" parent="Theme.AppCompat.Light.NoActionBar">
+    <!-- Coach editor theme -->
+    <style name="ToolBarTheme" parent="Theme.AppCompat.Light">
         <!-- used to replace tool bar-->
+        <item name="windowNoTitle">true</item>
+        <item name="windowActionBar">false</item>
+        <item name="android:windowFullscreen">?android:windowNoTitle</item>
+        <item name="toolbarStyle">@style/ToolBarStyle</item>
         <item name="windowActionModeOverlay">true</item>
-        <item name="actionModeCloseDrawable">@drawable/back</item>
         <item name="actionModeStyle">@style/ActionMode</item>
-        <item name="actionBarTheme">@style/ThemeOverlay.AppCompat.ActionBar</item>
+        <item name="actionModeCloseDrawable">@drawable/back</item>
+    </style>
+
+    <style name="ToolBarStyle" parent="Base.Widget.AppCompat.Toolbar">
+        <item name="android:titleTextStyle">@style/ToolBarTitleStyle</item>
+    </style>
+    <style name="ToolBarTitleStyle" parent="TextAppearance.Widget.AppCompat.Toolbar.Title">
+        <item name="android:textColor">@android:color/white</item>
+        <item name="android:textSize">@dimen/editor_tool_bar_text_size</item>
     </style>
 
     <style name="ActionMode" parent="@style/Widget.AppCompat.ActionMode">
@@ -29,8 +42,9 @@
         <item name="titleTextStyle">@style/ActionModeTitle</item>
     </style>
 
-    <style name="ActionModeTitle" parent="@style/TextAppearance.AppCompat.Widget.ActionMode.Title">
+    <style name="ActionModeTitle" parent="@style/TextAppearance.AppCompat.Widget.ActionBar.Title">
         <item name="android:textColor">@android:color/white</item>
+        <item name="android:textSize">@dimen/editor_tool_bar_text_size</item>
     </style>
 
 </resources>

@@ -17,9 +17,15 @@
 package com.asus.zenheart.smilemirror.ui.camera;
 
 import android.content.Context;
+import android.content.res.Configuration;
 import android.graphics.Canvas;
+import android.graphics.Point;
 import android.util.AttributeSet;
+import android.util.DisplayMetrics;
+import android.util.Log;
+import android.view.Display;
 import android.view.View;
+import android.view.WindowManager;
 
 import com.asus.zenheart.smilemirror.FaceGraphic;
 import com.asus.zenheart.smilemirror.SmileDegreeCounter;
@@ -46,7 +52,6 @@ import java.util.Set;
  * </ol>
  */
 public class GraphicOverlay extends View {
-    private static final float MIN_FACE_WINDOW_SIZE = 300.0f;
     private final Object mLock = new Object();
     private int mPreviewWidth;
     private float mWidthScaleFactor = 1.0f;
@@ -62,8 +67,8 @@ public class GraphicOverlay extends View {
     private Mode mMode = Mode.SMILE;
     public enum Mode {SMILE, CONVERSATION}
 
-
     private boolean mAddingEffect = false;
+    private int mMinDefaultRadio;
     public GraphicOverlay(Context context, AttributeSet attrs) {
         super(context, attrs);
     }
@@ -183,8 +188,15 @@ public class GraphicOverlay extends View {
             FaceGraphic Array[] = mGraphics.toArray(new FaceGraphic[mGraphics.size()]);
 
             //TODO: Waiting for multi-player mode UIRS lock down
+            Point height = new Point();
+            ((WindowManager) getContext().getSystemService(Context.WINDOW_SERVICE)).getDefaultDisplay().getSize(height);
+            if (height.x > height.y) {
+                mMinDefaultRadio = 96;
+            } else {
+                mMinDefaultRadio = 72;
+            }
             for (FaceGraphic aArray : Array) {
-                if (aArray.getFaceData().getWidth() < MIN_FACE_WINDOW_SIZE) {
+                if (aArray.getFaceData().getHeight() < mMinDefaultRadio) {
                     mGraphics.remove(aArray);
                 }
             }

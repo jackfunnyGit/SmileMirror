@@ -5,13 +5,13 @@
     <item
             android:id="@+id/editor_browse_menu_edit_text"
             android:icon="@drawable/edit"
-            android:title="@string/editor_menu_title_edit_text"
+            android:title="@string/editor_menu_item_edit"
             App:showAsAction="ifRoom"/>
 
     <item
             android:id="@+id/editor_browse_menu_next"
             android:icon="@drawable/next"
-            android:title="@string/editor_menu_title_save"
+            android:title="@string/editor_menu_item_mirror"
             App:showAsAction="ifRoom"/>
 
 </menu>

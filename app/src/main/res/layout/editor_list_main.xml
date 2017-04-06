@@ -4,17 +4,18 @@
         xmlns:app="http://schemas.android.com/apk/res-auto"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        android:orientation="vertical"
+        android:background="@android:color/black"
         android:id="@+id/editor_list_layout">
-
-    <android.support.v7.widget.Toolbar
-            android:id="@+id/editor_list_toolbar"
-            android:layout_width="match_parent"
+    <TextView
+            android:id="@+id/editor_add_item_remind"
+            android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:theme="@style/ToolBarTheme"
-            android:background="@android:color/black"
-            android:layout_alignParentTop="true"/>
-
+            android:layout_centerHorizontal="true"
+            android:layout_centerVertical="true"
+            android:text="@string/sm_editor_add_script_remind"
+            android:textColor="@android:color/white"
+            android:textSize="@dimen/mode_text_size"
+            android:visibility="invisible"/>
     <android.support.v7.widget.RecyclerView
             android:id="@+id/recycler_view"
             android:layout_width="match_parent"
@@ -25,12 +26,21 @@
     <android.support.design.widget.FloatingActionButton
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:id="@+id/fabAdd"
-            android:src="@drawable/add_plus"
+            android:layout_margin="@dimen/editor_add_plus_padding"
+            android:id="@+id/editor_add_button"
+            android:src="@drawable/add"
             app:backgroundTint="@color/editor_add_plus_color"
-            app:fabSize="normal"
+            android:scaleType="center"
             android:layout_gravity="bottom|end"
             android:layout_alignParentBottom="true"
             android:layout_alignParentEnd="true"/>
+
+    <android.support.v7.widget.Toolbar
+            android:id="@+id/editor_list_toolbar"
+            android:layout_width="match_parent"
+            android:layout_height="@dimen/sm_editor_tool_bar_height"
+            android:background="@android:color/black"
+            android:layout_alignParentTop="true"
+            app:titleTextAppearance="@style/ToolBarTitleStyle" />
 
 </RelativeLayout>

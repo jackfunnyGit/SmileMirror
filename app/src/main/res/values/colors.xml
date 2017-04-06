@@ -8,14 +8,16 @@
     <color name="smile_level_two_face_color">#99fe9933</color>
     <color name="smile_level_three_face_color">#99ffe362</color>
     <color name="smile_level_four_face_color">#9998d745</color>
-    <color name="smile_window_line_shadow_color">#0D000000</color>
+    <color name="smile_window_line_shadow_color">#0d000000</color>
     <color name="smile_text_color">#ffffff</color>
     <color name="countdown_text_color">#98d745</color>
     <color name="teleprompter_background_color">#D8000000</color>
     <color name="smile_text_shadow_color">#cc000000</color>
     <!-- Editor -->
-    <color name = "editor_list_background_color">#66000000</color>
-    <color name = "editor_list_title_text_color">#ffffff</color>
-    <color name = "editor_list_date_text_color">#969696</color>
-    <color name = "editor_add_plus_color">#7ebc5c</color>
+    <color name="editor_list_background_color">#66000000</color>
+    <color name="editor_list_date_text_color">#ff969696</color>
+    <color name="editor_add_plus_color">#ff7ebc5c</color>
+    <color name="editor_selected_bg_color">#ff323232</color>
+    <color name="editor_list_card__divider_color">#ff464646</color>
+    <color name="editor_seek_bar_progress_color">#ff98d745</color>
 </resources>

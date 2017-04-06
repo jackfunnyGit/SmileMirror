@@ -44,7 +44,7 @@
         android:layout_alignParentBottom="true"
         android:layout_centerHorizontal="true"
         android:layout_marginBottom="@dimen/chart_page_lower_layout_padding"
-        android:src="@drawable/close"/>
+        android:src="@drawable/close_btn"/>
 
 
 </RelativeLayout>

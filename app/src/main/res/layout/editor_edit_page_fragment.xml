@@ -1,5 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+              xmlns:app="http://schemas.android.com/apk/res-auto"
               android:orientation="vertical"
               android:layout_width="match_parent"
               android:layout_height="match_parent"
@@ -8,15 +9,19 @@
     <android.support.v7.widget.Toolbar
             android:id="@+id/editor_edit_page_toolbar"
             android:layout_width="match_parent"
-            android:layout_height="wrap_content"
+            android:layout_height="@dimen/sm_editor_tool_bar_height"
             android:background="@android:color/black"
-            android:layout_alignParentTop="true"/>
+            app:titleMarginStart="0dp"
+            app:titleTextAppearance="@style/ToolBarTitleStyle"/>
 
     <EditText
             android:layout_width="match_parent"
             android:layout_height="match_parent"
+            android:background="@android:color/transparent"
             android:textColor="@android:color/black"
             android:id="@+id/editor_edit_page_editor"
-            android:textSize="20dp"/>
+            android:gravity="top|left"
+            android:focusableInTouchMode="true"
+            android:textSize="@dimen/editor_edit_page_text_size"/>
 
 </LinearLayout>

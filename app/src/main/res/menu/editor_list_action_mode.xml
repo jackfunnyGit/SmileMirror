@@ -5,12 +5,21 @@
     <item
             android:id="@+id/editor_action_menu_delete"
             android:icon="@drawable/delete"
-            android:title="@string/editor_menu_title_delete"
+            android:title="@string/editor_menu_item_delete"
             App:showAsAction="ifRoom"/>
+
+    <!-- in the menu -->
     <item
-            android:id="@+id/editor_action_menu_select"
-            android:icon="@drawable/setting"
-            android:title="@string/editor_menu_title_select"
-            App:showAsAction="ifRoom"/>
+            android:id="@+id/editor_action_menu_select_one"
+            android:icon="@drawable/rename"
+            android:title="@string/editor_menu_item_rename"
+            android:visible="false"
+            App:showAsAction="never"/>
+
+    <item
+            android:id="@+id/editor_action_menu_select_more"
+            android:icon="@drawable/rename_disable"
+            android:title="@string/editor_menu_item_rename"
+            App:showAsAction="never"/>
 
 </menu>

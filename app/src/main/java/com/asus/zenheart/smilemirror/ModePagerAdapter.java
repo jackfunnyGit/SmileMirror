@@ -87,7 +87,6 @@ public class ModePagerAdapter extends PagerAdapter {
 
         } else if (mIndexOfLayout[position] == R.layout.coach_mode) {
             view = mLayoutInflater.inflate(R.layout.coach_mode, container, false);
-
             final ImageView imageViewRecord = (ImageView) view.findViewById(R.id.video_image_view);
             final ImageView imageViewRecordText = (ImageView) view.findViewById(R.id.rec_text);
             final ImageView imageViewPlay = (ImageView) view.findViewById(R.id.image_play);
@@ -101,14 +100,15 @@ public class ModePagerAdapter extends PagerAdapter {
                 imageViewList.setOnClickListener(new View.OnClickListener() {
                     @Override
                     public void onClick(View v) {
-                        Intent intent = new Intent(mContext,
-                                SpeechEditorActivity.class);
-                        intent.addFlags(Intent.FLAG_ACTIVITY_NEW_TASK | Intent.FLAG_ACTIVITY_CLEAR_TOP);
+                        Intent intent = new Intent(mContext, SpeechEditorActivity.class);
+                        intent.addFlags(Intent.FLAG_ACTIVITY_NEW_TASK |
+                                Intent.FLAG_ACTIVITY_CLEAR_TOP);
                         mContext.startActivity(intent);
                     }
                 });
 
             }
+
             if (imageViewPlay != null) {
                 imageViewPlay.setOnClickListener(new View.OnClickListener() {
                     @Override

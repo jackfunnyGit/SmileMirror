@@ -15,6 +15,7 @@ import android.support.v4.app.FragmentTransaction;
 import android.support.v7.app.AlertDialog;
 import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.Toolbar;
+import android.util.SparseIntArray;
 import android.view.KeyEvent;
 import android.view.LayoutInflater;
 import android.view.Menu;
@@ -35,11 +36,29 @@ import static android.content.Context.MODE_PRIVATE;
 public class SpeechBrowsePageFragment extends Fragment {
 
     private static final String EXTRA_ID = "id";
-
+    private static final SparseIntArray MARQUEE_ARRAY = new SparseIntArray() {
+        {
+            append(0, VerticalScrollTextView.TEXT_SPEED.SLOW);
+            append(1, VerticalScrollTextView.TEXT_SPEED.SLOW);
+            append(2, VerticalScrollTextView.TEXT_SPEED.NORMAL);
+            append(3, VerticalScrollTextView.TEXT_SPEED.FAST);
+            append(4, VerticalScrollTextView.TEXT_SPEED.TURBO);
+        }
+    };
+    // TODO: SparseArray is not a better solution for searching float value, but hash map can not find the index of the value.
+    private final SparseIntArray FONT_SIZE_ARRAY = new SparseIntArray() {
+        {
+            append(0, (int)VerticalScrollTextView.TEXT_SIZE.BIG);
+            append(1, (int)VerticalScrollTextView.TEXT_SIZE.DEFAULT);
+            append(2, (int)VerticalScrollTextView.TEXT_SIZE.SMALL);
+        }
+    };
     private VerticalScrollTextView mPresentText;
     private SharedPreferences mSharedPreferences;
     private Context mContext;
-    private long mId;
+    private Bundle mBundle;
+    private AppCompatActivity mActivity;
+    private long mItemId;
     private float mTextSize;
 
     /**
@@ -61,72 +80,70 @@ public class SpeechBrowsePageFragment extends Fragment {
             Bundle savedInstanceState) {
         View view = inflater.inflate(R.layout.editor_browse_page_fragment, container, false);
         mContext = getContext();
+        mBundle = getArguments();
         mSharedPreferences = mContext
                 .getSharedPreferences(SpeechContract.SPEECH_SHARED_PREFERENCE_NAME
                         , MODE_PRIVATE);
+        if (mContext instanceof AppCompatActivity) {
+            mActivity = ((AppCompatActivity) mContext);
+        }
         // setHasOptionsMenu support to create the tool bar.
         setHasOptionsMenu(true);
         initView(view);
 
-        if (getArguments() != null && getArguments().getLong(EXTRA_ID) != 0) {
-            mId = getArguments().getLong(EXTRA_ID);
-            mTextSize = mSharedPreferences.getFloat(SpeechContract.CONTENT_TEXT_SIZE,
-                    VerticalScrollTextView.TEXT_SIZE.DEFAULT);
-
-            Uri uri = Uri.withAppendedPath(
-                    SpeechContract.SPEECH_URI, String.valueOf(mId));
-            Cursor cursor = mContext.getContentResolver()
-                    .query(uri, null, null, null, null);
-
-            if (cursor != null) {
-                if (cursor.moveToFirst()) {
-                    mPresentText.setText(cursor.getString(
-                            cursor.getColumnIndex(SpeechContract.CONTENT)));
-                    mPresentText.setTextSize(mTextSize);
-                }
-                cursor.close();
-            }
-            mPresentText.setTextScrollSpeed(getScrollingSpeed(mSharedPreferences.getInt(SpeechContract.MARQUEE_SCROLLING_SPEED,
-                    VerticalScrollTextView.TEXT_SPEED.NORMAL)));
-        }
-        mPresentText.start();
         return view;
+    }
+
+    @Override
+    public void onPause() {
+        super.onPause();
+        if (mPresentText != null) {
+            mPresentText.stop();
+        }
+    }
+
+    @Override
+    public void onResume() {
+        super.onResume();
+        if (mPresentText != null) {
+            mPresentText.start();
+        }
     }
 
     private void initView(@NonNull View view) {
         mPresentText = (VerticalScrollTextView) view.findViewById(R.id.presetText);
 
-        Toolbar mToolBar = (Toolbar) view.findViewById(R.id.editor_browse_page_toolbar);
-        ((AppCompatActivity) mContext).setSupportActionBar(mToolBar);
-        mToolBar.setTitle(R.string.editor_edit_script);
-        mToolBar.setTitleTextColor(mContext.getColor(R.color.smile_text_color));
-        mToolBar.setNavigationIcon(R.drawable.back);
-        mToolBar.setNavigationOnClickListener(new View.OnClickListener() {
+        Toolbar toolBar = (Toolbar) view.findViewById(R.id.editor_browse_page_toolbar);
+        mActivity.setSupportActionBar(toolBar);
+        toolBar.setTitleTextColor(mContext.getColor(R.color.smile_text_color));
+        toolBar.setNavigationIcon(R.drawable.back);
+        toolBar.setNavigationOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
                 backToSpeechListFragment();
             }
         });
 
-        ImageView EditTextSizeView = (ImageView) view.findViewById(R.id.seekBarTextSize);
-        EditTextSizeView.setOnClickListener(new View.OnClickListener() {
+        ImageView editTextSizeView = (ImageView) view.findViewById(R.id.seekBarTextSize);
+        editTextSizeView.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
                 showTextSizeRadioDialog();
             }
         });
-        SeekBar mMarqueeSeekBar = (SeekBar) view.findViewById(R.id.marqueeSeekBar);
-        // 0 is the default value from SharedPreferences.getInt
-        mMarqueeSeekBar
-                .setProgress(mSharedPreferences.getInt(SpeechContract.MARQUEE_SCROLLING_SPEED, 0));
-        mMarqueeSeekBar.setOnSeekBarChangeListener(new SeekBar.OnSeekBarChangeListener() {
+
+        SeekBar marqueeSeekBar = (SeekBar) view.findViewById(R.id.marqueeSeekBar);
+        marqueeSeekBar.setProgress(MARQUEE_ARRAY.indexOfValue(
+                mSharedPreferences.getInt(SpeechContract.MARQUEE_SCROLLING_SPEED,
+                        VerticalScrollTextView.TEXT_SPEED.NORMAL)));
+        marqueeSeekBar.setOnSeekBarChangeListener(new SeekBar.OnSeekBarChangeListener() {
 
             @Override
             public void onProgressChanged(SeekBar seekBar, int progress, boolean fromUser) {
-
-                mPresentText.setTextScrollSpeed(getScrollingSpeed(progress));
-                mSharedPreferences.edit().putInt(SpeechContract.MARQUEE_SCROLLING_SPEED, progress)
-                        .apply();
+                int speed = MARQUEE_ARRAY.get(progress);
+                mPresentText.setTextScrollSpeed(speed);
+                mSharedPreferences.edit().putInt(
+                        SpeechContract.MARQUEE_SCROLLING_SPEED, speed).apply();
             }
 
             @Override
@@ -156,25 +173,30 @@ public class SpeechBrowsePageFragment extends Fragment {
                 return false;
             }
         });
-    }
+        mItemId = mBundle.getLong(EXTRA_ID);
+        if (mBundle != null && mItemId != 0) {
+            mTextSize = mSharedPreferences.getFloat(SpeechContract.CONTENT_TEXT_SIZE,
+                    VerticalScrollTextView.TEXT_SIZE.DEFAULT);
 
-    private int getScrollingSpeed(int progress) {
-        int speed = VerticalScrollTextView.TEXT_SPEED.NORMAL;
-        switch (progress) {
-            case 0:
-                speed = VerticalScrollTextView.TEXT_SPEED.SLOW;
-                break;
-            case 1:
-                speed = VerticalScrollTextView.TEXT_SPEED.NORMAL;
-                break;
-            case 2:
-                speed = VerticalScrollTextView.TEXT_SPEED.FAST;
-                break;
-            case 3:
-                speed = VerticalScrollTextView.TEXT_SPEED.TURBO;
-                break;
+            Uri uri = Uri.withAppendedPath(SpeechContract.SPEECH_URI, String.valueOf(mItemId));
+            try (Cursor cursor = mContext.getContentResolver().query(uri, null, null, null, null)) {
+                if (cursor != null) {
+                    if (cursor.moveToFirst()) {
+                        toolBar.setTitle(
+                                cursor.getString(cursor.getColumnIndex(SpeechContract.TITLE)));
+                        mPresentText.setText(cursor.getString(
+                                cursor.getColumnIndex(SpeechContract.CONTENT)));
+                        mPresentText.setTextSize(mTextSize);
+                    }
+                    cursor.close();
+                }
+                mPresentText.setTextScrollSpeed(
+                        mSharedPreferences.getInt(SpeechContract.MARQUEE_SCROLLING_SPEED,
+                                VerticalScrollTextView.TEXT_SPEED.NORMAL));
+            } catch (Exception e) {
+                e.printStackTrace();
+            }
         }
-        return speed;
     }
 
     private void backToSpeechListFragment() {
@@ -194,69 +216,42 @@ public class SpeechBrowsePageFragment extends Fragment {
 
     @Override
     public boolean onOptionsItemSelected(MenuItem item) {
-        int i = item.getItemId();
-        if (i == R.id.editor_browse_menu_edit_text) {
-            SpeechEditPageFragment speechEditPageFragment = SpeechEditPageFragment.newInstance(mId);
+        int itemId = item.getItemId();
+        if (itemId == R.id.editor_browse_menu_edit_text) {
+            SpeechEditPageFragment speechEditPageFragment = SpeechEditPageFragment.
+                    newInstance(mItemId);
             FragmentManager fragmentManager = getFragmentManager();
             FragmentTransaction fragmentTransaction = fragmentManager.beginTransaction();
             fragmentTransaction.replace(R.id.fragment, speechEditPageFragment);
             fragmentTransaction.commit();
-        } else if (i == R.id.editor_browse_menu_next) {
-            mSharedPreferences.edit().putLong(SpeechContract.SPEECH_ID, mId)
-                    .apply();
-            Intent intent = new Intent(mContext,
-                    FaceTrackerActivity.class);
-            intent.addFlags(
-                    Intent.FLAG_ACTIVITY_NEW_TASK | Intent.FLAG_ACTIVITY_CLEAR_TOP);
-            getActivity().startActivity(intent);
+        } else if (itemId == R.id.editor_browse_menu_next) {
+            mSharedPreferences.edit().putLong(SpeechContract.SPEECH_ID, mItemId).apply();
+            Intent intent = new Intent(mContext, FaceTrackerActivity.class);
+            intent.addFlags(Intent.FLAG_ACTIVITY_SINGLE_TOP | Intent.FLAG_ACTIVITY_CLEAR_TOP);
+            startActivity(intent);
         }
         return true;
     }
 
     private void showTextSizeRadioDialog() {
+        final int preferenceFontSize = (int)mSharedPreferences.getFloat(
+                SpeechContract.CONTENT_TEXT_SIZE, VerticalScrollTextView.TEXT_SIZE.DEFAULT);
+
         CharSequence[] fontSizeText = {mContext.getString(R.string.font_size_large),
                 mContext.getString(R.string.font_size_default), mContext.getString(
                 R.string.font_size_small)};
         AlertDialog alertDialog;
         AlertDialog.Builder builder = new AlertDialog.Builder(mContext);
         builder.setTitle(R.string.font_size);
-
-        int FontSizeItem;
-        float preferenceFontSize = mSharedPreferences.getFloat(SpeechContract.CONTENT_TEXT_SIZE,
-                VerticalScrollTextView.TEXT_SIZE.DEFAULT);
-
-        if (preferenceFontSize == VerticalScrollTextView.TEXT_SIZE.BIG) {
-            FontSizeItem = 0;
-        } else if (preferenceFontSize == VerticalScrollTextView.TEXT_SIZE.DEFAULT) {
-            FontSizeItem = 1;
-        } else {
-            FontSizeItem = 2;
-        }
-
-        builder.setSingleChoiceItems(fontSizeText, FontSizeItem,
+        builder.setSingleChoiceItems(fontSizeText, FONT_SIZE_ARRAY.indexOfValue(preferenceFontSize),
                 new DialogInterface.OnClickListener() {
-                    public void onClick(DialogInterface dialog, int item) {
-                        switch (item) {
-                            case 0:
-                                mTextSize = VerticalScrollTextView.TEXT_SIZE.BIG;
-                                break;
-                            case 1:
-                                mTextSize = VerticalScrollTextView.TEXT_SIZE.DEFAULT;
-                                break;
-                            case 2:
-                                mTextSize = VerticalScrollTextView.TEXT_SIZE.SMALL;
-                                break;
-                        }
-                    }
-                });
-        builder.setPositiveButton(R.string.editor_save_file_title,
-                new DialogInterface.OnClickListener() {
-                    @Override
-                    public void onClick(DialogInterface dialog, int which) {
+                    public void onClick(DialogInterface dialog, int itemPosition) {
+                        mTextSize = FONT_SIZE_ARRAY.get(itemPosition);
                         mPresentText.setTextSize(mTextSize);
                         mPresentText.invalidate();
                         mSharedPreferences.edit()
                                 .putFloat(SpeechContract.CONTENT_TEXT_SIZE, mTextSize).apply();
+                        dialog.dismiss();
                     }
                 });
         builder.setNegativeButton(R.string.editor_check_cancel,
@@ -268,5 +263,4 @@ public class SpeechBrowsePageFragment extends Fragment {
         alertDialog = builder.create();
         alertDialog.show();
     }
-
 }

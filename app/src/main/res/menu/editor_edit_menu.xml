@@ -4,8 +4,8 @@
 
     <item
             android:id="@+id/editor_edit_menu_save"
-            android:icon="@drawable/save"
-            android:title="@string/editor_menu_title_save"
+            android:icon="@drawable/save_disable"
+            android:title="@string/editor_menu_item_save"
             App:showAsAction="ifRoom"/>
 
 </menu>

@@ -1,5 +1,6 @@
 package com.asus.zenheart.smilemirror.editor;
 
+import android.content.Context;
 import android.database.Cursor;
 import android.support.v7.widget.RecyclerView;
 import android.util.SparseBooleanArray;
@@ -12,17 +13,24 @@ import android.widget.TextView;
 import com.asus.zenheart.smilemirror.R;
 import com.asus.zenheart.smilemirror.editor.database.SpeechContract;
 
+import java.text.DateFormat;
 import java.util.ArrayList;
 import java.util.List;
 
+/**
+ * The adapter is using to let recycler view like list view, and it can insert, update and delete data from SQLite
+ *
+ */
 class SpeechCursorAdapter extends RecyclerView.Adapter<SpeechCursorAdapter.ViewHolder> {
 
     private Cursor mCursor;
     private itemClick mListener;
     private itemLongClick mLongListener;
     private SparseBooleanArray mSelectedItem;
+    private Context mContext;
 
-    SpeechCursorAdapter(itemClick listener, itemLongClick longListener) {
+    SpeechCursorAdapter(Context context, itemClick listener, itemLongClick longListener)
+    {   mContext = context;
         mListener = listener;
         mLongListener = longListener;
         mSelectedItem = new SparseBooleanArray();
@@ -36,7 +44,8 @@ class SpeechCursorAdapter extends RecyclerView.Adapter<SpeechCursorAdapter.ViewH
         view.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                int position = viewHolder.getAdapterPosition();
+                final int position = viewHolder.getAdapterPosition();
+                toggleSelection(position);
                 mCursor.moveToPosition(position);
                 if (mListener != null) mListener.itemClick(mCursor);
             }
@@ -45,7 +54,7 @@ class SpeechCursorAdapter extends RecyclerView.Adapter<SpeechCursorAdapter.ViewH
         view.setOnLongClickListener(new View.OnLongClickListener() {
             @Override
             public boolean onLongClick(View v) {
-                int position = viewHolder.getAdapterPosition();
+                final int position = viewHolder.getAdapterPosition();
                 toggleSelection(position);
                 mCursor.moveToPosition(position);
                 if (mLongListener != null) mLongListener.itemLongClick(mCursor);
@@ -59,20 +68,38 @@ class SpeechCursorAdapter extends RecyclerView.Adapter<SpeechCursorAdapter.ViewH
     public void onBindViewHolder(ViewHolder holder, int position) {
         mCursor.moveToPosition(position);
 
-        int type = mCursor.getInt(mCursor.getColumnIndex(SpeechContract.TYPE));
-        String date = mCursor.getString(mCursor.getColumnIndex(SpeechContract.DATE));
-        String title = mCursor.getString(mCursor.getColumnIndex(SpeechContract.TITLE));
+        StringBuilder timeFormat = new StringBuilder(getDate(mCursor.getLong(
+                mCursor.getColumnIndex(SpeechContract.DATE)))).append(" ").append(
+                        getTime(mCursor.getLong(mCursor.getColumnIndex(SpeechContract.DATE))));
 
-        switch (type) {
-            case 0:
-                holder.mTypeView.setImageResource(R.drawable.inputtext_default);
-            case 1:
-                holder.mTypeView.setImageResource(R.drawable.inputtext_add);
-        }
-
-        holder.mTitle.setText(title);
-        holder.mDate.setText(date);
+        holder.mTitle.setText(mCursor.getString(mCursor.getColumnIndex(SpeechContract.TITLE)));
+        holder.mDate.setText(timeFormat);
         holder.itemView.setActivated(mSelectedItem.get(position, false));
+        if (holder.itemView.isActivated()) {
+            holder.mTypeView.setImageResource(R.drawable.check);
+        } else {
+            if (mCursor.getInt(mCursor.getColumnIndex(SpeechContract.TYPE)) == 0) {
+                holder.mTypeView.setImageResource(R.drawable.inputtext_default);
+            } else {
+                holder.mTypeView.setImageResource(R.drawable.inputtext_add);
+            }
+        }
+    }
+
+    private String getDate(long time) {
+        DateFormat dateFormat = android.text.format.DateFormat.getDateFormat(mContext);
+        if (time <= 0) {
+            return mContext.getString(R.string.editor_default_date);
+        }
+        return dateFormat.format(time);
+    }
+
+    private String getTime(long time) {
+        DateFormat timeFormat = android.text.format.DateFormat.getTimeFormat(mContext);
+        if (time <= 0) {
+            return "";
+        }
+        return timeFormat.format(time);
     }
 
     @Override
@@ -125,7 +152,12 @@ class SpeechCursorAdapter extends RecyclerView.Adapter<SpeechCursorAdapter.ViewH
         }
     }
 
-    void toggleSelection(int pos) {
+    void clearSelections() {
+        mSelectedItem.clear();
+        notifyDataSetChanged();
+    }
+
+    private void toggleSelection(int pos) {
         if (mSelectedItem.get(pos)) {
             mSelectedItem.delete(pos);
         } else {
@@ -134,12 +166,7 @@ class SpeechCursorAdapter extends RecyclerView.Adapter<SpeechCursorAdapter.ViewH
         notifyItemChanged(pos);
     }
 
-    void clearSelections() {
-        mSelectedItem.clear();
-        notifyDataSetChanged();
-    }
-
-    public int getSelectedItemCount() {
+    int getSelectedItemCount() {
         return mSelectedItem.size();
     }
 
