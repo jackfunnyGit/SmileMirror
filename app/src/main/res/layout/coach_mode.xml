@@ -4,85 +4,6 @@
                 android:layout_width="match_parent"
                 android:layout_height="match_parent">
 
-    <RelativeLayout
-        android:id="@+id/title_layout"
-        android:layout_width="match_parent"
-        android:layout_height="@dimen/coach_mode_height"
-        android:background="@android:color/black">
-
-        <ImageView
-            android:id="@+id/image_setting"
-            android:layout_width="@dimen/coach_mode_setting_icon_width"
-            android:layout_height="@dimen/coach_mode_setting_icon_height"
-            android:layout_alignParentEnd="true"
-            android:layout_centerVertical="true"
-            android:layout_marginEnd="@dimen/coach_mode_setting_icon_padding"
-            android:src="@drawable/setting"/>
-
-        <ImageView
-            android:id="@+id/image_list"
-            android:layout_width="@dimen/coach_mode_list_icon_width"
-            android:layout_height="@dimen/coach_mode_list_icon_height"
-            android:layout_centerVertical="true"
-            android:layout_marginEnd="@dimen/coach_mode_list_icon_padding"
-            android:layout_marginRight="@dimen/coach_mode_list_icon_padding"
-            android:layout_toStartOf="@+id/image_setting"
-            android:src="@drawable/list"/>
-
-
-        <TextView
-            android:id="@+id/text_present_tittle"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_alignParentStart="true"
-            android:layout_alignTop="@+id/image_list"
-            android:layout_centerVertical="true"
-            android:layout_marginLeft="@dimen/presentation_title_padding"
-            android:text="@string/text_title"
-            android:textColor="@android:color/white"
-            android:textSize="@dimen/presentation_title_text_size"/>
-
-
-    </RelativeLayout>
-
-    <com.asus.zenheart.smilemirror.VerticalScrollTextView
-
-        android:id="@+id/vertical_scroll_textview"
-        android:layout_width="match_parent"
-        android:layout_height="@dimen/teleprompter_height"
-        android:layout_alignParentStart="true"
-        android:layout_below="@id/title_layout"
-        android:background="@color/teleprompter_background_color"
-        android:text="@string/text_content"
-        android:textColor="@android:color/white"/>
-
-    <RelativeLayout
-        android:layout_width="match_parent"
-        android:layout_height="@dimen/coach_mode_lower_layout_height"
-        android:layout_alignParentStart="true"
-        android:layout_below="@+id/vertical_scroll_textview"
-        android:background="@color/teleprompter_background_color">
-
-
-        <ImageView
-            android:id="@+id/image_play"
-            android:layout_width="@dimen/coach_mode_play_icon_width"
-            android:layout_height="@dimen/coach_mode_play_icon_height"
-            android:layout_centerHorizontal="true"
-            android:layout_marginTop="@dimen/coach_mode_drag_icon_padding"
-            android:src="@drawable/play"/>
-
-        <ImageView
-            android:id="@+id/image_drag"
-            android:layout_width="@dimen/coach_mode_drag_icon_width"
-            android:layout_height="@dimen/coach_mode_drag_icon_height"
-
-            android:layout_alignParentEnd="true"
-            android:layout_alignTop="@id/image_play"
-            android:layout_marginEnd="@dimen/coach_mode_drag_icon_padding"
-            android:src="@drawable/drag"/>
-    </RelativeLayout>
-
     <ImageView
         android:id="@+id/video_image_view"
         android:layout_width="@dimen/coach_mode_video_icon_width"
@@ -94,15 +15,53 @@
         android:src="@drawable/video"
         android:visibility="invisible"/>
 
-    <ImageView
-        android:id="@+id/rec_text"
-        android:layout_width="@dimen/coach_mode_recording_icon_width"
-        android:layout_height="@dimen/coach_mode_recording_icon_height"
+
+    <!--below is a transparent view -->
+    <View
+        android:id="@+id/pseudo_close_view"
+        android:layout_width="@dimen/close_icon_width"
+        android:layout_height="@dimen/close_icon_width"
+        android:layout_alignParentBottom="true"
+        android:layout_alignParentEnd="true"/>
+
+
+    <include
+        android:id="@+id/pseudo_toolbar"
+        layout="@layout/pseudo_toolbar"/>
+
+    <com.asus.zenheart.smilemirror.VerticalScrollTextView
+
+        android:id="@+id/vertical_scroll_textview"
+        android:layout_width="match_parent"
+        android:layout_height="@dimen/teleprompter_height"
+        android:layout_alignParentStart="true"
+        android:layout_below="@id/pseudo_toolbar"
+        android:background="@color/teleprompter_background_color"
+        android:textColor="@android:color/white"/>
+
+    <include
+        android:id="@+id/controller_bar"
+        layout="@layout/controller_bar"
+        android:layout_width="match_parent"
+        android:layout_height="@dimen/coach_mode_lower_layout_height"
+        android:layout_below="@id/vertical_scroll_textview"/>
+
+    <com.asus.zenheart.smilemirror.CounterView
+        android:id="@+id/count_view"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
         android:layout_alignParentBottom="true"
         android:layout_alignParentStart="true"
         android:layout_marginBottom="@dimen/coach_mode_recording_icon_padding"
         android:layout_marginStart="@dimen/coach_mode_recording_icon_padding"
-        android:src="@drawable/rec_text"
+        android:drawableTop="@drawable/rec_text"
+        android:textColor="@android:color/white"
+        android:textSize="@dimen/coach_mode_recording_view_text_size"
         android:visibility="invisible"/>
+
+    <View
+        android:id="@+id/border_line"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"/>
 
 </RelativeLayout>

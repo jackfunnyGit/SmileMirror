@@ -20,4 +20,10 @@
     <color name="editor_selected_bg_color">#ff323232</color>
     <color name="editor_list_card__divider_color">#ff464646</color>
     <color name="editor_seek_bar_progress_color">#ff98d745</color>
+
+    <!-- Border Line -->
+    <color name = "border_line_color">#9998d745</color>
+    <!-- Tutorial page -->
+    <color name = "sm_color_black_opacity_80">#CC000000</color>
+    <color name = "sm_color_green_tutorial_page">#98D745</color>
 </resources>

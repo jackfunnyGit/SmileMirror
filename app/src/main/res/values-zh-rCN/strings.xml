@@ -1,0 +1,67 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <!-- Menu Item Names -->
+    <string name="editor_menu_item_save">"储存"</string>
+    <string name="editor_menu_item_rename">"重新命名"</string>
+    <string name="editor_menu_item_edit">"编辑"</string>
+    <string name="editor_menu_item_delete">"删除"</string>
+    <string name="editor_menu_item_mirror">"确定"</string>
+    <string name="coach_mode_menu_item_auto_record">"自动录像"</string>
+    <!-- Smile Mirror -->
+    <string name="smile_level_one_text">"你有在微笑吗？"</string>
+    <string name="smile_level_two_text">"还不错"</string>
+    <string name="smile_level_three_text">"漂亮！"</string>
+    <string name="smile_level_four_text">"完美！"</string>
+
+    <string name="sm_speech_content_create_script">"请进入脚本清单创建一个新的脚本"</string>
+    <string name="sm_speech_content_select_script">"请进入脚本清单选择一个脚本"</string>
+    <string name="smile_mode">"微笑模式"</string>
+    <string name="coach_mode">"对谈模式"</string>
+    <!-- chart page -->
+    <string name="chart_page_smile_statistics">"微笑统计"</string>
+    <string name="chart_page_smile_duration">"总长度： %1$s秒"</string>
+    <!-- Editor -->
+    <string name="editor_save_new_file_title">"储存脚本"</string>
+    <string name="editor_save_file_title">"储存"</string>
+    <string name="editor_modify_file_title">"脚本已修改"</string>
+    <string name="editor_save_file_description">"要储存您的修改吗？"</string>
+    <string name="editor_check_yes">"确定"</string>
+    <string name="editor_check_cancel">"取消"</string>
+    <string name="editor_check_discard">"舍弃"</string>
+    <string name="editor_save_file_hint">"请输入脚本标题"</string>
+    <string name="editor_edit_script">"编辑脚本"</string>
+    <string name="editor_delete_script">"删除脚本"</string>
+    <string name="delete_script_description">"删除选择的脚本？"</string>
+    <string name="delete_script_toast">"%1$s 个脚本已被删除"</string>
+    <string name="conversation_scripts">"对谈脚本"</string>
+    <string name="font_size">"字体大小"</string>
+    <string name="font_size_large">"大型"</string>
+    <string name="font_size_default">"默认"</string>
+    <string name="font_size_small">"小型"</string>
+
+    <string name="editor_select_item">"已選 %1$s 個"</string>
+    <string name="editor_default_date">""</string>
+    <string name="editor_content_hint">"输入文字"</string>
+    <string name="editor_title_hint">"新脚本"</string>
+    <string name="editor_menu_title_rename">重新命名</string>
+    <string name="sm_editor_add_script_remind">点击\"+\"按钮以创建新的脚本</string>
+    <!-- Example Speeches -->
+    <string name="editor_example_one_title">"巧遇认识的人"</string>
+    <string name="editor_example_one_content">"嗨 (名字)！好久不见了！你最近在忙什么 ?\n很高兴遇见你，但是不巧我现在有事得先离开。我们再约个时间聚一下！"</string>
+    <string name="editor_example_two_title">"自我介绍 (15秒)"</string>
+    <string name="editor_example_two_content">"您好，我是(名字)。我过去三年在麻省理工学院史密斯教授的实验室里从事火箭科学的研究。我很高兴能在太空总署这里继续发展我的专业，运用我的专业知识，贡献给整个团队。"</string>
+    <string name="editor_example_three_title">"自我介绍 (一分钟)"</string>
+    <string name="editor_example_three_content">"您好，我是(名字)。我想介绍我个人的三项特质：\n第一，我是一个team player，我善于激励士气，带领全队达成目标。我曾经担任北京大学羽球队的队长，带领球队拿到当年度大专杯的亚军，是校队有史以来的最好成绩。\n第二，我非常的结果导向，不管是在哪一个单位，我总是能在最短时间内排除困难，创造绩效，达成目标。我在雀巢公司担任项目经理的时候，就从接到任务开始，连续24个月都能达成业绩目标。\n最后，我具有创业的精神，常常被赋予新事业的任务。上一季，我在雀巢公司导入「咖啡教育训练活动」，受到极大欢迎，到年底前的所有报名场次已经一位难求。\n基于以上特质，我相信我能为本公司做出一定的贡献。谢谢。"</string>
+    <string name="editor_example_four_title">"酒店柜台服務员"</string>
+    <string name="editor_example_four_content">"先生早安。我能为您服务吗？\n请问您有预约吗？\n可以请您提供您的身份证明文件或护照吗？\n您需要一间单人房，还是双人房？\n请问您要停留多少天？\n如果您还有其他需求，请让我们知道。希望您住宿愉快！"</string>
+    <!-- tutorial page  -->
+    <string name="sm_tutorial_main_page_title">"给自己一个最灿烂的笑容吧！"</string>
+    <string name="sm_tutorial_main_page_content">"左右滑动切换模式"</string>
+    <string name="sm_tutorial_coach__page_text_script_list">"对谈脚本清单"</string>
+    <string name="sm_tutorial_coach_page_text_start_practice">"开始练习"</string>
+    <string name="sm_tutorial_coach_page_text_title">"练习在对谈过程中保持微笑"</string>
+    <string name="sm_tutorial_coach_page_text_review_video">"检视过程中的录像"</string>
+    <!-- alert dialog  -->
+    <string name="sm_alert_dialog_auto_recording_title">"关闭自动录像？"</string>
+    <string name="sm_alert_dialog_auto_recording_message">"关闭后，对谈练习过程中将不会进行录像以供事后检视。确定要关闭？"</string>
+</resources>

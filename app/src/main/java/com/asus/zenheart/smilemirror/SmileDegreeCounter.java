@@ -155,7 +155,7 @@ public class SmileDegreeCounter {
         }
         for (int i = 0; i < smilePercent.length; i++) {
             smilePercent[i] = (float) mSmileCounts[i] * 100 / totalCounts;
-            Log.i(LOG_TAG, "smilePercent is = " + smilePercent[i]);
+            Log.d(LOG_TAG, "smilePercent is = " + smilePercent[i]);
         }
         return smilePercent;
     }
@@ -167,7 +167,6 @@ public class SmileDegreeCounter {
      */
     public SmileDegreeCounter setSmileDegree(float smileDegree) {
         final float smileAverage = countByMovingAverage(smileDegree);
-        //Log.i(LOG_TAG, "mIsRecording = " + mIsRecording + " smileAverage = " + smileAverage);
         if (mIsRecording) {
             recordingCount(smileAverage);
         }

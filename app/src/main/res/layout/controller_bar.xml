@@ -1,0 +1,24 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+                android:layout_width="match_parent"
+                android:layout_height="@dimen/coach_mode_lower_layout_height"
+                android:background="@color/teleprompter_background_color">
+
+    <ImageView
+        android:id="@+id/image_play"
+        android:layout_width="@dimen/coach_mode_play_icon_width"
+        android:layout_height="@dimen/coach_mode_play_icon_height"
+        android:layout_centerInParent="true"
+        android:scaleType="center"
+        android:src="@drawable/play"/>
+
+    <ImageView
+        android:id="@+id/image_drag"
+        android:layout_width="@dimen/coach_mode_drag_icon_width"
+        android:layout_height="@dimen/coach_mode_drag_icon_height"
+        android:layout_alignParentEnd="true"
+        android:layout_centerVertical="true"
+        android:scaleType="center"
+        android:src="@drawable/drag"/>
+
+</RelativeLayout>

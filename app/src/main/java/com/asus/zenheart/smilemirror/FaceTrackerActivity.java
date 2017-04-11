@@ -23,11 +23,12 @@ import android.app.AlertDialog;
 import android.app.Dialog;
 import android.content.Context;
 import android.content.DialogInterface;
+import android.content.Intent;
 import android.content.pm.ActivityInfo;
 import android.content.pm.PackageManager;
-import android.content.res.Configuration;
 import android.os.Build;
 import android.os.Bundle;
+import android.support.annotation.NonNull;
 import android.support.annotation.RequiresApi;
 import android.support.design.widget.Snackbar;
 import android.support.v4.app.ActivityCompat;
@@ -39,12 +40,13 @@ import android.view.MotionEvent;
 import android.view.TextureView;
 import android.view.View;
 import android.view.ViewGroup;
+import android.view.WindowManager;
 import android.widget.ImageView;
-import android.widget.RelativeLayout;
 import android.widget.TextView;
 
 import com.asus.zenheart.smilemirror.Util.AnimationUtil;
 import com.asus.zenheart.smilemirror.Util.PermissionUtil;
+import com.asus.zenheart.smilemirror.Util.PrefsUtils;
 import com.asus.zenheart.smilemirror.ui.camera.CameraSource;
 import com.asus.zenheart.smilemirror.ui.camera.CameraSourcePreview;
 import com.asus.zenheart.smilemirror.ui.camera.GraphicOverlay;
@@ -74,7 +76,10 @@ public final class FaceTrackerActivity extends AppCompatActivity implements
     private static final int RC_HANDLE_CAMERA_PERM = 2;
 
     // constant field
+    private static final int PAGE_INDEX_SMILE_MODE = 0;
+    private static final int PAGE_INDEX_COACH_MODE = 1;
     private static final int[] INDEX_LAYOUT_OF_MODE = {R.layout.smile_mode, R.layout.coach_mode};
+    private static final float POSITION_OFFSET_NOT_DRAW = 0.01f;
 
     // member field
     private Context mContext;
@@ -85,10 +90,6 @@ public final class FaceTrackerActivity extends AppCompatActivity implements
     private ViewGroup mContainer;
     private ImageView mCloseImageView;
     private View mChartPage;
-
-    // Show image_tutorial
-    //TODO it should be change to preference in the future
-    private static boolean sShowTutorial = true;
 
     //==============================================================================================
     // Activity Methods
@@ -102,9 +103,10 @@ public final class FaceTrackerActivity extends AppCompatActivity implements
     @Override
     public void onCreate(Bundle icicle) {
         super.onCreate(icicle);
-        Log.i(TAG, "activity is onCreate.....");
+        Log.d(TAG, "MainActivity is onCreate.....");
         setContentView(R.layout.mirror_main);
         //Jack ++
+        getWindow().addFlags(WindowManager.LayoutParams.FLAG_KEEP_SCREEN_ON);
         initView();
         //Jack --
 
@@ -128,29 +130,23 @@ public final class FaceTrackerActivity extends AppCompatActivity implements
         mViewpager = (ViewPager) findViewById(R.id.viewpager);
         mToastTextView = (TextView) findViewById(R.id.toast_text);
         mSmileIndicatorView = (SmileIndicatorView) findViewById(R.id.smile_indicator);
-        mCloseImageView = (ImageView) findViewById(R.id.image_close);
+        mCloseImageView = (ImageView) findViewById(R.id.close_back_image);
 
         mPagerAdapter = new ModePagerAdapter(this, INDEX_LAYOUT_OF_MODE, mContainer);
         mViewpager.setAdapter(mPagerAdapter);
         mViewpager.addOnPageChangeListener(new ViewPager.SimpleOnPageChangeListener() {
             @Override
             public void onPageSelected(int position) {
-                if (position == 0) {
+                if (position == PAGE_INDEX_SMILE_MODE) {
                     //  show the smile mode toast
-                    mToastTextView.setVisibility(View.VISIBLE);
-                    mToastTextView.setText(R.string.smile_mode);
-                    mToastTextView.setCompoundDrawablesWithIntrinsicBounds(0,
-                            R.drawable.smile_mode, 0, 0);
-                    AnimationUtil.toastAnimation(mToastTextView);
-
-                } else {
+                    AnimationUtil.showToast(mToastTextView,
+                            R.string.smile_mode, R.drawable.smile_mode);
+                } else if (position == PAGE_INDEX_COACH_MODE) {
                     //  show the coach mode toast
-                    mToastTextView.setVisibility(View.VISIBLE);
-                    mToastTextView.setText(R.string.coach_mode);
-                    mToastTextView.setCompoundDrawablesWithIntrinsicBounds(0,
-                            R.drawable.conversation_mode, 0, 0);
-                    AnimationUtil.toastAnimation(mToastTextView);
-
+                    AnimationUtil.showToast(mToastTextView,
+                            R.string.coach_mode, R.drawable.conversation_mode);
+                    addTutorialView(PrefsUtils.PREFS_SHOW_COACH_TUTORIAL,
+                            R.layout.tutorial_coach_page);
                 }
 
             }
@@ -164,10 +160,9 @@ public final class FaceTrackerActivity extends AppCompatActivity implements
                 if (positionOffset == 0) {
                     return;
                 }
-                Log.i(TAG, "positionOffset = " + positionOffset);
                 //when ViewPager is scrolled a little, the face window is expected to be not drawn.
-                //Therefore,small shift as 0.1 is set
-                if (positionOffset > 0.1) {
+                //Therefore,small shift is set by POSITION_OFFSET_NOT_DRAW valued at 0.01
+                if (positionOffset > POSITION_OFFSET_NOT_DRAW) {
                     mGraphicOverlay.setMode(GraphicOverlay.Mode.CONVERSATION);
                     setRequestedOrientation(ActivityInfo.SCREEN_ORIENTATION_PORTRAIT);
                 } else {
@@ -193,65 +188,95 @@ public final class FaceTrackerActivity extends AppCompatActivity implements
 
             }
         });
-        //addTutorialView();
 
+        mViewpager.setOnTouchListener(new View.OnTouchListener() {
+            @Override
+            public boolean onTouch(View v, MotionEvent event) {
+                //always return false because touch event is expected to dispatch to viewPager
+                switch (event.getAction()) {
+                    case MotionEvent.ACTION_DOWN:
+                        setBorderLine(true);
+                        return false;
+                    case MotionEvent.ACTION_MOVE:
+                        return false;
+                    case MotionEvent.ACTION_UP:
+                        setBorderLine(false);
+                        return false;
+                }
+                return false;
+            }
+        });
+
+        addTutorialView(PrefsUtils.PREFS_SHOW_MAIN_TUTORIAL, R.layout.tutorial_main_page);
     }
+
     // Jack +++
 
-//    /**
-//     * It depends on the preferences if show OOBE/help to the users at the first time
-//     */
-//    private void addTutorialView() {
-//        //TODO sShowTutorial should be change to preference in the future
-//
-//        if (sShowTutorial) {
-//            hideGuiElement();
-//            final ImageView imageTutorial = new ImageView(mContext);
-//            imageTutorial.setImageResource(R.drawable.tutorial_page);
-//            final RelativeLayout mainLayout = (RelativeLayout) findViewById(
-//                    R.id.mirror_main_layout);
-//            mainLayout.addView(imageTutorial);
-//            final Configuration configuration = mContext.getResources().getConfiguration();
-//            if (configuration.orientation == Configuration.ORIENTATION_PORTRAIT) {
-//                imageTutorial.setOnTouchListener(new View.OnTouchListener() {
-//                    @Override
-//                    public boolean onTouch(View v, MotionEvent event) {
-//                        //TODO Tutorial View should be remove
-//                        v.setVisibility(View.GONE);
-//                        showGuiElement();
-//                        return true;
-//                    }
-//                });
-//                sShowTutorial = false;
-//            } else {
-//                imageTutorial.setVisibility(View.GONE);
-//            }
-//        }
-//
-//    }
+    /**
+     * It depends on the preferences if show OOBE/help to the users at the first time
+     */
+    private void addTutorialView(final String prefKey, final int layoutId) {
 
+        if (!PrefsUtils.getBooleanPreference(mContext, prefKey, true)) {
+            return;
+        }
+        if (layoutId == R.layout.tutorial_main_page) {
+            hideGuiElement();
+        }
+        final View tutorialView = LayoutInflater.from(mContext)
+                .inflate(layoutId, mContainer, false);
+        ImageView imageView = (ImageView) tutorialView.findViewById(R.id.tutorial_close_image);
+        if (imageView == null) {
+            return;
+        }
+        imageView.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                PrefsUtils.setBooleanPreference(mContext, prefKey, false);
+                mContainer.removeView(tutorialView);
+                if (layoutId == R.layout.tutorial_main_page) {
+                    showGuiElement();
+                }
+            }
+
+        });
+        tutorialView.setOnTouchListener(new View.OnTouchListener() {
+            @Override
+            public boolean onTouch(View v, MotionEvent event) {
+                //absorb user's touch event to prevent unexpected touch
+                return true;
+            }
+        });
+        mContainer.addView(tutorialView);
+    }
+
+    /**
+     * add chart page to show the statistics of smile value
+     *
+     * @param smileDegreeCounter The counter containing the statistical data
+     */
     private void addChartPageView(SmileDegreeCounter smileDegreeCounter) {
         mChartPage = LayoutInflater.from(mContext).inflate(R.layout.chart_page, mContainer, false);
-        mChartPage.findViewById(R.id.chart_close_view)
-                .setOnTouchListener(new View.OnTouchListener() {
-                    @Override
-                    public boolean onTouch(View v, MotionEvent event) {
-                        hideChartPage();
-                        return true;
-                    }
-                });
-        final HistogramChart histogramChart = (HistogramChart)
-                mChartPage.findViewById(R.id.histogram_chart);
-        histogramChart.setData(smileDegreeCounter.getSmileCountsPercent());
-        final TextView textView = (TextView) mChartPage.findViewById(R.id.duration_text_view);
-        final String timeText = String.format("%.2f", mGraphicOverlay.getRecordingTime());
-        textView.setText(String.format(mContext.getString(R.string.chart_page_smile_duration),
-                timeText));
+        ImageView closeView = (ImageView) mChartPage.findViewById(R.id.chart_close_view);
+        HistogramChart chartView = (HistogramChart) mChartPage.findViewById(R.id.histogram_chart);
+        TextView textView = (TextView) mChartPage.findViewById(R.id.duration_text_view);
+        closeView.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                hideChartPage();
+            }
+        });
+        chartView.setData(smileDegreeCounter.getSmileCountsPercent());
+        String timeText = String.format("%.2f", mGraphicOverlay.getRecordingTime());
+        textView.setText(
+                String.format(mContext.getString(R.string.chart_page_smile_duration), timeText));
         mContainer.addView(mChartPage);
     }
 
+    /**
+     * remove chartPage from the root container after user touch the close view
+     */
     private void removeChartPageView() {
-
         if (mChartPage != null) {
             mContainer.removeView(mChartPage);
             mChartPage = null;
@@ -270,6 +295,28 @@ public final class FaceTrackerActivity extends AppCompatActivity implements
         mCloseImageView.setVisibility(View.VISIBLE);
         mViewpager.setVisibility(View.VISIBLE);
         mGraphicOverlay.setVisibility(View.VISIBLE);
+    }
+
+    private void setBorderLine(boolean borderLine) {
+        if (borderLine) {
+            for (int i = 0; i < mViewpager.getChildCount(); i++) {
+                mViewpager.getChildAt(i).findViewById(R.id.border_line)
+                        .setBackgroundResource(R.drawable.border_line_background);
+            }
+        } else {
+            for (int i = 0; i < mViewpager.getChildCount(); i++) {
+                mViewpager.getChildAt(i).findViewById(R.id.border_line).setBackground(null);
+            }
+        }
+
+    }
+
+    private void refreshViewContent() {
+        mPagerAdapter.refreshViewContent();
+    }
+
+    private void resetGuiElementState() {
+        mPagerAdapter.resetGuiElementState();
     }
     // Jack ---
 
@@ -292,7 +339,7 @@ public final class FaceTrackerActivity extends AppCompatActivity implements
         }
 
         final Activity thisActivity = this;
-
+//TODO:below should be replace by notification page to guide users to setting page to give authority
         View.OnClickListener listener = new View.OnClickListener() {
             @Override
             public void onClick(View view) {
@@ -331,6 +378,7 @@ public final class FaceTrackerActivity extends AppCompatActivity implements
             // isOperational() can be used to check if the required native library is currently
             // available.  The detector will automatically become operational once the library
             // download completes on device.
+            //TODO:should show dialog to tell user to update the google service to the latest
             Log.w(TAG, "Face detector dependencies are not yet available.");
         }
         //TODO it should be modified because CameraSource is not needed  for CameraAPI
@@ -348,12 +396,17 @@ public final class FaceTrackerActivity extends AppCompatActivity implements
     @Override
     protected void onResume() {
         super.onResume();
-        Log.i(TAG, "mainActivity onResume");
+        Log.d(TAG, "mainActivity onResume ......");
         //Jack +++
         AnimationUtil.toastAnimation(mToastTextView);//mode Toast
 
         //Jack ---
         startCameraSource();
+    }
+
+    @Override
+    protected void onNewIntent(Intent intent) {
+        refreshViewContent();
     }
 
     /**
@@ -362,6 +415,8 @@ public final class FaceTrackerActivity extends AppCompatActivity implements
     @Override
     protected void onPause() {
         super.onPause();
+        Log.d(TAG, "mainActivity is onPause..........");
+        resetGuiElementState();
         mPreview.stop();
     }
 
@@ -372,9 +427,7 @@ public final class FaceTrackerActivity extends AppCompatActivity implements
     @Override
     protected void onDestroy() {
         super.onDestroy();
-        if (mCameraSource != null) {
-            mCameraSource.release();
-        }
+        mPreview.release();
     }
 
     /**
@@ -394,8 +447,8 @@ public final class FaceTrackerActivity extends AppCompatActivity implements
      * @see #requestPermissions(String[], int)
      */
     @Override
-    public void onRequestPermissionsResult(int requestCode, String[] permissions, int[]
-            grantResults) {
+    public void onRequestPermissionsResult(int requestCode, @NonNull String[] permissions,
+            @NonNull int[] grantResults) {
         if (requestCode != RC_HANDLE_CAMERA_PERM) {
             Log.d(TAG, "Got unexpected permission result: " + requestCode);
             super.onRequestPermissionsResult(requestCode, permissions, grantResults);
@@ -409,18 +462,18 @@ public final class FaceTrackerActivity extends AppCompatActivity implements
             return;
         }
 
-        Log.e(TAG, "Permission not granted: results len = " + grantResults.length);
+        Log.w(TAG, "Permission not granted: results len = " + grantResults.length);
 
-        DialogInterface.OnClickListener listener = new DialogInterface.OnClickListener() {
-            public void onClick(DialogInterface dialog, int id) {
-                finish();
-            }
-        };
-
+        //TODO:below should be replace by notification page to guide users to setting page to give authority
+        //TT:984239
         AlertDialog.Builder builder = new AlertDialog.Builder(this);
-        builder.setTitle("Face Tracker sample")
+        builder.setTitle(mContext.getString(R.string.sm_app_name))
                 .setMessage(R.string.no_camera_permission)
-                .setPositiveButton(R.string.ok, listener)
+                .setPositiveButton(R.string.ok, new DialogInterface.OnClickListener() {
+                    public void onClick(DialogInterface dialog, int id) {
+                        finish();
+                    }
+                })
                 .show();
     }
 
@@ -444,10 +497,6 @@ public final class FaceTrackerActivity extends AppCompatActivity implements
         }
         final TextureView textureView = (TextureView) findViewById(R.id.texture_view);
 
-        if (mCameraSource == null) {
-            Log.i(TAG, "mCameraSource = null");
-        }
-
         if (mCameraSource != null) {
             try {
                 mPreview.start(mCameraSource, mGraphicOverlay, textureView);
@@ -456,6 +505,8 @@ public final class FaceTrackerActivity extends AppCompatActivity implements
                 mCameraSource.release();
                 mCameraSource = null;
             }
+        } else {
+            Log.d(TAG, "mCameraSource = null");
         }
     }
 
@@ -554,6 +605,11 @@ public final class FaceTrackerActivity extends AppCompatActivity implements
         mGraphicOverlay.setRecordingState(false);
         mGraphicOverlay.setRecordingEndTime(System.currentTimeMillis());
         mCameraSource.stopRecord2();
+    }
+
+    @Override
+    public void finishActivity() {
+        finish();
     }
 
     // --Jack

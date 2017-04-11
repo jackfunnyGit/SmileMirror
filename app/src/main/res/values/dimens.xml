@@ -6,7 +6,7 @@
     <dimen name="smile_icon_width">70dp</dimen>
     <dimen name="smile_icon_height">70dp</dimen>
     <dimen name="teleprompter_ui_object_padding">32dp</dimen>
-    <dimen name="teleprompter_height">76dp</dimen>
+    <dimen name="teleprompter_height">90dp</dimen>
     <dimen name="teleprompter_text_padding">23dp</dimen>
     <dimen name="teleprompter_status_bar_object">10dp</dimen>
     <dimen name="gallery_icon_width">34dp</dimen>
@@ -21,7 +21,7 @@
     <!-- toast text and image -->
     <dimen name="mode_toast_padding">3dp</dimen>
     <!-- couch mode -->
-    <dimen name="coach_mode_height">56dp</dimen>
+    <dimen name="sm_coach_mode_pseudo_bar_height">56dp</dimen>
     <dimen name="coach_mode_setting_icon_width">32dp</dimen>
     <dimen name="coach_mode_setting_icon_height">32dp</dimen>
     <dimen name="coach_mode_setting_icon_padding">10dp</dimen>
@@ -30,18 +30,19 @@
     <dimen name="coach_mode_list_icon_padding">25dp</dimen>
     <dimen name="presentation_title_padding">23dp</dimen>
     <dimen name="coach_mode_lower_layout_height">57dp</dimen>
-    <dimen name="coach_mode_drag_icon_width">32dp</dimen>
-    <dimen name="coach_mode_drag_icon_height">32dp</dimen>
+    <dimen name="coach_mode_drag_icon_width">57dp</dimen>
+    <dimen name="coach_mode_drag_icon_height">57dp</dimen>
     <dimen name="coach_mode_drag_icon_padding">13dp</dimen>
     <dimen name="coach_mode_drag_icon_top_padding">13dp</dimen>
-    <dimen name="coach_mode_play_icon_width">34dp</dimen>
-    <dimen name="coach_mode_play_icon_height">34dp</dimen>
+    <dimen name="coach_mode_play_icon_width">57dp</dimen>
+    <dimen name="coach_mode_play_icon_height">57dp</dimen>
     <dimen name="coach_mode_video_icon_width">32dp</dimen>
     <dimen name="coach_mode_video_icon_height">32dp</dimen>
     <dimen name="coach_mode_video_icon_padding">23dp</dimen>
     <dimen name="coach_mode_recording_icon_width">64dp</dimen>
     <dimen name="coach_mode_recording_icon_height">32dp</dimen>
     <dimen name="coach_mode_recording_icon_padding">23dp</dimen>
+    <dimen name="coach_mode_recording_view_text_size">23dp</dimen>
     <!-- Vertical text view padding-->
     <dimen name="vertical_text_view_width_padding">23dp</dimen>
     <!-- histogram chart -->
@@ -52,15 +53,32 @@
     <!-- chart page-->
     <dimen name="chart_page_upper_layout_padding">26dp</dimen>
     <dimen name="chart_page_middle_layout_padding">24dp</dimen>
-    <dimen name="chart_page_lower_layout_padding">27dp</dimen>
     <dimen name="chart_page_histogram_height">414dp</dimen>
     <dimen name="chart_page_statistics_text_height">32dp</dimen>
     <dimen name="chart_page_duration_text_height">24dp</dimen>
-    <dimen name="chart_page_close_image_width">44dp</dimen>
-    <dimen name="chart_page_close_image_height">44dp</dimen>
     <!-- count down page -->
     <dimen name="count_down_page_width_size">190dp</dimen>
     <dimen name="count_down_page_height_size">190dp</dimen>
+    <!-- tutorial page -->
+    <dimen name="tutorial_page_title_top_padding">100dp</dimen>
+    <dimen name="tutorial_page_content_top_padding">315dp</dimen>
+    <dimen name="tutorial_page_close_image_bottom_padding">27dp</dimen>
+    <dimen name="tutorial_page_close_image_width">44dp</dimen>
+    <dimen name="tutorial_page_close_image_height">44dp</dimen>
+    <dimen name="tutorial_page_title_width">200dp</dimen>
+    <dimen name="tutorial_page_big_text_size">24dp</dimen>
+    <dimen name="tutorial_page_small_text_size">18dp</dimen>
+    <!-- tutorial coach page -->
+    <dimen name="sm_tutorial_coach_page_text_script_list_top_margin">56dp</dimen>
+    <dimen name="sm_tutorial_coach_page_text_start_practice_top_margin">162dp</dimen>
+    <dimen name="sm_tutorial_coach_page_text_review_video_bottom_margin">64dp</dimen>
+    <dimen name="sm_tutorial_coach_page_image_play_top_margin">146dp</dimen>
+    <dimen name="sm_tutorial_coach_page_start_end_margin">23dp</dimen>
+    <dimen name="sm_tutorial_coach_page_text_script_list_text_width">120dp</dimen>
+    <dimen name="sm_tutorial_coach_page_text_start_practice_text_width">120dp</dimen>
+    <dimen name="sm_tutorial_coach_page_text_title_text_width">200dp</dimen>
+    <dimen name="sm_tutorial_coach_page_text_review_video_text_width">100dp</dimen>
+    <dimen name="sm_tutorial_coach_page_image_list_end_margin">33dp</dimen>
     <!-- SmileMirror text in dp value -->
     <dimen name="smile_text_size">24dp</dimen>
     <dimen name="mode_text_size">16dp</dimen>
@@ -92,4 +110,9 @@
     <dimen name="editor_tool_bar_text_size">24dp</dimen>
     <!-- Multi player -->
     <dimen name="crown_bottom_padding">10dp</dimen>
+    <!-- border line -->
+    <dimen name="border_line_stroke_width">1dp</dimen>
+    <dimen name="border_line_padding">1dp</dimen>
+
+
 </resources>

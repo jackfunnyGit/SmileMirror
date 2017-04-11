@@ -23,8 +23,4 @@ public interface SpeechContract extends BaseColumns {
     String CONTENT = "content";
 
 
-    String MARQUEE_SCROLLING_SPEED = "scrollingSpeed";
-    String CONTENT_TEXT_SIZE = "textsize";
-    String SPEECH_ID = "speech_id";
-    String SPEECH_SHARED_PREFERENCE_NAME = "speech";
 }

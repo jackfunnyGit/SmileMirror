@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="utf-8"?>
 <RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
-    android:layout_width="match_parent"
-    android:layout_height="match_parent">
+                android:layout_width="match_parent"
+                android:layout_height="match_parent">
 
     <ImageView
         android:id="@+id/video_image_view"
@@ -14,4 +14,15 @@
         android:src="@drawable/gallery"
         android:visibility="invisible"/>
 
+    <!--below is a transparent view -->
+    <View
+        android:id="@+id/pseudo_close_view"
+        android:layout_width="@dimen/close_icon_width"
+        android:layout_height="@dimen/close_icon_width"
+        android:layout_alignParentBottom="true"
+        android:layout_alignParentEnd="true"/>
+    <View
+        android:id="@+id/border_line"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"/>
 </RelativeLayout>

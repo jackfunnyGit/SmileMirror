@@ -1,0 +1,89 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:background="@color/sm_color_black_opacity_80"
+                android:paddingEnd="@dimen/sm_tutorial_coach_page_start_end_margin"
+                android:paddingStart="@dimen/sm_tutorial_coach_page_start_end_margin">
+
+
+    <TextView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_alignParentEnd="true"
+        android:layout_alignParentTop="true"
+        android:layout_marginTop="@dimen/sm_tutorial_coach_page_text_script_list_top_margin"
+        android:text="@string/sm_tutorial_coach__page_text_script_list"
+        android:textAlignment="textEnd"
+        android:textColor="@android:color/white"
+        android:textSize="@dimen/tutorial_page_small_text_size"/>
+
+    <TextView
+        android:layout_width="@dimen/sm_tutorial_coach_page_text_start_practice_text_width"
+        android:layout_height="wrap_content"
+        android:layout_alignParentEnd="true"
+        android:layout_alignParentTop="true"
+        android:layout_marginTop="@dimen/sm_tutorial_coach_page_text_start_practice_top_margin"
+        android:text="@string/sm_tutorial_coach_page_text_start_practice"
+        android:textAlignment="textStart"
+        android:textColor="@android:color/white"
+        android:textSize="@dimen/tutorial_page_small_text_size"/>
+
+    <TextView
+        android:layout_width="@dimen/sm_tutorial_coach_page_text_title_text_width"
+        android:layout_height="wrap_content"
+        android:layout_centerInParent="true"
+        android:text="@string/sm_tutorial_coach_page_text_title"
+        android:textAlignment="center"
+        android:textColor="@color/sm_color_green_tutorial_page"
+        android:textSize="@dimen/tutorial_page_big_text_size"/>
+
+    <TextView
+        android:id="@+id/tutorial_text4"
+        android:layout_width="@dimen/sm_tutorial_coach_page_text_review_video_text_width"
+        android:layout_height="wrap_content"
+        android:layout_alignParentBottom="true"
+        android:layout_alignParentStart="true"
+        android:layout_marginBottom="@dimen/sm_tutorial_coach_page_text_review_video_bottom_margin"
+        android:text="@string/sm_tutorial_coach_page_text_review_video"
+        android:textAlignment="textStart"
+        android:textColor="@android:color/white"
+        android:textSize="@dimen/tutorial_page_small_text_size"/>
+
+    <ImageView
+        android:layout_width="@dimen/sm_coach_mode_pseudo_bar_height"
+        android:layout_height="@dimen/sm_coach_mode_pseudo_bar_height"
+        android:layout_alignParentEnd="true"
+        android:layout_alignParentTop="true"
+        android:layout_marginEnd="@dimen/sm_tutorial_coach_page_image_list_end_margin"
+        android:scaleType="center"
+        android:src="@drawable/list"/>
+
+    <ImageView
+        android:layout_width="@dimen/coach_mode_play_icon_width"
+        android:layout_height="@dimen/coach_mode_play_icon_height"
+        android:layout_alignParentTop="true"
+        android:layout_centerHorizontal="true"
+        android:layout_marginTop="@dimen/sm_tutorial_coach_page_image_play_top_margin"
+        android:scaleType="center"
+        android:src="@drawable/play"/>
+
+
+    <ImageView
+        android:id="@+id/video_image_view"
+        android:layout_width="@dimen/coach_mode_video_icon_width"
+        android:layout_height="@dimen/coach_mode_video_icon_height"
+        android:layout_alignParentBottom="true"
+        android:layout_alignParentStart="true"
+        android:layout_marginBottom="@dimen/coach_mode_video_icon_padding"
+        android:src="@drawable/video"/>
+
+    <ImageView
+        android:id="@+id/tutorial_close_image"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignParentBottom="true"
+        android:layout_centerHorizontal="true"
+        android:layout_marginBottom="@dimen/tutorial_page_close_image_bottom_padding"
+        android:background="@drawable/sm_button_click_selector"/>
+</RelativeLayout>

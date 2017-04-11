@@ -9,11 +9,9 @@ import android.graphics.Color;
 import android.graphics.Paint;
 import android.support.v4.content.ContextCompat;
 import android.util.AttributeSet;
-import android.util.Log;
 import android.util.TypedValue;
 import android.view.View;
 
-//TODO this is the output view for the statistics in the future
 public class HistogramChart extends View {
     private static final String LOG_TAG = "HistogramChart";
     private static final float TEXT_SIZE_DP = 16f;
@@ -81,7 +79,6 @@ public class HistogramChart extends View {
     }
 
     public void onDraw(Canvas canvas) {
-        Log.i(LOG_TAG, "onDraw ....");
         final float height = getHeight();
         final float width = getWidth() - mPaddingWidth * 2;
         final float gap = countSpaceGap(width);
@@ -97,8 +94,8 @@ public class HistogramChart extends View {
             Bitmap bitmap = BitmapFactory.decodeResource(mResources, IMAGES_ID[i]);
             canvas.drawBitmap(bitmap, x, y - mBarImageHeight, null);
             //draw proportion value
-            canvas.drawText(String.format(" %d%%", (int)(mProportion[i]+0.5)), x , y - mBarImageHeight +
-                    mTextHeight, mTextPaint);
+            canvas.drawText(String.format(" %d%%", (int) (mProportion[i] + 0.5)), x,
+                    y - mBarImageHeight + mTextHeight, mTextPaint);
             x = x + mBarWidth + gap;
         }
         //draw a line at the top of the view
@@ -116,10 +113,9 @@ public class HistogramChart extends View {
         return (spaceLeft < 0) ? 0 : spaceLeft / (mProportion.length - 1);
     }
 
-
-
     /**
      * Set the statistics data
+     *
      * @param data The statistics values in percent,valued from 0~100
      */
     public void setData(float data[]) {

@@ -60,15 +60,18 @@ import com.google.android.gms.vision.Detector;
 import com.google.android.gms.vision.Frame;
 
 import java.io.ByteArrayOutputStream;
+import java.io.File;
 import java.io.IOException;
 import java.lang.Thread.State;
 import java.lang.annotation.Retention;
 import java.lang.annotation.RetentionPolicy;
 import java.nio.ByteBuffer;
+import java.text.SimpleDateFormat;
 import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.HashMap;
 import java.util.List;
+import java.util.Locale;
 import java.util.Map;
 
 // Note: This requires Google Play Services 8.1 or higher, due to using indirect byte buffers for
@@ -100,7 +103,7 @@ public class CameraSource {
     @SuppressLint("InlinedApi")
     public static final int CAMERA_FACING_FRONT = CameraInfo.CAMERA_FACING_FRONT;
 
-    private static final String TAG = "OpenCameraSource";
+    private static final String TAG = "CameraSource";
 
     /**
      * The dummy surface texture must be assigned a chosen name.  Since we never use an OpenGL
@@ -513,33 +516,6 @@ public class CameraSource {
 
             // Jack ---
 
-            // clear the buffer to prevent oom exceptions
-//            mBytesToByteBuffer.clear();
-//
-//            if (mCamera != null) {
-//                mCamera.stopPreview();
-//                mCamera.setPreviewCallbackWithBuffer(null);
-//                try {
-//                    // We want to be compatible back to Gingerbread, but SurfaceTexture
-//                    // wasn't introduced until Honeycomb.  Since the interface cannot use a
-//                    // SurfaceTexture, if the
-//                    // developer wants to display a preview we must use a SurfaceHolder.  If the
-//                    // developer doesn't
-//                    // want to display a preview we use a SurfaceTexture if we are running at
-//                    // least Honeycomb.
-//
-//                    if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.HONEYCOMB) {
-//                        mCamera.setPreviewTexture(null);
-//
-//                    } else {
-//                        mCamera.setPreviewDisplay(null);
-//                    }
-//                } catch (Exception e) {
-//                    Log.e(TAG, "Failed to clear camera preview: " + e);
-//                }
-//                mCamera.release();
-//                mCamera = null;
-//            }
         }
     }
     /*unused*/
@@ -1283,7 +1259,7 @@ public class CameraSource {
                     mPendingFrameData = null;
                 }
                 final byte[] bytes = convertYUV420ToNV21(image);
-                // Log.e(TAG, "setNext thread is = "+Thread.currentThread().getId());
+
                 // Timestamp and frame ID are maintained here, which will give downstream code some
                 // idea of the timing of frames received and when frames were dropped along the way.
                 mPendingTimeMillis = SystemClock.elapsedRealtime() - mStartTimeMillis;
@@ -1312,7 +1288,7 @@ public class CameraSource {
         @Override
         public void run() {
             Frame outputFrame;
-            Log.e(TAG, "thread is = " + Thread.currentThread().getId());
+            Log.d(TAG, "thread is = " + Thread.currentThread().getId());
             while (true) {
                 synchronized (mLock) {
                     while (mActive && (mPendingFrameData == null)) {
@@ -1356,8 +1332,6 @@ public class CameraSource {
                     mDetector.receiveFrame(outputFrame);
                 } catch (Throwable t) {
                     Log.e(TAG, "Exception thrown from receiver.", t);
-                } finally {
-                    //mCamera.addCallbackBuffer(data.array());
                 }
             }
         }
@@ -1372,11 +1346,11 @@ public class CameraSource {
     @SuppressWarnings({"MissingPermission"})
     private void openCamera2() {
         if (mIsOpened) {
-            Log.e("Camera2", "Camera is opened,it should not be opened again");
+            Log.e(TAG, "Camera is opened,it should not be opened again");
             return;
         }
         if (!PermissionUtil.hasPermissions(mContext, PermissionUtil.VIDEO_PERMISSIONS)) {
-            Log.e("Camera2", "Runtime Permission denied ...");
+            Log.w(TAG, "Runtime Permission denied ...");
             return;
         }
 
@@ -1393,26 +1367,22 @@ public class CameraSource {
             mSensorOrientation = characteristics.get(CameraCharacteristics.SENSOR_ORIENTATION);
             mVideoSize = chooseVideoSize(map.getOutputSizes(MediaRecorder.class));
             mImagePreview = chooseVideoSize(map.getOutputSizes(SurfaceTexture.class));
-            //TODO: fix in the future
+            //TODO: delete logs below in the future
             final Activity activity = (FaceTrackerActivity) mContext;
-            Log.i("Camera2", "rotation = " +
-                    activity.getWindowManager()
-                            .getDefaultDisplay()
-                            .getRotation());
-
-            configureTransform(mTextureView.getWidth(), mTextureView.getHeight(), activity);
-            Log.i("Camera2", "SensorOrientation = " + mSensorOrientation);
-            Log.i("Camera2", "video_image_view width = " + mVideoSize
-                    .getWidth() + " video_image_view height = " +
-                    mVideoSize.getHeight());
-            Log.i("Camera2", "image width = " + mImagePreview.getWidth() + " image height = " +
+            Log.d(TAG,
+                    "rotation = " + activity.getWindowManager().getDefaultDisplay().getRotation());
+            Log.d(TAG, "SensorOrientation = " + mSensorOrientation);
+            Log.d(TAG, "video_image_view width = " + mVideoSize
+                    .getWidth() + " video_image_view height = " + mVideoSize.getHeight());
+            Log.d(TAG, "image width = " + mImagePreview.getWidth() + " image height = " +
                     mImagePreview.getHeight());
+            configureTransform(mTextureView.getWidth(), mTextureView.getHeight(), activity);
             mMediaRecorder2 = new MediaRecorder();
             setRotation();
             manager.openCamera(cameraId, new CameraDevice.StateCallback() {
                 @Override
                 public void onOpened(@NonNull CameraDevice camera) {
-                    Log.i("Camera2", "onOpened");
+                    Log.i(TAG, "Camera Device is onOpened");
                     mIsOpened = true;
                     mCameraDevice = camera;
                     startPreview();
@@ -1420,18 +1390,18 @@ public class CameraSource {
 
                 @Override
                 public void onDisconnected(@NonNull CameraDevice camera) {
-                    Log.i("Camera2", "onDisconnected");
+                    Log.i(TAG, "Camera Device is onDisconnected");
                     mIsOpened = false;
                     camera.close();
                 }
 
                 @Override
                 public void onError(@NonNull CameraDevice camera, int error) {
-                    Log.e("Camera2", "onError -> " + error);
+                    Log.e(TAG, "onError -> " + error);
                     camera.close();
                 }
             }, null);
-            Log.i("Camera2", "open Camera id = " + cameraId);
+            Log.i(TAG, "open Camera id = " + cameraId);
         } catch (CameraAccessException e) {
             e.printStackTrace();
         }
@@ -1441,7 +1411,7 @@ public class CameraSource {
     private void startPreview() {
         try {
             if (mCameraDevice == null) {
-                Log.i("Camera2", "updatePreview error, return");
+                Log.w(TAG, "updatePreview error ..... return");
                 return;
             }
             closePreviewSession();
@@ -1468,7 +1438,7 @@ public class CameraSource {
 
                 @Override
                 public void onConfigureFailed(@NonNull CameraCaptureSession cameraCaptureSession) {
-                    Log.e("Camera2", "Configuration failed");
+                    Log.e(TAG, "Camera Device Configuration failed");
                 }
             }, mHandler);
         } catch (CameraAccessException e) {
@@ -1496,8 +1466,7 @@ public class CameraSource {
         mMediaRecorder2.setAudioEncoder(MediaRecorder.AudioEncoder.AAC);
         //set audio format
         //mMediaRecorder2.setAudioEncoder(MediaRecorder.AudioEncoder.AMR_NB);
-        mMediaRecorder2.setOutputFile(Environment.getExternalStorageDirectory().getAbsolutePath()
-                + FILE_NAME + FILE_EXTENSION);
+        mMediaRecorder2.setOutputFile(getVideoFilePath());
         mMediaRecorder2.setVideoEncodingBitRate(ENCODING_BIT_RATE);
         mMediaRecorder2.setVideoFrameRate(ENCODING_FRAME_RATE);
         mMediaRecorder2.setOrientationHint(ENCODING_ORIENTATION_HINT);
@@ -1561,8 +1530,8 @@ public class CameraSource {
 
     private void startRecordingVideo() {
         if (mCameraDevice == null || !mTextureView.isAvailable() || mImagePreview == null) {
-            Log.e(TAG, "CameraDevice is = " + mCameraDevice + "TextureView is = " + mTextureView
-                    + " PreviewSize = " + mImagePreview);
+            Log.e(TAG, "CameraDevice = " + mCameraDevice + " or TextureView  = " + mTextureView
+                    .isAvailable() + " or ImagePreview = " + mImagePreview + " is not ready !!!");
             return;
         }
         try {
@@ -1602,7 +1571,7 @@ public class CameraSource {
 
                 @Override
                 public void onConfigureFailed(@NonNull CameraCaptureSession cameraCaptureSession) {
-                    Log.e("Camera2", "Configuration failed");
+                    Log.e(TAG, "CameraDevice Configuration failed");
                 }
             }, mHandler);
         } catch (CameraAccessException e) {
@@ -1612,7 +1581,11 @@ public class CameraSource {
     }
 
     private void stopRecordingVideo() {
-
+        if (mCameraDevice == null || !mTextureView.isAvailable() || mImagePreview == null) {
+            Log.e(TAG,
+                    "can't stop Recording with CameraDevice,TextureView,or ImagePreview is not ready");
+            return;
+        }
         mMediaRecorder2.stop();
         mMediaRecorder2.reset();
         mNextVideoAbsolutePath = null;
@@ -1625,7 +1598,7 @@ public class CameraSource {
     private void updatePreview() {
         if (mCameraDevice == null) {
             // The camera is already closed
-            Log.e("Camera2", "The camera is already closed");
+            Log.w("Camera2", "CameraDevice is already closed .... return ");
             return;
         }
         try {
@@ -1640,17 +1613,12 @@ public class CameraSource {
         builder.set(CaptureRequest.CONTROL_MODE, CameraMetadata.CONTROL_MODE_AUTO);
     }
 
-    private String getVideoFilePath(Context context) {
-        return context.getExternalFilesDir(null).getAbsolutePath() + "/"
-                + System.currentTimeMillis() + ".mp4";
-    }
-
     private void configureTransform(int viewWidth, int viewHeight, Activity activity) {
         if (null == mTextureView || null == mVideoSize || null == activity) {
             return;
         }
-        Log.i(TAG, "viewWidth = " + viewWidth + " viewHeight = " + viewHeight);
-        Log.i(TAG, "mVideoSize.getWidth() = " + mVideoSize
+        Log.d(TAG, "viewWidth = " + viewWidth + " viewHeight = " + viewHeight);
+        Log.d(TAG, "mVideoSize.getWidth() = " + mVideoSize
                 .getWidth() + "  mVideoSize.getHeight() = " + mVideoSize.getHeight());
         int rotation = activity.getWindowManager().getDefaultDisplay().getRotation();
         Matrix matrix = new Matrix();
@@ -1669,9 +1637,24 @@ public class CameraSource {
         }
         mTextureView.setTransform(matrix);
     }
+
     //==============================================================================================
     // static method
     //==============================================================================================
+    //TODO:it should be move to PathUtil or someWhere else in the future
+    private static String getVideoFilePath() {
+        final String fileDir = String.format("%s/ZenHeart/SmileMirror/AutoRecording"
+                , Environment.getExternalStorageDirectory().getAbsolutePath());
+        File file = new File(fileDir);
+        if (file.exists() || file.mkdirs()) {
+            SimpleDateFormat dateFormat = new SimpleDateFormat("'CV'_yyyyMMdd_HHmmss", Locale.US);
+            String date = dateFormat.format(new java.util.Date());
+            return String.format("%s/%s.mp4", fileDir, date);
+        } else {
+            Log.e(TAG, "Fail to make dir at " + file + "... return default ExternalDirectory ");
+            return Environment.getExternalStorageDirectory().getAbsolutePath();
+        }
+    }
 
     /**
      * This method used to find front-camera id
@@ -1701,15 +1684,17 @@ public class CameraSource {
      */
     private static android.util.Size chooseVideoSize(android.util.Size[] choices) {
         if (choices == null) {
-            Log.e("Camera2", "camera sizes could not be null!!!");
+            Log.e(TAG, "camera sizes could not be null!!!");
             return null;
         }
         for (android.util.Size size : choices) {
-            if (size.getWidth() == size.getHeight() * 4 / 3 && size.getWidth() <= PREVIEW_WIDTH) {
+            int width = size.getWidth();
+            int height = size.getHeight();
+            if (width == height * 4 / 3 && width <= PREVIEW_WIDTH) {
                 return size;
             }
         }
-        Log.e("Camera2", "Couldn't find any suitable video_image_view size");
+        Log.w(TAG, "Couldn't find any suitable video_image_view size... return default size");
         return choices[0];
     }
 

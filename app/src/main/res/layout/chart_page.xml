@@ -3,8 +3,7 @@
                 xmlns:android="http://schemas.android.com/apk/res/android"
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"
-                android:background="@color/teleprompter_background_color"
-                >
+                android:background="@color/teleprompter_background_color">
 
     <TextView
         android:id="@+id/statistics_text_view"
@@ -37,14 +36,13 @@
         android:textColor="@android:color/white"
         android:textSize="@dimen/chart_page_duration_text_size"/>
 
+
     <ImageView
         android:id="@+id/chart_close_view"
-        android:layout_width="@dimen/chart_page_close_image_width"
-        android:layout_height="@dimen/chart_page_close_image_height"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
         android:layout_alignParentBottom="true"
         android:layout_centerHorizontal="true"
-        android:layout_marginBottom="@dimen/chart_page_lower_layout_padding"
-        android:src="@drawable/close_btn"/>
-
-
+        android:layout_marginBottom="@dimen/tutorial_page_close_image_bottom_padding"
+        android:background="@drawable/sm_button_click_selector"/>
 </RelativeLayout>

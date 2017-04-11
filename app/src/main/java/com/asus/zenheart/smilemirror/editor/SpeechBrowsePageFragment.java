@@ -3,9 +3,7 @@ package com.asus.zenheart.smilemirror.editor;
 import android.content.Context;
 import android.content.DialogInterface;
 import android.content.Intent;
-import android.content.SharedPreferences;
 import android.database.Cursor;
-
 import android.net.Uri;
 import android.os.Bundle;
 import android.support.annotation.NonNull;
@@ -28,17 +26,16 @@ import android.widget.SeekBar;
 
 import com.asus.zenheart.smilemirror.FaceTrackerActivity;
 import com.asus.zenheart.smilemirror.R;
+import com.asus.zenheart.smilemirror.Util.PrefsUtils;
 import com.asus.zenheart.smilemirror.VerticalScrollTextView;
 import com.asus.zenheart.smilemirror.editor.database.SpeechContract;
-
-import static android.content.Context.MODE_PRIVATE;
 
 public class SpeechBrowsePageFragment extends Fragment {
 
     private static final String EXTRA_ID = "id";
     private static final SparseIntArray MARQUEE_ARRAY = new SparseIntArray() {
         {
-            append(0, VerticalScrollTextView.TEXT_SPEED.SLOW);
+            append(0, VerticalScrollTextView.TEXT_SPEED.LAZY);
             append(1, VerticalScrollTextView.TEXT_SPEED.SLOW);
             append(2, VerticalScrollTextView.TEXT_SPEED.NORMAL);
             append(3, VerticalScrollTextView.TEXT_SPEED.FAST);
@@ -48,14 +45,14 @@ public class SpeechBrowsePageFragment extends Fragment {
     // TODO: SparseArray is not a better solution for searching float value, but hash map can not find the index of the value.
     private final SparseIntArray FONT_SIZE_ARRAY = new SparseIntArray() {
         {
-            append(0, (int)VerticalScrollTextView.TEXT_SIZE.BIG);
-            append(1, (int)VerticalScrollTextView.TEXT_SIZE.DEFAULT);
-            append(2, (int)VerticalScrollTextView.TEXT_SIZE.SMALL);
+            append(0, (int) VerticalScrollTextView.TEXT_SIZE.BIG);
+            append(1, (int) VerticalScrollTextView.TEXT_SIZE.NORMAL);
+            append(2, (int) VerticalScrollTextView.TEXT_SIZE.SMALL);
         }
     };
     private VerticalScrollTextView mPresentText;
-    private SharedPreferences mSharedPreferences;
     private Context mContext;
+
     private Bundle mBundle;
     private AppCompatActivity mActivity;
     private long mItemId;
@@ -81,9 +78,6 @@ public class SpeechBrowsePageFragment extends Fragment {
         View view = inflater.inflate(R.layout.editor_browse_page_fragment, container, false);
         mContext = getContext();
         mBundle = getArguments();
-        mSharedPreferences = mContext
-                .getSharedPreferences(SpeechContract.SPEECH_SHARED_PREFERENCE_NAME
-                        , MODE_PRIVATE);
         if (mContext instanceof AppCompatActivity) {
             mActivity = ((AppCompatActivity) mContext);
         }
@@ -133,8 +127,9 @@ public class SpeechBrowsePageFragment extends Fragment {
         });
 
         SeekBar marqueeSeekBar = (SeekBar) view.findViewById(R.id.marqueeSeekBar);
-        marqueeSeekBar.setProgress(MARQUEE_ARRAY.indexOfValue(
-                mSharedPreferences.getInt(SpeechContract.MARQUEE_SCROLLING_SPEED,
+        marqueeSeekBar
+                .setProgress(MARQUEE_ARRAY.indexOfValue(PrefsUtils.getIntegerPreference(mContext,
+                        PrefsUtils.PREFS_SPEECH_SCROLLING_SPEED,
                         VerticalScrollTextView.TEXT_SPEED.NORMAL)));
         marqueeSeekBar.setOnSeekBarChangeListener(new SeekBar.OnSeekBarChangeListener() {
 
@@ -142,8 +137,10 @@ public class SpeechBrowsePageFragment extends Fragment {
             public void onProgressChanged(SeekBar seekBar, int progress, boolean fromUser) {
                 int speed = MARQUEE_ARRAY.get(progress);
                 mPresentText.setTextScrollSpeed(speed);
-                mSharedPreferences.edit().putInt(
-                        SpeechContract.MARQUEE_SCROLLING_SPEED, speed).apply();
+                PrefsUtils.setIntegerPreference(mContext,
+                        PrefsUtils.PREFS_SPEECH_SCROLLING_SPEED,
+                        speed);
+
             }
 
             @Override
@@ -173,17 +170,21 @@ public class SpeechBrowsePageFragment extends Fragment {
                 return false;
             }
         });
+
         mItemId = mBundle.getLong(EXTRA_ID);
         if (mBundle != null && mItemId != 0) {
-            mTextSize = mSharedPreferences.getFloat(SpeechContract.CONTENT_TEXT_SIZE,
-                    VerticalScrollTextView.TEXT_SIZE.DEFAULT);
-
-            Uri uri = Uri.withAppendedPath(SpeechContract.SPEECH_URI, String.valueOf(mItemId));
-            try (Cursor cursor = mContext.getContentResolver().query(uri, null, null, null, null)) {
+            mTextSize = PrefsUtils.getFloatPreference(mContext,
+                    PrefsUtils.PREFS_SPEECH_TEXT_SIZE,
+                    VerticalScrollTextView.TEXT_SIZE.NORMAL);
+            Uri uri = Uri
+                    .withAppendedPath(SpeechContract.SPEECH_URI, String.valueOf(mItemId));
+            try (Cursor cursor = mContext.getContentResolver()
+                    .query(uri, null, null, null, null)) {
                 if (cursor != null) {
                     if (cursor.moveToFirst()) {
                         toolBar.setTitle(
-                                cursor.getString(cursor.getColumnIndex(SpeechContract.TITLE)));
+                                cursor.getString(
+                                        cursor.getColumnIndex(SpeechContract.TITLE)));
                         mPresentText.setText(cursor.getString(
                                 cursor.getColumnIndex(SpeechContract.CONTENT)));
                         mPresentText.setTextSize(mTextSize);
@@ -191,11 +192,13 @@ public class SpeechBrowsePageFragment extends Fragment {
                     cursor.close();
                 }
                 mPresentText.setTextScrollSpeed(
-                        mSharedPreferences.getInt(SpeechContract.MARQUEE_SCROLLING_SPEED,
+                        PrefsUtils.getIntegerPreference(mContext,
+                                PrefsUtils.PREFS_SPEECH_SCROLLING_SPEED,
                                 VerticalScrollTextView.TEXT_SPEED.NORMAL));
             } catch (Exception e) {
                 e.printStackTrace();
             }
+
         }
     }
 
@@ -218,24 +221,28 @@ public class SpeechBrowsePageFragment extends Fragment {
     public boolean onOptionsItemSelected(MenuItem item) {
         int itemId = item.getItemId();
         if (itemId == R.id.editor_browse_menu_edit_text) {
-            SpeechEditPageFragment speechEditPageFragment = SpeechEditPageFragment.
-                    newInstance(mItemId);
+
+            SpeechEditPageFragment speechEditPageFragment = SpeechEditPageFragment
+                    .newInstance(mItemId);
+
             FragmentManager fragmentManager = getFragmentManager();
             FragmentTransaction fragmentTransaction = fragmentManager.beginTransaction();
             fragmentTransaction.replace(R.id.fragment, speechEditPageFragment);
             fragmentTransaction.commit();
         } else if (itemId == R.id.editor_browse_menu_next) {
-            mSharedPreferences.edit().putLong(SpeechContract.SPEECH_ID, mItemId).apply();
+            PrefsUtils.setLongPreference(mContext, PrefsUtils.PREFS_SPEECH_ID, mItemId);
             Intent intent = new Intent(mContext, FaceTrackerActivity.class);
-            intent.addFlags(Intent.FLAG_ACTIVITY_SINGLE_TOP | Intent.FLAG_ACTIVITY_CLEAR_TOP);
+            intent.addFlags(
+                    Intent.FLAG_ACTIVITY_SINGLE_TOP | Intent.FLAG_ACTIVITY_CLEAR_TOP);
             startActivity(intent);
         }
         return true;
     }
 
     private void showTextSizeRadioDialog() {
-        final int preferenceFontSize = (int)mSharedPreferences.getFloat(
-                SpeechContract.CONTENT_TEXT_SIZE, VerticalScrollTextView.TEXT_SIZE.DEFAULT);
+
+        final int preferenceFontSize = (int) PrefsUtils.getFloatPreference(mContext,
+                PrefsUtils.PREFS_SPEECH_TEXT_SIZE, VerticalScrollTextView.TEXT_SIZE.NORMAL);
 
         CharSequence[] fontSizeText = {mContext.getString(R.string.font_size_large),
                 mContext.getString(R.string.font_size_default), mContext.getString(
@@ -243,14 +250,17 @@ public class SpeechBrowsePageFragment extends Fragment {
         AlertDialog alertDialog;
         AlertDialog.Builder builder = new AlertDialog.Builder(mContext);
         builder.setTitle(R.string.font_size);
-        builder.setSingleChoiceItems(fontSizeText, FONT_SIZE_ARRAY.indexOfValue(preferenceFontSize),
+        builder.setSingleChoiceItems(fontSizeText,
+                FONT_SIZE_ARRAY.indexOfValue(preferenceFontSize),
                 new DialogInterface.OnClickListener() {
                     public void onClick(DialogInterface dialog, int itemPosition) {
                         mTextSize = FONT_SIZE_ARRAY.get(itemPosition);
+
                         mPresentText.setTextSize(mTextSize);
                         mPresentText.invalidate();
-                        mSharedPreferences.edit()
-                                .putFloat(SpeechContract.CONTENT_TEXT_SIZE, mTextSize).apply();
+                        PrefsUtils.setFloatPreference(mContext,
+                                PrefsUtils.PREFS_SPEECH_TEXT_SIZE,
+                                mTextSize);
                         dialog.dismiss();
                     }
                 });

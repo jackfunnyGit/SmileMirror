@@ -5,21 +5,21 @@
     <string name="editor_menu_item_rename">"Rename"</string>
     <string name="editor_menu_item_edit">"Edit"</string>
     <string name="editor_menu_item_delete">"Delete"</string>
-    <string name="editor_menu_item_mirror">"Mirror"</string>
-    <!-- Camera -->
-    <string name="app_name">"SmileMirror"</string>
-    <string name="ok">"OK"</string>
-    <string name="permission_camera_rationale">"Access to the camera is needed for detection"</string>
-    <string name="no_camera_permission">"This application cannot run because it does not have the camera permission.  The application will now exit."</string>
-    <string name="low_storage_error">"Face detector dependencies cannot be downloaded due to low device storage"</string>
+    <string name="editor_menu_item_mirror">"OK"</string>
+    <string name="coach_mode_menu_item_auto_record">"Auto video record"</string>
+    <!-- Camera --> <!--below should be replace in the future -->
+    <string name="sm_app_name" translatable="false">"SmileMirror"</string>
+    <string name="ok" translatable="false">"OK"</string>
+    <string name="permission_camera_rationale" translatable="false">"Access to the camera is needed for detection"</string>
+    <string name="no_camera_permission" translatable="false">"This application cannot run because it does not have the camera permission.  The application will now exit."</string>
     <!-- Smile Mirror -->
     <string name="smile_level_one_text">"Are you smiling?"</string>
     <string name="smile_level_two_text">"Getting better!"</string>
     <string name="smile_level_three_text">"Nice!"</string>
     <string name="smile_level_four_text">"Perfect!"</string>
 
-    <string name="text_title">"Self-Intro (1 minute)"</string>
-    <string name="text_content">"has no content,it should be Chinese local"</string>
+    <string name="sm_speech_content_create_script">"Click into the script list and create a new script."</string>
+    <string name="sm_speech_content_select_script">"Click into the script list and select a script."</string>
     <string name="smile_mode">"Smile Mode"</string>
     <string name="coach_mode">"Coach Mode"</string>
     <!-- chart page -->
@@ -33,7 +33,7 @@
     <string name="editor_check_yes">"Yes"</string>
     <string name="editor_check_cancel">"Cancel"</string>
     <string name="editor_check_discard">"Discard"</string>
-    <string name="editor_save_file_hint">"Please enter the title and the content"</string>
+    <string name="editor_save_file_hint">"Please input the script title"</string>
     <string name="editor_edit_script">"Edit script"</string>
     <string name="editor_delete_script">"Delete script"</string>
     <string name="delete_script_description">"Delete selected script(s)?"</string>
@@ -47,7 +47,6 @@
     <string name="editor_default_date">"Preloaded script"</string>
     <string name="editor_content_hint">"Input text"</string>
     <string name="editor_title_hint">"New script"</string>
-    <string name="editor_menu_title_select">"Select"</string>
     <string name="editor_menu_title_rename">"Rename"</string>
     <string name="sm_editor_add_script_remind">"Click the "+" button to create a new script."</string>
     <!-- Example Speeches -->
@@ -59,4 +58,14 @@
     <string name="editor_example_three_content">"Hello, I am (name). I have three advantages:\nFirst, I am a team player. I am good at inspiring morale, lead the team to achieve their goals. I once served as captain of Taiwan University badminton team, and led the team to get the year\'\'s college cup runner-up. It was the school team\'\'s best ever.\nSecond, I am very results-oriented. No matter which field, I can always conquer difficulties in the shortest possible time, create performance and achieve goals. When I was a project manager at Nestlé, I was able to meet performance targets for 24 consecutive months.\nFinally, I have the entrepreneurial spirit. I am often given the task of new business. Last season, I introduced the "coffee education and training activities" in Nestlé, it was very successful and all the classes were fully registered until end of the year.\nBased on the above characteristics, I believe I can make a great contribution to the company. Thank you."</string>
     <string name="editor_example_four_title">"Hotel front desk"</string>
     <string name="editor_example_four_content">"Good morning sir. How may I help you?\nDo you have a reservation?\nMay I have your ID or passport please?\nWould you like a single room or a double room?\nHow many days are you staying?\nPlease let us know if you need anything else, and have a wonderful stay!"</string>
+    <!-- tutorial page  -->
+    <string name="sm_tutorial_main_page_title">"Try your best brilliant smile!"</string>
+    <string name="sm_tutorial_main_page_content">"Swipe to switch mode"</string>
+    <string name="sm_tutorial_coach__page_text_script_list">"Script list"</string>
+    <string name="sm_tutorial_coach_page_text_start_practice">"Start practice"</string>
+    <string name="sm_tutorial_coach_page_text_title">"Practice your smile during conversation"</string>
+    <string name="sm_tutorial_coach_page_text_review_video">"Review recorded video"</string>
+    <!-- alert dialog  -->
+    <string name="sm_alert_dialog_auto_recording_title">"Turn off auto video record?"</string>
+    <string name="sm_alert_dialog_auto_recording_message">"Once turned off, the system will not record the video during conversation for your later review. Are your sure to turn it off?"</string>
 </resources>

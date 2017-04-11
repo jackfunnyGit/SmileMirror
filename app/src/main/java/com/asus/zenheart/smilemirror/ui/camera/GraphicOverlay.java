@@ -17,18 +17,13 @@
 package com.asus.zenheart.smilemirror.ui.camera;
 
 import android.content.Context;
-import android.content.res.Configuration;
 import android.graphics.Canvas;
-import android.graphics.Point;
 import android.util.AttributeSet;
-import android.util.DisplayMetrics;
-import android.util.Log;
-import android.view.Display;
 import android.view.View;
-import android.view.WindowManager;
 
 import com.asus.zenheart.smilemirror.FaceGraphic;
 import com.asus.zenheart.smilemirror.SmileDegreeCounter;
+import com.google.android.gms.vision.face.Face;
 
 import java.util.HashSet;
 import java.util.Set;
@@ -65,10 +60,13 @@ public class GraphicOverlay extends View {
     private long mTimeStampStart;
     private long mTimeStampEnd;
     private Mode mMode = Mode.SMILE;
+
     public enum Mode {SMILE, CONVERSATION}
 
     private boolean mAddingEffect = false;
-    private int mMinDefaultRadio;
+
+    private static final float MIN_FACE_WINDOW_RATIO = 0.15f;
+
     public GraphicOverlay(Context context, AttributeSet attrs) {
         super(context, attrs);
     }
@@ -177,7 +175,6 @@ public class GraphicOverlay extends View {
     @Override
     protected void onDraw(Canvas canvas) {
         super.onDraw(canvas);
-        //Log.e("Graphic Overlay onDraw", " thread is = " + Thread.currentThread().getId());
         synchronized (mLock) {
             if ((mPreviewWidth != 0) && (mPreviewHeight != 0)) {
                 mWidthScaleFactor = (float) canvas.getWidth() / (float) mPreviewWidth;
@@ -188,15 +185,12 @@ public class GraphicOverlay extends View {
             FaceGraphic Array[] = mGraphics.toArray(new FaceGraphic[mGraphics.size()]);
 
             //TODO: Waiting for multi-player mode UIRS lock down
-            Point height = new Point();
-            ((WindowManager) getContext().getSystemService(Context.WINDOW_SERVICE)).getDefaultDisplay().getSize(height);
-            if (height.x > height.y) {
-                mMinDefaultRadio = 96;
-            } else {
-                mMinDefaultRadio = 72;
-            }
+
+
             for (FaceGraphic aArray : Array) {
-                if (aArray.getFaceData().getHeight() < mMinDefaultRadio) {
+                Face face = aArray.getFaceData();
+                if (face.getHeight() < (mPreviewHeight * MIN_FACE_WINDOW_RATIO) ||
+                        face.getWidth() < (mPreviewWidth * MIN_FACE_WINDOW_RATIO)) {
                     mGraphics.remove(aArray);
                 }
             }

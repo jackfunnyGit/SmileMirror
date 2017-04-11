@@ -5,9 +5,9 @@ import android.view.View;
 import android.view.animation.AlphaAnimation;
 import android.view.animation.Animation;
 import android.view.animation.LinearInterpolator;
-import android.view.animation.RotateAnimation;
+import android.widget.TextView;
 
-//TODO rename in the future, factory should not be used like this
+//TODO rename and refactor in the future, factory should not be used like this
 public class AnimationUtil {
     private static final String LOG_TAG = "AnimationUtil";
     private static final int TOAST_ANIMATION_TIME_MILL = 2000;
@@ -42,6 +42,16 @@ public class AnimationUtil {
         return toastAnimation;
     }
 
+    public static void showToast(@NonNull TextView toastView, int stringId, int drawableId) {
+        if (toastView == null) {
+            return;
+        }
+        toastView.setVisibility(View.VISIBLE);
+        toastView.setText(stringId);
+        toastView.setCompoundDrawablesWithIntrinsicBounds(0, drawableId, 0, 0);
+        toastAnimation(toastView);
+    }
+
     public static void toastAnimation(View targetView) {
         final Animation toastAnimation = AnimationUtil.toastFactory(targetView);
         targetView.setAnimation(toastAnimation);
@@ -66,15 +76,4 @@ public class AnimationUtil {
         return blinkAnimation;
     }
 
-    //TODO: getWindow background animation
-    public static Animation loadingFactory(int intervalTime) {
-
-        Animation rotateAnimation = new RotateAnimation(0, 360, Animation.RELATIVE_TO_SELF, 0.5f,
-                Animation.RELATIVE_TO_SELF, 0.5f);
-
-        rotateAnimation.setDuration(intervalTime);
-
-        rotateAnimation.setRepeatCount(Animation.INFINITE);
-        return rotateAnimation;
-    }
 }
