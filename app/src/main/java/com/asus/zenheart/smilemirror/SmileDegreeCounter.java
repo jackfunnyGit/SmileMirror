@@ -33,12 +33,10 @@ public class SmileDegreeCounter {
     private static final float SMILE_LEVEL_L2 = 0.3f;
     private static final float SMILE_LEVEL_L1 = 0;
 
-    public SmileDegreeCounter() {
-        setMovingWindowSize(DEFAULT_WINDOW_SIZE);
-    }
-
-    public SmileDegreeCounter(int movingWindowSize) {
-        setMovingWindowSize(movingWindowSize);
+    /**
+     * Private constructor to have users use builder
+     */
+    private SmileDegreeCounter() {
     }
 
     private void clearRecordingCount() {
@@ -142,7 +140,6 @@ public class SmileDegreeCounter {
         return mSimpleMovingAverage;
     }
 
-
     public int[] getSmileCounts() {
         return mSmileCounts;
     }
@@ -196,4 +193,29 @@ public class SmileDegreeCounter {
         }
         return sum;
     }
+
+    public static class Builder {
+        private int mWindowSize;
+
+        public Builder() {
+            mWindowSize = DEFAULT_WINDOW_SIZE;
+        }
+
+        public Builder setMovingWindowSize(int n) {
+            if (n < 0) {
+                Log.w(LOG_TAG, "movingWindow should not be smaller than zero");
+                n = DEFAULT_WINDOW_SIZE;
+            }
+            mWindowSize = n;
+            return this;
+        }
+
+        public SmileDegreeCounter create() {
+            SmileDegreeCounter counter = new SmileDegreeCounter();
+            counter.setMovingWindowSize(mWindowSize);
+            return counter;
+        }
+
+    }
+
 }

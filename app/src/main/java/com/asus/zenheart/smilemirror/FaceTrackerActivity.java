@@ -559,7 +559,7 @@ public final class FaceTrackerActivity extends AppCompatActivity implements
         hideGuiElement();
         final GraphicOverlay.Graphic graphic = mGraphicOverlay.getGraphic();
         if (graphic == null) {
-            addChartPageView(new SmileDegreeCounter());
+            addChartPageView(new SmileDegreeCounter.Builder().create());
         } else {
             addChartPageView(graphic.getSmileDegreeCounter());
         }

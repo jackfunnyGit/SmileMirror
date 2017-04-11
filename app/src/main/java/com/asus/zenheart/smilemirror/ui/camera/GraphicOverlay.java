@@ -225,7 +225,9 @@ public class GraphicOverlay extends View {
 
         public Graphic(GraphicOverlay overlay) {
             mOverlay = overlay;
-            mSmileDegreeCounter = new SmileDegreeCounter(MOVING_WINDOW_SIZE);
+            mSmileDegreeCounter = new SmileDegreeCounter.Builder()
+                    .setMovingWindowSize(MOVING_WINDOW_SIZE)
+                    .create();
         }
 
         /**
