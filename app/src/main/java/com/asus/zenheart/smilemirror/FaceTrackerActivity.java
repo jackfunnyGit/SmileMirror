@@ -83,7 +83,7 @@ public final class FaceTrackerActivity extends AppCompatActivity implements
 
     // member field
     private Context mContext;
-    private ViewPager mViewpager;
+    private BorderViewPager mViewpager;
     private ModePagerAdapter mPagerAdapter;
     private SmileIndicatorView mSmileIndicatorView;
     private TextView mToastTextView;
@@ -127,7 +127,7 @@ public final class FaceTrackerActivity extends AppCompatActivity implements
         mContainer = (ViewGroup) findViewById(android.R.id.content);
         mPreview = (CameraSourcePreview) findViewById(R.id.preview);
         mGraphicOverlay = (GraphicOverlay) findViewById(R.id.face_overlay);
-        mViewpager = (ViewPager) findViewById(R.id.viewpager);
+        mViewpager = (BorderViewPager) findViewById(R.id.viewpager);
         mToastTextView = (TextView) findViewById(R.id.toast_text);
         mSmileIndicatorView = (SmileIndicatorView) findViewById(R.id.smile_indicator);
         mCloseImageView = (ImageView) findViewById(R.id.close_back_image);
@@ -189,23 +189,6 @@ public final class FaceTrackerActivity extends AppCompatActivity implements
             }
         });
 
-        mViewpager.setOnTouchListener(new View.OnTouchListener() {
-            @Override
-            public boolean onTouch(View v, MotionEvent event) {
-                //always return false because touch event is expected to dispatch to viewPager
-                switch (event.getAction()) {
-                    case MotionEvent.ACTION_DOWN:
-                        setBorderLine(true);
-                        return false;
-                    case MotionEvent.ACTION_MOVE:
-                        return false;
-                    case MotionEvent.ACTION_UP:
-                        setBorderLine(false);
-                        return false;
-                }
-                return false;
-            }
-        });
 
         addTutorialView(PrefsUtils.PREFS_SHOW_MAIN_TUTORIAL, R.layout.tutorial_main_page);
     }
@@ -297,19 +280,7 @@ public final class FaceTrackerActivity extends AppCompatActivity implements
         mGraphicOverlay.setVisibility(View.VISIBLE);
     }
 
-    private void setBorderLine(boolean borderLine) {
-        if (borderLine) {
-            for (int i = 0; i < mViewpager.getChildCount(); i++) {
-                mViewpager.getChildAt(i).findViewById(R.id.border_line)
-                        .setBackgroundResource(R.drawable.border_line_background);
-            }
-        } else {
-            for (int i = 0; i < mViewpager.getChildCount(); i++) {
-                mViewpager.getChildAt(i).findViewById(R.id.border_line).setBackground(null);
-            }
-        }
 
-    }
 
     private void refreshViewContent() {
         mPagerAdapter.refreshViewContent();
@@ -317,6 +288,7 @@ public final class FaceTrackerActivity extends AppCompatActivity implements
 
     private void resetGuiElementState() {
         mPagerAdapter.resetGuiElementState();
+        mViewpager.setSwipeEnabled(true);
     }
     // Jack ---
 
@@ -595,6 +567,7 @@ public final class FaceTrackerActivity extends AppCompatActivity implements
 
     @Override
     public void startRecord() {
+        mViewpager.setSwipeEnabled(false);
         mGraphicOverlay.setRecordingState(true);
         mGraphicOverlay.setRecordingStartTime(System.currentTimeMillis());
         mCameraSource.startRecord2();
@@ -602,6 +575,7 @@ public final class FaceTrackerActivity extends AppCompatActivity implements
 
     @Override
     public void stopRecord() {
+        mViewpager.setSwipeEnabled(true);
         mGraphicOverlay.setRecordingState(false);
         mGraphicOverlay.setRecordingEndTime(System.currentTimeMillis());
         mCameraSource.stopRecord2();
