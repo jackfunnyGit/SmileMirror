@@ -12,7 +12,7 @@ import android.util.AttributeSet;
 import android.util.TypedValue;
 import android.view.View;
 
-public class HistogramChart extends View {
+public class HistogramChartView extends View {
     private static final String LOG_TAG = "HistogramChart";
     private static final float TEXT_SIZE_DP = 16f;
     private static final float STROKE_WIDTH = 1f;
@@ -45,18 +45,18 @@ public class HistogramChart extends View {
     private Paint mPaint;
     private Paint mTextPaint;
 
-    public HistogramChart(Context context) {
+    public HistogramChartView(Context context) {
         super(context);
         initHistogramChart(context);
 
     }
 
-    public HistogramChart(Context context, AttributeSet attrs) {
+    public HistogramChartView(Context context, AttributeSet attrs) {
         super(context, attrs);
         initHistogramChart(context);
     }
 
-    public HistogramChart(Context context, AttributeSet attrs, int defStyleAttr) {
+    public HistogramChartView(Context context, AttributeSet attrs, int defStyleAttr) {
         super(context, attrs, defStyleAttr);
         initHistogramChart(context);
     }

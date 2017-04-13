@@ -55,6 +55,7 @@ import android.view.WindowManager;
 
 import com.asus.zenheart.smilemirror.FaceTrackerActivity;
 import com.asus.zenheart.smilemirror.Util.PermissionUtil;
+import com.asus.zenheart.smilemirror.Util.PrefsUtils;
 import com.google.android.gms.common.images.Size;
 import com.google.android.gms.vision.Detector;
 import com.google.android.gms.vision.Frame;
@@ -1742,11 +1743,18 @@ public class CameraSource {
     //==============================================================================================
     // Public method
     //==============================================================================================
-    public void startRecord2() {
+    public void startRecord() {
+        if (!PrefsUtils.getBooleanPreference(mContext, PrefsUtils.PREFS_AUTO_RECORDING, true)) {
+            return;
+        }
         startRecordingVideo();
     }
 
-    public void stopRecord2() {
+    public void stopRecord() {
+        if (!PrefsUtils.getBooleanPreference(mContext, PrefsUtils.PREFS_AUTO_RECORDING, true)) {
+            Log.e(TAG,"should not stop Record with the PREFS_AUTO_RECORDING false !!!");
+            return;
+        }
         stopRecordingVideo();
     }
 

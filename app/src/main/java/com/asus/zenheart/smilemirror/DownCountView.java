@@ -7,6 +7,8 @@ import android.graphics.Rect;
 import android.util.AttributeSet;
 import android.view.View;
 
+import java.util.Locale;
+
 public class DownCountView extends View {
 
     private static final String LOG_TAG = "DownCountView";
@@ -52,7 +54,7 @@ public class DownCountView extends View {
     @Override
     protected void onDraw(Canvas canvas) {
         super.onDraw(canvas);
-        String text = String.format("%d", mCount);
+        String text = String.format(Locale.US,"%d", mCount);
         mPaint.getTextBounds(text, 0, text.length(), mBound);
         canvas.drawText(text, getWidth() / 2, getHeight() / 2 + mBound.height() / 2, mPaint);
     }

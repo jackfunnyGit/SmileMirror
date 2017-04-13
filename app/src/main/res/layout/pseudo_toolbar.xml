@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="utf-8"?>
-<RelativeLayout android:id="@+id/title_layout"
+<com.asus.zenheart.smilemirror.PseudoToolBar android:id="@+id/title_layout"
                 xmlns:android="http://schemas.android.com/apk/res/android"
                 android:layout_width="match_parent"
                 android:layout_height="@dimen/sm_coach_mode_pseudo_bar_height"
@@ -33,4 +33,4 @@
         android:scaleType="center"
         android:src="@drawable/setting"/>
 
-</RelativeLayout>
+</com.asus.zenheart.smilemirror.PseudoToolBar>

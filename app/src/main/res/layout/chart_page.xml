@@ -16,7 +16,7 @@
         android:textColor="@android:color/white"
         android:textSize="@dimen/chart_page_statistics_title_text_size"/>
 
-    <com.asus.zenheart.smilemirror.HistogramChart
+    <com.asus.zenheart.smilemirror.HistogramChartView
         android:id="@+id/histogram_chart"
         android:layout_width="match_parent"
         android:layout_height="@dimen/chart_page_histogram_height"

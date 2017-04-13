@@ -19,7 +19,7 @@
     <string name="coach_mode">"对谈模式"</string>
     <!-- chart page -->
     <string name="chart_page_smile_statistics">"微笑统计"</string>
-    <string name="chart_page_smile_duration">"总长度： %1$s秒"</string>
+    <string name="chart_page_smile_duration">"总长度： "</string>
     <!-- Editor -->
     <string name="editor_save_new_file_title">"储存脚本"</string>
     <string name="editor_save_file_title">"储存"</string>
@@ -40,7 +40,7 @@
     <string name="font_size_small">"小型"</string>
 
     <string name="editor_select_item">"已選 %1$s 個"</string>
-    <string name="editor_default_date">""</string>
+    <string name="editor_default_date">"默认脚本"</string>
     <string name="editor_content_hint">"输入文字"</string>
     <string name="editor_title_hint">"新脚本"</string>
     <string name="editor_menu_title_rename">重新命名</string>
@@ -60,7 +60,7 @@
     <string name="sm_tutorial_coach__page_text_script_list">"对谈脚本清单"</string>
     <string name="sm_tutorial_coach_page_text_start_practice">"开始练习"</string>
     <string name="sm_tutorial_coach_page_text_title">"练习在对谈过程中保持微笑"</string>
-    <string name="sm_tutorial_coach_page_text_review_video">"检视过程中的录像"</string>
+    <string name="sm_tutorial_coach_page_text_review_video">"检视录像"</string>
     <!-- alert dialog  -->
     <string name="sm_alert_dialog_auto_recording_title">"关闭自动录像？"</string>
     <string name="sm_alert_dialog_auto_recording_message">"关闭后，对谈练习过程中将不会进行录像以供事后检视。确定要关闭？"</string>

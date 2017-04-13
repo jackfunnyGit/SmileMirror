@@ -6,14 +6,15 @@ import android.content.DialogInterface;
 import android.content.Intent;
 import android.support.annotation.NonNull;
 import android.support.v4.view.PagerAdapter;
-import android.support.v7.widget.PopupMenu;
 import android.util.Log;
+import android.view.ContextThemeWrapper;
 import android.view.LayoutInflater;
 import android.view.MenuItem;
 import android.view.MotionEvent;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.ImageView;
+import android.widget.PopupMenu;
 import android.widget.RelativeLayout;
 
 import com.asus.zenheart.smilemirror.Util.PrefsUtils;
@@ -115,11 +116,25 @@ public class ModePagerAdapter extends PagerAdapter {
         mViewHolder.isRecording = false;
     }
 
+    public void hideGuiElementInCoach() {
+        if (mViewHolder == null) {
+            return;
+        }
+        mViewHolder.hideGuiElementInCoach();
+    }
+
+    public void showGuiElement() {
+        if (mViewHolder == null) {
+            return;
+        }
+        mViewHolder.showGuiElement();
+    }
+
     public interface ActivityCallback {
 
         void hideChartPage();
 
-        void showChartPage();
+        void showChartPage(String timeText);
 
         void startRecord();
 
@@ -140,6 +155,7 @@ public class ModePagerAdapter extends PagerAdapter {
         public final View pseudoView;
         public final View countPageView;
         public final DownCountView downCountView;
+        public final PseudoToolBar pseudoToolBar;
 
         public boolean isRecording;
 
@@ -161,6 +177,7 @@ public class ModePagerAdapter extends PagerAdapter {
             pseudoView = view.findViewById(R.id.pseudo_close_view);
             countPageView = inflateCountPageView();
             downCountView = (DownCountView) countPageView.findViewById(R.id.down_count_view);
+            pseudoToolBar = (PseudoToolBar)view.findViewById(R.id.pseudo_toolbar);
             if (context instanceof ActivityCallback) {
                 mCallback = (ActivityCallback) context;
             }
@@ -181,7 +198,8 @@ public class ModePagerAdapter extends PagerAdapter {
             imageViewSetting.setOnClickListener(new View.OnClickListener() {
                 @Override
                 public void onClick(View v) {
-                    final PopupMenu popupmenu = new PopupMenu(mContext, v);
+                   Context wrapper = new ContextThemeWrapper(mContext, R.style.PopupMenuTheme);
+                    final PopupMenu popupmenu = new PopupMenu(wrapper, v);
                     popupmenu.inflate(R.menu.coach_mode_title_bar_menu);
                     final MenuItem item = popupmenu.getMenu()
                             .findItem(R.id.coach_mode_auto_record_checkbox);
@@ -222,7 +240,7 @@ public class ModePagerAdapter extends PagerAdapter {
                         resetGuiElement();
                         if (mCallback != null) {
                             mCallback.stopRecord();
-                            mCallback.showChartPage();
+                            mCallback.showChartPage(countView.getTimeText());
                         }
                         isRecording = false;
                     } else {
@@ -384,6 +402,18 @@ public class ModePagerAdapter extends PagerAdapter {
             scrollTextView.loadContentToView(
                     PrefsUtils.getLongPreference(mContext, PrefsUtils.PREFS_SPEECH_ID, 1));
             scrollTextView.updateTextStyle();
+        }
+
+        public void hideGuiElementInCoach() {
+            //TODO: it should be remove in the patch about "remove pseudoView and add back pointer"
+            pseudoView.setVisibility(View.INVISIBLE);
+            pseudoToolBar.setInterceptTouchEvent(true);
+        }
+
+        public void showGuiElement() {
+            //TODO: it should be remove in the patch about "remove pseudoView and add back pointer"
+            pseudoView.setVisibility(View.VISIBLE);
+            pseudoToolBar.setInterceptTouchEvent(false);
         }
     }
 

@@ -4,23 +4,35 @@
                 android:layout_height="match_parent"
                 android:background="@drawable/tutorial_page_01">
 
+    <Space
+        android:id="@+id/space_title_align_target"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignParentTop="true"
+        android:layout_marginTop="@dimen/tutorial_page_title_top_padding"/>
+
     <TextView
         android:layout_width="@dimen/tutorial_page_title_width"
         android:layout_height="wrap_content"
-        android:layout_alignParentTop="true"
+        android:layout_alignBottom="@id/space_title_align_target"
         android:layout_centerHorizontal="true"
-        android:layout_marginTop="@dimen/tutorial_page_title_top_padding"
         android:text="@string/sm_tutorial_main_page_title"
         android:textAlignment="center"
         android:textColor="@color/sm_color_green_tutorial_page"
         android:textSize="@dimen/tutorial_page_big_text_size"/>
 
-    <TextView
+    <Space
+        android:id="@+id/space_content_align_target"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_alignParentTop="true"
+        android:layout_marginTop="@dimen/tutorial_page_content_top_padding"/>
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignBottom="@id/space_content_align_target"
         android:layout_centerHorizontal="true"
-        android:layout_marginTop="@dimen/tutorial_page_content_top_padding"
         android:text="@string/sm_tutorial_main_page_content"
         android:textAlignment="center"
         android:textColor="@android:color/white"

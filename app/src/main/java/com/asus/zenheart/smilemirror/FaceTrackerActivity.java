@@ -189,7 +189,6 @@ public final class FaceTrackerActivity extends AppCompatActivity implements
             }
         });
 
-
         addTutorialView(PrefsUtils.PREFS_SHOW_MAIN_TUTORIAL, R.layout.tutorial_main_page);
     }
 
@@ -238,10 +237,10 @@ public final class FaceTrackerActivity extends AppCompatActivity implements
      *
      * @param smileDegreeCounter The counter containing the statistical data
      */
-    private void addChartPageView(SmileDegreeCounter smileDegreeCounter) {
+    private void addChartPageView(SmileDegreeCounter smileDegreeCounter, String timeText) {
         mChartPage = LayoutInflater.from(mContext).inflate(R.layout.chart_page, mContainer, false);
         ImageView closeView = (ImageView) mChartPage.findViewById(R.id.chart_close_view);
-        HistogramChart chartView = (HistogramChart) mChartPage.findViewById(R.id.histogram_chart);
+        HistogramChartView chartView = (HistogramChartView) mChartPage.findViewById(R.id.histogram_chart);
         TextView textView = (TextView) mChartPage.findViewById(R.id.duration_text_view);
         closeView.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -250,9 +249,9 @@ public final class FaceTrackerActivity extends AppCompatActivity implements
             }
         });
         chartView.setData(smileDegreeCounter.getSmileCountsPercent());
-        String timeText = String.format("%.2f", mGraphicOverlay.getRecordingTime());
         textView.setText(
-                String.format(mContext.getString(R.string.chart_page_smile_duration), timeText));
+                String.format("%s%s", mContext.getString(R.string.chart_page_smile_duration),
+                        timeText));
         mContainer.addView(mChartPage);
     }
 
@@ -273,14 +272,19 @@ public final class FaceTrackerActivity extends AppCompatActivity implements
         mGraphicOverlay.setVisibility(View.INVISIBLE);
     }
 
+    private void hideGuiElementInCoach() {
+        mSmileIndicatorView.setVisibility(View.INVISIBLE);
+        mCloseImageView.setVisibility(View.INVISIBLE);
+        mPagerAdapter.hideGuiElementInCoach();
+    }
+
     private void showGuiElement() {
         mSmileIndicatorView.setVisibility(View.VISIBLE);
         mCloseImageView.setVisibility(View.VISIBLE);
         mViewpager.setVisibility(View.VISIBLE);
         mGraphicOverlay.setVisibility(View.VISIBLE);
+        mPagerAdapter.showGuiElement();
     }
-
-
 
     private void refreshViewContent() {
         mPagerAdapter.refreshViewContent();
@@ -289,6 +293,7 @@ public final class FaceTrackerActivity extends AppCompatActivity implements
     private void resetGuiElementState() {
         mPagerAdapter.resetGuiElementState();
         mViewpager.setSwipeEnabled(true);
+        showGuiElement();
     }
     // Jack ---
 
@@ -555,30 +560,29 @@ public final class FaceTrackerActivity extends AppCompatActivity implements
     }
 
     @Override
-    public void showChartPage() {
+    public void showChartPage(String timeText) {
         hideGuiElement();
         final GraphicOverlay.Graphic graphic = mGraphicOverlay.getGraphic();
         if (graphic == null) {
-            addChartPageView(new SmileDegreeCounter.Builder().create());
+            addChartPageView(new SmileDegreeCounter.Builder().create(), timeText);
         } else {
-            addChartPageView(graphic.getSmileDegreeCounter());
+            addChartPageView(graphic.getSmileDegreeCounter(), timeText);
         }
     }
 
     @Override
     public void startRecord() {
+        hideGuiElementInCoach();
         mViewpager.setSwipeEnabled(false);
         mGraphicOverlay.setRecordingState(true);
-        mGraphicOverlay.setRecordingStartTime(System.currentTimeMillis());
-        mCameraSource.startRecord2();
+        mCameraSource.startRecord();
     }
 
     @Override
     public void stopRecord() {
         mViewpager.setSwipeEnabled(true);
         mGraphicOverlay.setRecordingState(false);
-        mGraphicOverlay.setRecordingEndTime(System.currentTimeMillis());
-        mCameraSource.stopRecord2();
+        mCameraSource.stopRecord();
     }
 
     @Override

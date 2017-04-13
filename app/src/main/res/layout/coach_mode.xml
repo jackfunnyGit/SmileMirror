@@ -54,7 +54,9 @@
         android:layout_alignParentStart="true"
         android:layout_marginBottom="@dimen/coach_mode_recording_icon_padding"
         android:layout_marginStart="@dimen/coach_mode_recording_icon_padding"
-        android:drawableTop="@drawable/rec_text"
+        android:drawablePadding="@dimen/coach_mode_recording_inner_padding"
+        android:drawableStart="@drawable/rec_text"
+        android:gravity="center_vertical"
         android:textColor="@android:color/white"
         android:textSize="@dimen/coach_mode_recording_view_text_size"
         android:visibility="invisible"/>

@@ -57,8 +57,6 @@ public class GraphicOverlay extends View {
 
     // Jack +++
     private boolean mIsRecording = false;
-    private long mTimeStampStart;
-    private long mTimeStampEnd;
     private Mode mMode = Mode.SMILE;
 
     public enum Mode {SMILE, CONVERSATION}
@@ -136,18 +134,6 @@ public class GraphicOverlay extends View {
             return graphic;
         }
         return null;
-    }
-
-    public void setRecordingStartTime(long mills) {
-        mTimeStampStart = mills;
-    }
-
-    public void setRecordingEndTime(long mills) {
-        mTimeStampEnd = mills;
-    }
-
-    public float getRecordingTime() {
-        return (mTimeStampEnd - mTimeStampStart) / (float) 1000;
     }
 
     public void setMode(Mode mode) {

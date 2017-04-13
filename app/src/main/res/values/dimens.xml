@@ -42,7 +42,8 @@
     <dimen name="coach_mode_recording_icon_width">64dp</dimen>
     <dimen name="coach_mode_recording_icon_height">32dp</dimen>
     <dimen name="coach_mode_recording_icon_padding">23dp</dimen>
-    <dimen name="coach_mode_recording_view_text_size">23dp</dimen>
+    <dimen name="coach_mode_recording_inner_padding">8dp</dimen>
+    <dimen name="coach_mode_recording_view_text_size">16dp</dimen>
     <!-- Vertical text view padding-->
     <dimen name="vertical_text_view_width_padding">23dp</dimen>
     <!-- histogram chart -->
@@ -60,7 +61,7 @@
     <dimen name="count_down_page_width_size">190dp</dimen>
     <dimen name="count_down_page_height_size">190dp</dimen>
     <!-- tutorial page -->
-    <dimen name="tutorial_page_title_top_padding">100dp</dimen>
+    <dimen name="tutorial_page_title_top_padding">140dp</dimen>
     <dimen name="tutorial_page_content_top_padding">315dp</dimen>
     <dimen name="tutorial_page_close_image_bottom_padding">27dp</dimen>
     <dimen name="tutorial_page_close_image_width">44dp</dimen>
@@ -113,6 +114,7 @@
     <!-- border line -->
     <dimen name="border_line_stroke_width">1dp</dimen>
     <dimen name="border_line_padding">1dp</dimen>
+
 
 
 </resources>

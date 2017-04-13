@@ -10,14 +10,17 @@ import android.util.AttributeSet;
 import android.util.Log;
 import android.widget.TextView;
 
+import java.util.Locale;
+
 public class CounterView extends TextView {
     private static final String LOG_TAG = "CounterView";
     private static final int DELAY_TIME_MILLS = 1000;
-    private static final int INDEX_COMPOUND_TOP = 1;
+    private static final int INDEX_COMPOUND_START = 0;
 
     private boolean mIsCounting;
     private long mCountingTime;
-    private GravityCompoundDrawable mGravityDrawable;
+    private Drawable mInnerDrawable;
+    private SpaceCompoundDrawable mSpaceDrawable;
 
     private CountingRunnable mRunnable = new CountingRunnable();
 
@@ -38,35 +41,27 @@ public class CounterView extends TextView {
 
     private void initCounterView() {
         mCountingTime = 0;
-        final Drawable innerDrawable = getCompoundDrawables()[INDEX_COMPOUND_TOP];
-        if (innerDrawable == null) {
+        mInnerDrawable = getCompoundDrawablesRelative()[INDEX_COMPOUND_START];
+        if (mInnerDrawable == null) {
             Log.w(LOG_TAG, "drawable is null");
-            return;
         }
-        mGravityDrawable = alignDrawableToLeftTop(innerDrawable);
-        setCompoundDrawables(null, mGravityDrawable, null, null);
+        mSpaceDrawable = new SpaceCompoundDrawable(mInnerDrawable);
         setText(getTimeText());
     }
 
-    private GravityCompoundDrawable alignDrawableToLeftTop(Drawable innerDrawable) {
-        GravityCompoundDrawable gravityDrawable = new GravityCompoundDrawable(innerDrawable);
-        innerDrawable.setBounds(0, 0, innerDrawable.getIntrinsicWidth(),
-                innerDrawable.getIntrinsicHeight());
-        gravityDrawable.setBounds(0, 0, innerDrawable.getIntrinsicWidth(),
-                innerDrawable.getIntrinsicHeight());
-        return gravityDrawable;
-    }
-
-    private String getTimeText() {
+    public String getTimeText() {
         final int sec = (int) mCountingTime % 60;//sec per min
         final int min = (int) mCountingTime / 60 % 60;//sec per hour
         final int hour = (int) mCountingTime / 3600 % 24;//sec per day
-        String numberText = String.format("%02d:%02d:%02d", hour, min, sec);
-        return numberText;
+        return hour > 0
+                ? String.format(Locale.US, "%02d:%02d:%02d", hour, min, sec)
+                : String.format(Locale.US, "%02d:%02d", min, sec);
+
     }
 
     public void starCount() {
         if (!mIsCounting) {
+            Log.d(LOG_TAG, "startCount");
             mIsCounting = true;
             mCountingTime = 0;
             setText(getTimeText());
@@ -85,22 +80,26 @@ public class CounterView extends TextView {
         public void run() {
             mCountingTime++;
             if (mCountingTime % 2 == 0) {
-                setCompoundDrawables(null, null, null, null);
+                setCompoundDrawables(mSpaceDrawable, null, null, null);
             } else {
-                setCompoundDrawables(null, mGravityDrawable, null, null);
+                setCompoundDrawables(mInnerDrawable, null, null, null);
             }
             setText(getTimeText());
             postDelayed(this, DELAY_TIME_MILLS);
         }
     }
 
-    private static class GravityCompoundDrawable extends Drawable {
+    /**
+     * This drawable class is used for draw "empty",whose bounds are corresponding to inner drawable
+     */
+    private static class SpaceCompoundDrawable extends Drawable {
 
         // inner Drawable
         private final Drawable mDrawable;
 
-        public GravityCompoundDrawable(Drawable drawable) {
+        public SpaceCompoundDrawable(Drawable drawable) {
             mDrawable = drawable;
+            setBounds(0, 0, getIntrinsicWidth(), getIntrinsicHeight());
         }
 
         @Override
@@ -115,24 +114,15 @@ public class CounterView extends TextView {
 
         @Override
         public void draw(@NonNull Canvas canvas) {
-            int halfCanvas = canvas.getWidth() / 2;
-            int halfDrawable = mDrawable.getIntrinsicWidth() / 2;
-
-            // align to left
-            canvas.save();
-            canvas.translate(-halfCanvas + halfDrawable, 0);
-            mDrawable.draw(canvas);
-            canvas.restore();
+            //do nothing because it is a space drawable
         }
 
         @Override
         public void setAlpha(int alpha) {
-
         }
 
         @Override
         public void setColorFilter(ColorFilter colorFilter) {
-
         }
 
         @Override

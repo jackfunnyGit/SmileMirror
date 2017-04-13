@@ -20,11 +20,11 @@
 
     <string name="sm_speech_content_create_script">"Click into the script list and create a new script."</string>
     <string name="sm_speech_content_select_script">"Click into the script list and select a script."</string>
-    <string name="smile_mode">"Smile Mode"</string>
-    <string name="coach_mode">"Coach Mode"</string>
+    <string name="smile_mode">"Smile mode"</string>
+    <string name="coach_mode">"Conversation mode"</string>
     <!-- chart page -->
     <string name="chart_page_smile_statistics">"Smile Statistics"</string>
-    <string name="chart_page_smile_duration">"Duration: %1$s seconds"</string>
+    <string name="chart_page_smile_duration">"Duration: "</string>
     <!-- Editor -->
     <string name="editor_save_new_file_title">"Save script"</string>
     <string name="editor_save_file_title">"Save"</string>
@@ -64,7 +64,7 @@
     <string name="sm_tutorial_coach__page_text_script_list">"Script list"</string>
     <string name="sm_tutorial_coach_page_text_start_practice">"Start practice"</string>
     <string name="sm_tutorial_coach_page_text_title">"Practice your smile during conversation"</string>
-    <string name="sm_tutorial_coach_page_text_review_video">"Review recorded video"</string>
+    <string name="sm_tutorial_coach_page_text_review_video">"Review videos"</string>
     <!-- alert dialog  -->
     <string name="sm_alert_dialog_auto_recording_title">"Turn off auto video record?"</string>
     <string name="sm_alert_dialog_auto_recording_message">"Once turned off, the system will not record the video during conversation for your later review. Are your sure to turn it off?"</string>
