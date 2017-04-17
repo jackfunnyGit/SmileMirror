@@ -16,7 +16,9 @@ import android.view.ViewGroup;
 import android.widget.ImageView;
 import android.widget.PopupMenu;
 import android.widget.RelativeLayout;
+import android.widget.TextView;
 
+import com.asus.zenheart.smilemirror.Util.AnimationUtil;
 import com.asus.zenheart.smilemirror.Util.PrefsUtils;
 import com.asus.zenheart.smilemirror.Util.GalleryUtil;
 import com.asus.zenheart.smilemirror.editor.SpeechEditorActivity;
@@ -36,6 +38,7 @@ public class ModePagerAdapter extends PagerAdapter {
     private ActivityCallback mCallback;
 
     private ViewHolder mViewHolder;
+    private TextView mTitleToast;
 
     public ModePagerAdapter(Context context, int[] index, ViewGroup container) {
         mContext = context;
@@ -76,6 +79,8 @@ public class ModePagerAdapter extends PagerAdapter {
         if (mIndexOfLayout[position] == R.layout.smile_mode) {
             view = mLayoutInflater.inflate(R.layout.smile_mode, container, false);
             final View pseudoView = view.findViewById(R.id.pseudo_close_view);
+            mTitleToast = (TextView) view.findViewById(R.id.title_toast);
+            showTitleToast();
             pseudoView.setOnClickListener(new View.OnClickListener() {
                 @Override
                 public void onClick(View v) {
@@ -98,6 +103,11 @@ public class ModePagerAdapter extends PagerAdapter {
             mViewList.add(view);
         }
         return view;
+    }
+
+    public void showTitleToast() {
+        AnimationUtil.showToast(mTitleToast, R.string.sm_app_name, 0);
+        mTitleToast.setVisibility(View.INVISIBLE);
     }
 
     public void refreshViewContent() {
@@ -142,6 +152,8 @@ public class ModePagerAdapter extends PagerAdapter {
         void stopRecord();
 
         void finishActivity();
+
+        void showTitleToast();
     }
 
     //TODO: rename in the future

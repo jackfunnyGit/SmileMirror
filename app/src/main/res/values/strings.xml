@@ -8,11 +8,11 @@
     <string name="editor_menu_item_mirror">"OK"</string>
     <string name="coach_mode_menu_item_auto_record">"Auto video record"</string>
     <!-- Camera --> <!--below should be replace in the future -->
-    <string name="sm_app_name" translatable="false">"SmileMirror"</string>
     <string name="ok" translatable="false">"OK"</string>
     <string name="permission_camera_rationale" translatable="false">"Access to the camera is needed for detection"</string>
     <string name="no_camera_permission" translatable="false">"This application cannot run because it does not have the camera permission.  The application will now exit."</string>
     <!-- Smile Mirror -->
+    <string name="sm_app_name">"Smile mirror"</string>
     <string name="smile_level_one_text">"Are you smiling?"</string>
     <string name="smile_level_two_text">"Getting better!"</string>
     <string name="smile_level_three_text">"Nice!"</string>

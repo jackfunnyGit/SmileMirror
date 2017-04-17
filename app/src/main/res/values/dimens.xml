@@ -45,6 +45,7 @@
     <dimen name="coach_mode_recording_inner_padding">8dp</dimen>
     <dimen name="coach_mode_recording_view_text_size">16dp</dimen>
     <dimen name="coach_mode_video_thumbnail_length">40dp</dimen>
+    <dimen name="sm_application_name_toast_top_margin">12dp</dimen>
     <!-- Vertical text view padding-->
     <dimen name="vertical_text_view_width_padding">23dp</dimen>
     <!-- histogram chart -->
@@ -89,6 +90,7 @@
     <dimen name="presentation_title_text_size">24dp</dimen>
     <dimen name="chart_page_statistics_title_text_size">24dp</dimen>
     <dimen name="chart_page_duration_text_size">16dp</dimen>
+    <dimen name="sm_title_toast_text_size">24dp</dimen>
     <!-- Editor value -->
     <dimen name="editor_list_card_padding">23dp</dimen>
     <dimen name="editor_list_card__divider_width">0.5dp</dimen>

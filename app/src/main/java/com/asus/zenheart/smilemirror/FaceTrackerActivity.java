@@ -140,12 +140,18 @@ public final class FaceTrackerActivity extends AppCompatActivity implements
             public void onPageSelected(int position) {
                 if (position == PAGE_INDEX_SMILE_MODE) {
                     //  show the smile mode toast
-                    AnimationUtil.showToast(mToastTextView,
-                            R.string.smile_mode, R.drawable.smile_mode);
+                    if (!PrefsUtils.getBooleanPreference(mContext,
+                            PrefsUtils.PREFS_SHOW_MAIN_TUTORIAL,true)) {
+                        AnimationUtil.showToast(mToastTextView,
+                                R.string.smile_mode, R.drawable.smile_mode);
+                    }
                 } else if (position == PAGE_INDEX_COACH_MODE) {
                     //  show the coach mode toast
-                    AnimationUtil.showToast(mToastTextView,
-                            R.string.coach_mode, R.drawable.conversation_mode);
+                    if (!PrefsUtils.getBooleanPreference(mContext,
+                            PrefsUtils.PREFS_SHOW_COACH_TUTORIAL, true)) {
+                        AnimationUtil.showToast(mToastTextView,
+                                R.string.coach_mode, R.drawable.conversation_mode);
+                    }
                     addTutorialView(PrefsUtils.PREFS_SHOW_COACH_TUTORIAL,
                             R.layout.tutorial_coach_page);
                 }
@@ -219,6 +225,10 @@ public final class FaceTrackerActivity extends AppCompatActivity implements
                 mContainer.removeView(tutorialView);
                 if (layoutId == R.layout.tutorial_main_page) {
                     showGuiElement();
+                    showTitleToast();
+                } else if (layoutId == R.layout.tutorial_coach_page) {
+                    AnimationUtil.showToast(mToastTextView,
+                            R.string.coach_mode, R.drawable.conversation_mode);
                 }
             }
 
@@ -600,6 +610,11 @@ public final class FaceTrackerActivity extends AppCompatActivity implements
     @Override
     public void finishActivity() {
         finish();
+    }
+
+    @Override
+    public void showTitleToast() {
+        mPagerAdapter.showTitleToast();
     }
 
     // --Jack

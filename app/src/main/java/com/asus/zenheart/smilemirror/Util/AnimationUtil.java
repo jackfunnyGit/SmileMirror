@@ -42,13 +42,19 @@ public class AnimationUtil {
         return toastAnimation;
     }
 
+    /**
+     * Helper method to retrieve a String value from {@link TextView}.
+     *
+     * @param toastView A {@link TextView} object.
+     * @param stringId The text view string
+     * @param drawableId If the toast shown with the icon, please enter the drawableId.If not, please enter value 0.
+     */
     public static void showToast(@NonNull TextView toastView, int stringId, int drawableId) {
-        if (toastView == null) {
-            return;
-        }
         toastView.setVisibility(View.VISIBLE);
         toastView.setText(stringId);
-        toastView.setCompoundDrawablesWithIntrinsicBounds(0, drawableId, 0, 0);
+        if (drawableId != 0) {
+            toastView.setCompoundDrawablesWithIntrinsicBounds(0, drawableId, 0, 0);
+        }
         toastAnimation(toastView);
     }
 

@@ -14,6 +14,16 @@
         android:src="@drawable/gallery"
         android:visibility="invisible"/>
 
+    <TextView
+            android:id="@+id/title_toast"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_centerHorizontal="true"
+            android:text="@string/sm_app_name"
+            android:textColor="@android:color/white"
+            android:textSize="@dimen/sm_title_toast_text_size"
+            android:layout_marginTop="@dimen/sm_application_name_toast_top_margin"/>
+
     <!--below is a transparent view -->
     <View
         android:id="@+id/pseudo_close_view"

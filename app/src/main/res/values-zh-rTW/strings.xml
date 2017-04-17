@@ -8,6 +8,7 @@
     <string name="editor_menu_item_mirror">"確定"</string>
     <string name="coach_mode_menu_item_auto_record">"自動錄影"</string>
     <!-- Smile Mirror -->
+    <string name="sm_app_name">"微笑鏡子"</string>
     <string name="smile_level_one_text">"你有在微笑嗎？"</string>
     <string name="smile_level_two_text">"還不錯"</string>
     <string name="smile_level_three_text">"漂亮！"</string>
