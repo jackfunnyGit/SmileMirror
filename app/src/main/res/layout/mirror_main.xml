@@ -42,14 +42,6 @@
         android:textColor="@android:color/white"
         android:textSize="@dimen/mode_text_size"/>
 
-    <ImageView
-        android:id="@+id/close_back_image"
-        android:layout_width="@dimen/close_icon_width"
-        android:layout_height="@dimen/close_icon_height"
-        android:layout_alignParentBottom="true"
-        android:layout_alignParentEnd="true"
-        android:src="@drawable/glass_close"/>
-
     <com.asus.zenheart.smilemirror.BorderViewPager
         android:id="@+id/viewpager"
         android:layout_width="match_parent"

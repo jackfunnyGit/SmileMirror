@@ -89,7 +89,6 @@ public final class FaceTrackerActivity extends AppCompatActivity implements
     private SmileIndicatorView mSmileIndicatorView;
     private TextView mToastTextView;
     private ViewGroup mContainer;
-    private ImageView mCloseImageView;
     private View mChartPage;
     //==============================================================================================
     // Activity Methods
@@ -130,7 +129,6 @@ public final class FaceTrackerActivity extends AppCompatActivity implements
         mViewpager = (BorderViewPager) findViewById(R.id.viewpager);
         mToastTextView = (TextView) findViewById(R.id.toast_text);
         mSmileIndicatorView = (SmileIndicatorView) findViewById(R.id.smile_indicator);
-        mCloseImageView = (ImageView) findViewById(R.id.close_back_image);
 
         mPagerAdapter = new ModePagerAdapter(this, INDEX_LAYOUT_OF_MODE, mContainer);
         mViewpager.setAdapter(mPagerAdapter);
@@ -288,20 +286,17 @@ public final class FaceTrackerActivity extends AppCompatActivity implements
 
     private void hideGuiElement() {
         mSmileIndicatorView.setVisibility(View.INVISIBLE);
-        mCloseImageView.setVisibility(View.INVISIBLE);
         mViewpager.setVisibility(View.INVISIBLE);
         mGraphicOverlay.setVisibility(View.INVISIBLE);
     }
 
     private void hideGuiElementInCoach() {
         mSmileIndicatorView.setVisibility(View.INVISIBLE);
-        mCloseImageView.setVisibility(View.INVISIBLE);
         mPagerAdapter.hideGuiElementInCoach();
     }
 
     private void showGuiElement() {
         mSmileIndicatorView.setVisibility(View.VISIBLE);
-        mCloseImageView.setVisibility(View.VISIBLE);
         mViewpager.setVisibility(View.VISIBLE);
         mGraphicOverlay.setVisibility(View.VISIBLE);
         mPagerAdapter.showGuiElement();

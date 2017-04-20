@@ -4,6 +4,16 @@
                 android:layout_height="match_parent">
 
     <ImageView
+        android:id="@+id/back_image_view"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:src="@drawable/back_shadow"
+        android:layout_alignParentStart="true"
+        android:layout_alignParentTop="true"
+        android:layout_marginStart="@dimen/sm_presentation_back_start_margin"
+        android:layout_marginTop="@dimen/sm_presentation_back_top_margin"/>
+
+    <ImageView
         android:id="@+id/video_image_view"
         android:layout_width="@dimen/gallery_icon_width"
         android:layout_height="@dimen/gallery_icon_height"
@@ -24,13 +34,6 @@
             android:textSize="@dimen/sm_title_toast_text_size"
             android:layout_marginTop="@dimen/sm_application_name_toast_top_margin"/>
 
-    <!--below is a transparent view -->
-    <View
-        android:id="@+id/pseudo_close_view"
-        android:layout_width="@dimen/close_icon_width"
-        android:layout_height="@dimen/close_icon_width"
-        android:layout_alignParentBottom="true"
-        android:layout_alignParentEnd="true"/>
     <View
         android:id="@+id/border_line"
         android:layout_width="match_parent"

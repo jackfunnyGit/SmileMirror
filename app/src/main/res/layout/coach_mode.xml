@@ -15,16 +15,6 @@
         android:src="@drawable/video"
         android:visibility="invisible"/>
 
-
-    <!--below is a transparent view -->
-    <View
-        android:id="@+id/pseudo_close_view"
-        android:layout_width="@dimen/close_icon_width"
-        android:layout_height="@dimen/close_icon_width"
-        android:layout_alignParentBottom="true"
-        android:layout_alignParentEnd="true"/>
-
-
     <include
         android:id="@+id/pseudo_toolbar"
         layout="@layout/pseudo_toolbar"/>

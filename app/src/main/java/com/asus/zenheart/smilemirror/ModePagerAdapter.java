@@ -78,10 +78,10 @@ public class ModePagerAdapter extends PagerAdapter {
         View view = null;
         if (mIndexOfLayout[position] == R.layout.smile_mode) {
             view = mLayoutInflater.inflate(R.layout.smile_mode, container, false);
-            final View pseudoView = view.findViewById(R.id.pseudo_close_view);
+            final ImageView imageViewBack = (ImageView) view.findViewById(R.id.back_image_view);
             mTitleToast = (TextView) view.findViewById(R.id.title_toast);
             showTitleToast();
-            pseudoView.setOnClickListener(new View.OnClickListener() {
+            imageViewBack.setOnClickListener(new View.OnClickListener() {
                 @Override
                 public void onClick(View v) {
                     if (mCallback != null) {
@@ -164,8 +164,8 @@ public class ModePagerAdapter extends PagerAdapter {
         public final CounterView countView;
         public final ImageView imageViewList;
         public final ImageView imageViewSetting;
+        public final ImageView imageViewBack;
         public final VerticalScrollTextView scrollTextView;
-        public final View pseudoView;
         public final View countPageView;
         public final DownCountView downCountView;
         public final PseudoToolBar pseudoToolBar;
@@ -185,9 +185,9 @@ public class ModePagerAdapter extends PagerAdapter {
             countView = (CounterView) view.findViewById(R.id.count_view);
             imageViewList = (ImageView) view.findViewById(R.id.image_list);
             imageViewSetting = (ImageView) view.findViewById(R.id.image_setting);
+            imageViewBack = (ImageView) view.findViewById(R.id.image_back);
             scrollTextView = (VerticalScrollTextView) view
                     .findViewById(R.id.vertical_scroll_textview);
-            pseudoView = view.findViewById(R.id.pseudo_close_view);
             countPageView = inflateCountPageView();
             downCountView = (DownCountView) countPageView.findViewById(R.id.down_count_view);
             pseudoToolBar = (PseudoToolBar)view.findViewById(R.id.pseudo_toolbar);
@@ -203,8 +203,8 @@ public class ModePagerAdapter extends PagerAdapter {
             initImageViewList();
             initImageViewRecord();
             initImageSetting();
+            initImageViewBack();
             initDragView();
-            initPseudoView();
             initCountPageView();
         }
 
@@ -292,6 +292,17 @@ public class ModePagerAdapter extends PagerAdapter {
             }
         }
 
+        private void initImageViewBack() {
+            if (imageViewBack != null) {
+                imageViewBack.setOnClickListener(new View.OnClickListener() {
+                    @Override
+                    public void onClick(View v) {
+                        mCallback.finishActivity();
+                    }
+                });
+            }
+        }
+
         private void initDragView() {
             if (dragView == null) {
                 return;
@@ -335,20 +346,6 @@ public class ModePagerAdapter extends PagerAdapter {
                             return true;
                     }
                     return true;
-                }
-            });
-        }
-
-        private void initPseudoView() {
-            if (pseudoView == null) {
-                return;
-            }
-            pseudoView.setOnClickListener(new View.OnClickListener() {
-                @Override
-                public void onClick(View v) {
-                    if (mCallback != null) {
-                        mCallback.finishActivity();
-                    }
                 }
             });
         }
@@ -430,14 +427,10 @@ public class ModePagerAdapter extends PagerAdapter {
         }
 
         public void hideGuiElementInCoach() {
-            //TODO: it should be remove in the patch about "remove pseudoView and add back pointer"
-            pseudoView.setVisibility(View.INVISIBLE);
             pseudoToolBar.setInterceptTouchEvent(true);
         }
 
         public void showGuiElement() {
-            //TODO: it should be remove in the patch about "remove pseudoView and add back pointer"
-            pseudoView.setVisibility(View.VISIBLE);
             pseudoToolBar.setInterceptTouchEvent(false);
         }
     }

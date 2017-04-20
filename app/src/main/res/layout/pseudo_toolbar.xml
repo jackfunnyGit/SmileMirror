@@ -5,6 +5,14 @@
                 android:layout_height="@dimen/sm_coach_mode_pseudo_bar_height"
                 android:background="@android:color/black">
 
+    <ImageView
+        android:id="@+id/image_back"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:src="@drawable/back_shadow"
+        android:layout_marginStart="@dimen/sm_presentation_back_start_margin"
+        android:layout_marginTop="@dimen/sm_presentation_back_top_margin"/>
+
     <TextView
         android:id="@+id/text_present_tittle"
         android:layout_width="wrap_content"
@@ -12,7 +20,8 @@
         android:layout_centerVertical="true"
         android:layout_marginStart="@dimen/presentation_title_padding"
         android:textColor="@android:color/white"
-        android:textSize="@dimen/presentation_title_text_size"/>
+        android:textSize="@dimen/presentation_title_text_size"
+        android:layout_toEndOf="@+id/image_back"/>
 
 
     <ImageView

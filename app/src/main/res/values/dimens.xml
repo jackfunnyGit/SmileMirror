@@ -46,6 +46,8 @@
     <dimen name="coach_mode_recording_view_text_size">16dp</dimen>
     <dimen name="coach_mode_video_thumbnail_length">40dp</dimen>
     <dimen name="sm_application_name_toast_top_margin">12dp</dimen>
+    <dimen name="sm_presentation_back_top_margin">12dp</dimen>
+    <dimen name="sm_presentation_back_start_margin">14dp</dimen>
     <!-- Vertical text view padding-->
     <dimen name="vertical_text_view_width_padding">23dp</dimen>
     <!-- histogram chart -->
