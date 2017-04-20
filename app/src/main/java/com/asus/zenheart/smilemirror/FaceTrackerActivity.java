@@ -91,7 +91,6 @@ public final class FaceTrackerActivity extends AppCompatActivity implements
     private ViewGroup mContainer;
     private ImageView mCloseImageView;
     private View mChartPage;
-
     //==============================================================================================
     // Activity Methods
     //==============================================================================================
@@ -619,5 +618,13 @@ public final class FaceTrackerActivity extends AppCompatActivity implements
 
     // --Jack
 
+    @Override
+    public void onBackPressed() {
+        if (mChartPage != null) {
+            hideChartPage();
+        } else {
+            super.onBackPressed();
+        }
+    }
 }
 
