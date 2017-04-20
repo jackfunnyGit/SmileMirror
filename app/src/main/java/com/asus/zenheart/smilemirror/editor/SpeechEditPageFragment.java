@@ -135,11 +135,8 @@ public class SpeechEditPageFragment extends Fragment {
 
             @Override
             public void onTextChanged(CharSequence s, int start, int before, int count) {
-                if (s.length() != 0) {
+                if (toolBar.getMenu().findItem(R.id.editor_edit_menu_save) != null) {
                     toolBar.getMenu().findItem(R.id.editor_edit_menu_save).setIcon(R.drawable.save);
-                } else {
-                    toolBar.getMenu().findItem(R.id.editor_edit_menu_save)
-                            .setIcon(R.drawable.save_disable);
                 }
             }
 
