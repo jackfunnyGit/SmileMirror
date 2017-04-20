@@ -1,6 +1,7 @@
 package com.asus.zenheart.smilemirror.editor;
 
 import android.content.Context;
+import android.content.Intent;
 import android.os.Bundle;
 import android.support.v4.app.FragmentManager;
 import android.support.v4.app.FragmentTransaction;
@@ -9,6 +10,7 @@ import android.view.View;
 import android.view.WindowManager;
 import android.view.inputmethod.InputMethodManager;
 
+import com.asus.zenheart.smilemirror.FaceTrackerActivity;
 import com.asus.zenheart.smilemirror.R;
 
 import java.util.Calendar;
@@ -55,5 +57,12 @@ public class SpeechEditorActivity extends AppCompatActivity {
     public void onPause() {
         super.onPause();
         hideKeyboard();
+    }
+    @Override
+    public void onBackPressed() {
+        Intent intent = new Intent(this, FaceTrackerActivity.class);
+        intent.addFlags(
+                Intent.FLAG_ACTIVITY_SINGLE_TOP | Intent.FLAG_ACTIVITY_CLEAR_TOP);
+        startActivity(intent);
     }
 }

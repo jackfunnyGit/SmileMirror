@@ -102,9 +102,26 @@ public class SpeechBrowsePageFragment extends Fragment {
         if (mPresentText != null) {
             mPresentText.start();
         }
+        if(getView() != null) {
+            getView().setFocusableInTouchMode(true);
+            getView().requestFocus();
+            getView().setOnKeyListener(new View.OnKeyListener() {
+                @Override
+                public boolean onKey(View v, int keyCode, KeyEvent event) {
+                    // only need to get the KEYCODE_BACK.
+                    if (keyCode == KeyEvent.KEYCODE_BACK) {
+                        if (event.getAction() == KeyEvent.ACTION_UP) {
+                            backToSpeechListFragment();
+                        }
+                        return true;
+                    }
+                    return false;
+                }
+            });
+        }
     }
 
-    private void initView(@NonNull View view) {
+        private void initView(@NonNull View view) {
         mPresentText = (VerticalScrollTextView) view.findViewById(R.id.presetText);
 
         Toolbar toolBar = (Toolbar) view.findViewById(R.id.editor_browse_page_toolbar);
@@ -151,23 +168,6 @@ public class SpeechBrowsePageFragment extends Fragment {
             @Override
             public void onStopTrackingTouch(SeekBar seekBar) {
                 mPresentText.start();
-            }
-        });
-
-        // KeyCode Back action in this fragment
-        view.setFocusableInTouchMode(true);
-        view.requestFocus();
-        view.setOnKeyListener(new View.OnKeyListener() {
-            @Override
-            public boolean onKey(View v, int keyCode, KeyEvent event) {
-                // only need to get the KEYCODE_BACK.
-                if (keyCode == KeyEvent.KEYCODE_BACK) {
-                    if (event.getAction() == KeyEvent.ACTION_UP) {
-                        backToSpeechListFragment();
-                    }
-                    return true;
-                }
-                return false;
             }
         });
 

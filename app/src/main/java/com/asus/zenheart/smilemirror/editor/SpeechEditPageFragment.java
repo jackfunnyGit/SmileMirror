@@ -73,20 +73,30 @@ public class SpeechEditPageFragment extends Fragment {
         initView(view);
         mActivity.showKeyboard();
 
-        view.setOnKeyListener(new View.OnKeyListener() {
-            @Override
-            public boolean onKey(View v, int keyCode, KeyEvent event) {
-                if (keyCode == KeyEvent.KEYCODE_BACK) {
-                    if (event.getAction() == KeyEvent.ACTION_UP) {
-                        mActivity.hideKeyboard();
-                        backToSpeechBrowseFragment(mId);
-                    }
-                    return true;
-                }
-                return false;
-            }
-        });
         return view;
+    }
+
+    @Override
+    public void onResume() {
+        super.onResume();
+    //TODO: When you need the cursor in the edit text, you should requestFocus. In this time, you can't set this view's key event.
+//        if(getView() != null) {
+//            getView().setFocusableInTouchMode(true);
+//            getView().requestFocus();
+//            getView().setOnKeyListener(new View.OnKeyListener() {
+//                @Override
+//                public boolean onKey(View v, int keyCode, KeyEvent event) {
+//                    // only need to get the KEYCODE_BACK.
+//                    if (keyCode == KeyEvent.KEYCODE_BACK) {
+//                        if (event.getAction() == KeyEvent.ACTION_UP) {
+//                            backToSpeechBrowseFragment(mId);
+//                        }
+//                        return true;
+//                    }
+//                    return false;
+//                }
+//            });
+//        }
     }
 
     private void initView(@NonNull View view) {
