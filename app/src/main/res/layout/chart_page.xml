@@ -45,4 +45,14 @@
         android:layout_centerHorizontal="true"
         android:layout_marginBottom="@dimen/tutorial_page_close_image_bottom_padding"
         android:background="@drawable/sm_button_click_selector"/>
+
+    <ImageView
+            android:id="@+id/video_intent_view"
+            android:layout_width="@dimen/coach_mode_video_thumbnail_length"
+            android:layout_height="@dimen/coach_mode_video_thumbnail_length"
+            android:layout_alignParentBottom="true"
+            android:layout_alignParentStart="true"
+            android:scaleType="fitXY"
+            android:layout_marginBottom="@dimen/coach_mode_video_icon_padding"
+            android:layout_marginStart="@dimen/coach_mode_video_icon_padding"/>
 </RelativeLayout>

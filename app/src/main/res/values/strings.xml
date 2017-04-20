@@ -68,4 +68,6 @@
     <!-- alert dialog  -->
     <string name="sm_alert_dialog_auto_recording_title">"Turn off auto video record?"</string>
     <string name="sm_alert_dialog_auto_recording_message">"Once turned off, the system will not record the video during conversation for your later review. Are your sure to turn it off?"</string>
+    <!-- toast -->
+    <string name="sm_recording_folder_miss_toast">"No videos in Smile mirror"</string>
 </resources>

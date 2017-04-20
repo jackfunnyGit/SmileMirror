@@ -10,6 +10,8 @@ import android.util.AttributeSet;
 import android.util.Log;
 import android.widget.TextView;
 
+import com.asus.zenheart.smilemirror.Util.PrefsUtils;
+
 import java.util.Locale;
 
 public class CounterView extends TextView {
@@ -18,6 +20,7 @@ public class CounterView extends TextView {
     private static final int INDEX_COMPOUND_START = 0;
 
     private boolean mIsCounting;
+    private boolean mIsRecording;
     private long mCountingTime;
     private Drawable mInnerDrawable;
     private SpaceCompoundDrawable mSpaceDrawable;
@@ -60,11 +63,14 @@ public class CounterView extends TextView {
     }
 
     public void starCount() {
+        mIsRecording = PrefsUtils.getBooleanPreference(getContext(),
+                PrefsUtils.PREFS_AUTO_RECORDING, true);
         if (!mIsCounting) {
             Log.d(LOG_TAG, "startCount");
             mIsCounting = true;
             mCountingTime = 0;
             setText(getTimeText());
+            setCompoundDrawables(mSpaceDrawable, null, null, null);
             postDelayed(mRunnable, DELAY_TIME_MILLS);
         }
     }
@@ -79,10 +85,12 @@ public class CounterView extends TextView {
         @Override
         public void run() {
             mCountingTime++;
-            if (mCountingTime % 2 == 0) {
-                setCompoundDrawables(mSpaceDrawable, null, null, null);
-            } else {
-                setCompoundDrawables(mInnerDrawable, null, null, null);
+            if (mIsRecording) {
+                if (mCountingTime % 2 == 0) {
+                    setCompoundDrawables(mSpaceDrawable, null, null, null);
+                } else {
+                    setCompoundDrawables(mInnerDrawable, null, null, null);
+                }
             }
             setText(getTimeText());
             postDelayed(this, DELAY_TIME_MILLS);

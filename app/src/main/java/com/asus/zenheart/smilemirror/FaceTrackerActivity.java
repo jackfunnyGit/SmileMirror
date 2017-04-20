@@ -45,6 +45,7 @@ import android.widget.ImageView;
 import android.widget.TextView;
 
 import com.asus.zenheart.smilemirror.Util.AnimationUtil;
+import com.asus.zenheart.smilemirror.Util.GalleryUtil;
 import com.asus.zenheart.smilemirror.Util.PermissionUtil;
 import com.asus.zenheart.smilemirror.Util.PrefsUtils;
 import com.asus.zenheart.smilemirror.ui.camera.CameraSource;
@@ -252,6 +253,17 @@ public final class FaceTrackerActivity extends AppCompatActivity implements
         textView.setText(
                 String.format("%s%s", mContext.getString(R.string.chart_page_smile_duration),
                         timeText));
+        // Open Video file
+        final ImageView videoIntentView = (ImageView) mChartPage.findViewById(R.id.video_intent_view);
+        if(PrefsUtils.getBooleanPreference(mContext, PrefsUtils.PREFS_AUTO_RECORDING, true)) {
+            videoIntentView.setImageBitmap(GalleryUtil.createVideoThumbnail(mContext));
+        }
+        videoIntentView.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                GalleryUtil.mediaScan(mContext, GalleryUtil.getVideoFilePath());
+            }
+        });
         mContainer.addView(mChartPage);
     }
 

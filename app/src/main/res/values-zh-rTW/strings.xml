@@ -65,4 +65,6 @@
     <!-- alert dialog  -->
     <string name="sm_alert_dialog_auto_recording_title">"關閉自動錄影？"</string>
     <string name="sm_alert_dialog_auto_recording_message">"關閉後，對談練習過程中將不會進行錄影以供事後檢視。確定要關閉？"</string>
+    <!-- toast -->
+    <string name="sm_recording_folder_miss_toast">"微笑鏡子中沒有影片"</string>
 </resources>

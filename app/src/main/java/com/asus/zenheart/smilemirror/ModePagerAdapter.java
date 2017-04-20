@@ -18,6 +18,7 @@ import android.widget.PopupMenu;
 import android.widget.RelativeLayout;
 
 import com.asus.zenheart.smilemirror.Util.PrefsUtils;
+import com.asus.zenheart.smilemirror.Util.GalleryUtil;
 import com.asus.zenheart.smilemirror.editor.SpeechEditorActivity;
 
 import java.util.ArrayList;
@@ -188,6 +189,7 @@ public class ModePagerAdapter extends PagerAdapter {
         private void initViewListener() {
             initImageViewPlay();
             initImageViewList();
+            initImageViewRecord();
             initImageSetting();
             initDragView();
             initPseudoView();
@@ -265,6 +267,17 @@ public class ModePagerAdapter extends PagerAdapter {
                     mContext.startActivity(intent);
                 }
             });
+        }
+
+        private void initImageViewRecord() {
+            if (imageViewRecord != null) {
+                imageViewRecord.setOnClickListener(new View.OnClickListener() {
+                    @Override
+                    public void onClick(View v) {
+                        GalleryUtil.intentToGallery(mContext);
+                    }
+                });
+            }
         }
 
         private void initDragView() {

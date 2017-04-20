@@ -44,6 +44,7 @@
     <dimen name="coach_mode_recording_icon_padding">23dp</dimen>
     <dimen name="coach_mode_recording_inner_padding">8dp</dimen>
     <dimen name="coach_mode_recording_view_text_size">16dp</dimen>
+    <dimen name="coach_mode_video_thumbnail_length">40dp</dimen>
     <!-- Vertical text view padding-->
     <dimen name="vertical_text_view_width_padding">23dp</dimen>
     <!-- histogram chart -->

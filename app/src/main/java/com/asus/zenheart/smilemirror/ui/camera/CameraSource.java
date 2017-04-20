@@ -20,6 +20,7 @@ import android.annotation.SuppressLint;
 import android.annotation.TargetApi;
 import android.app.Activity;
 import android.content.Context;
+import android.content.Intent;
 import android.graphics.ImageFormat;
 import android.graphics.Matrix;
 import android.graphics.RectF;
@@ -37,6 +38,7 @@ import android.hardware.camera2.params.StreamConfigurationMap;
 import android.media.Image;
 import android.media.ImageReader;
 import android.media.MediaRecorder;
+import android.net.Uri;
 import android.os.Build;
 import android.os.Environment;
 import android.os.Handler;
@@ -148,6 +150,8 @@ public class CameraSource {
 
     // Guarded by mCameraLock
     private Camera mCamera;
+
+    private String mFileName;
 
     private int mFacing = CAMERA_FACING_BACK;
 
@@ -1467,7 +1471,8 @@ public class CameraSource {
         mMediaRecorder2.setAudioEncoder(MediaRecorder.AudioEncoder.AAC);
         //set audio format
         //mMediaRecorder2.setAudioEncoder(MediaRecorder.AudioEncoder.AMR_NB);
-        mMediaRecorder2.setOutputFile(getVideoFilePath());
+        mFileName = getVideoFilePath();
+        mMediaRecorder2.setOutputFile(mFileName);
         mMediaRecorder2.setVideoEncodingBitRate(ENCODING_BIT_RATE);
         mMediaRecorder2.setVideoFrameRate(ENCODING_FRAME_RATE);
         mMediaRecorder2.setOrientationHint(ENCODING_ORIENTATION_HINT);
@@ -1590,6 +1595,7 @@ public class CameraSource {
         mMediaRecorder2.stop();
         mMediaRecorder2.reset();
         mNextVideoAbsolutePath = null;
+        setMediaScanIntent();
         startPreview();
     }
 
@@ -1639,10 +1645,16 @@ public class CameraSource {
         mTextureView.setTransform(matrix);
     }
 
+    private void setMediaScanIntent() {
+    Intent mediaScanIntent = new Intent(Intent.ACTION_MEDIA_SCANNER_SCAN_FILE);
+    mediaScanIntent.setData(Uri.fromFile(new File(mFileName)));
+    mContext.sendBroadcast(mediaScanIntent);
+    }
+
     //==============================================================================================
     // static method
     //==============================================================================================
-    //TODO:it should be move to PathUtil or someWhere else in the future
+    //TODO:it should be move to GalleryUtil or someWhere else in the future
     private static String getVideoFilePath() {
         final String fileDir = String.format("%s/ZenHeart/SmileMirror/AutoRecording"
                 , Environment.getExternalStorageDirectory().getAbsolutePath());
