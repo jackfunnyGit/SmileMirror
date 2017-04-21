@@ -9,12 +9,14 @@ import android.graphics.Color;
 import android.graphics.Paint;
 import android.support.v4.content.ContextCompat;
 import android.util.AttributeSet;
-import android.util.TypedValue;
 import android.view.View;
+
+import com.asus.zenheart.smilemirror.Util.LogUtils;
+
+import java.util.Locale;
 
 public class HistogramChartView extends View {
     private static final String LOG_TAG = "HistogramChart";
-    private static final float TEXT_SIZE_DP = 16f;
     private static final float STROKE_WIDTH = 1f;
     /**
      * Used to draw histogram bar
@@ -37,18 +39,20 @@ public class HistogramChartView extends View {
     private Context mContext;
     private Resources mResources;
 
+    private float mPaddingTop;
     private float mPaddingWidth;
-    private float mBarWidth;
-    private float mBarHeight;
     private float mBarImageHeight;
+    private float mBarImageWidth;
+
     private float mTextHeight;
     private Paint mPaint;
     private Paint mTextPaint;
 
+    private BitmapFactory.Options mOptions;
+
     public HistogramChartView(Context context) {
         super(context);
         initHistogramChart(context);
-
     }
 
     public HistogramChartView(Context context, AttributeSet attrs) {
@@ -65,41 +69,45 @@ public class HistogramChartView extends View {
         mContext = context;
         mResources = context.getResources();
         mPaddingWidth = mResources.getDimension(R.dimen.vertical_text_view_width_padding);
-        mBarWidth = mResources.getDimension(R.dimen.histogram_chart_bar_width);
-        mBarHeight = mResources.getDimension(R.dimen.histogram_chart_bar_height);
-        mBarImageHeight = mResources.getDimension(R.dimen.histogram_chart_bar_image_height);
+        mPaddingTop = mResources.getDimension(R.dimen.sm_histogram_chart_top_padding);
         mPaint = new Paint();
         mTextPaint = new Paint();
-        final float textSize = TypedValue.applyDimension(TypedValue.COMPLEX_UNIT_DIP, TEXT_SIZE_DP,
-                mResources.getDisplayMetrics());
-        mTextPaint.setTextSize(textSize);
+        mOptions = new BitmapFactory.Options();
+        mOptions.inScaled = false;
+        mTextPaint.setTextSize(
+                mResources.getDimensionPixelSize(R.dimen.sm_histogram_chart_text_size));
         mTextPaint.setStrokeWidth(STROKE_WIDTH);
         mTextPaint.setColor(Color.WHITE);
         mTextHeight = getFontHeight(mTextPaint);
+        initBarImageParm();
+
     }
 
     public void onDraw(Canvas canvas) {
-        final float height = getHeight();
-        final float width = getWidth() - mPaddingWidth * 2;
-        final float gap = countSpaceGap(width);
+        final float viewHeight = getHeight();
+        final float viewWidth = getWidth() - mPaddingWidth * 2;
+        final float gap = countSpaceGap(viewWidth);
+        final float maxBarHeight = countMaxBarHeight(viewHeight, mBarImageHeight);
+
         float x = mPaddingWidth;
         for (int i = 0; i < PAINT_COLOR.length; i++) {
             final int drawColor = ContextCompat.getColor(mContext, PAINT_COLOR[i]);
-            float y = height - mProportion[i] * mBarHeight / 100;
+            float y = viewHeight - mProportion[i] * maxBarHeight / 100;
             //draw histogram bar
             mPaint.setColor(drawColor);
-            canvas.drawRect(x, y, x + mBarWidth, height, mPaint);
+            canvas.drawRect(x, y, x + mBarImageWidth, viewHeight, mPaint);
             //TODO: fix in the future with the inBitmap
             //draw bar image
-            Bitmap bitmap = BitmapFactory.decodeResource(mResources, IMAGES_ID[i]);
-            canvas.drawBitmap(bitmap, x, y - mBarImageHeight, null);
-            //draw proportion value
-            canvas.drawText(String.format(" %d%%", (int) (mProportion[i] + 0.5)), x,
-                    y - mBarImageHeight + mTextHeight, mTextPaint);
-            x = x + mBarWidth + gap;
+            Bitmap bitmap = BitmapFactory.decodeResource(mResources, IMAGES_ID[i], mOptions);
+            final int barImageHeight = bitmap.getHeight();
+            canvas.drawBitmap(bitmap, x, y - barImageHeight, null);
+            //draw proportion text
+            canvas.drawText(String.format(Locale.US, " %d%%", (int) (mProportion[i] + 0.5)), x,
+                    y - barImageHeight + mTextHeight, mTextPaint);
+            x = x + mBarImageWidth + gap;
         }
         //draw a line at the top of the view
-        canvas.drawLine(mPaddingWidth, 1, mPaddingWidth + width, 1, mTextPaint);
+        canvas.drawLine(mPaddingWidth, 1, mPaddingWidth + viewWidth, 1, mTextPaint);
     }
 
     /**
@@ -109,8 +117,23 @@ public class HistogramChartView extends View {
      * @return The space gap between each bar
      */
     private float countSpaceGap(float width) {
-        final float spaceLeft = width - mBarWidth * mProportion.length;
+        final float spaceLeft = width - mBarImageWidth * mProportion.length;
         return (spaceLeft < 0) ? 0 : spaceLeft / (mProportion.length - 1);
+    }
+
+    private float countMaxBarHeight(float viewHeight, float imageHeight) {
+        float maxBarHeight = viewHeight - imageHeight - mPaddingTop;
+        return (maxBarHeight < imageHeight) ? imageHeight : maxBarHeight;
+    }
+
+    private void initBarImageParm() {
+        BitmapFactory.Options options = new BitmapFactory.Options();
+        options.inJustDecodeBounds = true;
+        BitmapFactory.decodeResource(mResources, IMAGES_ID[0], options);
+        mBarImageWidth = options.outWidth;
+        mBarImageHeight = options.outHeight;
+        LogUtils.d(LOG_TAG,
+                "BarImageWidth = " + mBarImageWidth + "BarImageHeight = " + mBarImageHeight);
     }
 
     /**

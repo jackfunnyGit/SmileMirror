@@ -39,7 +39,6 @@
     <string name="font_size_large">"大型"</string>
     <string name="font_size_default">"默认"</string>
     <string name="font_size_small">"小型"</string>
-
     <string name="editor_select_item">"已選 %1$s 個"</string>
     <string name="editor_default_date">"默认脚本"</string>
     <string name="editor_content_hint">"输入文字"</string>

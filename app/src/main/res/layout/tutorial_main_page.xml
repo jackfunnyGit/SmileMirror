@@ -40,11 +40,6 @@
 
     <ImageView
         android:id="@+id/tutorial_close_image"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_alignParentBottom="true"
-        android:layout_centerHorizontal="true"
-        android:layout_marginBottom="@dimen/tutorial_page_close_image_bottom_padding"
-        android:background="@drawable/sm_button_click_selector"/>
+        style="@style/CommonCloseButtonStyle"/>
 
 </RelativeLayout>

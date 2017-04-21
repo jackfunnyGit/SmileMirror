@@ -1,6 +1,7 @@
 <?xml version="1.0" encoding="utf-8"?>
 <RelativeLayout android:id="@+id/chart_page"
                 xmlns:android="http://schemas.android.com/apk/res/android"
+                xmlns:tools="http://schemas.android.com/tools"
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"
                 android:background="@color/teleprompter_background_color">
@@ -8,51 +9,50 @@
     <TextView
         android:id="@+id/statistics_text_view"
         android:layout_width="wrap_content"
-        android:layout_height="@dimen/chart_page_statistics_text_height"
+        android:layout_height="wrap_content"
         android:layout_centerHorizontal="true"
-        android:layout_marginTop="@dimen/chart_page_upper_layout_padding"
+        android:layout_marginTop="@dimen/sm_chart_page_title_text_top_margin"
         android:text="@string/chart_page_smile_statistics"
         android:textAlignment="center"
         android:textColor="@android:color/white"
-        android:textSize="@dimen/chart_page_statistics_title_text_size"/>
+        android:textSize="@dimen/sm_chart_page_statistics_title_text_size"
+        tools:text="Smile Statistics"/>
 
     <com.asus.zenheart.smilemirror.HistogramChartView
         android:id="@+id/histogram_chart"
         android:layout_width="match_parent"
-        android:layout_height="@dimen/chart_page_histogram_height"
+        android:layout_height="wrap_content"
+        android:layout_above="@+id/duration_text_view"
         android:layout_below="@id/statistics_text_view"
         android:layout_centerVertical="true"
-        android:layout_marginTop="@dimen/chart_page_upper_layout_padding"/>
+        android:layout_marginBottom="@dimen/sm_chart_page_duration_text_margin"
+        android:layout_marginTop="@dimen/sm_chart_page_histogram_top_margin"/>
 
     <TextView
         android:id="@+id/duration_text_view"
         android:layout_width="wrap_content"
-        android:layout_height="@dimen/chart_page_duration_text_height"
-        android:layout_below="@id/histogram_chart"
+        android:layout_height="wrap_content"
+        android:layout_above="@+id/chart_close_view"
         android:layout_centerHorizontal="true"
-        android:layout_marginTop="@dimen/chart_page_middle_layout_padding"
+        android:layout_marginBottom="@dimen/sm_chart_page_duration_text_margin"
         android:text="@string/chart_page_smile_duration"
         android:textAlignment="center"
         android:textColor="@android:color/white"
-        android:textSize="@dimen/chart_page_duration_text_size"/>
+        android:textSize="@dimen/chart_page_duration_text_size"
+        tools:text="Duration :"/>
 
 
     <ImageView
         android:id="@+id/chart_close_view"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_alignParentBottom="true"
-        android:layout_centerHorizontal="true"
-        android:layout_marginBottom="@dimen/tutorial_page_close_image_bottom_padding"
-        android:background="@drawable/sm_button_click_selector"/>
+        style="@style/CommonCloseButtonStyle"/>
 
     <ImageView
-            android:id="@+id/video_intent_view"
-            android:layout_width="@dimen/coach_mode_video_thumbnail_length"
-            android:layout_height="@dimen/coach_mode_video_thumbnail_length"
-            android:layout_alignParentBottom="true"
-            android:layout_alignParentStart="true"
-            android:scaleType="fitXY"
-            android:layout_marginBottom="@dimen/coach_mode_video_icon_padding"
-            android:layout_marginStart="@dimen/coach_mode_video_icon_padding"/>
+        android:id="@+id/video_intent_view"
+        android:layout_width="@dimen/coach_mode_video_thumbnail_length"
+        android:layout_height="@dimen/coach_mode_video_thumbnail_length"
+        android:layout_alignParentBottom="true"
+        android:layout_alignParentStart="true"
+        android:layout_marginBottom="@dimen/coach_mode_video_icon_padding"
+        android:layout_marginStart="@dimen/coach_mode_video_icon_padding"
+        android:scaleType="fitXY"/>
 </RelativeLayout>

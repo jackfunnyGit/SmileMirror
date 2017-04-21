@@ -54,22 +54,18 @@
     <dimen name="histogram_chart_bar_width">70dp</dimen>
     <dimen name="histogram_chart_bar_height">320dp</dimen>
     <dimen name="histogram_chart_bar_image_width">70dp</dimen>
-    <dimen name="histogram_chart_bar_image_height">70dp</dimen>
+    <dimen name="sm_histogram_chart_top_padding">24dp</dimen>
+    <dimen name="sm_histogram_chart_text_size">16dp</dimen>
     <!-- chart page-->
-    <dimen name="chart_page_upper_layout_padding">26dp</dimen>
-    <dimen name="chart_page_middle_layout_padding">24dp</dimen>
-    <dimen name="chart_page_histogram_height">414dp</dimen>
-    <dimen name="chart_page_statistics_text_height">32dp</dimen>
-    <dimen name="chart_page_duration_text_height">24dp</dimen>
+    <dimen name="sm_chart_page_title_text_top_margin">26dp</dimen>
+    <dimen name="sm_chart_page_histogram_top_margin">26dp</dimen>
+    <dimen name="sm_chart_page_duration_text_margin">24dp</dimen>
     <!-- count down page -->
     <dimen name="count_down_page_width_size">190dp</dimen>
     <dimen name="count_down_page_height_size">190dp</dimen>
     <!-- tutorial page -->
     <dimen name="tutorial_page_title_top_padding">140dp</dimen>
     <dimen name="tutorial_page_content_top_padding">315dp</dimen>
-    <dimen name="tutorial_page_close_image_bottom_padding">27dp</dimen>
-    <dimen name="tutorial_page_close_image_width">44dp</dimen>
-    <dimen name="tutorial_page_close_image_height">44dp</dimen>
     <dimen name="tutorial_page_title_width">200dp</dimen>
     <dimen name="tutorial_page_big_text_size">24dp</dimen>
     <dimen name="tutorial_page_small_text_size">18dp</dimen>
@@ -90,7 +86,7 @@
     <dimen name="teleprompter_text_size">16dp</dimen>
     <dimen name="countdown_text_size">133dp</dimen>
     <dimen name="presentation_title_text_size">24dp</dimen>
-    <dimen name="chart_page_statistics_title_text_size">24dp</dimen>
+    <dimen name="sm_chart_page_statistics_title_text_size">24dp</dimen>
     <dimen name="chart_page_duration_text_size">16dp</dimen>
     <dimen name="sm_title_toast_text_size">24dp</dimen>
     <!-- Editor value -->
@@ -119,7 +115,8 @@
     <!-- border line -->
     <dimen name="border_line_stroke_width">1dp</dimen>
     <dimen name="border_line_padding">1dp</dimen>
-
+    <!-- zenHeart common UI -->
+    <dimen name="close_image_bottom_margin">27dp</dimen>
 
 
 </resources>
