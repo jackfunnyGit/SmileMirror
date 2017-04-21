@@ -8,8 +8,8 @@ android {
         applicationId "com.asus.jacktsai.myapplication"
         minSdkVersion 23
         targetSdkVersion 25
-        versionCode 1
-        versionName "1.0"
+        versionCode 11
+        versionName "0.0.0.2_170424"
         multiDexEnabled true//without it , gradle build will fail on DexIndexOverflowException
         testInstrumentationRunner "android.support.test.runner.AndroidJUnitRunner"
 
@@ -30,7 +30,7 @@ dependencies {
 
     compile 'com.android.support:design:25.3.0'
     compile 'com.android.support:support-v4:25.3.0'
-    compile 'com.google.android.gms:play-services-vision:10.2.0'
+    compile 'com.google.android.gms:play-services-vision:10.2.1'
     testCompile 'junit:junit:4.12'
     compile project(path: ':app')
 }
