@@ -68,4 +68,8 @@
     <string name="sm_alert_dialog_auto_recording_message">"關閉後，對談練習過程中將不會進行錄影以供事後檢視。確定要關閉？"</string>
     <!-- toast -->
     <string name="sm_recording_folder_miss_toast">"微笑鏡子中沒有影片"</string>
+    <!--Permission -->
+    <string name="sm_permission_title">"請同意以下授權"</string>
+    <string name="sm_permission_content">"<![CDATA[<b><font color=#FFFFFF>微笑鏡子</b>必須取得<b><font color=#FFFFFF>相機、麥克風與儲存空間</b>的存取權才能顯示您的鏡射影像，以及在對談練習過程中可選擇進行錄影以供事後檢視。]]>"</string>
+    <string name="sm_permission_button_text">"開啟"</string>
 </resources>

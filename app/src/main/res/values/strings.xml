@@ -7,10 +7,6 @@
     <string name="editor_menu_item_delete">"Delete"</string>
     <string name="editor_menu_item_mirror">"OK"</string>
     <string name="coach_mode_menu_item_auto_record">"Auto video record"</string>
-    <!-- Camera --> <!--below should be replace in the future -->
-    <string name="ok" translatable="false">"OK"</string>
-    <string name="permission_camera_rationale" translatable="false">"Access to the camera is needed for detection"</string>
-    <string name="no_camera_permission" translatable="false">"This application cannot run because it does not have the camera permission.  The application will now exit."</string>
     <!-- Smile Mirror -->
     <string name="sm_app_name">"Smile mirror"</string>
     <string name="smile_level_one_text">"Are you smiling?"</string>
@@ -70,4 +66,8 @@
     <string name="sm_alert_dialog_auto_recording_message">"Once turned off, the system will not record the video during conversation for your later review. Are your sure to turn it off?"</string>
     <!-- toast -->
     <string name="sm_recording_folder_miss_toast">"No videos in Smile mirror"</string>
+    <!--Permission -->
+    <string name="sm_permission_title">"Permission request"</string>
+    <string name="sm_permission_content">"<![CDATA[<b><font color=#FFFFFF>Smile mirror</b> requires <b><font color=#FFFFFF>Camera, Microphone and Storage</b> permissions to show your mirrored image on the display, and be able to optionally record video during conversations for your later review.]]>"</string>
+    <string name="sm_permission_button_text">"Turn on"</string>
 </resources>

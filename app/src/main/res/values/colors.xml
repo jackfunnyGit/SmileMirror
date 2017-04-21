@@ -26,4 +26,8 @@
     <color name = "sm_color_black_opacity_80">#CC000000</color>
     <color name = "sm_color_green_tutorial_page">#98D745</color>
     <color name="editor_video_thumbnail_color">#ff464646</color>
+    <!-- Permission page -->
+    <color name="permission_button_tint_color">#FF0DAFED</color>
+    <color name="permission_page_content_text_color">#FFBEBEBE</color>
+
 </resources>

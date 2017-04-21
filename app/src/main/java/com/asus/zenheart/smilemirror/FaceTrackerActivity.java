@@ -16,13 +16,9 @@
 
 package com.asus.zenheart.smilemirror;
 
-import android.Manifest;
 import android.annotation.TargetApi;
-import android.app.Activity;
-import android.app.AlertDialog;
 import android.app.Dialog;
 import android.content.Context;
-import android.content.DialogInterface;
 import android.content.Intent;
 import android.content.pm.PackageManager;
 import android.hardware.Sensor;
@@ -33,8 +29,6 @@ import android.os.Build;
 import android.os.Bundle;
 import android.support.annotation.NonNull;
 import android.support.annotation.RequiresApi;
-import android.support.design.widget.Snackbar;
-import android.support.v4.app.ActivityCompat;
 import android.support.v4.view.ViewPager;
 import android.support.v7.app.AppCompatActivity;
 import android.util.Log;
@@ -78,7 +72,7 @@ public final class FaceTrackerActivity extends AppCompatActivity implements
 
     private static final int RC_HANDLE_GMS = 9001;
     // permission request codes need to be < 256
-    private static final int RC_HANDLE_CAMERA_PERM = 2;
+    private static final int RC_HANDLE_VIDEO_PERM = 2;
 
     // constant field
     private static final int PAGE_INDEX_SMILE_MODE = 0;
@@ -94,6 +88,8 @@ public final class FaceTrackerActivity extends AppCompatActivity implements
     private TextView mToastTextView;
     private ViewGroup mContainer;
     private View mChartPage;
+    private View mPermissionPage;
+
     private SensorManager mSensorManager;
 
     //==============================================================================================
@@ -110,21 +106,9 @@ public final class FaceTrackerActivity extends AppCompatActivity implements
         super.onCreate(icicle);
         Log.d(TAG, "MainActivity is onCreate.....");
         setContentView(R.layout.mirror_main);
-        //Jack ++
         getWindow().addFlags(WindowManager.LayoutParams.FLAG_KEEP_SCREEN_ON);
         initView();
 
-        //Jack --
-
-        // Check for the camera permission before accessing the camera.  If the
-        // permission is not granted yet, request permission.
-        if (PermissionUtil.hasPermissions(this, PermissionUtil.VIDEO_PERMISSIONS)) {
-            createCameraSource();
-        } else {
-            //In reality,this app is wrapped into zenheart.Therefore,it must have permission when
-            //user enters the app.This section should not be entered.
-            requestCameraPermission();
-        }
     }
 
     // Jack: init the ui object in the main activity.
@@ -200,6 +184,7 @@ public final class FaceTrackerActivity extends AppCompatActivity implements
         });
 
         addTutorialView(PrefsUtils.PREFS_SHOW_MAIN_TUTORIAL, R.layout.tutorial_main_page);
+
     }
 
     // Jack +++
@@ -322,37 +307,20 @@ public final class FaceTrackerActivity extends AppCompatActivity implements
     // Jack ---
 
     /**
-     * Handles the requesting of the camera permission.  This includes
-     * showing a "Snackbar" message of why the permission is needed then
-     * sending the request.
+     * Handles the requesting of the camera,storage and microphone permission.
+     *
+     * @see #onRequestPermissionsResult(int, String[], int[])
      */
     //In reality,this app is wrapped into zenheart.Therefore,it must have permission when
     //user enters the app.This section should not be entered.
-    private void requestCameraPermission() {
-        Log.w(TAG, "Video  permission is not granted. Requesting permission");
-
-        final String[] permissions = PermissionUtil.VIDEO_PERMISSIONS;
-
-        if (!ActivityCompat.shouldShowRequestPermissionRationale(this,
-                Manifest.permission.CAMERA)) {
-            ActivityCompat.requestPermissions(this, permissions, RC_HANDLE_CAMERA_PERM);
-            return;
+    private void requestPermissions() {
+        Log.w(TAG, "Video permission is not granted. Show permission page to request permissions");
+        if (mPermissionPage == null) {
+            mPermissionPage = PermissionUtil.addPermissionPage(this, mContainer,
+                    R.string.sm_permission_title,
+                    R.string.sm_permission_content,
+                    R.layout.permission);
         }
-
-        final Activity thisActivity = this;
-//TODO:below should be replace by notification page to guide users to setting page to give authority
-        View.OnClickListener listener = new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-                ActivityCompat.requestPermissions(thisActivity, permissions,
-                        RC_HANDLE_CAMERA_PERM);
-            }
-        };
-
-        Snackbar.make(mGraphicOverlay, R.string.permission_camera_rationale,
-                Snackbar.LENGTH_INDEFINITE)
-                .setAction(R.string.ok, listener)
-                .show();
     }
 
     /**
@@ -402,6 +370,18 @@ public final class FaceTrackerActivity extends AppCompatActivity implements
         super.onResume();
         Log.d(TAG, "mainActivity onResume ......");
         //Jack +++
+        //check permission here in case that user granted permission in settings and
+        //return back smileMirror
+        if (PermissionUtil.hasPermissions(this, PermissionUtil.VIDEO_PERMISSIONS)) {
+            if (mPermissionPage != null) {
+                mContainer.removeView(mPermissionPage);
+                //user granted all the needed permission,so reset pref_NeverSayAgain to false
+                PermissionUtil.setIfNeverSayAgain(mContext, false);
+            }
+            createCameraSource();
+        } else {
+            requestPermissions();
+        }
         mSensorManager.registerListener(this,
                 mSensorManager.getDefaultSensor(Sensor.TYPE_ACCELEROMETER),
                 SensorManager.SENSOR_DELAY_NORMAL);
@@ -456,32 +436,24 @@ public final class FaceTrackerActivity extends AppCompatActivity implements
     @Override
     public void onRequestPermissionsResult(int requestCode, @NonNull String[] permissions,
             @NonNull int[] grantResults) {
-        if (requestCode != RC_HANDLE_CAMERA_PERM) {
+
+        if (requestCode != RC_HANDLE_VIDEO_PERM) {
             Log.d(TAG, "Got unexpected permission result: " + requestCode);
             super.onRequestPermissionsResult(requestCode, permissions, grantResults);
             return;
         }
 
-        if (grantResults.length != 0 && PermissionUtil.checkPermissions(grantResults)) {
-            Log.d(TAG, "Video permission granted - initialize the camera source");
-            // we have permission, so create the cameraSource
-            createCameraSource();
-            return;
+        for (int i = 0, len = permissions.length; i < len; i++) {
+            String permission = permissions[i];
+            if (grantResults[i] == PackageManager.PERMISSION_DENIED) {
+                // user rejected the permission
+                boolean showRationale = shouldShowRequestPermissionRationale(permission);
+                if (!showRationale) {
+                    // user also CHECKED "never ask again",so set pref_NeverSayAgain to true
+                    PermissionUtil.setIfNeverSayAgain(mContext, true);
+                }
+            }
         }
-
-        Log.w(TAG, "Permission not granted: results len = " + grantResults.length);
-
-        //TODO:below should be replace by notification page to guide users to setting page to give authority
-        //TT:984239
-        AlertDialog.Builder builder = new AlertDialog.Builder(this);
-        builder.setTitle(mContext.getString(R.string.sm_app_name))
-                .setMessage(R.string.no_camera_permission)
-                .setPositiveButton(R.string.ok, new DialogInterface.OnClickListener() {
-                    public void onClick(DialogInterface dialog, int id) {
-                        finish();
-                    }
-                })
-                .show();
     }
 
     //==============================================================================================

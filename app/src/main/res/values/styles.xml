@@ -34,6 +34,7 @@
     <style name="ToolBarStyle" parent="Base.Widget.AppCompat.Toolbar">
         <item name="android:titleTextStyle">@style/ToolBarTitleStyle</item>
     </style>
+
     <style name="ToolBarTitleStyle" parent="TextAppearance.Widget.AppCompat.Toolbar.Title">
         <item name="android:textColor">@android:color/white</item>
         <item name="android:textSize">@dimen/editor_tool_bar_text_size</item>
@@ -59,6 +60,14 @@
         <item name="android:layout_marginBottom">@dimen/close_image_bottom_margin</item>
         <item name="android:layout_width">wrap_content</item>
         <item name="android:layout_height">wrap_content</item>
+    </style>
+
+    <style name="PermissionButtonStyle" parent="@style/Widget.AsusRes.Button">
+        <item name="android:backgroundTint">@color/permission_button_tint_color</item>
+        <item name="android:textSize">16sp</item>
+        <item name="android:layout_width">wrap_content</item>
+        <item name="android:layout_height">wrap_content</item>
+        <item name="android:text">@string/sm_permission_button_text</item>
     </style>
 
 </resources>

@@ -13,6 +13,7 @@ public class PrefsUtils {
     public static final String PREFS_SPEECH_TEXT_SIZE = "textSize";
     public static final String PREFS_SPEECH_ID = "speechId";
     public static final String PREFS_AUTO_RECORDING = "autoRecording";
+    public static final String PREFS_IF_NEVER_SAY_AGAIN = "neverSayAgain";
 
     /**
      * Helper method to retrieve a String value from {@link SharedPreferences}.

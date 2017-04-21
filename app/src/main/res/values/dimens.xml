@@ -117,6 +117,15 @@
     <dimen name="border_line_padding">1dp</dimen>
     <!-- zenHeart common UI -->
     <dimen name="close_image_bottom_margin">27dp</dimen>
-
+    <!-- Permission Page -->
+    <dimen name="permission_agreement_title_text_size">18sp</dimen>
+    <dimen name="permission_agreement_content_text_size">15sp</dimen>
+    <dimen name="permission_page_start_end_padding">36dp</dimen>
+    <dimen name="permission_page_title_top_margin">62dp</dimen>
+    <dimen name="permission_page_content_top_margin">15dp</dimen>
+    <dimen name="permission_page_image_top_margin">21dp</dimen>
+    <dimen name="permission_page_button_top_margin">10dp</dimen>
+    <dimen name="permission_page_button_bottom_margin">25dp</dimen>
+    <dimen name="permission_page_button_text_size">16sp</dimen>
 
 </resources>
