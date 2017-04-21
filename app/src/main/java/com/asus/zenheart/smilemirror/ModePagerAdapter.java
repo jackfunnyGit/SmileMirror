@@ -175,6 +175,7 @@ public class ModePagerAdapter extends PagerAdapter {
         public final ImageView imageViewBack;
         public final VerticalScrollTextView scrollTextView;
         public final View countPageView;
+        public final View controllerView;
         public final DownCountView downCountView;
         public final PseudoToolBar pseudoToolBar;
         public boolean isRecording;
@@ -198,6 +199,7 @@ public class ModePagerAdapter extends PagerAdapter {
             countPageView = inflateCountPageView();
             downCountView = (DownCountView) countPageView.findViewById(R.id.down_count_view);
             pseudoToolBar = (PseudoToolBar) view.findViewById(R.id.pseudo_toolbar);
+            controllerView = view.findViewById(R.id.controller_bar);
             if (context instanceof ActivityCallback) {
                 mCallback = (ActivityCallback) context;
             }
@@ -213,6 +215,7 @@ public class ModePagerAdapter extends PagerAdapter {
             initImageViewBack();
             initDragView();
             initCountPageView();
+            initControllerView();
         }
 
         private void initImageSetting() {
@@ -320,6 +323,7 @@ public class ModePagerAdapter extends PagerAdapter {
                 int scrollY;
                 int layoutHeight;
                 int heightMax;
+                View parentView;
                 RelativeLayout.LayoutParams param;
 
                 @Override
@@ -329,11 +333,9 @@ public class ModePagerAdapter extends PagerAdapter {
                         case MotionEvent.ACTION_DOWN:
                             downY = (int) event.getRawY();
                             param = (RelativeLayout.LayoutParams) scrollTextView.getLayoutParams();
-                            final View parentView = (View) v.getParent().getParent();
-                            final View barView = parentView.findViewById(R.id.pseudo_toolbar);
-                            final View controllView = parentView.findViewById(R.id.controller_bar);
-                            heightMax = parentView.getHeight() - controllView.getHeight() -
-                                    barView.getHeight();
+                            parentView = (View) v.getParent().getParent();
+                            heightMax = parentView.getHeight() - controllerView.getHeight() -
+                                    pseudoToolBar.getHeight();
                             //save the origin layout height when when user touches down
                             layoutHeight = param.height;
                             return true;
@@ -384,6 +386,15 @@ public class ModePagerAdapter extends PagerAdapter {
                     //do nothing to absorb user's touch event to prevent unexpected
                     //touch during the counting time
                     return true;
+                }
+            });
+        }
+
+        private void initControllerView() {
+            controllerView.setOnClickListener(new View.OnClickListener() {
+                @Override
+                public void onClick(View v) {
+                    //do nothing to absorb onclick event
                 }
             });
         }
