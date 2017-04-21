@@ -218,7 +218,7 @@ public class VerticalScrollTextView extends TextView implements View.OnTouchList
      */
     private String autoSplitText(@NonNull String text, float width, @NonNull Paint paint) {
         if (width <= 0) {
-            Log.e(LOG_TAG, "toast_text row width should not be less than or equal to zero !!!");
+            Log.w(LOG_TAG, "toast_text row width should not be less than or equal to zero !!!");
             return null;
         }
         //replace "\r" with "" and split by "\n"

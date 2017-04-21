@@ -16,7 +16,7 @@
 
         <activity
                 android:name="com.asus.zenheart.smilemirror.FaceTrackerActivity"
-                android:screenOrientation="fullSensor"
+                android:screenOrientation="portrait"
                 android:theme="@style/AppTheme.NoTitleBar">
         </activity>
 

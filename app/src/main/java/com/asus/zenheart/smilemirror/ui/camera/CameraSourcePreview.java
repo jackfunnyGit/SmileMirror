@@ -22,9 +22,10 @@ import android.graphics.SurfaceTexture;
 import android.util.AttributeSet;
 import android.util.Log;
 import android.util.Size;
-import android.view.SurfaceHolder;
 import android.view.TextureView;
 import android.view.ViewGroup;
+
+import com.asus.zenheart.smilemirror.Util.LogUtils;
 
 import java.io.IOException;
 
@@ -38,6 +39,8 @@ public class CameraSourcePreview extends ViewGroup {
     private CameraSource mCameraSource;
 
     private GraphicOverlay mOverlay;
+    @CameraSource.ORIENTATION
+    private int mScreenRotation;
 
     public CameraSourcePreview(Context context, AttributeSet attrs) {
         super(context, attrs);
@@ -90,14 +93,14 @@ public class CameraSourcePreview extends ViewGroup {
             mCameraSource = null;
         }
     }
-
+    @SuppressWarnings({"MissingPermission"})
     private void startIfReady() throws IOException {
         Log.i(TAG, "CameraSourcePreview startIfReady .........." +
-                "mStartRequested = " + mStartRequested + " SurfaceAvailable = " + mSurfaceAvailable);
+                "StartRequested = " + mStartRequested + " SurfaceAvailable = " + mSurfaceAvailable);
         if (mStartRequested && mSurfaceAvailable) {
             mCameraSource.start(mTextureView);
             if (mOverlay != null) {
-                android.util.Size size = mCameraSource.getVideoSize();
+                Size size = mCameraSource.getVideoSize();
                 int min = Math.min(size.getWidth(), size.getHeight());
                 int max = Math.max(size.getWidth(), size.getHeight());
                 if (isPortraitMode()) {
@@ -166,7 +169,7 @@ public class CameraSourcePreview extends ViewGroup {
 
         final int layoutWidth = right - left;
         final int layoutHeight = bottom - top;
-        Log.d(TAG, "layoutWidth = " + layoutWidth + " layoutHeight = " + layoutHeight);
+        LogUtils.d(TAG, "layoutWidth = " + layoutWidth + " layoutHeight = " + layoutHeight);
         // strategy is to fit the taller side
         // Computes height and width for potentially doing fit width.
         int childWidth = layoutWidth;
@@ -178,7 +181,7 @@ public class CameraSourcePreview extends ViewGroup {
             childHeight = layoutHeight;
             childWidth = (int) (((float) layoutHeight / (float) height) * width);
         }
-        Log.d("CameraSource", "childWidth = " + childWidth + " childHeight  = " + childHeight);
+        LogUtils.d("CameraSource", "childWidth = " + childWidth + " childHeight  = " + childHeight);
         for (int i = 0; i < getChildCount(); ++i) {
             getChildAt(i).layout((layoutWidth - childWidth) / 2, (layoutHeight - childHeight) / 2,
                     (layoutWidth + childWidth) / 2, (layoutHeight + childHeight) / 2);
@@ -203,6 +206,18 @@ public class CameraSourcePreview extends ViewGroup {
 
         Log.d(TAG, "isPortraitMode returning false by default");
         return false;
+    }
+
+    //==============================================================================================
+    // Public method
+    //==============================================================================================
+    public void setScreenRotation(@CameraSource.ORIENTATION int rotation) {
+        mScreenRotation = rotation;
+    }
+
+    @CameraSource.ORIENTATION
+    public int getScreenRotation() {
+        return mScreenRotation;
     }
 
 }

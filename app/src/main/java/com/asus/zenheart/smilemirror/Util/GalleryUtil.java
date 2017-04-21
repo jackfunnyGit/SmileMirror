@@ -10,14 +10,19 @@ import android.media.ThumbnailUtils;
 import android.net.Uri;
 import android.os.Environment;
 import android.provider.MediaStore;
+import android.support.annotation.NonNull;
+import android.util.Log;
 import android.widget.Toast;
 
 import com.asus.zenheart.smilemirror.R;
 
 import java.io.File;
+import java.text.SimpleDateFormat;
+import java.util.Locale;
 
 //TODO: This class will rename in the future.
 public class GalleryUtil {
+    private static final String LOG_TAG = "GalleryUtil";
     private static final String RECORDING_PATH = "/ZenHeart/SmileMirror/AutoRecording/";
     private static final String ASUS_GALLERY_PACKAGE_NAME = "com.asus.gallery";
     private static final int THUMBNAIL_BROKE_LENGTH = 3;
@@ -29,6 +34,20 @@ public class GalleryUtil {
         String[] allFiles = folder.list();
 
         return path + allFiles[allFiles.length - 1];
+    }
+
+    public static String getVideoFileName() {
+        final String fileDir = String.format("%s%s"
+                , Environment.getExternalStorageDirectory().getAbsolutePath(),RECORDING_PATH);
+        File file = new File(fileDir);
+        if (file.exists() || file.mkdirs()) {
+            SimpleDateFormat dateFormat = new SimpleDateFormat("'CV'_yyyyMMdd_HHmmss", Locale.US);
+            String date = dateFormat.format(new java.util.Date());
+            return String.format("%s/%s.mp4", fileDir, date);
+        } else {
+            Log.e(LOG_TAG, "Fail to make dir at " + file + "... return default ExternalDirectory ");
+            return Environment.getExternalStorageDirectory().getAbsolutePath();
+        }
     }
 
     private static String getVideoBucketId(Context context) {
@@ -59,6 +78,12 @@ public class GalleryUtil {
         return bucketId;
     }
 
+
+    public static void sendMediaScanIntent(@NonNull Context context, @NonNull String filePath) {
+        Intent mediaScanIntent = new Intent(Intent.ACTION_MEDIA_SCANNER_SCAN_FILE);
+        mediaScanIntent.setData(Uri.fromFile(new File(filePath)));
+        context.sendBroadcast(mediaScanIntent);
+    }
     public static void intentToGallery(Context context) {
         if (!autoRecordingIsExist()) {
             Toast toast = Toast.makeText(context,

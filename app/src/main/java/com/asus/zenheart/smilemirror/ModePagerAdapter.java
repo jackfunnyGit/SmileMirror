@@ -19,9 +19,10 @@ import android.widget.RelativeLayout;
 import android.widget.TextView;
 
 import com.asus.zenheart.smilemirror.Util.AnimationUtil;
-import com.asus.zenheart.smilemirror.Util.PrefsUtils;
 import com.asus.zenheart.smilemirror.Util.GalleryUtil;
+import com.asus.zenheart.smilemirror.Util.PrefsUtils;
 import com.asus.zenheart.smilemirror.editor.SpeechEditorActivity;
+import com.asus.zenheart.smilemirror.ui.camera.CameraSource;
 
 import java.util.ArrayList;
 
@@ -127,6 +128,13 @@ public class ModePagerAdapter extends PagerAdapter {
         mViewHolder.isRecording = false;
     }
 
+    public void rotateGuiElement(@CameraSource.ORIENTATION int rotation) {
+        if (mViewHolder == null) {
+            return;
+        }
+        mViewHolder.rotateGuiElement(rotation);
+    }
+
     public void hideGuiElementInCoach() {
         if (mViewHolder == null) {
             return;
@@ -169,7 +177,6 @@ public class ModePagerAdapter extends PagerAdapter {
         public final View countPageView;
         public final DownCountView downCountView;
         public final PseudoToolBar pseudoToolBar;
-
         public boolean isRecording;
 
         private Context mContext;
@@ -190,7 +197,7 @@ public class ModePagerAdapter extends PagerAdapter {
                     .findViewById(R.id.vertical_scroll_textview);
             countPageView = inflateCountPageView();
             downCountView = (DownCountView) countPageView.findViewById(R.id.down_count_view);
-            pseudoToolBar = (PseudoToolBar)view.findViewById(R.id.pseudo_toolbar);
+            pseudoToolBar = (PseudoToolBar) view.findViewById(R.id.pseudo_toolbar);
             if (context instanceof ActivityCallback) {
                 mCallback = (ActivityCallback) context;
             }
@@ -212,7 +219,7 @@ public class ModePagerAdapter extends PagerAdapter {
             imageViewSetting.setOnClickListener(new View.OnClickListener() {
                 @Override
                 public void onClick(View v) {
-                   Context wrapper = new ContextThemeWrapper(mContext, R.style.PopupMenuTheme);
+                    Context wrapper = new ContextThemeWrapper(mContext, R.style.PopupMenuTheme);
                     final PopupMenu popupmenu = new PopupMenu(wrapper, v);
                     popupmenu.inflate(R.menu.coach_mode_title_bar_menu);
                     final MenuItem item = popupmenu.getMenu()
@@ -432,6 +439,11 @@ public class ModePagerAdapter extends PagerAdapter {
 
         public void showGuiElement() {
             pseudoToolBar.setInterceptTouchEvent(false);
+        }
+
+        public void rotateGuiElement(@CameraSource.ORIENTATION int rotation) {
+            AnimationUtil.rotateAnimation(imageViewRecord, rotation * 90);
+
         }
     }
 

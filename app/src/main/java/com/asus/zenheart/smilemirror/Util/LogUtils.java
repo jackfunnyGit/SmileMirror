@@ -17,6 +17,7 @@ public class LogUtils {
     private static final int LOCAL_LOG_LEVEL = LogLevel.VERBOSE;
 
     public @interface LogLevel {
+        int SHOWALL = 0;
         int VERBOSE = Log.VERBOSE;
         int DEBUG = Log.DEBUG;
         int INFO = Log.INFO;

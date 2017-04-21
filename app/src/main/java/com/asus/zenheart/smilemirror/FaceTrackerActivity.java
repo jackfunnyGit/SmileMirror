@@ -24,8 +24,11 @@ import android.app.Dialog;
 import android.content.Context;
 import android.content.DialogInterface;
 import android.content.Intent;
-import android.content.pm.ActivityInfo;
 import android.content.pm.PackageManager;
+import android.hardware.Sensor;
+import android.hardware.SensorEvent;
+import android.hardware.SensorEventListener;
+import android.hardware.SensorManager;
 import android.os.Build;
 import android.os.Bundle;
 import android.support.annotation.NonNull;
@@ -37,6 +40,7 @@ import android.support.v7.app.AppCompatActivity;
 import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.MotionEvent;
+import android.view.Surface;
 import android.view.TextureView;
 import android.view.View;
 import android.view.ViewGroup;
@@ -65,7 +69,7 @@ import java.io.IOException;
  * overlay graphics to indicate the position, size, and ID of each face.
  */
 public final class FaceTrackerActivity extends AppCompatActivity implements
-        ModePagerAdapter.ActivityCallback {
+        ModePagerAdapter.ActivityCallback, SensorEventListener {
     private static final String TAG = "FaceTracker";
 
     private CameraSource mCameraSource = null;
@@ -90,6 +94,8 @@ public final class FaceTrackerActivity extends AppCompatActivity implements
     private TextView mToastTextView;
     private ViewGroup mContainer;
     private View mChartPage;
+    private SensorManager mSensorManager;
+
     //==============================================================================================
     // Activity Methods
     //==============================================================================================
@@ -107,6 +113,7 @@ public final class FaceTrackerActivity extends AppCompatActivity implements
         //Jack ++
         getWindow().addFlags(WindowManager.LayoutParams.FLAG_KEEP_SCREEN_ON);
         initView();
+
         //Jack --
 
         // Check for the camera permission before accessing the camera.  If the
@@ -123,6 +130,7 @@ public final class FaceTrackerActivity extends AppCompatActivity implements
     // Jack: init the ui object in the main activity.
     private void initView() {
         mContext = getApplicationContext();
+        mSensorManager = (SensorManager) mContext.getSystemService(Context.SENSOR_SERVICE);
         mContainer = (ViewGroup) findViewById(android.R.id.content);
         mPreview = (CameraSourcePreview) findViewById(R.id.preview);
         mGraphicOverlay = (GraphicOverlay) findViewById(R.id.face_overlay);
@@ -138,7 +146,7 @@ public final class FaceTrackerActivity extends AppCompatActivity implements
                 if (position == PAGE_INDEX_SMILE_MODE) {
                     //  show the smile mode toast
                     if (!PrefsUtils.getBooleanPreference(mContext,
-                            PrefsUtils.PREFS_SHOW_MAIN_TUTORIAL,true)) {
+                            PrefsUtils.PREFS_SHOW_MAIN_TUTORIAL, true)) {
                         AnimationUtil.showToast(mToastTextView,
                                 R.string.smile_mode, R.drawable.smile_mode);
                     }
@@ -168,10 +176,8 @@ public final class FaceTrackerActivity extends AppCompatActivity implements
                 //Therefore,small shift is set by POSITION_OFFSET_NOT_DRAW valued at 0.01
                 if (positionOffset > POSITION_OFFSET_NOT_DRAW) {
                     mGraphicOverlay.setMode(GraphicOverlay.Mode.CONVERSATION);
-                    setRequestedOrientation(ActivityInfo.SCREEN_ORIENTATION_PORTRAIT);
                 } else {
                     mGraphicOverlay.setMode(GraphicOverlay.Mode.SMILE);
-                    setRequestedOrientation(ActivityInfo.SCREEN_ORIENTATION_FULL_SENSOR);
                 }
                 mSmileIndicatorView.setCirclePosition((int) (positionOffset * 100));
             }
@@ -248,7 +254,8 @@ public final class FaceTrackerActivity extends AppCompatActivity implements
     private void addChartPageView(SmileDegreeCounter smileDegreeCounter, String timeText) {
         mChartPage = LayoutInflater.from(mContext).inflate(R.layout.chart_page, mContainer, false);
         ImageView closeView = (ImageView) mChartPage.findViewById(R.id.chart_close_view);
-        HistogramChartView chartView = (HistogramChartView) mChartPage.findViewById(R.id.histogram_chart);
+        HistogramChartView chartView = (HistogramChartView) mChartPage
+                .findViewById(R.id.histogram_chart);
         TextView textView = (TextView) mChartPage.findViewById(R.id.duration_text_view);
         closeView.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -261,8 +268,9 @@ public final class FaceTrackerActivity extends AppCompatActivity implements
                 String.format("%s%s", mContext.getString(R.string.chart_page_smile_duration),
                         timeText));
         // Open Video file
-        final ImageView videoIntentView = (ImageView) mChartPage.findViewById(R.id.video_intent_view);
-        if(PrefsUtils.getBooleanPreference(mContext, PrefsUtils.PREFS_AUTO_RECORDING, true)) {
+        final ImageView videoIntentView = (ImageView) mChartPage
+                .findViewById(R.id.video_intent_view);
+        if (PrefsUtils.getBooleanPreference(mContext, PrefsUtils.PREFS_AUTO_RECORDING, true)) {
             videoIntentView.setImageBitmap(GalleryUtil.createVideoThumbnail(mContext));
         }
         videoIntentView.setOnClickListener(new View.OnClickListener() {
@@ -354,6 +362,15 @@ public final class FaceTrackerActivity extends AppCompatActivity implements
      */
     private void createCameraSource() {
 
+        FaceDetector detector = createFaceDetector();
+        //TODO it should be modified because CameraSource is not needed  for CameraAPI
+        mCameraSource = new CameraSource.Builder(this, detector)
+                .setRequestedPreviewSize(640, 480)
+                .setFacing(CameraSource.CAMERA_FACING_FRONT)
+                .build();
+    }
+
+    private FaceDetector createFaceDetector() {
         FaceDetector detector = new FaceDetector.Builder(mContext)
                 .setClassificationType(FaceDetector.ALL_CLASSIFICATIONS)
                 .build();
@@ -371,16 +388,10 @@ public final class FaceTrackerActivity extends AppCompatActivity implements
             // isOperational() can be used to check if the required native library is currently
             // available.  The detector will automatically become operational once the library
             // download completes on device.
-            //TODO:should show dialog to tell user to update the google service to the latest
+            // TODO:should show dialog to tell user to update the google service to the latest
             Log.w(TAG, "Face detector dependencies are not yet available.");
         }
-        //TODO it should be modified because CameraSource is not needed  for CameraAPI
-        //TODO: this should be modified to mContext
-        mCameraSource = new CameraSource.Builder(this, detector)
-                .setRequestedPreviewSize(640, 480)
-                .setFacing(CameraSource.CAMERA_FACING_FRONT)
-                .setRequestedFps(30.0f)
-                .build();
+        return detector;
     }
 
     /**
@@ -391,8 +402,10 @@ public final class FaceTrackerActivity extends AppCompatActivity implements
         super.onResume();
         Log.d(TAG, "mainActivity onResume ......");
         //Jack +++
+        mSensorManager.registerListener(this,
+                mSensorManager.getDefaultSensor(Sensor.TYPE_ACCELEROMETER),
+                SensorManager.SENSOR_DELAY_NORMAL);
         AnimationUtil.toastAnimation(mToastTextView);//mode Toast
-
         //Jack ---
         startCameraSource();
     }
@@ -410,6 +423,7 @@ public final class FaceTrackerActivity extends AppCompatActivity implements
         super.onPause();
         Log.d(TAG, "mainActivity is onPause..........");
         resetGuiElementState();
+        mSensorManager.unregisterListener(this);
         mPreview.stop();
     }
 
@@ -528,7 +542,7 @@ public final class FaceTrackerActivity extends AppCompatActivity implements
 
         GraphicFaceTracker(GraphicOverlay overlay, Context mContext) {
             mOverlay = overlay;
-            mFaceGraphic = new FaceGraphic(overlay, mContext);
+            mFaceGraphic = new FaceGraphic(overlay, mContext, mPreview);
         }
 
         /**
@@ -568,7 +582,6 @@ public final class FaceTrackerActivity extends AppCompatActivity implements
         }
     }
 
-    // ++Jack: Show or hide histogram chart.
     @Override
     public void hideChartPage() {
         showGuiElement();
@@ -611,8 +624,6 @@ public final class FaceTrackerActivity extends AppCompatActivity implements
         mPagerAdapter.showTitleToast();
     }
 
-    // --Jack
-
     @Override
     public void onBackPressed() {
         if (mChartPage != null) {
@@ -621,5 +632,56 @@ public final class FaceTrackerActivity extends AppCompatActivity implements
             super.onBackPressed();
         }
     }
+
+    @Override
+    public void onSensorChanged(SensorEvent event) {
+        final int screenRotation = getScreenRotation(event);
+        if (mPreview != null && mPreview.getScreenRotation() != screenRotation) {
+            Log.i(TAG, "screen is rotated to  rotation =  " + screenRotation);
+            rotateGuiElement(screenRotation);
+            mPreview.setScreenRotation(screenRotation);
+            if (mCameraSource == null) {
+                return;
+            }
+            mCameraSource.setScreenRotation(screenRotation);
+            mCameraSource.setDetector(createFaceDetector());
+        }
+
+    }
+
+    @Override
+    public void onAccuracyChanged(Sensor sensor, int accuracy) {
+    }
+
+    @CameraSource.ORIENTATION
+    private int getScreenRotation(SensorEvent event) {
+        final float xGravity = event.values[0];
+        final float yGravity = event.values[1];
+        //TODO: those may be refactored into effective way
+        if (Math.abs(xGravity) < Math.abs(yGravity)) {
+            //portrait mode
+            if (yGravity > 0) {
+                //Rotation = 0
+                return Surface.ROTATION_0;
+            } else {
+                //Rotation = 180
+                return Surface.ROTATION_180;
+            }
+        } else {
+            //landscape mode
+            if (xGravity > 0) {
+                //Rotation = 90
+                return Surface.ROTATION_90;
+            } else {
+                return Surface.ROTATION_270;
+            }
+        }
+
+    }
+
+    private void rotateGuiElement(@CameraSource.ORIENTATION int rotation) {
+        mPagerAdapter.rotateGuiElement(rotation);
+    }
+
 }
 

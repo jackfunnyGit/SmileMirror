@@ -25,8 +25,13 @@ import android.graphics.Paint;
 import android.graphics.drawable.BitmapDrawable;
 import android.support.annotation.NonNull;
 import android.support.v4.content.ContextCompat;
+import android.view.Surface;
+
 
 import com.asus.zenheart.smilemirror.Util.BitmapUtil;
+
+import com.asus.zenheart.smilemirror.ui.camera.CameraSource;
+import com.asus.zenheart.smilemirror.ui.camera.CameraSourcePreview;
 import com.asus.zenheart.smilemirror.ui.camera.GraphicOverlay;
 import com.google.android.gms.vision.face.Face;
 
@@ -76,9 +81,11 @@ public class FaceGraphic extends GraphicOverlay.Graphic {
     private static final int HEART_EFFECT_FRAME_NUMBER = 21;
     private static final int STAR_EFFECT_FRAME_NUMBER = 18;
 
+
     private Context mContext;
     private Resources mResources;
     private GraphicOverlay mGraphicOverlay;
+    private CameraSourcePreview mCameraSourcePreview;
     private Paint mBoxPaint;
     private Paint mFaceTextPaint;
     private volatile Face mFace;
@@ -116,11 +123,12 @@ public class FaceGraphic extends GraphicOverlay.Graphic {
 //    private int mEyeState = 0;
 //    private ArrayList<Bitmap> mBitmapList = new ArrayList<>();
 
-    FaceGraphic(GraphicOverlay overlay, Context context) {
+    FaceGraphic(GraphicOverlay overlay, Context context,CameraSourcePreview cameraPreview) {
         super(overlay);
         mContext = context;
         mResources = context.getResources();
         mGraphicOverlay = overlay;
+        mCameraSourcePreview = cameraPreview;
         initPaint(mContext);
 
         //TODO: fix in the future below(random for three different effects)
@@ -171,7 +179,8 @@ public class FaceGraphic extends GraphicOverlay.Graphic {
         if (face == null) {
             return;
         }
-
+        canvas.save();
+        rotateCanvas(canvas, mCameraSourcePreview.getScreenRotation());
         // Declare each values in the face window.
         float smileScore = mSmileDegreeCounter.setIsRecording(getIsRecording()).
                 setSmileDegree(face.getIsSmilingProbability()).getSimpleMovingAverage();
@@ -242,7 +251,7 @@ public class FaceGraphic extends GraphicOverlay.Graphic {
             }
         }
         // --ShihJie
-
+        canvas.restore();
     }
 
     //TODO: This feature maybe will be used in the future and this function is not ready yet.
@@ -544,6 +553,23 @@ public class FaceGraphic extends GraphicOverlay.Graphic {
             resourceIds[i] = resources.getIdentifier(name, drawable, context.getPackageName());
         }
         return resourceIds;
+    }
+    /**
+     * Rotate and translate the canvas to correspond to the screen rotation
+     * @param canvas On which the face is drawn
+     * @param rotation The orientation of the device screen
+     */
+    private void rotateCanvas(@NonNull Canvas canvas,
+            @CameraSource.ORIENTATION int rotation) {
+        final float rotationAngle = (float) rotation * 90;
+        final float halfWidth = canvas.getWidth() / 2;
+        final float halfHeight = canvas.getHeight() / 2;
+        final float shift = Math.abs(halfHeight - halfWidth);
+        canvas.rotate(rotationAngle, halfWidth, halfHeight);
+        if (rotation == Surface.ROTATION_90 || rotation == Surface.ROTATION_270) {
+            canvas.translate(shift, shift);
+        }
+
     }
 
     /**

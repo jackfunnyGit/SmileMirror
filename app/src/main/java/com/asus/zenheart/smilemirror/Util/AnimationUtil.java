@@ -7,12 +7,15 @@ import android.view.animation.Animation;
 import android.view.animation.LinearInterpolator;
 import android.widget.TextView;
 
+import com.asus.zenheart.smilemirror.ui.camera.CameraSource;
+
 //TODO rename and refactor in the future, factory should not be used like this
 public class AnimationUtil {
     private static final String LOG_TAG = "AnimationUtil";
     private static final int TOAST_ANIMATION_TIME_MILL = 2000;
     private static final int TOAST_REPEATED_TIME = 1;
     private static final int BLINK_ANIMATION_TIME_MILL = 500;
+    private static final int ROTATION_ANIMATION_TIME_MILL = 100;
 
     private static Animation toastFactory(@NonNull final View callbackView) {
         return toastFactory(callbackView, TOAST_ANIMATION_TIME_MILL);
@@ -80,6 +83,9 @@ public class AnimationUtil {
         // Reverse animation at the end so the button will fade back in
         blinkAnimation.setRepeatMode(Animation.REVERSE);
         return blinkAnimation;
+    }
+    public static void rotateAnimation(View view,float rotation){
+        view.animate().rotation(rotation).setDuration(ROTATION_ANIMATION_TIME_MILL).start();
     }
 
 }
