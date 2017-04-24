@@ -44,6 +44,7 @@ import android.widget.TextView;
 
 import com.asus.zenheart.smilemirror.Util.AnimationUtil;
 import com.asus.zenheart.smilemirror.Util.GalleryUtil;
+import com.asus.zenheart.smilemirror.Util.LogUtils;
 import com.asus.zenheart.smilemirror.Util.PermissionUtil;
 import com.asus.zenheart.smilemirror.Util.PrefsUtils;
 import com.asus.zenheart.smilemirror.ui.camera.CameraSource;
@@ -405,6 +406,17 @@ public final class FaceTrackerActivity extends AppCompatActivity implements
         resetGuiElementState();
         mSensorManager.unregisterListener(this);
         mPreview.stop();
+    }
+
+    @Override
+    public void onRestoreInstanceState(Bundle bundle) {
+        super.onRestoreInstanceState(bundle);
+        LogUtils.d(TAG, "onRestoreInstanceState ");
+        if (bundle != null && mViewpager != null) {
+            //TT-986185 to reset ViewPager to the initial state when the activity is killed unexpectedly,
+            //like: adjust displaySize in settings or killed by the system to free up memory
+            mViewpager.setCurrentItem(0);
+        }
     }
 
     /**
