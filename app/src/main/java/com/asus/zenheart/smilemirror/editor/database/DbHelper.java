@@ -29,13 +29,13 @@ class DbHelper extends SQLiteOpenHelper {
 
         db.execSQL("INSERT INTO " + SpeechContract.SPEECH_TABLE + " VALUES(" +
                 "1, 0, '" + DEFAULT_DATE + "', '" +
-                mContext.getString(R.string.editor_example_one_title) + "', '" +
-                mContext.getString(R.string.editor_example_one_content) + "')");
+                mContext.getString(R.string.editor_example_two_title) + "', '" +
+                mContext.getString(R.string.editor_example_two_content) + "')");
 
         db.execSQL("INSERT INTO " + SpeechContract.SPEECH_TABLE + " VALUES(" +
                 "2, 0, '" + DEFAULT_DATE + "', '" +
-                mContext.getString(R.string.editor_example_two_title) + "', '" +
-                mContext.getString(R.string.editor_example_two_content) + "')");
+                mContext.getString(R.string.editor_example_one_title) + "', '" +
+                mContext.getString(R.string.editor_example_one_content) + "')");
 
         db.execSQL("INSERT INTO " + SpeechContract.SPEECH_TABLE + " VALUES(" +
                 "3, 0, '" + DEFAULT_DATE + "', '" +

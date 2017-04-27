@@ -34,7 +34,8 @@
     <string name="editor_delete_script">"Delete script"</string>
     <string name="delete_script_description">"Delete selected script(s)?"</string>
     <string name="delete_script_toast">"%1$s script(s) have been deleted"</string>
-    <string name="conversation_scripts">Conversation scripts</string>
+    <string name="editor_title_bar_text">"Script list"</string>
+    <string name="editor_script_title">"Preview"</string>
     <string name="font_size">Font size</string>
     <string name="font_size_large">"Large"</string>
     <string name="font_size_default">"Default"</string>
@@ -45,11 +46,12 @@
     <string name="editor_title_hint">"New script"</string>
     <string name="editor_menu_title_rename">"Rename"</string>
     <string name="sm_editor_add_script_remind">"Click the "+" button to create a new script."</string>
+
     <!-- Example Speeches -->
-    <string name="editor_example_one_title">"Bump into someone"</string>
-    <string name="editor_example_one_content">Hi (name)! I haven\'\'t seen you in ages! What have you been up to lately?\nSorry, but I have to get going. It was great chatting with you. Let\'\'s get together again sometime!</string>
-    <string name="editor_example_two_title">"Self-intro (15 seconds)"</string>
-    <string name="editor_example_two_content">"Good morning. My name is (name). I have been working on rocket science in Professor Smith\'\'s lab at MIT for the past three years. I am very excited to explore my career options here at NASA and see how my expertise can contribute to the team"</string>
+    <string name="editor_example_two_title">"Bump into someone"</string>
+    <string name="editor_example_two_content">Hi (name)! I haven\'\'t seen you in ages! What have you been up to lately?\nSorry, but I have to get going. It was great chatting with you. Let\'\'s get together again sometime!</string>
+    <string name="editor_example_one_title">"Self-intro (15 seconds)"</string>
+    <string name="editor_example_one_content">"Good morning. My name is (name). I have been working on rocket science in Professor Smith\'\'s lab at MIT for the past three years. I am very excited to explore my career options here at NASA and see how my expertise can contribute to the team"</string>
     <string name="editor_example_three_title">"Self-intro (1 minute)"</string>
     <string name="editor_example_three_content">"Hello, I am (name). I have three advantages:\nFirst, I am a team player. I am good at inspiring morale, lead the team to achieve their goals. I once served as captain of Taiwan University badminton team, and led the team to get the year\'\'s college cup runner-up. It was the school team\'\'s best ever.\nSecond, I am very results-oriented. No matter which field, I can always conquer difficulties in the shortest possible time, create performance and achieve goals. When I was a project manager at Nestlé, I was able to meet performance targets for 24 consecutive months.\nFinally, I have the entrepreneurial spirit. I am often given the task of new business. Last season, I introduced the "coffee education and training activities" in Nestlé, it was very successful and all the classes were fully registered until end of the year.\nBased on the above characteristics, I believe I can make a great contribution to the company. Thank you."</string>
     <string name="editor_example_four_title">"Hotel front desk"</string>
@@ -65,9 +67,13 @@
     <string name="sm_alert_dialog_auto_recording_title">"Turn off auto video record?"</string>
     <string name="sm_alert_dialog_auto_recording_message">"Once turned off, the system will not record the video during conversation for your later review. Are your sure to turn it off?"</string>
     <!-- toast -->
-    <string name="sm_recording_folder_miss_toast">"No videos in Smile mirror"</string>
+    <string name="sm_recording_folder_miss_toast">"No conversation videos in Gallery"</string>
+    <string name="sm_gallery_disabled_toast">"Gallery is disabled"</string>
     <!--Permission -->
     <string name="sm_permission_title">"Permission request"</string>
     <string name="sm_permission_content">"<![CDATA[<b><font color=#FFFFFF>Smile mirror</b> requires <b><font color=#FFFFFF>Camera, Microphone and Storage</b> permissions to show your mirrored image on the display, and be able to optionally record video during conversations for your later review.]]>"</string>
     <string name="sm_permission_button_text">"Turn on"</string>
+    <!--Storage full -->
+    <string name="storage_full">"Storage full"</string>
+    <string name="storage_full_for_script">"Storage space not enough to save the script."</string>
 </resources>

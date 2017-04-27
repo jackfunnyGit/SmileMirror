@@ -81,7 +81,7 @@ public class SpeechListFragment extends Fragment implements LoaderManager.Loader
         });
         final Toolbar toolbar = (Toolbar) view.findViewById(R.id.editor_list_toolbar);
         mActivity.setSupportActionBar(toolbar);
-        getActivity().setTitle(R.string.conversation_scripts);
+        getActivity().setTitle(R.string.editor_title_bar_text);
 
         toolbar.setTitleTextColor(mContext.getColor(R.color.smile_text_color));
         toolbar.setNavigationIcon(R.drawable.back);
