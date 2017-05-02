@@ -95,6 +95,9 @@ public final class FaceTrackerActivity extends AppCompatActivity implements
     private SensorManager mSensorManager;
     // Smile video TextureView
     private SmileVideoTextureView mVideoView;
+    private ImageView mGalleryView;
+    // check recording is exist or not
+    private int mVideoFileNumbers;
 
     //==============================================================================================
     // Activity Methods
@@ -260,17 +263,17 @@ public final class FaceTrackerActivity extends AppCompatActivity implements
                 String.format("%s%s", mContext.getString(R.string.chart_page_smile_duration),
                         timeText));
         // Open Video file
-        final ImageView videoIntentView = (ImageView) mChartPage
-                .findViewById(R.id.video_intent_view);
+        mGalleryView= (ImageView) mChartPage.findViewById(R.id.video_intent_view);
         if (PrefsUtils.getBooleanPreference(mContext, PrefsUtils.PREFS_AUTO_RECORDING, true)) {
-            videoIntentView.setImageBitmap(GalleryUtil.createVideoThumbnail(mContext));
+            mGalleryView.setImageBitmap(GalleryUtil.createVideoThumbnail(mContext));
+            mVideoFileNumbers = GalleryUtil.getVideoFileNumbers();
+            mGalleryView.setOnClickListener(new View.OnClickListener() {
+                @Override
+                public void onClick(View v) {
+                    GalleryUtil.mediaScan(mContext, GalleryUtil.getVideoFilePath());
+                }
+            });
         }
-        videoIntentView.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                GalleryUtil.mediaScan(mContext, GalleryUtil.getVideoFilePath());
-            }
-        });
         mContainer.addView(mChartPage);
     }
 
@@ -397,6 +400,13 @@ public final class FaceTrackerActivity extends AppCompatActivity implements
         startCameraSource();
 
         mVideoView.setVisibility(View.VISIBLE);
+
+        //TODO: Not a good solution for TT995760
+        if (mGalleryView != null) {
+            if (GalleryUtil.getVideoFileNumbers() != mVideoFileNumbers) {
+                mGalleryView.setVisibility(View.INVISIBLE);
+            }
+        }
     }
 
     @Override

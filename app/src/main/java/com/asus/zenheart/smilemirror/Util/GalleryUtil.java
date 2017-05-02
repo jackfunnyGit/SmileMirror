@@ -36,6 +36,14 @@ public class GalleryUtil {
         return path + allFiles[allFiles.length - 1];
     }
 
+    public static int getVideoFileNumbers() {
+        String path = Environment.getExternalStorageDirectory().getPath() + RECORDING_PATH;
+        File folder = new File(path);
+        String[] allFiles = folder.list();
+
+        return allFiles.length;
+    }
+
     public static String getVideoFileName() {
         final String fileDir = String.format("%s%s"
                 , Environment.getExternalStorageDirectory().getAbsolutePath(),RECORDING_PATH);
@@ -85,7 +93,7 @@ public class GalleryUtil {
         context.sendBroadcast(mediaScanIntent);
     }
     public static void intentToGallery(Context context) {
-        if (!autoRecordingIsExist()) {
+        if (!autoRecordingIsExist() | getVideoFileNumbers() == 0) {
             Toast toast = Toast.makeText(context,
                     context.getString(R.string.sm_recording_folder_miss_toast),
                     Toast.LENGTH_SHORT);
