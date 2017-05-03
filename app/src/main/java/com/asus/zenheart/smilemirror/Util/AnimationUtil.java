@@ -15,7 +15,6 @@ public class AnimationUtil {
     private static final int TOAST_ANIMATION_TIME_MILL = 2000;
     private static final int TOAST_REPEATED_TIME = 1;
     private static final int BLINK_ANIMATION_TIME_MILL = 500;
-    private static final int ROTATION_ANIMATION_TIME_MILL = 100;
 
     private static Animation toastFactory(@NonNull final View callbackView) {
         return toastFactory(callbackView, TOAST_ANIMATION_TIME_MILL);
@@ -84,8 +83,6 @@ public class AnimationUtil {
         blinkAnimation.setRepeatMode(Animation.REVERSE);
         return blinkAnimation;
     }
-    public static void rotateAnimation(View view,float rotation){
-        view.animate().rotation(rotation).setDuration(ROTATION_ANIMATION_TIME_MILL).start();
-    }
+
 
 }

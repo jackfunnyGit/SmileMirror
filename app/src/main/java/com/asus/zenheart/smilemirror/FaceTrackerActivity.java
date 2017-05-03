@@ -649,7 +649,6 @@ public final class FaceTrackerActivity extends AppCompatActivity implements
         final int screenRotation = getScreenRotation(event);
         if (mPreview != null && mPreview.getScreenRotation() != screenRotation) {
             Log.i(TAG, "screen is rotated to  rotation =  " + screenRotation);
-            rotateGuiElement(screenRotation);
             mPreview.setScreenRotation(screenRotation);
             if (mCameraSource == null) {
                 return;
@@ -690,9 +689,6 @@ public final class FaceTrackerActivity extends AppCompatActivity implements
 
     }
 
-    private void rotateGuiElement(@CameraSource.ORIENTATION int rotation) {
-        mPagerAdapter.rotateGuiElement(rotation);
-    }
 
 }
 

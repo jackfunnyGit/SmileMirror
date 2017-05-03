@@ -128,12 +128,6 @@ public class ModePagerAdapter extends PagerAdapter {
         mViewHolder.isRecording = false;
     }
 
-    public void rotateGuiElement(@CameraSource.ORIENTATION int rotation) {
-        if (mViewHolder == null) {
-            return;
-        }
-        mViewHolder.rotateGuiElement(rotation);
-    }
 
     public void hideGuiElementInCoach() {
         if (mViewHolder == null) {
@@ -452,10 +446,7 @@ public class ModePagerAdapter extends PagerAdapter {
             pseudoToolBar.setInterceptTouchEvent(false);
         }
 
-        public void rotateGuiElement(@CameraSource.ORIENTATION int rotation) {
-            AnimationUtil.rotateAnimation(imageViewRecord, rotation * 90);
 
-        }
     }
 
 }
