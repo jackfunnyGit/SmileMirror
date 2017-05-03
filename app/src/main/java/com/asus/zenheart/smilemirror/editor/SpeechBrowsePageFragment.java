@@ -11,7 +11,6 @@ import android.support.v4.app.Fragment;
 import android.support.v4.app.FragmentManager;
 import android.support.v4.app.FragmentTransaction;
 import android.support.v7.app.AlertDialog;
-import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.Toolbar;
 import android.util.SparseIntArray;
 import android.view.KeyEvent;
@@ -54,7 +53,7 @@ public class SpeechBrowsePageFragment extends Fragment {
     private Context mContext;
 
     private Bundle mBundle;
-    private AppCompatActivity mActivity;
+    private SpeechEditorActivity mActivity;
     private long mItemId;
     private float mTextSize;
 
@@ -78,8 +77,8 @@ public class SpeechBrowsePageFragment extends Fragment {
         View view = inflater.inflate(R.layout.editor_browse_page_fragment, container, false);
         mContext = getContext();
         mBundle = getArguments();
-        if (mContext instanceof AppCompatActivity) {
-            mActivity = ((AppCompatActivity) mContext);
+        if (mContext instanceof SpeechEditorActivity) {
+            mActivity = (SpeechEditorActivity) getActivity();
         }
         // setHasOptionsMenu support to create the tool bar.
         setHasOptionsMenu(true);
@@ -111,7 +110,7 @@ public class SpeechBrowsePageFragment extends Fragment {
                     // only need to get the KEYCODE_BACK.
                     if (keyCode == KeyEvent.KEYCODE_BACK) {
                         if (event.getAction() == KeyEvent.ACTION_UP) {
-                            backToSpeechListFragment();
+                            mActivity.backToSpeechListFragment();
                         }
                         return true;
                     }
@@ -131,7 +130,7 @@ public class SpeechBrowsePageFragment extends Fragment {
         toolBar.setNavigationOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                backToSpeechListFragment();
+                mActivity.backToSpeechListFragment();
             }
         });
 
@@ -200,14 +199,6 @@ public class SpeechBrowsePageFragment extends Fragment {
             }
 
         }
-    }
-
-    private void backToSpeechListFragment() {
-        SpeechListFragment speechListPageFragment = new SpeechListFragment();
-        FragmentManager fragmentManager = getFragmentManager();
-        FragmentTransaction fragmentTransaction = fragmentManager.beginTransaction();
-        fragmentTransaction.replace(R.id.fragment, speechListPageFragment);
-        fragmentTransaction.commit();
     }
 
     @Override

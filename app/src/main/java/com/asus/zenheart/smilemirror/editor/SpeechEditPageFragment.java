@@ -15,7 +15,6 @@ import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.Toolbar;
 import android.text.Editable;
 import android.text.TextWatcher;
-import android.view.KeyEvent;
 import android.view.LayoutInflater;
 import android.view.Menu;
 import android.view.MenuInflater;
@@ -133,7 +132,8 @@ public class SpeechEditPageFragment extends Fragment {
                 if (mEditTextChanged) {
                     saveCheckDialog();
                 } else {
-                    backToSpeechBrowseFragment(mId);
+                    mActivity.hideKeyboard();
+                    mActivity.backToSpeechListFragment();
                 }
             }
         });
@@ -155,15 +155,6 @@ public class SpeechEditPageFragment extends Fragment {
                 mEditTextChanged = s.length() != 0;
             }
         });
-    }
-
-    private void backToSpeechBrowseFragment(long id) {
-        mActivity.hideKeyboard();
-        SpeechBrowsePageFragment speechBrowsePageFragment = SpeechBrowsePageFragment.newInstance(id);
-        FragmentManager fragmentManager = getFragmentManager();
-        FragmentTransaction fragmentTransaction = fragmentManager.beginTransaction();
-        fragmentTransaction.replace(R.id.fragment, speechBrowsePageFragment);
-        fragmentTransaction.commit();
     }
 
     @Override
@@ -222,7 +213,8 @@ public class SpeechEditPageFragment extends Fragment {
                                         .insert(SpeechContract.SPEECH_URI, values);
                             }
                             int id = Integer.valueOf(uri != null ? uri.getLastPathSegment() : null);
-                            backToSpeechBrowseFragment(id);
+                            mActivity.hideKeyboard();
+                            mActivity.backToSpeechBrowseFragment(id);
                         } else {
                             Toast toast = Toast.makeText(mContext,
                                     mContext.getResources()

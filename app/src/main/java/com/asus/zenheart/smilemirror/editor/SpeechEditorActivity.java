@@ -65,4 +65,20 @@ public class SpeechEditorActivity extends AppCompatActivity {
                 Intent.FLAG_ACTIVITY_SINGLE_TOP | Intent.FLAG_ACTIVITY_CLEAR_TOP);
         startActivity(intent);
     }
+
+    public void backToSpeechListFragment() {
+        SpeechListFragment speechListPageFragment = new SpeechListFragment();
+        FragmentManager fragmentManager = getSupportFragmentManager();
+        FragmentTransaction fragmentTransaction = fragmentManager.beginTransaction();
+        fragmentTransaction.replace(R.id.fragment, speechListPageFragment);
+        fragmentTransaction.commit();
+    }
+
+    public void backToSpeechBrowseFragment(long id) {
+        SpeechBrowsePageFragment speechBrowsePageFragment = SpeechBrowsePageFragment.newInstance(id);
+        FragmentManager fragmentManager = getSupportFragmentManager();
+        FragmentTransaction fragmentTransaction = fragmentManager.beginTransaction();
+        fragmentTransaction.replace(R.id.fragment, speechBrowsePageFragment);
+        fragmentTransaction.commit();
+    }
 }
