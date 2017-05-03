@@ -15,6 +15,7 @@ import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.Toolbar;
 import android.text.Editable;
 import android.text.TextWatcher;
+import android.view.KeyEvent;
 import android.view.LayoutInflater;
 import android.view.Menu;
 import android.view.MenuInflater;
@@ -78,24 +79,33 @@ public class SpeechEditPageFragment extends Fragment {
     @Override
     public void onResume() {
         super.onResume();
-    //TODO: When you need the cursor in the edit text, you should requestFocus. In this time, you can't set this view's key event.
-//        if(getView() != null) {
-//            getView().setFocusableInTouchMode(true);
-//            getView().requestFocus();
-//            getView().setOnKeyListener(new View.OnKeyListener() {
-//                @Override
-//                public boolean onKey(View v, int keyCode, KeyEvent event) {
-//                    // only need to get the KEYCODE_BACK.
-//                    if (keyCode == KeyEvent.KEYCODE_BACK) {
-//                        if (event.getAction() == KeyEvent.ACTION_UP) {
-//                            backToSpeechBrowseFragment(mId);
-//                        }
-//                        return true;
-//                    }
-//                    return false;
-//                }
-//            });
-//        }
+        mEditText.setOnKeyListener(new View.OnKeyListener() {
+            @Override
+            public boolean onKey(View v, int keyCode, KeyEvent event) {
+                if (keyCode == KeyEvent.KEYCODE_BACK) {
+                    mEditText.clearFocus();
+
+                    if(getView() != null) {
+                        View view = getView();
+                        view.setFocusableInTouchMode(true);
+                        view.requestFocus();
+                        view.setOnKeyListener(new View.OnKeyListener() {
+                            @Override
+                            public boolean onKey(View v, int keyCode, KeyEvent event) {
+                                // only need to get the KEYCODE_BACK.
+                                if (keyCode == KeyEvent.KEYCODE_BACK &&
+                                        event.getAction() == KeyEvent.ACTION_UP) {
+                                    mActivity.backToSpeechListFragment();
+                                    return true;
+                                }
+                                return false;
+                            }
+                        });
+                    }
+                }
+                return false;
+            }
+        });
     }
 
     private void initView(@NonNull View view) {

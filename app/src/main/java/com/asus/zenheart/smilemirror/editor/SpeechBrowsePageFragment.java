@@ -102,16 +102,15 @@ public class SpeechBrowsePageFragment extends Fragment {
             mPresentText.start();
         }
         if(getView() != null) {
-            getView().setFocusableInTouchMode(true);
-            getView().requestFocus();
-            getView().setOnKeyListener(new View.OnKeyListener() {
+            View view = getView();
+            view.setFocusableInTouchMode(true);
+            view.requestFocus();
+            view.setOnKeyListener(new View.OnKeyListener() {
                 @Override
                 public boolean onKey(View v, int keyCode, KeyEvent event) {
-                    // only need to get the KEYCODE_BACK.
-                    if (keyCode == KeyEvent.KEYCODE_BACK) {
-                        if (event.getAction() == KeyEvent.ACTION_UP) {
+                    if (keyCode == KeyEvent.KEYCODE_BACK &&
+                            event.getAction() == KeyEvent.ACTION_UP) {
                             mActivity.backToSpeechListFragment();
-                        }
                         return true;
                     }
                     return false;
