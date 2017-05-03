@@ -5,20 +5,24 @@
                 android:layout_height="match_parent">
 
     <com.asus.zenheart.smilemirror.ui.camera.CameraSourcePreview
-
         android:id="@+id/preview"
         android:layout_width="match_parent"
         android:layout_height="match_parent">
 
         <TextureView
-            android:id="@+id/texture_view"
-            android:layout_width="match_parent"
-            android:layout_height="match_parent"/>
+                android:id="@+id/texture_view"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"/>
+
+        <com.asus.zenheart.smilemirror.VideoTexture.SmileVideoTextureView
+                android:id="@+id/video_view"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"/>
 
         <com.asus.zenheart.smilemirror.ui.camera.GraphicOverlay
-            android:id="@+id/face_overlay"
-            android:layout_width="match_parent"
-            android:layout_height="match_parent"/>
+                android:id="@+id/face_overlay"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"/>
 
     </com.asus.zenheart.smilemirror.ui.camera.CameraSourcePreview>
 

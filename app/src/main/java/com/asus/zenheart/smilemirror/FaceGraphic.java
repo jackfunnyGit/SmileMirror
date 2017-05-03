@@ -21,22 +21,21 @@ import android.content.res.Resources;
 import android.graphics.Bitmap;
 import android.graphics.Canvas;
 import android.graphics.Color;
+import android.graphics.Matrix;
 import android.graphics.Paint;
 import android.graphics.drawable.BitmapDrawable;
 import android.support.annotation.NonNull;
 import android.support.v4.content.ContextCompat;
 import android.view.Surface;
 
-
 import com.asus.zenheart.smilemirror.Util.BitmapUtil;
 
+import com.asus.zenheart.smilemirror.VideoTexture.SmileVideoTextureView;
+import com.asus.zenheart.smilemirror.VideoTexture.VideoTextureView;
 import com.asus.zenheart.smilemirror.ui.camera.CameraSource;
 import com.asus.zenheart.smilemirror.ui.camera.CameraSourcePreview;
 import com.asus.zenheart.smilemirror.ui.camera.GraphicOverlay;
 import com.google.android.gms.vision.face.Face;
-
-import java.util.ArrayList;
-import java.util.Random;
 
 /**
  * Graphic instance for rendering face position, orientation, and landmarks within an associated
@@ -47,6 +46,11 @@ public class FaceGraphic extends GraphicOverlay.Graphic {
     private static final float BOX_STROKE_WIDTH = 2.0f;
     private static final int BOX_STROKE_ALPHA = 102;// 60% opacity
 
+    private static final int VIDEO_EFFECT_WIDTH = 1080;
+    private static final int VIDEO_EFFECT_HEIGHT = 1200;
+    private static final int VIDEO_EFFECT_INTERVAL_WIDTH = 363;
+    private static final int VIDEO_EFFECT_INTERVAL_HEIGHT = 380;
+
     // ShihJie: add the value for L1 to L4
     //TODO: it should be combined or extracted with those in SmileDegreeCounter
     private static final float SMILE_LEVEL_L4 = 0.7f;
@@ -54,8 +58,11 @@ public class FaceGraphic extends GraphicOverlay.Graphic {
     private static final float SMILE_LEVEL_L2 = 0.3f;
 
     // ShihJie: default face window size
-    private static final float ORIGINAL_FACE_WIDTH = 640.0f;
-    private static final float ORIGINAL_FACE_HEIGHT = 800.0f;
+    private static final float ORIGINAL_FACE_WIDTH = 680.0f;
+    private static final float ORIGINAL_FACE_HEIGHT = 850.0f;
+
+    private static final float VIDEO_FACE_WIDTH = 353.0f;
+    private static final float VIDEO_FACE_HEIGHT = 441.0f;
 
     // ShihJie: face window scale size
     private static final float FACE_SCALE_SIZE = 0.8f;
@@ -68,21 +75,8 @@ public class FaceGraphic extends GraphicOverlay.Graphic {
     private static final float SHADOW_X_POSITION = 5.0f;
     private static final float SHADOW_Y_POSITION = 5.0f;
 
-    // ShihJie: heart effects appear range
-    private static final int HEART_APPEAR_HEIGHT = 400;
-
-    // ShihJie: Each second per frame number
-    private static final String CURVE_EFFECT = "effect_bling";
-    private static final String HEART_EFFECT = "effect_heartbling";
-    private static final String STAR_EFFECT = "effect_star_01";
-    private static final String LEFT_STAR_EFFECT = "effect_star_03";
-    private static final String RIGHT_STAR_EFFECT = "effect_star_02";
-    private static final int SMILE_EFFECT_FRAME_NUMBER = 33;
-    private static final int HEART_EFFECT_FRAME_NUMBER = 21;
-    private static final int STAR_EFFECT_FRAME_NUMBER = 18;
-
-
     private Context mContext;
+    private SmileVideoTextureView mVideoView;
     private Resources mResources;
     private GraphicOverlay mGraphicOverlay;
     private CameraSourcePreview mCameraSourcePreview;
@@ -91,39 +85,13 @@ public class FaceGraphic extends GraphicOverlay.Graphic {
     private volatile Face mFace;
     private int mFaceId;
 
-    // ShihJie: Array used to store smile effect resources
-    private int mSmileEffectFrame[];
-    private int mLeftStarEffectFrame[];
-    private int mRightStarEffectFrame[];
-    private int mSmileEffectFrameCount = 0;
-
     // ShihJie: draw the crown or not
     private int smileCount = 0;
     private boolean mCrown = false;
     private boolean mEffect = false;
 
-    /**
-     * for eyeBlink feature and may be removed or fixed in the future
-     */
-    //TODO it will be used in the future
-//    ShihJie: Eye blink effect resource
-//    private static final int HEART_CHOICES[] = {
-//            +R.drawable.effect_heart_01,
-//            +R.drawable.effect_heart_02,
-//            +R.drawable.effect_heart_03,
-//            +R.drawable.effect_heart_04,
-//            +R.drawable.effect_heart_05
-//    };
-//    ShihJie: Eye blink effect value
-//    private static final double OPEN_THRESHOLD = 0.6;
-//    private static final double CLOSE_THRESHOLD = 0.35;
-//    ShihJie: Eyes open and close time(per/frame)
-//    private int mEyeTime = 0;
-//    ShihJie: Eyes blink mEyeState
-//    private int mEyeState = 0;
-//    private ArrayList<Bitmap> mBitmapList = new ArrayList<>();
-
-    FaceGraphic(GraphicOverlay overlay, Context context,CameraSourcePreview cameraPreview) {
+    FaceGraphic(GraphicOverlay overlay, Context context, CameraSourcePreview cameraPreview,
+            SmileVideoTextureView videoTextureView) {
         super(overlay);
         mContext = context;
         mResources = context.getResources();
@@ -131,29 +99,15 @@ public class FaceGraphic extends GraphicOverlay.Graphic {
         mCameraSourcePreview = cameraPreview;
         initPaint(mContext);
 
-        //TODO: fix in the future below(random for three different effects)
-        randomSmileEffect();
-    }
-
-    /**
-     * Random the effect array function
-     */
-    private void randomSmileEffect() {
-        int random = (int) (Math.random() * 3);
-        if (random == 0) {
-            mSmileEffectFrame = getSmileEffectResourceIndex(mContext, HEART_EFFECT,
-                    HEART_EFFECT_FRAME_NUMBER);
-        } else if (random == 1) {
-            mSmileEffectFrame = getSmileEffectResourceIndex(mContext, CURVE_EFFECT,
-                    SMILE_EFFECT_FRAME_NUMBER);
-        } else {
-            mSmileEffectFrame = getSmileEffectResourceIndex(mContext, STAR_EFFECT,
-                    STAR_EFFECT_FRAME_NUMBER);
-            mLeftStarEffectFrame = getSmileEffectResourceIndex(mContext, LEFT_STAR_EFFECT,
-                    STAR_EFFECT_FRAME_NUMBER);
-            mRightStarEffectFrame = getSmileEffectResourceIndex(mContext, RIGHT_STAR_EFFECT,
-                    STAR_EFFECT_FRAME_NUMBER);
-        }
+        mVideoView = videoTextureView;
+        mVideoView.setVideoSize(VIDEO_EFFECT_WIDTH, VIDEO_EFFECT_HEIGHT);
+        mVideoView.setCompletionListener(new VideoTextureView.VideoCompletionCallback() {
+            @Override
+            public void onCompletion() {
+                mVideoView.initVideoView();
+                mVideoView.initMediaPlayer();
+            }
+        });
     }
 
     void setId(int id) {
@@ -167,6 +121,14 @@ public class FaceGraphic extends GraphicOverlay.Graphic {
     void updateFace(Face face) {
         mFace = face;
         postInvalidate();
+    }
+
+    /**
+     * Updates the texture view instance from the detection of the face.  Invalidates the
+     * relevant portions of the overlay to trigger a redraw.
+     */
+    void updateTextureView(SmileVideoTextureView effectTextureView) {
+        mVideoView = effectTextureView;
     }
 
     /**
@@ -184,8 +146,6 @@ public class FaceGraphic extends GraphicOverlay.Graphic {
         // Declare each values in the face window.
         float smileScore = mSmileDegreeCounter.setIsRecording(getIsRecording()).
                 setSmileDegree(face.getIsSmilingProbability()).getSimpleMovingAverage();
-        float rightEye = face.getIsRightEyeOpenProbability();
-        float leftEye = face.getIsLeftEyeOpenProbability();
         float faceWidth = face.getWidth();
         float faceHeight = face.getHeight();
 
@@ -210,8 +170,12 @@ public class FaceGraphic extends GraphicOverlay.Graphic {
         setDrawPaint(context, mBoxPaint, smileScore);
         canvas.drawRect(left, top, right, bottom, mBoxPaint);
 
+        // Resize the video texture view.
+        resizeVideoTextureView(mVideoView, left, top, faceWindowWidth / ORIGINAL_FACE_WIDTH,
+                mCameraSourcePreview.getScreenRotation(), mCameraSourcePreview.getHeight());
         final float smileTextPadding = mResources.getDimension(R.dimen.smile_text_padding);
-        // ++ShihJie: Draw face effect(one face).
+
+        // Draw the face effect.
         if (getAddingEffect()) {
             // Draw smile icon and smile text.
             drawSmileLevelIcon(mResources, canvas, faceWindowWidth, faceWindowHeight,
@@ -219,27 +183,17 @@ public class FaceGraphic extends GraphicOverlay.Graphic {
             drawSmileText(mResources, canvas, mFaceTextPaint, face
                     .getIsSmilingProbability(), x, top - smileTextPadding);
 
-            // Draw the smile effects in the singlePlayer mode.
+            // play the smile effects in the singlePlayer mode.
             if (smileScore > SMILE_LEVEL_L4) {
                 smileCount++;
                 if (smileCount > SMILE_DURATION) {
                     mEffect = true;
                     smileCount = 0;
-                }
-            }
-            if (mEffect) {
-                if (mSmileEffectFrame.length <= STAR_EFFECT_FRAME_NUMBER) {
-                    //TODO: Draw three part effect in the same time, and its place is different from other effects.
-                    drawSmileEffectBitmap(context, canvas, faceWindowWidth, faceWindowHeight, x,
-                            top - yOffset / 2);
                 } else {
-                    drawSmileEffectBitmap(context, canvas, faceWindowWidth, faceWindowHeight, x, y);
-                }
-                mSmileEffectFrameCount++;
-                if (mSmileEffectFrameCount >= mSmileEffectFrame.length) {
-                    mSmileEffectFrameCount = 0;
                     mEffect = false;
-                    randomSmileEffect();
+                }
+                if (mEffect && !mVideoView.isPlayingMediaPlayer()) {
+                    mVideoView.playMediaPlayer();
                 }
             }
         } else {
@@ -250,66 +204,53 @@ public class FaceGraphic extends GraphicOverlay.Graphic {
                 mCrown = false;
             }
         }
-        // --ShihJie
         canvas.restore();
     }
 
-    //TODO: This feature maybe will be used in the future and this function is not ready yet.
-    private void drawEyeBlink() {
-/*
-        //++ShihJie: Draws blink picture, but now this feature is closed.
-        // each effect shown 10 frame
-        if (mEyeTime <= 0) {
-            mEyeTime = 10;
+    /**
+     * scale and translate the texture view size by the value.
+     *
+     * @param view     The video texture view which you want to resize.
+     * @param x        The x-line position in the view.
+     * @param y        The y-line position in the view.
+     * @param radio    The original video scale radio.
+     * @param rotation The orientation of the device screen
+     * @param height   The height of the view, used to error check the position of the effect.
+     */
+    private void resizeVideoTextureView(VideoTextureView view, float x, float y, float radio,
+            int rotation, float height) {
+        // TODO: In future, maybe need to rotate the video.
+        float degree;
+        float correctionUnit = height * 3 / 4;
+        radio = radio * ORIGINAL_FACE_HEIGHT / VIDEO_FACE_HEIGHT;
+        Matrix matrix = new Matrix();
+        matrix.setScale(radio, radio);
+        x = x - (VIDEO_EFFECT_INTERVAL_WIDTH * radio);
+        y = y - (VIDEO_EFFECT_INTERVAL_HEIGHT * radio);
+
+        if (rotation == 0) {
+            degree = 0;
+            matrix.postRotate(degree);
+            matrix.postTranslate(x, y);
+        } else if (rotation == 1) {
+            degree = 90;
+            x = x + (correctionUnit / 3);
+            y = y - correctionUnit;
+            matrix.postTranslate(x, y);
+            matrix.postRotate(degree);
+        } else if (rotation == 2) {
+            degree = 180;
+            x = x - correctionUnit;
+            y = y - height;
+            matrix.postTranslate(x, y);
+            matrix.postRotate(degree);
+        } else if (rotation == 3) {
+            degree = 270;
+            x = x - correctionUnit;
+            matrix.postTranslate(x, y);
+            matrix.postRotate(degree);
         }
-        switch (mEyeState) {
-            case 0:
-                if ((leftEye > OPEN_THRESHOLD) && (rightEye > OPEN_THRESHOLD)) {
-                    // Both eyes are initially open
-
-                    mEyeTime = 10;
-                    mEyeState = 1;
-                } else {
-                    mEyeTime--;
-                    mEyeState = 0;
-                }
-                break;
-
-            case 1:
-                if ((leftEye < CLOSE_THRESHOLD) && (rightEye < CLOSE_THRESHOLD)) {
-                    // Both eyes become closed
-
-                    mEyeTime = 10;
-                    mEyeState = 2;
-                } else {
-                    mEyeTime--;
-                    mEyeState = 1;
-                }
-                break;
-
-            case 2:
-                if ((leftEye > OPEN_THRESHOLD) && (rightEye > OPEN_THRESHOLD)) {
-                    // Both eyes are open again
-
-                    for (int i = 0; i < 5; i++) {
-                        if (mBitmapList.size() < 5) {
-                            Bitmap heart = BitmapFactory.decodeResource(context.getResources(),
-                                    HEART_CHOICES[i]);
-                            Bitmap output = Bitmap.createScaledBitmap(heart, heart.getWidth() / 40,
-                                    heart.getHeight() / 40, false);
-                            mBitmapList.add(output);
-                        }
-                    }
-                    drawHeart(mBitmapList, canvas, 20, x, y);
-                    mEyeTime = 10;
-                    mEyeState = 0;
-                } else {
-                    mEyeTime--;
-                    mEyeState = 2;
-                }
-                break;
-        }
-*/
+        view.setTransform(matrix);
     }
 
     /**
@@ -363,80 +304,6 @@ public class FaceGraphic extends GraphicOverlay.Graphic {
             paint.setColor(smileLevelOneColor);
         }
         paint.setShadowLayer(0, smileLineShadowStroke, smileLineShadowStroke, smileLineShadowColor);
-    }
-
-    /**
-     * Blink effect.
-     *
-     * @param bitmapArrayList List of the picture animation.
-     * @param canvas          Draws the smile object in the camera preview.
-     * @param count           Numbers of the heart in the view.
-     * @param positionX       The X coordinate of the center in the view.
-     * @param positionY       The Y coordinate of the center in the view.
-     */
-    //TODO: This feature maybe will be used in the future and this function is not ready yet.
-    private void drawHeart(@NonNull Canvas canvas, ArrayList<Bitmap> bitmapArrayList, int count,
-            float positionX, float positionY) {
-        Random r = new Random();
-        // Pop heart range
-        int Low = -(HEART_APPEAR_HEIGHT);
-        int High = HEART_APPEAR_HEIGHT;
-        for (int i = 0; i < count; i++) {
-            float x = r.nextInt(High - Low + 1) + Low;
-            float y = r.nextInt(High - Low + 1) + Low;
-            int z = (int) (Math.random() * 5);
-            canvas.drawBitmap(bitmapArrayList.get(z), positionX + x, positionY + y, null);
-        }
-    }
-
-    /**
-     * Smile effect bitmap each frame data.
-     *
-     * @param context   Class for accessing an application's resources.
-     * @param canvas    Draws the smile object in the camera preview.
-     * @param width     Max effect frame number.
-     * @param height    Max effect frame number.
-     * @param positionX Max effect frame number.
-     * @param positionY Max effect frame number.
-     */
-    private void drawSmileEffectBitmap(@NonNull Context context, @NonNull Canvas canvas,
-            float width, float height, float positionX,
-            float positionY) {
-        final float scaleWidth = width / ORIGINAL_FACE_WIDTH;
-        final float scaleHeight = height / ORIGINAL_FACE_HEIGHT;
-        if (mSmileEffectFrame.length <= STAR_EFFECT_FRAME_NUMBER) {
-            //TODO: fix in the future below(random for three different effects)
-            BitmapDrawable leftEffect = (BitmapDrawable) context.getResources()
-                    .getDrawable(mLeftStarEffectFrame[mSmileEffectFrameCount], null);
-            BitmapDrawable rightEffect = (BitmapDrawable) context.getResources()
-                    .getDrawable(mRightStarEffectFrame[mSmileEffectFrameCount], null);
-
-            Bitmap leftOutput = BitmapUtil.decodeSampledBitmapFromResource(context.getResources(),
-                    mLeftStarEffectFrame[mSmileEffectFrameCount],
-                    (int) (scaleWidth * leftEffect.getIntrinsicWidth()),
-                    (int) (scaleHeight * leftEffect.getIntrinsicHeight()));
-            Bitmap rightOutput = BitmapUtil.decodeSampledBitmapFromResource(context.getResources(),
-                    mRightStarEffectFrame[mSmileEffectFrameCount],
-                    (int) (scaleWidth * rightEffect.getIntrinsicWidth()),
-                    (int) (scaleHeight * rightEffect.getIntrinsicHeight()));
-
-            canvas.drawBitmap(leftOutput, positionX - 2 * leftOutput.getWidth(),
-                    positionY + (leftOutput.getHeight() / 2), null);
-            canvas.drawBitmap(rightOutput, positionX + rightOutput.getWidth(),
-                    positionY + (rightOutput.getHeight() / 2),
-                    null);
-
-            leftOutput.recycle();
-            rightOutput.recycle();
-        }
-        BitmapDrawable smileEffect = (BitmapDrawable) context.getResources()
-                .getDrawable(mSmileEffectFrame[mSmileEffectFrameCount], null);
-        Bitmap output = BitmapUtil.decodeSampledBitmapFromResource(context.getResources(),
-                mSmileEffectFrame[mSmileEffectFrameCount],
-                (int) (scaleWidth * smileEffect.getIntrinsicWidth()),
-                (int) (scaleHeight * smileEffect.getIntrinsicHeight()));
-        canvas.drawBitmap(output, positionX - (output.getWidth() / 2), positionY, null);
-        output.recycle();
     }
 
     /**
@@ -536,27 +403,9 @@ public class FaceGraphic extends GraphicOverlay.Graphic {
     }
 
     /**
-     * Smile effect each frame data.
-     *
-     * @param context Class for accessing an application's resources.
-     * @param maxsize Max effect frame number.
-     */
-    private static int[] getSmileEffectResourceIndex(@NonNull Context context, String resource,
-            int maxsize) {
-        final String drawable = "drawable";
-        final String resourceName = resource + "_%03d";
-        final Resources resources = context.getResources();
-        final int resourceIds[] = new int[maxsize];
-        String name;
-        for (int i = 0; i < maxsize; i++) {
-            name = String.format(resourceName, i);
-            resourceIds[i] = resources.getIdentifier(name, drawable, context.getPackageName());
-        }
-        return resourceIds;
-    }
-    /**
      * Rotate and translate the canvas to correspond to the screen rotation
-     * @param canvas On which the face is drawn
+     *
+     * @param canvas   On which the face is drawn
      * @param rotation The orientation of the device screen
      */
     private void rotateCanvas(@NonNull Canvas canvas,

@@ -47,6 +47,7 @@ import com.asus.zenheart.smilemirror.Util.GalleryUtil;
 import com.asus.zenheart.smilemirror.Util.LogUtils;
 import com.asus.zenheart.smilemirror.Util.PermissionUtil;
 import com.asus.zenheart.smilemirror.Util.PrefsUtils;
+import com.asus.zenheart.smilemirror.VideoTexture.SmileVideoTextureView;
 import com.asus.zenheart.smilemirror.ui.camera.CameraSource;
 import com.asus.zenheart.smilemirror.ui.camera.CameraSourcePreview;
 import com.asus.zenheart.smilemirror.ui.camera.GraphicOverlay;
@@ -92,6 +93,8 @@ public final class FaceTrackerActivity extends AppCompatActivity implements
     private View mPermissionPage;
 
     private SensorManager mSensorManager;
+    // Smile video TextureView
+    private SmileVideoTextureView mVideoView;
 
     //==============================================================================================
     // Activity Methods
@@ -119,6 +122,9 @@ public final class FaceTrackerActivity extends AppCompatActivity implements
         mContainer = (ViewGroup) findViewById(android.R.id.content);
         mPreview = (CameraSourcePreview) findViewById(R.id.preview);
         mGraphicOverlay = (GraphicOverlay) findViewById(R.id.face_overlay);
+        // ShihJie: init the texture view which play the effect video.
+        mVideoView = (SmileVideoTextureView) findViewById(R.id.video_view);
+        mVideoView.setResourceId(mVideoView.getRandomEffect(), mVideoView.getCorrectShader());
         mViewpager = (BorderViewPager) findViewById(R.id.viewpager);
         mToastTextView = (TextView) findViewById(R.id.toast_text);
         mSmileIndicatorView = (SmileIndicatorView) findViewById(R.id.smile_indicator);
@@ -151,14 +157,14 @@ public final class FaceTrackerActivity extends AppCompatActivity implements
             @Override
             public void onPageScrolled(int position, float positionOffset, int
                     positionOffsetPixels) {
-                //when Viewpager scrolled to another page, onPageScrolled(position = 1,offset=0,
+                // when Viewpager scrolled to another page, onPageScrolled(position = 1,offset=0,
                 // offsetPixels =0) will be invoked,which is supposed to be 100.It could be
                 // tolerated to abandoned offset = 0
                 if (positionOffset == 0) {
                     return;
                 }
-                //when ViewPager is scrolled a little, the face window is expected to be not drawn.
-                //Therefore,small shift is set by POSITION_OFFSET_NOT_DRAW valued at 0.01
+                // when ViewPager is scrolled a little, the face window is expected to be not drawn.
+                // Therefore,small shift is set by POSITION_OFFSET_NOT_DRAW valued at 0.01
                 if (positionOffset > POSITION_OFFSET_NOT_DRAW) {
                     mGraphicOverlay.setMode(GraphicOverlay.Mode.CONVERSATION);
                 } else {
@@ -389,6 +395,8 @@ public final class FaceTrackerActivity extends AppCompatActivity implements
         AnimationUtil.toastAnimation(mToastTextView);//mode Toast
         //Jack ---
         startCameraSource();
+
+        mVideoView.setVisibility(View.VISIBLE);
     }
 
     @Override
@@ -406,6 +414,10 @@ public final class FaceTrackerActivity extends AppCompatActivity implements
         resetGuiElementState();
         mSensorManager.unregisterListener(this);
         mPreview.stop();
+
+        //TODO: after installation, onStop will run in first.
+        mVideoView.clearRenderer();
+        mVideoView.setVisibility(View.GONE);
     }
 
     @Override
@@ -500,7 +512,6 @@ public final class FaceTrackerActivity extends AppCompatActivity implements
             Log.d(TAG, "mCameraSource = null");
         }
     }
-
     //==============================================================================================
     // Graphic Face Tracker
     //==============================================================================================
@@ -526,7 +537,7 @@ public final class FaceTrackerActivity extends AppCompatActivity implements
 
         GraphicFaceTracker(GraphicOverlay overlay, Context mContext) {
             mOverlay = overlay;
-            mFaceGraphic = new FaceGraphic(overlay, mContext, mPreview);
+            mFaceGraphic = new FaceGraphic(overlay, mContext, mPreview, mVideoView);
         }
 
         /**
@@ -535,11 +546,13 @@ public final class FaceTrackerActivity extends AppCompatActivity implements
         @Override
         public void onNewItem(int faceId, Face item) {
             mFaceGraphic.setId(faceId);
+            mFaceGraphic.updateTextureView(mVideoView);
         }
 
         /**
          * Update the position/characteristics of the face within the overlay.
          */
+        @RequiresApi(api = Build.VERSION_CODES.N)
         @Override
         public void onUpdate(FaceDetector.Detections<Face> detectionResults, Face face) {
             mOverlay.add(mFaceGraphic);
@@ -563,6 +576,8 @@ public final class FaceTrackerActivity extends AppCompatActivity implements
         @Override
         public void onDone() {
             mOverlay.remove(mFaceGraphic);
+            mVideoView.initVideoView();
+            mVideoView.initMediaPlayer();
         }
     }
 
