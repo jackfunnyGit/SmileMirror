@@ -6,6 +6,7 @@ import android.content.Context;
 import android.content.DialogInterface;
 import android.content.Intent;
 import android.database.Cursor;
+import android.graphics.Color;
 import android.net.Uri;
 import android.os.Bundle;
 import android.support.design.widget.FloatingActionButton;
@@ -265,6 +266,8 @@ public class SpeechListFragment extends Fragment implements LoaderManager.Loader
     private void showRenameCheckDialog(final List<Integer> selectedItemPositions) {
         AlertDialog.Builder builder = new AlertDialog.Builder(mContext);
         final EditText titleEditText = new EditText(mContext);
+        titleEditText.setBackgroundResource(R.drawable.asusres_edit_text_holo_dark);
+        titleEditText.setTextColor(Color.WHITE);
         if (mTitle.length() == 0) {
             titleEditText.setHint(R.string.editor_title_hint);
             titleEditText.setSelection(0);

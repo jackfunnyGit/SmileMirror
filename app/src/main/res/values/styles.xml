@@ -28,7 +28,11 @@
         <item name="windowActionModeOverlay">true</item>
         <item name="actionModeStyle">@style/ActionMode</item>
         <item name="actionModeCloseDrawable">@drawable/back</item>
-        <item name="android:alertDialogTheme">@style/Theme.AsusRes.Dialog.Alert</item>
+        <item name="android:alertDialogTheme">@style/DarkAlertDialog</item>
+    </style>
+
+    <style name="DarkAlertDialog" parent="Theme.AsusRes.Dialog.Alert">
+        <item name="android:buttonStyle">@style/TextAppearance.AsusRes.Widget.Button</item>
     </style>
 
     <style name="ToolBarStyle" parent="Base.Widget.AppCompat.Toolbar">

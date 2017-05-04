@@ -5,6 +5,7 @@ import android.content.ContentValues;
 import android.content.Context;
 import android.content.DialogInterface;
 import android.database.Cursor;
+import android.graphics.Color;
 import android.net.Uri;
 import android.os.Bundle;
 import android.support.annotation.NonNull;
@@ -188,6 +189,8 @@ public class SpeechEditPageFragment extends Fragment {
     private void showSaveFileDialog() {
         final EditText titleEditText = new EditText(mContext);
         AlertDialog.Builder builder = new AlertDialog.Builder(mContext);
+        titleEditText.setBackgroundResource(R.drawable.asusres_edit_text_holo_dark);
+        titleEditText.setTextColor(Color.WHITE);
         if (mTitle != null) {
             titleEditText.setText(mTitle);
             titleEditText.setSelection(mTitle.length());

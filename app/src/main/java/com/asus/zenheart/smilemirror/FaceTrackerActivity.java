@@ -224,6 +224,8 @@ public final class FaceTrackerActivity extends AppCompatActivity implements
                 if (layoutId == R.layout.tutorial_main_page) {
                     showGuiElement();
                     showTitleToast();
+                    AnimationUtil.showToast(mToastTextView,
+                            R.string.coach_mode, R.drawable.conversation_mode);
                 } else if (layoutId == R.layout.tutorial_coach_page) {
                     AnimationUtil.showToast(mToastTextView,
                             R.string.coach_mode, R.drawable.conversation_mode);
