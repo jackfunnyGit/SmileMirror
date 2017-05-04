@@ -8,15 +8,14 @@
 
 
     <TextView
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:layout_alignParentEnd="true"
-        android:layout_alignParentTop="true"
-        android:layout_marginTop="@dimen/sm_tutorial_coach_page_text_script_list_top_margin"
-        android:text="@string/sm_tutorial_coach__page_text_script_list"
-        android:textAlignment="textEnd"
-        android:textColor="@android:color/white"
-        android:textSize="@dimen/tutorial_page_small_text_size"/>
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignParentEnd="true"
+            android:layout_alignParentTop="true"
+            android:layout_marginTop="@dimen/sm_tutorial_coach_page_text_script_list_top_margin"
+            android:text="@string/sm_tutorial_coach__page_text_script_list"
+            android:textColor="@android:color/white"
+            android:textSize="@dimen/tutorial_page_small_text_size"/>
 
     <TextView
         android:layout_width="@dimen/sm_tutorial_coach_page_text_start_practice_text_width"
