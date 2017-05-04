@@ -72,7 +72,7 @@
     <string name="sm_gallery_disabled_toast">"圖片庫目前停用中"</string>
     <!--Permission -->
     <string name="sm_permission_title">"請同意以下授權"</string>
-    <string name="sm_permission_content">"<![CDATA[<b><font color=#FFFFFF>微笑鏡子</b>必須取得<b><font color=#FFFFFF>相機、麥克風與儲存空間</b>的存取權才能顯示您的鏡射影像，以及在對談練習過程中，可以選擇進行錄影以提供練習後的檢視。]]>"</string>
+    <string name="sm_permission_content">"<b><font color="#ffffff">微笑鏡子</font></b>必須取得<b><font color="#ffffff">相機、麥克風與儲存空間</font></b>的存取權才能顯示您的鏡射影像，以及在對談練習過程中，可以選擇進行錄影以提供練習後的檢視。"</string>
     <string name="sm_permission_button_text">"開啟"</string>
     <!--Storage full -->
     <string name="storage_full">"儲存空間已滿"</string>

@@ -120,8 +120,6 @@ public class PermissionUtil {
      * @param layoutId      The layout id of the permission xml
      * @return The permission page view
      */
-    @TargetApi(Build.VERSION_CODES.N)
-    @SuppressWarnings("deprecation")
     public static View addPermissionPage(@NonNull final Context context,
             @NonNull final ViewGroup container, @StringRes int titleTextId,
             @StringRes int contentTextId,
@@ -131,10 +129,7 @@ public class PermissionUtil {
         TextView titleView = (TextView) psView.findViewById(R.id.permission_agreement_title);
         titleView.setText(resources.getText(titleTextId));
         TextView contentView = (TextView) psView.findViewById(R.id.permission_agreement_content);
-        //TODO check out if CDATA is needed due to the translation system
-        contentView.setText(Utils.isRunningOnSpecifiedVersionOrHigher(Build.VERSION_CODES.N)
-                ? Html.fromHtml(resources.getString(contentTextId), Html.FROM_HTML_MODE_LEGACY)
-                : Html.fromHtml(resources.getString(contentTextId)));
+        contentView.setText(resources.getText(contentTextId));
         Button button = (Button) psView.findViewById(R.id.permission_button);
         button.setOnClickListener(new View.OnClickListener() {
             @Override

@@ -71,7 +71,7 @@
     <string name="sm_gallery_disabled_toast">"Gallery is disabled"</string>
     <!--Permission -->
     <string name="sm_permission_title">"Permission request"</string>
-    <string name="sm_permission_content">"<![CDATA[<b><font color=#FFFFFF>Smile mirror</b> requires <b><font color=#FFFFFF>Camera, Microphone and Storage</b> permissions to show your mirrored image on the display, and be able to optionally record video during conversations for your later review.]]>"</string>
+    <string name="sm_permission_content">"<b><font color="#ffffff">Smile mirror</font></b> requires <b><font color="#ffffff">Camera, Microphone and Storage</font></b> permissions to show your mirrored image on the display, and be able to optionally record video during conversations for your later review."</string>
     <string name="sm_permission_button_text">"Turn on"</string>
     <!--Storage full -->
     <string name="storage_full">"Storage full"</string>
