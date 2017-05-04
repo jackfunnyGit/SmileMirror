@@ -19,6 +19,7 @@ import android.view.MotionEvent;
 import android.view.View;
 import android.widget.TextView;
 
+import com.asus.zenheart.smilemirror.Util.LogUtils;
 import com.asus.zenheart.smilemirror.Util.PrefsUtils;
 import com.asus.zenheart.smilemirror.editor.database.SpeechContract;
 
@@ -58,7 +59,6 @@ public class VerticalScrollTextView extends TextView implements View.OnTouchList
      */
     public static final int FIRST_DELAY_TIME_MILLS = 5000;
 
-    //TODO: remove all the log in the future
     private static final String LOG_TAG = "VerticalScrollTextView";
     private static final float STROKE_WIDTH = 1f;//for bottom line painting
 
@@ -75,13 +75,17 @@ public class VerticalScrollTextView extends TextView implements View.OnTouchList
     private int mPaddingShift;
     private String mText;
     private int mFontHeight;
+    private int mFontBottomHeight;
     private float mWidth;
     private float mHeight;
     private List<String> mTextList = new ArrayList<>();
-    private AnimRunnable mRunnable = new AnimRunnable();
-
+    private AnimRunnable mRunnable;
+    /**
+     * True when the height of the textSpeech is shorter than the VerticalTextView
+     */
     private boolean mNeedScrolling;
     private boolean mIsScrolling;
+    private boolean mRepeating;
     private float mFirstLineY;
 
     public VerticalScrollTextView(Context context) {
@@ -162,6 +166,7 @@ public class VerticalScrollTextView extends TextView implements View.OnTouchList
         mPaint.setColor(Color.WHITE);
         mPaint.setStrokeWidth(STROKE_WIDTH);
         mFontHeight = getFontHeight(mPaint);
+        mFontBottomHeight = getFontBottomHeight(mPaint);
         mFirstLineY = mFontHeight * TEXT_ROW_SPACE;
         initTextList();
         invalidate();
@@ -270,7 +275,18 @@ public class VerticalScrollTextView extends TextView implements View.OnTouchList
 
     private void checkIfNeedScrolling() {
         mNeedScrolling = mHeight < TEXT_ROW_SPACE * mTextList.size() * mFontHeight +
-                getFontBottom(mPaint);
+                getFontBottomHeight(mPaint);
+    }
+
+    private AnimRunnable createRunnable() {
+        if (mRepeating) {
+            return new ScrollRepeatRunnable();
+        } else if (mNeedScrolling) {
+            return new ScrollOnceRunnable();
+        } else {
+            LogUtils.w(LOG_TAG, "createRunnable returning false is unexpected");
+            return null;
+        }
     }
 
     /**
@@ -281,23 +297,42 @@ public class VerticalScrollTextView extends TextView implements View.OnTouchList
     }
 
     /**
-     * start toast_text auto scrolled after delay milli seconds
+     * start toast_text auto scrolled after delay milli seconds. mRunnable is only created once
+     * because scrolling strategy will not change once mRunnable is created
      */
     public void start(int delayMillis) {
-        if (!mIsScrolling && mNeedScrolling) {
+        if (!mIsScrolling && (mRepeating || mNeedScrolling)) {
             mIsScrolling = true;
+            if (mRunnable == null) {
+                mRunnable = createRunnable();
+            }
             postDelayed(mRunnable, delayMillis);
         }
     }
 
     /**
-     * stop toast_text auto scrolled
+     * stop toast_text auto scrolled. We don't have to check if mRunnable is null because
+     * removeCallbacks has already checked
+     *
+     * @see #removeCallbacks(Runnable)
      */
     public void stop() {
         removeCallbacks(mRunnable);
         mFirstLineY = mFontHeight * TEXT_ROW_SPACE;
         mIsScrolling = false;
         invalidate();
+    }
+
+    /**
+     * Set if repeating. If true,text will scrolling repeatedly.
+     * Otherwise,text will scroll to the last line and stop
+     *
+     * @param repeat The repeat flag
+     * @return This object, allowing calls to methods in this class to be chained.
+     */
+    public VerticalScrollTextView setRepeatMode(boolean repeat) {
+        mRepeating = repeat;
+        return this;
     }
 
     /*unused*/
@@ -336,21 +371,42 @@ public class VerticalScrollTextView extends TextView implements View.OnTouchList
      * @param paint the textSize
      * @return an integer corresponding to bottom height of the font
      */
-    private static int getFontBottom(Paint paint) {
+    private static int getFontBottomHeight(Paint paint) {
         Paint.FontMetrics fm = paint.getFontMetrics();
         return (int) Math.ceil(fm.bottom);
     }
 
-    private class AnimRunnable implements Runnable {
+    private abstract class AnimRunnable implements Runnable {
+        public abstract boolean scrollStrategy();
+
         @Override
         public void run() {
             mFirstLineY = mFirstLineY - mTextStep;
-            if ((mFirstLineY + TEXT_ROW_SPACE * mTextList.size() * mFontHeight) < 0) {
-                //start from bottom
-                mFirstLineY = mHeight;
+            if (scrollStrategy()) {
+                return;
             }
             invalidate();
             postDelayed(this, TEXT_INTERVAL_TIME_MILL);
+        }
+    }
+
+    private class ScrollRepeatRunnable extends AnimRunnable {
+
+        @Override
+        public boolean scrollStrategy() {
+            if (mFirstLineY + TEXT_ROW_SPACE * (mTextList.size() - 1) * mFontHeight < 0) {
+                //start from bottom
+                mFirstLineY = mHeight;
+            }
+            return false;
+        }
+    }
+
+    private class ScrollOnceRunnable extends AnimRunnable {
+        @Override
+        public boolean scrollStrategy() {
+            return mFirstLineY + TEXT_ROW_SPACE * (mTextList.size() - 1) * mFontHeight +
+                    mFontBottomHeight < mHeight;
         }
     }
 

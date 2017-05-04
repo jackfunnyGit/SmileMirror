@@ -25,6 +25,7 @@ import android.widget.SeekBar;
 
 import com.asus.zenheart.smilemirror.FaceTrackerActivity;
 import com.asus.zenheart.smilemirror.R;
+import com.asus.zenheart.smilemirror.Util.LogUtils;
 import com.asus.zenheart.smilemirror.Util.PrefsUtils;
 import com.asus.zenheart.smilemirror.VerticalScrollTextView;
 import com.asus.zenheart.smilemirror.editor.database.SpeechContract;
@@ -99,7 +100,7 @@ public class SpeechBrowsePageFragment extends Fragment {
     public void onResume() {
         super.onResume();
         if (mPresentText != null) {
-            mPresentText.start();
+            mPresentText.setRepeatMode(true).start();
         }
         if(getView() != null) {
             View view = getView();
@@ -166,7 +167,7 @@ public class SpeechBrowsePageFragment extends Fragment {
 
             @Override
             public void onStopTrackingTouch(SeekBar seekBar) {
-                mPresentText.start();
+                mPresentText.setRepeatMode(true).start();
             }
         });
 

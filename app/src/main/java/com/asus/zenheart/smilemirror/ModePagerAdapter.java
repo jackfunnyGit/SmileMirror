@@ -360,7 +360,8 @@ public class ModePagerAdapter extends PagerAdapter {
                         public void onFinished() {
                             imageViewRecord.setVisibility(View.INVISIBLE);
                             imageViewPlay.setImageResource(R.drawable.stop);
-                            scrollTextView.start(VerticalScrollTextView.FIRST_DELAY_TIME_MILLS);
+                            scrollTextView.setRepeatMode(false)
+                                    .start(VerticalScrollTextView.FIRST_DELAY_TIME_MILLS);
                             dragView.setImageResource(R.drawable.drag_disable);
                             dragView.setEnabled(false);
                             countView.starCount();
