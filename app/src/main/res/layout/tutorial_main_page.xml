@@ -2,7 +2,7 @@
 <RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"
-                android:background="@drawable/tutorial_page_01">
+                android:background="@color/sm_color_black_opacity_80">
 
     <Space
         android:id="@+id/space_title_align_target"
@@ -31,15 +31,24 @@
     <TextView
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_alignBottom="@id/space_content_align_target"
+        android:gravity="center"
+        android:background="@drawable/tutorial_switch"
+        android:layout_centerVertical="true"
         android:layout_centerHorizontal="true"
         android:text="@string/sm_tutorial_main_page_content"
-        android:textAlignment="center"
         android:textColor="@android:color/white"
         android:textSize="@dimen/tutorial_page_small_text_size"/>
 
     <ImageView
         android:id="@+id/tutorial_close_image"
         style="@style/CommonCloseButtonStyle"/>
+
+    <ImageView
+        android:id="@+id/tutorial_face_image"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:src="@drawable/tutorial_face"
+        android:layout_centerHorizontal="true"
+        android:layout_centerVertical="true"/>
 
 </RelativeLayout>
