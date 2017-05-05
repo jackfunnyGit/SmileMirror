@@ -47,10 +47,10 @@
     <string name="editor_menu_title_rename">重新命名</string>
     <string name="sm_editor_add_script_remind">点击\"+\"按钮以创建新的脚本</string>
     <!-- Example Speeches -->
-    <string name="editor_example_two_title">"巧遇认识的人"</string>
-    <string name="editor_example_two_content">"嗨 (名字)！好久不见了！你最近在忙什么 ?\n很高兴遇见你，但是不巧我现在有事得先离开。我们再约个时间聚一下！"</string>
     <string name="editor_example_one_title">"自我介绍 (15秒)"</string>
     <string name="editor_example_one_content">"您好，我是(名字)。我过去三年在麻省理工学院史密斯教授的实验室里从事火箭科学的研究。我很高兴能在太空总署这里继续发展我的专业，运用我的专业知识，贡献给整个团队。"</string>
+    <string name="editor_example_two_title">"巧遇认识的人"</string>
+    <string name="editor_example_two_content">"嗨 (名字)！好久不见了！你最近在忙什么 ?\n很高兴遇见你，但是不巧我现在有事得先离开。我们再约个时间聚一下！"</string>
     <string name="editor_example_three_title">"自我介绍 (一分钟)"</string>
     <string name="editor_example_three_content">"您好，我是(名字)。我想介绍我个人的三项特质：\n第一，我是一个team player，我善于激励士气，带领全队达成目标。我曾经担任北京大学羽球队的队长，带领球队拿到当年度大专杯的亚军，是校队有史以来的最好成绩。\n第二，我非常的结果导向，不管是在哪一个单位，我总是能在最短时间内排除困难，创造绩效，达成目标。我在雀巢公司担任项目经理的时候，就从接到任务开始，连续24个月都能达成业绩目标。\n最后，我具有创业的精神，常常被赋予新事业的任务。上一季，我在雀巢公司导入「咖啡教育训练活动」，受到极大欢迎，到年底前的所有报名场次已经一位难求。\n基于以上特质，我相信我能为本公司做出一定的贡献。谢谢。"</string>
     <string name="editor_example_four_title">"酒店柜台服務员"</string>

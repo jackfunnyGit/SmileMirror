@@ -357,11 +357,13 @@ public class VerticalScrollTextView extends TextView implements View.OnTouchList
     private static class LoadContentTask extends AsyncTask<Void, Void, String[]> {
 
         private static final String[] PROJECTION = new String[]{
-                SpeechContract.CONTENT, SpeechContract.TITLE, SpeechContract._ID};
+                SpeechContract.CONTENT, SpeechContract.TITLE, SpeechContract._ID,
+                SpeechContract.TYPE};
 
         private static final int INDEX_CONTENT = 0;
         private static final int INDEX_TITLE = 1;
         private static final int INDEX_ID = 2;
+        private static final int INDEX_TYPE = 3;
 
         private final WeakReference<Context> mContextReference;
         private final WeakReference<VerticalScrollTextView> mTextViewReference;
@@ -395,8 +397,27 @@ public class VerticalScrollTextView extends TextView implements View.OnTouchList
                 cursor.moveToPosition(-1);
                 while (cursor.moveToNext()) {
                     if (mContentId == cursor.getInt(INDEX_ID)) {
-                        return new String[]{cursor.getString(INDEX_CONTENT),
-                                cursor.getString(INDEX_TITLE)};
+                        int type = cursor.getInt(INDEX_TYPE);
+                        if (type == 1) {
+                            return new String[]{context.getString(
+                                    R.string.editor_example_one_content),
+                                    context.getString(R.string.editor_example_one_title)};
+                        } else if (type == 2) {
+                            return new String[]{context.getString(
+                                    R.string.editor_example_two_content),
+                                    context.getString(R.string.editor_example_two_title)};
+                        } else if (type == 3) {
+                            return new String[]{context.getString(
+                                    R.string.editor_example_three_content),
+                                    context.getString(R.string.editor_example_three_title)};
+                        } else if (type == 4) {
+                            return new String[]{context.getString(
+                                    R.string.editor_example_four_content),
+                                    context.getString(R.string.editor_example_four_title)};
+                        } else {
+                            return new String[]{cursor.getString(INDEX_CONTENT),
+                                    cursor.getString(INDEX_TITLE)};
+                        }
                     }
                 }
                 return new String[]{context.getString(

@@ -48,10 +48,10 @@
     <string name="editor_menu_title_rename">"重新命名"</string>
     <string name="sm_editor_add_script_remind">"點擊"+"按鈕以建立新的腳本"</string>
     <!-- Example Speeches -->
-    <string name="editor_example_two_title">"巧遇認識的人"</string>
-    <string name="editor_example_two_content">"嗨 (名字)！好久不見了！你最近在忙什麼 ?\n很高興遇見你，但是不巧我現在有事得先離開。我們再約個時間聚一下！"</string>
     <string name="editor_example_one_title">"自我介紹 (15秒)"</string>
     <string name="editor_example_one_content">"您好，我是(名字)。我過去三年在麻省理工學院史密斯教授的實驗室裡從事火箭科學的研究。我很高興能在太空總署這裡繼續發展我的專業，運用我的專業知識，貢獻給整個團隊。"</string>
+    <string name="editor_example_two_title">"巧遇認識的人"</string>
+    <string name="editor_example_two_content">"嗨 (名字)！好久不見了！你最近在忙什麼 ?\n很高興遇見你，但是不巧我現在有事得先離開。我們再約個時間聚一下！"</string>
     <string name="editor_example_three_title">"自我介紹 (一分鐘)"</string>
     <string name="editor_example_three_content">"您好，我是(名字)。我想介紹我個人的三項特質：\n第一，我是一個team player，我善於激勵士氣，帶領全隊達成目標。我曾經擔任台灣大學羽球隊的隊長，帶領球隊拿到當年度大專盃的亞軍，是校隊有史以來的最好成績。\n第二，我非常的結果導向，不管是在哪一個單位，我總是能在最短時間內排除困難，創造績效，達成目標。我在雀巢公司擔任專案經理的時候，就從接到任務開始，連續24個月都能達成業績目標。\n最後，我具有創業的精神，常常被賦予新事業的任務。上一季，我在雀巢公司導入「咖啡教育訓練活動」，受到極大歡迎，到年底前的所有報名場次已經一位難求。\n基於以上特質，我相信我能為本公司做出一定的貢獻。謝謝。"</string>
     <string name="editor_example_four_title">"飯店櫃台人員"</string>

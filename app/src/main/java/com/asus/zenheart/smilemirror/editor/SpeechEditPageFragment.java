@@ -34,8 +34,8 @@ import com.asus.zenheart.smilemirror.editor.database.SpeechContract;
 import static android.nfc.NfcAdapter.EXTRA_ID;
 
 public class SpeechEditPageFragment extends Fragment {
-    // type value 1 means user speech, 0 means default speech.
-    private static final int INPUT_TYPE = 1;
+    // type value 0 means user speech, others mean default speeches.
+    private static final int USER_INPUT_TYPE = 0;
 
     private EditText mEditText;
     private Context mContext;
@@ -119,9 +119,15 @@ public class SpeechEditPageFragment extends Fragment {
             try (Cursor cursor = mContext.getContentResolver().query(uri, null, null, null, null)) {
                 if (cursor != null) {
                     cursor.moveToFirst();
-                    mTitle = cursor.getString(cursor.getColumnIndex(SpeechContract.TITLE));
-                    mEditText.setText(
-                            cursor.getString(cursor.getColumnIndex(SpeechContract.CONTENT)));
+                    int type = cursor.getInt(cursor.getColumnIndex(SpeechContract.TYPE));
+                    if (type ==0) {
+                        mTitle = cursor.getString(cursor.getColumnIndex(SpeechContract.TITLE));
+                        mEditText.setText(
+                                cursor.getString(cursor.getColumnIndex(SpeechContract.CONTENT)));
+                    } else {
+                        mTitle = setSampleSpeechTitle(type);
+                        mEditText.setText(setSampleSpeechContent(type));
+                    }
                     mEditText.setSelection(mEditText.getText().length());
                 }
             } catch (Exception e) {
@@ -168,6 +174,30 @@ public class SpeechEditPageFragment extends Fragment {
         });
     }
 
+    private String setSampleSpeechTitle(int type) {
+        if (type == 1) {
+            return mContext.getString(R.string.editor_example_one_title);
+        } else if (type == 2) {
+            return mContext.getString(R.string.editor_example_two_title);
+        } else if (type == 3) {
+            return mContext.getString(R.string.editor_example_three_title);
+        } else {
+            return mContext.getString(R.string.editor_example_four_title);
+        }
+    }
+
+    private String setSampleSpeechContent(int type) {
+        if (type == 1) {
+            return mContext.getString(R.string.editor_example_one_content);
+        } else if (type == 2) {
+            return mContext.getString(R.string.editor_example_two_content);
+        } else if (type == 3) {
+            return mContext.getString(R.string.editor_example_three_content);
+        } else {
+            return mContext.getString(R.string.editor_example_four_content);
+        }
+    }
+
     @Override
     public void onCreateOptionsMenu(Menu menu, MenuInflater inflater) {
         menu.clear();
@@ -211,7 +241,7 @@ public class SpeechEditPageFragment extends Fragment {
                         ContentValues values = new ContentValues();
                         Uri uri;
                         if (!mTitle.isEmpty()) {
-                            values.put(SpeechContract.TYPE, INPUT_TYPE);
+                            values.put(SpeechContract.TYPE, USER_INPUT_TYPE);
                             values.put(SpeechContract.DATE,
                                     mActivity.getTime());
                             values.put(SpeechContract.TITLE, mTitle);

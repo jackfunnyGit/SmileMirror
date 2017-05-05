@@ -125,6 +125,7 @@ public class SpeechBrowsePageFragment extends Fragment {
         Toolbar toolBar = (Toolbar) view.findViewById(R.id.editor_browse_page_toolbar);
         mActivity.setSupportActionBar(toolBar);
         toolBar.setTitleTextColor(mContext.getColor(R.color.smile_text_color));
+        toolBar.setTitle(R.string.editor_script_title);
         toolBar.setNavigationIcon(R.drawable.back);
         toolBar.setNavigationOnClickListener(new View.OnClickListener() {
             @Override
@@ -180,11 +181,13 @@ public class SpeechBrowsePageFragment extends Fragment {
                     .query(uri, null, null, null, null)) {
                 if (cursor != null) {
                     if (cursor.moveToFirst()) {
-                        toolBar.setTitle(
-                                cursor.getString(
-                                        cursor.getColumnIndex(SpeechContract.TITLE)));
-                        mPresentText.setText(cursor.getString(
-                                cursor.getColumnIndex(SpeechContract.CONTENT)));
+                        int type = cursor.getInt(cursor.getColumnIndex(SpeechContract.TYPE));
+                        if (type == 0) {
+                            mPresentText.setText(cursor.getString(
+                                    cursor.getColumnIndex(SpeechContract.CONTENT)));
+                        } else {
+                            mPresentText.setText(setSampleSpeechContent(type));
+                        }
                         mPresentText.setTextSize(mTextSize);
                     }
                     cursor.close();
@@ -197,6 +200,18 @@ public class SpeechBrowsePageFragment extends Fragment {
                 e.printStackTrace();
             }
 
+        }
+    }
+
+    private String setSampleSpeechContent(int type) {
+        if (type == 1) {
+            return mContext.getString(R.string.editor_example_one_content);
+        } else if (type == 2) {
+            return mContext.getString(R.string.editor_example_two_content);
+        } else if (type == 3) {
+            return mContext.getString(R.string.editor_example_three_content);
+        } else {
+            return mContext.getString(R.string.editor_example_four_content);
         }
     }
 

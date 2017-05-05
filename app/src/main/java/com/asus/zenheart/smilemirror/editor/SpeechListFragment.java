@@ -46,7 +46,7 @@ import java.util.List;
 public class SpeechListFragment extends Fragment implements LoaderManager.LoaderCallbacks<Cursor>,
         ActionMode.Callback {
 
-    private static final int USER_INPUT_TYPE = 1;
+    private static final int USER_INPUT_TYPE = 0;
     private SpeechCursorAdapter mAdapter;
     private FloatingActionButton mFloatingActionButton;
     private ActionMode mActionMode;

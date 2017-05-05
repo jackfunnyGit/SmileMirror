@@ -71,18 +71,32 @@ class SpeechCursorAdapter extends RecyclerView.Adapter<SpeechCursorAdapter.ViewH
         StringBuilder timeFormat = new StringBuilder(getDate(mCursor.getLong(
                 mCursor.getColumnIndex(SpeechContract.DATE)))).append(" ").append(
                         getTime(mCursor.getLong(mCursor.getColumnIndex(SpeechContract.DATE))));
+        int type = mCursor.getInt(mCursor.getColumnIndex(SpeechContract.TYPE));
 
-        holder.mTitle.setText(mCursor.getString(mCursor.getColumnIndex(SpeechContract.TITLE)));
-        holder.mDate.setText(timeFormat);
         holder.itemView.setActivated(mSelectedItem.get(position, false));
         if (holder.itemView.isActivated()) {
             holder.mTypeView.setImageResource(R.drawable.check);
         } else {
-            if (mCursor.getInt(mCursor.getColumnIndex(SpeechContract.TYPE)) == 0) {
-                holder.mTypeView.setImageResource(R.drawable.inputtext_default);
-            } else {
+            if (type == 0) {
                 holder.mTypeView.setImageResource(R.drawable.inputtext_add);
+                holder.mTitle.setText(mCursor.getString(mCursor.getColumnIndex(SpeechContract.TITLE)));
+            } else {
+                holder.mTypeView.setImageResource(R.drawable.inputtext_default);
+                holder.mTitle.setText(setSampleSpeechTitle(type));
             }
+        }
+        holder.mDate.setText(timeFormat);
+    }
+
+    private String setSampleSpeechTitle(int type) {
+        if (type == 1) {
+            return mContext.getString(R.string.editor_example_one_title);
+        } else if (type == 2) {
+            return mContext.getString(R.string.editor_example_two_title);
+        } else if (type == 3) {
+            return mContext.getString(R.string.editor_example_three_title);
+        } else {
+            return mContext.getString(R.string.editor_example_four_title);
         }
     }
 

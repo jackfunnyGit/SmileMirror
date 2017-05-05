@@ -48,10 +48,10 @@
     <string name="sm_editor_add_script_remind">"Click the "+" button to create a new script."</string>
 
     <!-- Example Speeches -->
-    <string name="editor_example_two_title">"Bump into someone"</string>
-    <string name="editor_example_two_content">Hi (name)! I haven\'\'t seen you in ages! What have you been up to lately?\nSorry, but I have to get going. It was great chatting with you. Let\'\'s get together again sometime!</string>
     <string name="editor_example_one_title">"Self-intro (15 seconds)"</string>
     <string name="editor_example_one_content">"Good morning. My name is (name). I have been working on rocket science in Professor Smith\'\'s lab at MIT for the past three years. I am very excited to explore my career options here at NASA and see how my expertise can contribute to the team"</string>
+    <string name="editor_example_two_title">"Bump into someone"</string>
+    <string name="editor_example_two_content">Hi (name)! I haven\'\'t seen you in ages! What have you been up to lately?\nSorry, but I have to get going. It was great chatting with you. Let\'\'s get together again sometime!</string>
     <string name="editor_example_three_title">"Self-intro (1 minute)"</string>
     <string name="editor_example_three_content">"Hello, I am (name). I have three advantages:\nFirst, I am a team player. I am good at inspiring morale, lead the team to achieve their goals. I once served as captain of Taiwan University badminton team, and led the team to get the year\'\'s college cup runner-up. It was the school team\'\'s best ever.\nSecond, I am very results-oriented. No matter which field, I can always conquer difficulties in the shortest possible time, create performance and achieve goals. When I was a project manager at Nestlé, I was able to meet performance targets for 24 consecutive months.\nFinally, I have the entrepreneurial spirit. I am often given the task of new business. Last season, I introduced the "coffee education and training activities" in Nestlé, it was very successful and all the classes were fully registered until end of the year.\nBased on the above characteristics, I believe I can make a great contribution to the company. Thank you."</string>
     <string name="editor_example_four_title">"Hotel front desk"</string>
