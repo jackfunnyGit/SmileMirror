@@ -53,5 +53,14 @@
 
     </com.asus.zenheart.smilemirror.BorderViewPager>
 
+    <com.asus.zenheart.smilemirror.GUIView.ShiningImageView
+        android:id="@+id/shining_view"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:background="@color/exit_animation_bg_color"
+        android:visibility="invisible">
+
+    </com.asus.zenheart.smilemirror.GUIView.ShiningImageView>
+
 
 </RelativeLayout>

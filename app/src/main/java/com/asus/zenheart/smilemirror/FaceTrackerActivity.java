@@ -27,6 +27,7 @@ import android.hardware.SensorEventListener;
 import android.hardware.SensorManager;
 import android.os.Build;
 import android.os.Bundle;
+import android.os.Handler;
 import android.support.annotation.NonNull;
 import android.support.annotation.RequiresApi;
 import android.support.v4.view.ViewPager;
@@ -43,6 +44,7 @@ import android.widget.ImageView;
 import android.widget.TextView;
 
 import com.asus.zenheart.smilemirror.GUIView.HistogramChartView;
+import com.asus.zenheart.smilemirror.GUIView.ShiningImageView;
 import com.asus.zenheart.smilemirror.GUIView.SmileIndicatorView;
 import com.asus.zenheart.smilemirror.Util.AnimationUtil;
 import com.asus.zenheart.smilemirror.Util.GalleryUtil;
@@ -84,6 +86,9 @@ public final class FaceTrackerActivity extends AppCompatActivity implements
     private static final int[] INDEX_LAYOUT_OF_MODE = {R.layout.smile_mode, R.layout.coach_mode};
     private static final float POSITION_OFFSET_NOT_DRAW = 0.01f;
 
+    // Exit animation duration
+    private static final int SHINING_ANIMATION_DURATION = 600;
+
     // member field
     private Context mContext;
     private BorderViewPager mViewpager;
@@ -100,6 +105,8 @@ public final class FaceTrackerActivity extends AppCompatActivity implements
     private ImageView mGalleryView;
     // check recording is exist or not
     private int mVideoFileNumbers;
+
+    private ShiningImageView mShiningImageViews;
 
     //==============================================================================================
     // Activity Methods
@@ -133,6 +140,7 @@ public final class FaceTrackerActivity extends AppCompatActivity implements
         mViewpager = (BorderViewPager) findViewById(R.id.viewpager);
         mToastTextView = (TextView) findViewById(R.id.toast_text);
         mSmileIndicatorView = (SmileIndicatorView) findViewById(R.id.smile_indicator);
+        mShiningImageViews = (ShiningImageView) findViewById(R.id.shining_view);
 
         mPagerAdapter = new ModePagerAdapter(this, INDEX_LAYOUT_OF_MODE, mContainer);
         mViewpager.setAdapter(mPagerAdapter);
@@ -629,7 +637,14 @@ public final class FaceTrackerActivity extends AppCompatActivity implements
 
     @Override
     public void finishActivity() {
-        finish();
+        new Handler().postDelayed(new Runnable() {
+            @Override
+            public void run() {
+                finish();
+            }
+        }, SHINING_ANIMATION_DURATION);
+        mShiningImageViews.setVisibility(View.VISIBLE);
+        mShiningImageViews.playShiningEffect(SHINING_ANIMATION_DURATION);
     }
 
     @Override
@@ -642,7 +657,7 @@ public final class FaceTrackerActivity extends AppCompatActivity implements
         if (mChartPage != null) {
             hideChartPage();
         } else {
-            super.onBackPressed();
+            finishActivity();
         }
     }
 

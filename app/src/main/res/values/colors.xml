@@ -13,6 +13,7 @@
     <color name="countdown_text_color">#98d745</color>
     <color name="teleprompter_background_color">#D8000000</color>
     <color name="smile_text_shadow_color">#cc000000</color>
+    <color name="exit_animation_bg_color">#20ffffff</color>
     <!-- Editor -->
     <color name="editor_list_background_color">#66000000</color>
     <color name="editor_list_date_text_color">#ff969696</color>
