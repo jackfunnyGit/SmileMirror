@@ -14,6 +14,7 @@ import android.support.annotation.NonNull;
 import android.support.annotation.StringRes;
 import android.support.v4.app.ActivityCompat;
 import android.text.Html;
+import android.text.method.ScrollingMovementMethod;
 import android.view.LayoutInflater;
 import android.view.MotionEvent;
 import android.view.View;
@@ -88,27 +89,6 @@ public class PermissionUtil {
         ActivityCompat.requestPermissions(activity, permissions, requestCode);
     }
 
-    //TODO: delete in the future if not used when the UX flow is determined
-    public static boolean shouldShowRequestPermissionsRationale(@NonNull Context context,
-            @NonNull String[] permissions) {
-        Activity activity;
-        if (context instanceof Activity) {
-            activity = (Activity) context;
-        } else {
-            LogUtils.e(LOG_TAG, "context should be instance of Activity !!!");
-            return true;
-        }
-        LogUtils.i(LOG_TAG, " permissions = " + permissions.length);
-        for (String permission : permissions) {
-            LogUtils.i(LOG_TAG, " per  = " + ActivityCompat
-                    .shouldShowRequestPermissionRationale(activity, permission));
-            if (!ActivityCompat.shouldShowRequestPermissionRationale(activity, permission)) {
-                //return false;
-
-            }
-        }
-        return true;
-    }
 
     /**
      * Add permission page to guide user to the setting page to give authority
@@ -130,6 +110,7 @@ public class PermissionUtil {
         titleView.setText(resources.getText(titleTextId));
         TextView contentView = (TextView) psView.findViewById(R.id.permission_agreement_content);
         contentView.setText(resources.getText(contentTextId));
+        contentView.setMovementMethod(new ScrollingMovementMethod());
         Button button = (Button) psView.findViewById(R.id.permission_button);
         button.setOnClickListener(new View.OnClickListener() {
             @Override
