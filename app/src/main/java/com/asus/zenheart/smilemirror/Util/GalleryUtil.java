@@ -1,5 +1,6 @@
 package com.asus.zenheart.smilemirror.Util;
 
+import android.content.ActivityNotFoundException;
 import android.content.Context;
 import android.content.Intent;
 import android.content.pm.PackageManager;
@@ -41,6 +42,9 @@ public class GalleryUtil {
         File folder = new File(path);
         String[] allFiles = folder.list();
 
+        if (allFiles == null) {
+            return 0;
+        }
         return allFiles.length;
     }
 
@@ -94,10 +98,7 @@ public class GalleryUtil {
     }
     public static void intentToGallery(Context context) {
         if (!autoRecordingIsExist() | getVideoFileNumbers() == 0) {
-            Toast toast = Toast.makeText(context,
-                    context.getString(R.string.sm_recording_folder_miss_toast),
-                    Toast.LENGTH_SHORT);
-            toast.show();
+            showTheToast(context, context.getString(R.string.sm_recording_folder_miss_toast));
             return;
         }
         Uri mediaUri = MediaStore.Video.Media.EXTERNAL_CONTENT_URI;
@@ -111,7 +112,17 @@ public class GalleryUtil {
         if (appInstalledOrNot(context, ASUS_GALLERY_PACKAGE_NAME)) {
             intent.setPackage(ASUS_GALLERY_PACKAGE_NAME);
         }
-        context.startActivity(intent);
+        try {
+            context.startActivity(intent);
+        } catch (ActivityNotFoundException e) {
+            showTheToast(context, context.getString(R.string.sm_gallery_disabled_toast));
+            e.printStackTrace();
+        }
+    }
+
+    private static void showTheToast(Context context, String message) {
+        Toast toast = Toast.makeText(context, message, Toast.LENGTH_SHORT);
+        toast.show();
     }
 
     private static boolean appInstalledOrNot(Context context, String pkgName) {

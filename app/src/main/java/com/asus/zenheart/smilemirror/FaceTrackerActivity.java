@@ -21,6 +21,7 @@ import android.app.Dialog;
 import android.content.Context;
 import android.content.Intent;
 import android.content.pm.PackageManager;
+import android.graphics.Bitmap;
 import android.hardware.Sensor;
 import android.hardware.SensorEvent;
 import android.hardware.SensorEventListener;
@@ -277,7 +278,11 @@ public final class FaceTrackerActivity extends AppCompatActivity implements
         // Open Video file
         mGalleryView= (ImageView) mChartPage.findViewById(R.id.video_intent_view);
         if (PrefsUtils.getBooleanPreference(mContext, PrefsUtils.PREFS_AUTO_RECORDING, true)) {
-            mGalleryView.setImageBitmap(GalleryUtil.createVideoThumbnail(mContext));
+            Bitmap videoThumbnail = GalleryUtil.createVideoThumbnail(mContext);
+            if (videoThumbnail == null) {
+                return;
+            }
+            mGalleryView.setImageBitmap(videoThumbnail);
             mVideoFileNumbers = GalleryUtil.getVideoFileNumbers();
             mGalleryView.setOnClickListener(new View.OnClickListener() {
                 @Override
@@ -285,6 +290,7 @@ public final class FaceTrackerActivity extends AppCompatActivity implements
                     GalleryUtil.mediaScan(mContext, GalleryUtil.getVideoFilePath());
                 }
             });
+            videoThumbnail.recycle();
         }
         mContainer.addView(mChartPage);
     }
