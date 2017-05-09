@@ -1,0 +1,5 @@
+<resources>
+    <string name="app_name" translatable="false">DemoApplication</string>
+    <string name="button_text" translatable="false">start</string>
+    <string name="hint" translatable="false">please press the button below</string>
+</resources>

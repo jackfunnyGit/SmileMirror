@@ -42,6 +42,8 @@ import android.view.WindowManager;
 import android.widget.ImageView;
 import android.widget.TextView;
 
+import com.asus.zenheart.smilemirror.GUIView.HistogramChartView;
+import com.asus.zenheart.smilemirror.GUIView.SmileIndicatorView;
 import com.asus.zenheart.smilemirror.Util.AnimationUtil;
 import com.asus.zenheart.smilemirror.Util.GalleryUtil;
 import com.asus.zenheart.smilemirror.Util.LogUtils;

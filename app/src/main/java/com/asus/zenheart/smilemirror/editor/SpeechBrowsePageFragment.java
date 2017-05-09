@@ -25,9 +25,8 @@ import android.widget.SeekBar;
 
 import com.asus.zenheart.smilemirror.FaceTrackerActivity;
 import com.asus.zenheart.smilemirror.R;
-import com.asus.zenheart.smilemirror.Util.LogUtils;
 import com.asus.zenheart.smilemirror.Util.PrefsUtils;
-import com.asus.zenheart.smilemirror.VerticalScrollTextView;
+import com.asus.zenheart.smilemirror.GUIView.VerticalScrollTextView;
 import com.asus.zenheart.smilemirror.editor.database.SpeechContract;
 
 public class SpeechBrowsePageFragment extends Fragment {

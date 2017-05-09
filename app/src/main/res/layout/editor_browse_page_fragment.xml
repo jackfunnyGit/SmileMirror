@@ -13,7 +13,7 @@
             app:titleMarginStart="0dp"
             app:titleTextAppearance="@style/ToolBarTitleStyle"/>
 
-    <com.asus.zenheart.smilemirror.VerticalScrollTextView
+    <com.asus.zenheart.smilemirror.GUIView.VerticalScrollTextView
             android:id="@+id/presetText"
             android:layout_width="match_parent"
             android:layout_height="0dp"

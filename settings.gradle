@@ -1,1 +1,1 @@
-include ':app', ':testApplication', ':AsusRes'
+include ':app', ':AsusRes', ':demoApplication'

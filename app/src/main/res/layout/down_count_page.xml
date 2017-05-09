@@ -3,7 +3,7 @@
                  android:layout_width="match_parent"
                  android:layout_height="match_parent">
 
-    <com.asus.zenheart.smilemirror.DownCountView
+    <com.asus.zenheart.smilemirror.GUIView.DownCountView
         android:id="@+id/down_count_view"
         android:layout_width="@dimen/count_down_page_width_size"
         android:layout_height="@dimen/count_down_page_height_size"

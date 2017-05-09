@@ -18,11 +18,13 @@ import android.widget.PopupMenu;
 import android.widget.RelativeLayout;
 import android.widget.TextView;
 
+import com.asus.zenheart.smilemirror.GUIView.CounterView;
+import com.asus.zenheart.smilemirror.GUIView.DownCountView;
+import com.asus.zenheart.smilemirror.GUIView.VerticalScrollTextView;
 import com.asus.zenheart.smilemirror.Util.AnimationUtil;
 import com.asus.zenheart.smilemirror.Util.GalleryUtil;
 import com.asus.zenheart.smilemirror.Util.PrefsUtils;
 import com.asus.zenheart.smilemirror.editor.SpeechEditorActivity;
-import com.asus.zenheart.smilemirror.ui.camera.CameraSource;
 
 import java.util.ArrayList;
 

@@ -19,7 +19,7 @@
         android:id="@+id/pseudo_toolbar"
         layout="@layout/pseudo_toolbar"/>
 
-    <com.asus.zenheart.smilemirror.VerticalScrollTextView
+    <com.asus.zenheart.smilemirror.GUIView.VerticalScrollTextView
 
         android:id="@+id/vertical_scroll_textview"
         android:layout_width="match_parent"
@@ -36,7 +36,7 @@
         android:layout_height="@dimen/coach_mode_lower_layout_height"
         android:layout_below="@id/vertical_scroll_textview"/>
 
-    <com.asus.zenheart.smilemirror.CounterView
+    <com.asus.zenheart.smilemirror.GUIView.CounterView
         android:id="@+id/count_view"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"

@@ -18,7 +18,7 @@
         android:textSize="@dimen/sm_chart_page_statistics_title_text_size"
         tools:text="Smile Statistics"/>
 
-    <com.asus.zenheart.smilemirror.HistogramChartView
+    <com.asus.zenheart.smilemirror.GUIView.HistogramChartView
         android:id="@+id/histogram_chart"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
