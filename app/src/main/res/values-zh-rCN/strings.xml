@@ -68,6 +68,7 @@
     <!-- toast -->
     <string name="sm_recording_folder_miss_toast">"图库中没有对谈视频"</string>
     <string name="sm_gallery_disabled_toast">"图库目前停用中"</string>
+    <string name="sm_need_network_toast">"请连接网络"</string>
     <!--Permission -->
     <string name="sm_permission_title">"请同意以下授权"</string>
     <string name="sm_permission_content">"<b><font color="#ffffff">微笑镜子</font></b>必须取得<b><font color="#ffffff">相机、麦克风与储存空间</font></b>的存取权才能显示您的镜射影像，以及在对谈练习过程中，可以选择进行录像以提供练习后的检视。"</string>
@@ -75,4 +76,8 @@
     <!--Storage full -->
     <string name="storage_full">"储存空间已满"</string>
     <string name="storage_full_for_script">"储存空间不足，无法储存脚本"</string>
+    <!--Download page-->
+    <string name="sm_download_page_title_text">"您需要更新Google Play服务元件。请检查您的网络设置，再试一次"</string>
+    <string name="sm_progressbar_text">"更新中"</string>
+    <string name="sm_download_page_button_text">"重试"</string>
 </resources>
