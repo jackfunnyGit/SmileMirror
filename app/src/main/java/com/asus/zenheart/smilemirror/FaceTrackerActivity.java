@@ -64,6 +64,7 @@ import com.google.android.gms.vision.face.Face;
 import com.google.android.gms.vision.face.FaceDetector;
 
 import java.io.IOException;
+import java.util.Objects;
 
 /**
  * Activity for the face tracker app.  This app detects faces with the rear facing camera, and draws
@@ -103,9 +104,6 @@ public final class FaceTrackerActivity extends AppCompatActivity implements
     private SensorManager mSensorManager;
     // Smile video TextureView
     private SmileVideoTextureView mVideoView;
-    private ImageView mGalleryView;
-    // check recording is exist or not
-    private int mVideoFileNumbers;
 
     private ShiningImageView mShiningImageViews;
 
@@ -276,21 +274,19 @@ public final class FaceTrackerActivity extends AppCompatActivity implements
                 String.format("%s%s", mContext.getString(R.string.chart_page_smile_duration),
                         timeText));
         // Open Video file
-        mGalleryView= (ImageView) mChartPage.findViewById(R.id.video_intent_view);
+        ImageView videoIntentView = (ImageView) mChartPage.findViewById(R.id.video_intent_view);
         if (PrefsUtils.getBooleanPreference(mContext, PrefsUtils.PREFS_AUTO_RECORDING, true)) {
             Bitmap videoThumbnail = GalleryUtil.createVideoThumbnail(mContext);
             if (videoThumbnail == null) {
                 return;
             }
-            mGalleryView.setImageBitmap(videoThumbnail);
-            mVideoFileNumbers = GalleryUtil.getVideoFileNumbers();
-            mGalleryView.setOnClickListener(new View.OnClickListener() {
+            videoIntentView.setImageBitmap(videoThumbnail);
+            videoIntentView.setOnClickListener(new View.OnClickListener() {
                 @Override
                 public void onClick(View v) {
                     GalleryUtil.mediaScan(mContext, GalleryUtil.getVideoFilePath());
                 }
             });
-            videoThumbnail.recycle();
         }
         mContainer.addView(mChartPage);
     }
@@ -418,11 +414,9 @@ public final class FaceTrackerActivity extends AppCompatActivity implements
         startCameraSource();
 
         mVideoView.setVisibility(View.VISIBLE);
-
-        //TODO: Not a good solution for TT995760
-        if (mGalleryView != null) {
-            if (GalleryUtil.getVideoFileNumbers() != mVideoFileNumbers) {
-                mGalleryView.setVisibility(View.INVISIBLE);
+        if (mChartPage != null) {
+            if (!Objects.equals(mCameraSource.getNextVideoName(), GalleryUtil.getLastVideoFileName())) {
+                mChartPage.findViewById(R.id.video_intent_view).setVisibility(View.INVISIBLE);
             }
         }
     }
@@ -604,8 +598,6 @@ public final class FaceTrackerActivity extends AppCompatActivity implements
         @Override
         public void onDone() {
             mOverlay.remove(mFaceGraphic);
-            mVideoView.initVideoView();
-            mVideoView.initMediaPlayer();
         }
     }
 

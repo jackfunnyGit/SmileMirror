@@ -34,10 +34,13 @@ public class GalleryUtil {
         File folder = new File(path);
         String[] allFiles = folder.list();
 
+        if (allFiles == null) {
+            return null;
+        }
         return path + allFiles[allFiles.length - 1];
     }
 
-    public static int getVideoFileNumbers() {
+    private static int getVideoFileNumbers() {
         String path = Environment.getExternalStorageDirectory().getPath() + RECORDING_PATH;
         File folder = new File(path);
         String[] allFiles = folder.list();
@@ -46,6 +49,17 @@ public class GalleryUtil {
             return 0;
         }
         return allFiles.length;
+    }
+
+    public static String getLastVideoFileName() {
+        String path = Environment.getExternalStorageDirectory().getPath() + RECORDING_PATH;
+        File folder = new File(path);
+        String[] allFiles = folder.list();
+
+        if (allFiles == null) {
+            return null;
+        }
+        return allFiles[allFiles.length - 1];
     }
 
     public static String getVideoFileName() {

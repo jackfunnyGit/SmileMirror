@@ -104,7 +104,7 @@ public class FaceGraphic extends GraphicOverlay.Graphic {
         mVideoView.setCompletionListener(new VideoTextureView.VideoCompletionCallback() {
             @Override
             public void onCompletion() {
-                mVideoView.initVideoView();
+                mVideoView.destroyVideoView();
                 mVideoView.initMediaPlayer();
             }
         });

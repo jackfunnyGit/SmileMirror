@@ -18,7 +18,6 @@ package com.asus.zenheart.smilemirror.ui.camera;
 import android.annotation.SuppressLint;
 import android.app.Activity;
 import android.content.Context;
-import android.content.Intent;
 import android.graphics.ImageFormat;
 import android.graphics.Matrix;
 import android.graphics.RectF;
@@ -35,8 +34,6 @@ import android.hardware.camera2.params.StreamConfigurationMap;
 import android.media.Image;
 import android.media.ImageReader;
 import android.media.MediaRecorder;
-import android.net.Uri;
-import android.os.Environment;
 import android.os.Handler;
 import android.os.SystemClock;
 import android.support.annotation.IntDef;
@@ -58,17 +55,14 @@ import com.google.android.gms.vision.Frame;
 import com.google.android.gms.vision.face.FaceDetector;
 
 import java.io.ByteArrayOutputStream;
-import java.io.File;
 import java.io.IOException;
 import java.lang.Thread.State;
 import java.lang.annotation.Retention;
 import java.lang.annotation.RetentionPolicy;
 import java.nio.ByteBuffer;
-import java.text.SimpleDateFormat;
 import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.List;
-import java.util.Locale;
 
 // Note: This requires Google Play Services 8.1 or higher, due to using indirect byte buffers for
 // storing images.
@@ -777,8 +771,11 @@ public class CameraSource {
         mMediaRecorder.stop();
         mMediaRecorder.reset();
         GalleryUtil.sendMediaScanIntent(mContext, mNextVideoAbsolutePath);
-        mNextVideoAbsolutePath = null;
         startPreview();
+    }
+
+    public String getNextVideoName() {
+        return mNextVideoAbsolutePath;
     }
 
     /**

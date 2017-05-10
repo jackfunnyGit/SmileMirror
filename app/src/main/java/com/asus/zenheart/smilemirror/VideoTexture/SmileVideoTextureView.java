@@ -59,7 +59,7 @@ public class SmileVideoTextureView extends VideoTextureView {
     }
 
     // Video render is still exist.
-    public void initVideoView() {
+    public void destroyVideoView() {
         setResourceId(getRandomEffect(), getCorrectShader());
         releaseMediaPlayer();
         clearTextureSurface();
