@@ -258,7 +258,7 @@ public class FaceGraphic extends GraphicOverlay.Graphic {
      * {@link #mBoxPaint}  is used to draw face box
      */
     private void initPaint(Context context) {
-        final float faceTextSize = mResources.getDimensionPixelSize(R.dimen.smile_text_size);
+        final float faceTextSize = mResources.getDimensionPixelSize(R.dimen.sm_smile_text_size);
         final int shadowColor = ContextCompat.getColor(context, R.color.smile_text_shadow_color);
         mFaceTextPaint = new Paint();
         mFaceTextPaint.setTextSize(faceTextSize);

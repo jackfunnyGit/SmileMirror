@@ -45,7 +45,7 @@ public class DownCountView extends View {
     private void initDownCountView(Context context) {
         mContext = context;
         mPaint = new Paint();
-        mPaint.setTextSize(mContext.getResources().getDimension(R.dimen.countdown_text_size));
+        mPaint.setTextSize(mContext.getResources().getDimension(R.dimen.sm_countdown_text_size));
         mPaint.setColor(mContext.getColor(R.color.countdown_text_color));
         mPaint.setTextAlign(Paint.Align.CENTER);
         mCount = COUNTDOWN_NUMBER;

@@ -14,7 +14,7 @@
             android:layout_centerVertical="true"
             android:text="@string/sm_editor_add_script_remind"
             android:textColor="@android:color/white"
-            android:textSize="@dimen/mode_text_size"
+            android:textSize="@dimen/sm_mode_text_size"
             android:visibility="invisible"/>
     <android.support.v7.widget.RecyclerView
             android:id="@+id/recycler_view"

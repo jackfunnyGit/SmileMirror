@@ -80,15 +80,15 @@
     <dimen name="sm_tutorial_coach_page_text_title_text_width">200dp</dimen>
     <dimen name="sm_tutorial_coach_page_text_review_video_text_width">100dp</dimen>
     <dimen name="sm_tutorial_coach_page_image_list_end_margin">33dp</dimen>
-    <!-- SmileMirror text in dp value -->
-    <dimen name="smile_text_size">24dp</dimen>
-    <dimen name="mode_text_size">16dp</dimen>
-    <dimen name="teleprompter_text_size">16dp</dimen>
-    <dimen name="countdown_text_size">133dp</dimen>
-    <dimen name="presentation_title_text_size">24dp</dimen>
+    <!-- SmileMirror text  value -->
+    <dimen name="sm_smile_text_size">24dp</dimen>
+    <dimen name="sm_mode_text_size">15sp</dimen>
+    <dimen name="sm_teleprompter_text_size">16dp</dimen>
+    <dimen name="sm_countdown_text_size">133dp</dimen>
+    <dimen name="sm_presentation_title_text_size">24dp</dimen>
     <dimen name="sm_chart_page_statistics_title_text_size">24dp</dimen>
-    <dimen name="chart_page_duration_text_size">16dp</dimen>
-    <dimen name="sm_title_toast_text_size">24dp</dimen>
+    <dimen name="sm_chart_page_duration_text_size">16dp</dimen>
+    <dimen name="sm_title_toast_text_size">23dp</dimen>
     <!-- Editor value -->
     <dimen name="editor_list_card_padding">23dp</dimen>
     <dimen name="editor_list_card__divider_width">0.5dp</dimen>

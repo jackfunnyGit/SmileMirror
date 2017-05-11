@@ -43,13 +43,13 @@ public class VerticalScrollTextView extends TextView implements View.OnTouchList
     }
 
     /**
-     * Three options of size measured in dp to set text size
+     * Three options of size measured in sp to set text size
      */
 
     public @interface TEXT_SIZE {
-        float SMALL = 16;
-        float NORMAL = 18;
-        float BIG = 22;
+        float SMALL = 13;
+        float NORMAL = 15;
+        float BIG = 17;
     }
 
     /**
@@ -154,14 +154,14 @@ public class VerticalScrollTextView extends TextView implements View.OnTouchList
      * Customized textView does not need to call super method
      * This TextView will never change toast_text size with the system toast_text setting
      *
-     * @param size The textSize measured in DP instead of SP
+     * @param size The textSize measured in SP
      */
     @Override
     public void setTextSize(float size) {
         if (size < 0) {
             size = TEXT_SIZE.NORMAL;
         }
-        final float px = TypedValue.applyDimension(TypedValue.COMPLEX_UNIT_DIP, size,
+        final float px = TypedValue.applyDimension(TypedValue.COMPLEX_UNIT_SP, size,
                 mDisplayMetrics);
         mPaint.setTextSize(px);
         mPaint.setColor(Color.WHITE);

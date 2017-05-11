@@ -38,7 +38,7 @@
         android:text="@string/chart_page_smile_duration"
         android:textAlignment="center"
         android:textColor="@android:color/white"
-        android:textSize="@dimen/chart_page_duration_text_size"
+        android:textSize="@dimen/sm_chart_page_duration_text_size"
         tools:text="Duration :"/>
 
 
