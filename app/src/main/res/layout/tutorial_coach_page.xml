@@ -21,7 +21,7 @@
         android:layout_width="@dimen/sm_tutorial_coach_page_text_start_practice_text_width"
         android:layout_height="wrap_content"
         android:layout_alignParentEnd="true"
-        android:layout_alignParentTop="true"
+        android:layout_below="@+id/image_play"
         android:layout_marginTop="@dimen/sm_tutorial_coach_page_text_start_practice_top_margin"
         android:text="@string/sm_tutorial_coach_page_text_start_practice"
         android:textAlignment="textStart"
@@ -38,7 +38,7 @@
         android:textSize="@dimen/tutorial_page_big_text_size"/>
 
     <TextView
-        android:id="@+id/tutorial_text4"
+        android:id="@+id/tutorial_text_review_video"
         android:layout_width="@dimen/sm_tutorial_coach_page_text_review_video_text_width"
         android:layout_height="wrap_content"
         android:layout_alignParentBottom="true"
@@ -58,15 +58,19 @@
         android:scaleType="center"
         android:src="@drawable/list"/>
 
-    <ImageView
-        android:layout_width="@dimen/coach_mode_play_icon_width"
-        android:layout_height="@dimen/coach_mode_play_icon_height"
+    
+    <Button
+        android:id="@id/image_play"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
         android:layout_alignParentTop="true"
         android:layout_centerHorizontal="true"
         android:layout_marginTop="@dimen/sm_tutorial_coach_page_image_play_top_margin"
-        android:scaleType="center"
-        android:src="@drawable/play"/>
-
+        android:background="@drawable/btn_material"
+        android:backgroundTint="@color/teleprompter_button_text_color"
+        android:text="@string/teleprompter_button_text_start"
+        android:textColor="@color/teleprompter_button_text_color"
+        android:textSize="@dimen/teleprompter_button_text_size"/>
 
     <ImageView
         android:id="@+id/video_image_view"

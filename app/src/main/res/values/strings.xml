@@ -18,6 +18,8 @@
     <string name="sm_speech_content_select_script">"Click into the script list and select a script."</string>
     <string name="smile_mode">"Smile mode"</string>
     <string name="coach_mode">"Conversation mode"</string>
+    <string name="teleprompter_button_text_start">"start"</string>
+    <string name="teleprompter_button_text_stop">"stop"</string>
     <!-- chart page -->
     <string name="chart_page_smile_statistics">"Smile Statistics"</string>
     <string name="chart_page_smile_duration">"Duration: "</string>

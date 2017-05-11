@@ -13,6 +13,7 @@ import android.view.MenuItem;
 import android.view.MotionEvent;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.Button;
 import android.widget.ImageView;
 import android.widget.PopupMenu;
 import android.widget.RelativeLayout;
@@ -163,7 +164,7 @@ public class ModePagerAdapter extends PagerAdapter {
     //TODO: rename in the future
     public static class ViewHolder {
         public final ImageView imageViewRecord;
-        public final ImageView imageViewPlay;
+        public final Button imageViewPlay;
         public final ImageView dragView;
         public final CounterView countView;
         public final ImageView imageViewList;
@@ -184,7 +185,7 @@ public class ModePagerAdapter extends PagerAdapter {
             mContext = context;
             mContainer = container;
             imageViewRecord = (ImageView) view.findViewById(R.id.video_image_view);
-            imageViewPlay = (ImageView) view.findViewById(R.id.image_play);
+            imageViewPlay = (Button) view.findViewById(R.id.image_play);
             dragView = (ImageView) view.findViewById(R.id.image_drag);
             countView = (CounterView) view.findViewById(R.id.count_view);
             imageViewList = (ImageView) view.findViewById(R.id.image_list);
@@ -361,10 +362,10 @@ public class ModePagerAdapter extends PagerAdapter {
                         @Override
                         public void onFinished() {
                             imageViewRecord.setVisibility(View.INVISIBLE);
-                            imageViewPlay.setImageResource(R.drawable.stop);
                             scrollTextView.setRepeatMode(false)
                                     .start(VerticalScrollTextView.FIRST_DELAY_TIME_MILLS);
                             dragView.setImageResource(R.drawable.drag_disable);
+                            imageViewPlay.setText(R.string.teleprompter_button_text_stop);
                             dragView.setEnabled(false);
                             countView.starCount();
                             countView.setVisibility(View.VISIBLE);
@@ -427,8 +428,7 @@ public class ModePagerAdapter extends PagerAdapter {
          */
         public void resetGuiElement() {
             imageViewRecord.setVisibility(View.VISIBLE);
-            imageViewPlay.setImageResource(R.drawable.play);
-            dragView.setImageResource(R.drawable.drag);
+            imageViewPlay.setText(R.string.teleprompter_button_text_start);
             dragView.setEnabled(true);
             countView.setVisibility(View.INVISIBLE);
             countView.stopCount();

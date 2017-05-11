@@ -4,13 +4,16 @@
                 android:layout_height="@dimen/coach_mode_lower_layout_height"
                 android:background="@color/teleprompter_background_color">
 
-    <ImageView
+    <Button
         android:id="@+id/image_play"
-        android:layout_width="@dimen/coach_mode_play_icon_width"
-        android:layout_height="@dimen/coach_mode_play_icon_height"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
         android:layout_centerInParent="true"
-        android:scaleType="center"
-        android:src="@drawable/play"/>
+        android:background="@drawable/btn_material"
+        android:backgroundTint="@color/teleprompter_button_text_color"
+        android:text="@string/teleprompter_button_text_start"
+        android:textColor="@color/teleprompter_button_text_color"
+        android:textSize="@dimen/teleprompter_button_text_size"/>
 
     <ImageView
         android:id="@+id/image_drag"
@@ -19,6 +22,7 @@
         android:layout_alignParentEnd="true"
         android:layout_centerVertical="true"
         android:scaleType="center"
-        android:src="@drawable/drag"/>
+        android:src="@drawable/drag_view_selector_background"/>
+
 
 </RelativeLayout>

@@ -9,6 +9,7 @@
     <dimen name="teleprompter_height">90dp</dimen>
     <dimen name="teleprompter_text_padding">23dp</dimen>
     <dimen name="teleprompter_status_bar_object">10dp</dimen>
+    <dimen name="teleprompter_button_text_size">15sp</dimen>
     <dimen name="gallery_icon_width">34dp</dimen>
     <dimen name="gallery_icon_height">34dp</dimen>
     <dimen name="gallery_icon_padding">23dp</dimen>
@@ -71,17 +72,17 @@
     <dimen name="tutorial_page_small_text_size">18dp</dimen>
     <!-- tutorial coach page -->
     <dimen name="sm_tutorial_coach_page_text_script_list_top_margin">56dp</dimen>
-    <dimen name="sm_tutorial_coach_page_text_start_practice_top_margin">162dp</dimen>
+    <dimen name="sm_tutorial_coach_page_text_start_practice_top_margin">8dp</dimen>
     <dimen name="sm_tutorial_coach_page_text_review_video_bottom_margin">64dp</dimen>
     <dimen name="sm_tutorial_coach_page_image_play_top_margin">146dp</dimen>
     <dimen name="sm_tutorial_coach_page_start_end_margin">23dp</dimen>
     <dimen name="sm_tutorial_coach_page_text_script_list_text_width">120dp</dimen>
-    <dimen name="sm_tutorial_coach_page_text_start_practice_text_width">120dp</dimen>
+    <dimen name="sm_tutorial_coach_page_text_start_practice_text_width">160dp</dimen>
     <dimen name="sm_tutorial_coach_page_text_title_text_width">200dp</dimen>
     <dimen name="sm_tutorial_coach_page_text_review_video_text_width">100dp</dimen>
     <dimen name="sm_tutorial_coach_page_image_list_end_margin">33dp</dimen>
     <!-- SmileMirror text  value -->
-    <dimen name="sm_smile_text_size">24dp</dimen>
+    <dimen name="sm_smile_text_size">23dp</dimen>
     <dimen name="sm_mode_text_size">15sp</dimen>
     <dimen name="sm_teleprompter_text_size">16dp</dimen>
     <dimen name="sm_countdown_text_size">133dp</dimen>

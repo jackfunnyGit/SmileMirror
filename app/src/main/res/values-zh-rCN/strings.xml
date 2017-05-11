@@ -18,6 +18,8 @@
     <string name="sm_speech_content_select_script">"请进入脚本清单选择一个脚本"</string>
     <string name="smile_mode">"微笑模式"</string>
     <string name="coach_mode">"对谈模式"</string>
+    <string name="teleprompter_button_text_start">"开始"</string>
+    <string name="teleprompter_button_text_stop">"停止"</string>
     <!-- chart page -->
     <string name="chart_page_smile_statistics">"微笑统计"</string>
     <string name="chart_page_smile_duration">"总长度： "</string>
