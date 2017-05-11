@@ -1,7 +1,5 @@
 package com.asus.zenheart.smilemirror.GUIView;
 
-import android.animation.Animator;
-import android.animation.AnimatorListenerAdapter;
 import android.animation.ValueAnimator;
 import android.content.Context;
 import android.graphics.Bitmap;
@@ -19,6 +17,7 @@ public class ShiningImageView extends android.support.v7.widget.AppCompatImageVi
             0x01FFFFFF, Color.WHITE, 0x01FFFFFF};
 
     private boolean mShiningEffectRunning = false;
+    private ValueAnimator mShiningAnimator;
     private Bitmap mShiningShape;
     private Paint mShiningPaint;
 
@@ -46,9 +45,27 @@ public class ShiningImageView extends android.support.v7.widget.AppCompatImageVi
         if (mShiningEffectRunning) {
             return;
         }
-        final ValueAnimator shiningAnimator = ValueAnimator.ofFloat(0.0f, 1.4f);
-        shiningAnimator.setDuration(duration);
-        shiningAnimator.addUpdateListener(new ValueAnimator.AnimatorUpdateListener() {
+        prepareShiningEffect();
+        startShiningEffect(duration);
+        releaseShiningEffect(duration);
+    }
+
+    private void prepareShiningEffect() {
+        mShiningEffectRunning = true;
+        mShiningPaint = new Paint();
+        Bitmap temp = Bitmap.createBitmap(getWidth(), getHeight(), Bitmap.Config.ARGB_8888);
+        mShiningShape = temp.extractAlpha();
+        temp.recycle();
+        Canvas canvas = new Canvas(mShiningShape);
+        draw(canvas);
+        canvas.setBitmap(null);
+        invalidate();
+    }
+
+    private void startShiningEffect(long duration) {
+        mShiningAnimator = ValueAnimator.ofFloat(0.0f, 1.4f);
+        mShiningAnimator.setDuration(duration);
+        mShiningAnimator.addUpdateListener(new ValueAnimator.AnimatorUpdateListener() {
             @Override
             public void onAnimationUpdate(ValueAnimator updatedAnimation) {
                 float animatedValue = (float) updatedAnimation.getAnimatedValue();
@@ -56,33 +73,26 @@ public class ShiningImageView extends android.support.v7.widget.AppCompatImageVi
                 LinearGradient gradient = new LinearGradient(0, 0, size, size, sShiningEffectColor,
                         new float[]{animatedValue - 0.4f, animatedValue, animatedValue},
                         Shader.TileMode.CLAMP);
+                if (mShiningPaint == null) {
+                    mShiningPaint = new Paint();
+                }
                 mShiningPaint.setShader(gradient);
                 invalidate();
             }
         });
-        shiningAnimator.addListener(new AnimatorListenerAdapter() {
-            @Override
-            public void onAnimationStart(Animator animation) {
-                mShiningEffectRunning = true;
-                mShiningPaint = new Paint();
-                mShiningShape = Bitmap.createBitmap(getWidth(), getHeight(), Bitmap.Config
-                        .ARGB_8888).extractAlpha();
-                Canvas canvas = new Canvas(mShiningShape);
-                draw(canvas);
-                canvas.setBitmap(null);
-                invalidate();
-            }
+        mShiningAnimator.start();
+    }
 
+    private void releaseShiningEffect(long duration) {
+        postDelayed(new Runnable() {
             @Override
-            public void onAnimationEnd(Animator animation) {
+            public void run() {
                 mShiningEffectRunning = false;
                 mShiningPaint = null;
                 mShiningShape = null;
-                shiningAnimator.removeAllListeners();
+                mShiningAnimator.removeAllListeners();
                 invalidate();
             }
-        });
-        shiningAnimator.start();
-        invalidate();
+        }, duration);
     }
 }
