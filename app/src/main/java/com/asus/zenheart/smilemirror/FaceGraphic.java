@@ -46,8 +46,6 @@ public class FaceGraphic extends GraphicOverlay.Graphic {
     private static final float BOX_STROKE_WIDTH = 2.0f;
     private static final int BOX_STROKE_ALPHA = 102;// 60% opacity
 
-    private static final int VIDEO_EFFECT_WIDTH = 1080;
-    private static final int VIDEO_EFFECT_HEIGHT = 1200;
     private static final int VIDEO_EFFECT_INTERVAL_WIDTH = 363;
     private static final int VIDEO_EFFECT_INTERVAL_HEIGHT = 380;
 
@@ -98,9 +96,7 @@ public class FaceGraphic extends GraphicOverlay.Graphic {
         mGraphicOverlay = overlay;
         mCameraSourcePreview = cameraPreview;
         initPaint(mContext);
-
         mVideoView = videoTextureView;
-        mVideoView.setVideoSize(VIDEO_EFFECT_WIDTH, VIDEO_EFFECT_HEIGHT);
         mVideoView.setCompletionListener(new VideoTextureView.VideoCompletionCallback() {
             @Override
             public void onCompletion() {
@@ -152,7 +148,6 @@ public class FaceGraphic extends GraphicOverlay.Graphic {
         if (mGraphicOverlay.getMode() == GraphicOverlay.Mode.CONVERSATION) {
             return;
         }
-
         // Draws a circle at the position of the detected face, with the face's track id below.
         float x = translateX(face.getPosition().x + faceWidth / 2);
         float y = translateY(face.getPosition().y + faceHeight / 2);

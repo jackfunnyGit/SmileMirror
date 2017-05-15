@@ -401,8 +401,11 @@ public final class FaceTrackerActivity extends AppCompatActivity implements
                 mContainer.removeView(mPermissionPage);
                 //user granted all the needed permission,so reset pref_NeverSayAgain to false
                 PermissionUtil.setIfNeverSayAgain(mContext, false);
+                mVideoView.initVideoRenderer();
+                mVideoView.initMediaPlayer();
             }
             createCameraSource();
+            mPermissionPage = null;
         } else {
             requestPermissions();
         }
@@ -413,7 +416,6 @@ public final class FaceTrackerActivity extends AppCompatActivity implements
         //Jack ---
         startCameraSource();
 
-        mVideoView.setVisibility(View.VISIBLE);
         if (mChartPage != null) {
             if (!Objects.equals(mCameraSource.getNextVideoName(), GalleryUtil.getLastVideoFileName())) {
                 mChartPage.findViewById(R.id.video_intent_view).setVisibility(View.INVISIBLE);
@@ -436,10 +438,7 @@ public final class FaceTrackerActivity extends AppCompatActivity implements
         resetGuiElementState();
         mSensorManager.unregisterListener(this);
         mPreview.stop();
-
-        //TODO: after installation, onStop will run in first.
-        mVideoView.clearRenderer();
-        mVideoView.setVisibility(View.GONE);
+        mVideoView.stopMediaPlayer();
     }
 
     @Override

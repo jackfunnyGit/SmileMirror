@@ -7,7 +7,6 @@ import android.util.AttributeSet;
 import android.view.Surface;
 import android.view.TextureView;
 
-
 /**
  *  VideoTextureView can used to play the video in the texture view.
  *  You just need to create and setResourceId.
@@ -15,6 +14,8 @@ import android.view.TextureView;
  */
 
 public class VideoTextureView extends TextureView implements TextureView.SurfaceTextureListener {
+    private static final int VIDEO_EFFECT_WIDTH = 1080;
+    private static final int VIDEO_EFFECT_HEIGHT = 1200;
     private int mSurfaceWidth;
     private int mSurfaceHeight;
     private MediaPlayer mMediaPlayer;
@@ -105,11 +106,15 @@ public class VideoTextureView extends TextureView implements TextureView.Surface
         }
     }
 
-    private void initVideoRenderer() {
+    public void initVideoRenderer() {
         if (mVideoRenderer == null) {
             // Care the renderer can not repeatedly create, or it will crash.
             mVideoRenderer = new VideoTextureSurfaceRenderer(mContext, mSurfaceTexture,
                     mSurfaceWidth, mSurfaceHeight, mShaderId);
+            mVideoRenderer.setVideoSize(VIDEO_EFFECT_WIDTH, VIDEO_EFFECT_HEIGHT);
+        } else {
+            clearRenderer();
+            initVideoRenderer();
         }
     }
 
@@ -122,6 +127,9 @@ public class VideoTextureView extends TextureView implements TextureView.Surface
             mMediaPlayer = MediaPlayer.create(mContext, mEffectId);
             mMediaPlayer.setOnCompletionListener(new MediaPlayerCompletionListener());
             mMediaPlayer.setLooping(false);
+            if (mVideoRenderer == null) {
+                initVideoRenderer();
+            }
             Surface videoSurface = new Surface(mVideoRenderer.getVideoTexture());
             mMediaPlayer.setSurface(videoSurface);
             videoSurface.release();
@@ -171,7 +179,6 @@ public class VideoTextureView extends TextureView implements TextureView.Surface
         try {
             pauseMediaPlayer();
             releaseMediaPlayer();
-            clearTextureSurface();
             clearRenderer();
         } catch (Exception e) {
             e.printStackTrace();
@@ -219,9 +226,5 @@ public class VideoTextureView extends TextureView implements TextureView.Surface
                 mCallback.onCompletion();
             }
         }
-    }
-
-    public void setVideoSize(int width, int height) {
-        mVideoRenderer.setVideoSize(width, height);
     }
 }
