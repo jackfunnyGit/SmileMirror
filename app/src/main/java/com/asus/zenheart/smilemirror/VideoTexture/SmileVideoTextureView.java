@@ -58,10 +58,4 @@ public class SmileVideoTextureView extends VideoTextureView {
         return ShaderType.SPECIAL_SHADER;
     }
 
-    // Video render is still exist.
-    public void destroyVideoView() {
-        setResourceId(getRandomEffect(), getCorrectShader());
-        releaseMediaPlayer();
-        clearTextureSurface();
-    }
 }

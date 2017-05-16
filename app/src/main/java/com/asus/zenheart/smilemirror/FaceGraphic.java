@@ -24,9 +24,11 @@ import android.graphics.Color;
 import android.graphics.Matrix;
 import android.graphics.Paint;
 import android.graphics.drawable.BitmapDrawable;
+import android.os.Handler;
 import android.support.annotation.NonNull;
 import android.support.v4.content.ContextCompat;
 import android.view.Surface;
+import android.view.View;
 
 import com.asus.zenheart.smilemirror.Util.BitmapUtil;
 
@@ -87,6 +89,7 @@ public class FaceGraphic extends GraphicOverlay.Graphic {
     private int smileCount = 0;
     private boolean mCrown = false;
     private boolean mEffect = false;
+    private Matrix mMatrix;
 
     FaceGraphic(GraphicOverlay overlay, Context context, CameraSourcePreview cameraPreview,
             SmileVideoTextureView videoTextureView) {
@@ -96,12 +99,14 @@ public class FaceGraphic extends GraphicOverlay.Graphic {
         mGraphicOverlay = overlay;
         mCameraSourcePreview = cameraPreview;
         initPaint(mContext);
+        mMatrix= new Matrix();
         mVideoView = videoTextureView;
         mVideoView.setCompletionListener(new VideoTextureView.VideoCompletionCallback() {
             @Override
             public void onCompletion() {
-                mVideoView.destroyVideoView();
-                mVideoView.initMediaPlayer();
+                mVideoView.setResourceId(mVideoView.getRandomEffect(), mVideoView.getCorrectShader());
+                mVideoView.stopMediaPlayerAndRenderer();
+                mVideoView.setVisibility(View.GONE);
             }
         });
     }
@@ -188,7 +193,13 @@ public class FaceGraphic extends GraphicOverlay.Graphic {
                     mEffect = false;
                 }
                 if (mEffect && !mVideoView.isPlayingMediaPlayer()) {
-                    mVideoView.playMediaPlayer();
+                    mVideoView.setVisibility(View.VISIBLE);
+                    mVideoView.post(new Runnable() {
+                        @Override
+                        public void run() {
+                            mVideoView.playMediaPlayer();
+                        }
+                    });
                 }
             }
         } else {
@@ -218,34 +229,33 @@ public class FaceGraphic extends GraphicOverlay.Graphic {
         float degree;
         float correctionUnit = height * 3 / 4;
         radio = radio * ORIGINAL_FACE_HEIGHT / VIDEO_FACE_HEIGHT;
-        Matrix matrix = new Matrix();
-        matrix.setScale(radio, radio);
+        mMatrix.setScale(radio, radio);
         x = x - (VIDEO_EFFECT_INTERVAL_WIDTH * radio);
         y = y - (VIDEO_EFFECT_INTERVAL_HEIGHT * radio);
 
         if (rotation == 0) {
             degree = 0;
-            matrix.postRotate(degree);
-            matrix.postTranslate(x, y);
+            mMatrix.postRotate(degree);
+            mMatrix.postTranslate(x, y);
         } else if (rotation == 1) {
             degree = 90;
             x = x + (correctionUnit / 3);
             y = y - correctionUnit;
-            matrix.postTranslate(x, y);
-            matrix.postRotate(degree);
+            mMatrix.postTranslate(x, y);
+            mMatrix.postRotate(degree);
         } else if (rotation == 2) {
             degree = 180;
             x = x - correctionUnit;
             y = y - height;
-            matrix.postTranslate(x, y);
-            matrix.postRotate(degree);
+            mMatrix.postTranslate(x, y);
+            mMatrix.postRotate(degree);
         } else if (rotation == 3) {
             degree = 270;
             x = x - correctionUnit;
-            matrix.postTranslate(x, y);
-            matrix.postRotate(degree);
+            mMatrix.postTranslate(x, y);
+            mMatrix.postRotate(degree);
         }
-        view.setTransform(matrix);
+        view.setTransform(mMatrix);
     }
 
     /**

@@ -401,8 +401,6 @@ public final class FaceTrackerActivity extends AppCompatActivity implements
                 mContainer.removeView(mPermissionPage);
                 //user granted all the needed permission,so reset pref_NeverSayAgain to false
                 PermissionUtil.setIfNeverSayAgain(mContext, false);
-                mVideoView.initVideoRenderer();
-                mVideoView.initMediaPlayer();
             }
             createCameraSource();
             mPermissionPage = null;
@@ -438,7 +436,8 @@ public final class FaceTrackerActivity extends AppCompatActivity implements
         resetGuiElementState();
         mSensorManager.unregisterListener(this);
         mPreview.stop();
-        mVideoView.stopMediaPlayer();
+        mVideoView.setVisibility(View.GONE);
+        mVideoView.stopMediaPlayerAndRenderer();
     }
 
     @Override

@@ -1,11 +1,11 @@
 package com.asus.zenheart.smilemirror.VideoTexture;
 
 import android.content.Context;
-import android.graphics.SurfaceTexture;
 import android.media.MediaPlayer;
 import android.util.AttributeSet;
 import android.view.Surface;
 import android.view.TextureView;
+
 
 /**
  *  VideoTextureView can used to play the video in the texture view.
@@ -13,15 +13,11 @@ import android.view.TextureView;
  *
  */
 
-public class VideoTextureView extends TextureView implements TextureView.SurfaceTextureListener {
+public class VideoTextureView extends TextureView {
     private static final int VIDEO_EFFECT_WIDTH = 1080;
     private static final int VIDEO_EFFECT_HEIGHT = 1200;
-    private int mSurfaceWidth;
-    private int mSurfaceHeight;
     private MediaPlayer mMediaPlayer;
-    private SurfaceTexture mSurfaceTexture;
     private TextureSurfaceRenderer mVideoRenderer;
-    private Context mContext;
     private int mEffectId;
     private int mShaderId;
     private VideoCompletionCallback mCallback;
@@ -31,22 +27,16 @@ public class VideoTextureView extends TextureView implements TextureView.Surface
 
     public VideoTextureView(Context context) {
         super(context);
-        mContext = context;
-        setSurfaceTextureListener(this);
         setOpaque(false);
     }
 
     public VideoTextureView(Context context, AttributeSet attrs) {
         super(context, attrs);
-        mContext = context;
-        setSurfaceTextureListener(this);
         setOpaque(false);
     }
 
     public VideoTextureView(Context context, AttributeSet attrs, int defStyle) {
         super(context, attrs, defStyle);
-        mContext = context;
-        setSurfaceTextureListener(this);
         setOpaque(false);
     }
 
@@ -64,79 +54,30 @@ public class VideoTextureView extends TextureView implements TextureView.Surface
         void onCompletion();
     }
 
-    @Override
-    public void onSurfaceTextureAvailable(SurfaceTexture surface, int width, int height) {
-        mSurfaceWidth = width;
-        mSurfaceHeight = height;
-        mSurfaceTexture = surface;
-        initVideoRenderer();
-        initMediaPlayer();
-    }
-
-    @Override
-    public void onSurfaceTextureSizeChanged(SurfaceTexture surface, int width, int height) {
-        mSurfaceWidth = width;
-        mSurfaceHeight = height;
-        mSurfaceTexture = surface;
-    }
-
-    @Override
-    public boolean onSurfaceTextureDestroyed(SurfaceTexture surface) {
-        return true;
-    }
-
-    @Override
-    public void onSurfaceTextureUpdated(SurfaceTexture surface) {
-    }
-
-    /**
-     * Clear the content in the video renderer.
-     *
-     */
-    public void clearTextureSurface() {
-        if (mVideoRenderer != null) {
-            mVideoRenderer.clearSurface();
-        }
-    }
-
-    public void clearRenderer() {
-        if (mVideoRenderer != null) {
-            mVideoRenderer.onStop();
-            mVideoRenderer = null;
-        }
-    }
-
-    public void initVideoRenderer() {
-        if (mVideoRenderer == null) {
-            // Care the renderer can not repeatedly create, or it will crash.
-            mVideoRenderer = new VideoTextureSurfaceRenderer(mContext, mSurfaceTexture,
-                    mSurfaceWidth, mSurfaceHeight, mShaderId);
-            mVideoRenderer.setVideoSize(VIDEO_EFFECT_WIDTH, VIDEO_EFFECT_HEIGHT);
-        } else {
-            clearRenderer();
-            initVideoRenderer();
-        }
-    }
-
     /**
      * Helper function to create and play the effect.
      */
     public void initMediaPlayer() {
-        try {
-            // If you don not set the resource and shader, you will crash in here.
-            mMediaPlayer = MediaPlayer.create(mContext, mEffectId);
-            mMediaPlayer.setOnCompletionListener(new MediaPlayerCompletionListener());
-            mMediaPlayer.setLooping(false);
-            if (mVideoRenderer == null) {
-                initVideoRenderer();
-            }
-            Surface videoSurface = new Surface(mVideoRenderer.getVideoTexture());
-            mMediaPlayer.setSurface(videoSurface);
-            videoSurface.release();
-        } catch (IllegalArgumentException | IllegalStateException |
-        SecurityException | NullPointerException e) {
-            e.printStackTrace();
+        if (mVideoRenderer == null) {
+            mVideoRenderer = new VideoTextureSurfaceRenderer(getContext(), getSurfaceTexture(),
+                    getWidth(), getHeight(), mShaderId);
+            mVideoRenderer.setVideoSize(VIDEO_EFFECT_WIDTH, VIDEO_EFFECT_HEIGHT);
         }
+
+        mMediaPlayer = MediaPlayer.create(getContext(), mEffectId);
+        mMediaPlayer.setOnCompletionListener(new MediaPlayerCompletionListener());
+        mMediaPlayer.setLooping(false);
+        while (mVideoRenderer.getVideoTexture() == null) {
+            try {
+                Thread.sleep(100);
+            } catch (InterruptedException e) {
+                e.printStackTrace();
+            }
+        }
+
+        Surface videoSurface = new Surface(mVideoRenderer.getVideoTexture());
+        mMediaPlayer.setSurface(videoSurface);
+        videoSurface.release();
     }
 
     /**
@@ -144,65 +85,39 @@ public class VideoTextureView extends TextureView implements TextureView.Surface
      *
      */
     public void playMediaPlayer() {
-        try {
-            if (mMediaPlayer != null) {
-                if (!mMediaPlayer.isPlaying()) {
-                    mMediaPlayer.start();
-                }
+        if (isAvailable()) {
+            initMediaPlayer();
+        }
+        if (mMediaPlayer != null) {
+            if (!mMediaPlayer.isPlaying()) {
+                mMediaPlayer.start();
             }
-        } catch (Exception e) {
-            e.printStackTrace();
         }
     }
 
     /**
-     * Pause the media player which includes the video data.
-     *
+     * Stop the media player which includes the video data and also stop renderer.
      */
-    public void pauseMediaPlayer() {
-        try {
-            if (mMediaPlayer != null) {
-                if (mMediaPlayer.isPlaying()) {
-                    mMediaPlayer.pause();
-                }
-            }
-        } catch (Exception e) {
-            e.printStackTrace();
+    public void stopMediaPlayerAndRenderer() {
+        stopMediaPlayer();
+        if (mVideoRenderer != null) {
+            mVideoRenderer.onStop();
+            mVideoRenderer = null;
         }
     }
 
     /**
-     * Stop the media player which includes the video data.
-     *
+     * Stop the media player only, usually want to cache renderer and repeat video condition.
+     * Use this method can help reduce initial media player time, please sure to call
+     * {@link VideoTextureView#stopMediaPlayerAndRenderer()} before create another new one.
      */
     public void stopMediaPlayer() {
-        try {
-            pauseMediaPlayer();
-            releaseMediaPlayer();
-            clearRenderer();
-        } catch (Exception e) {
-            e.printStackTrace();
-        }
-    }
-
-    /**
-     * Release exist media player which includes the video data.
-     *
-     */
-    public void releaseMediaPlayer() {
-        try {
-            if (mMediaPlayer != null) {
-                if (mMediaPlayer.isPlaying()) {
-                    mMediaPlayer.stop();
-                    mMediaPlayer.release();
-                    mMediaPlayer = null;
-                } else {
-                    mMediaPlayer.release();
-                    mMediaPlayer = null;
-                }
+        if (mMediaPlayer != null) {
+            if (mMediaPlayer.isPlaying()) {
+                mMediaPlayer.stop();
             }
-        } catch (Exception e) {
-            e.printStackTrace();
+            mMediaPlayer.release();
+            mMediaPlayer = null;
         }
     }
 
