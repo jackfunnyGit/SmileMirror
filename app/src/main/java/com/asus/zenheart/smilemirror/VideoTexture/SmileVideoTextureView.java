@@ -32,6 +32,8 @@ public class SmileVideoTextureView extends VideoTextureView {
         int STAR_EFFECT = R.raw.effect_star;
         @RawRes
         int BLING_EFFECT = R.raw.effect_bling;
+        @RawRes
+        int BLACK_EFFECT = R.raw.black;
     }
 
     private @interface ShaderType {
@@ -52,6 +54,10 @@ public class SmileVideoTextureView extends VideoTextureView {
                 return FilterType.BLING_EFFECT;
         }
         return FilterType.HEART_EFFECT;
+    }
+
+    public int getBlackBufferEffect() {
+        return FilterType.BLACK_EFFECT;
     }
 
     public int getCorrectShader() {

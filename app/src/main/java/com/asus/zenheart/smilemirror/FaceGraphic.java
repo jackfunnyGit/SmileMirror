@@ -24,11 +24,9 @@ import android.graphics.Color;
 import android.graphics.Matrix;
 import android.graphics.Paint;
 import android.graphics.drawable.BitmapDrawable;
-import android.os.Handler;
 import android.support.annotation.NonNull;
 import android.support.v4.content.ContextCompat;
 import android.view.Surface;
-import android.view.View;
 
 import com.asus.zenheart.smilemirror.Util.BitmapUtil;
 
@@ -106,7 +104,6 @@ public class FaceGraphic extends GraphicOverlay.Graphic {
             public void onCompletion() {
                 mVideoView.setResourceId(mVideoView.getRandomEffect(), mVideoView.getCorrectShader());
                 mVideoView.stopMediaPlayerAndRenderer();
-                mVideoView.setVisibility(View.GONE);
             }
         });
     }
@@ -193,7 +190,6 @@ public class FaceGraphic extends GraphicOverlay.Graphic {
                     mEffect = false;
                 }
                 if (mEffect && !mVideoView.isPlayingMediaPlayer()) {
-                    mVideoView.setVisibility(View.VISIBLE);
                     mVideoView.post(new Runnable() {
                         @Override
                         public void run() {

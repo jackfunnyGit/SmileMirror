@@ -107,6 +107,8 @@ public final class FaceTrackerActivity extends AppCompatActivity implements
 
     private ShiningImageView mShiningImageViews;
 
+    private boolean mClearEffect = false;
+
     //==============================================================================================
     // Activity Methods
     //==============================================================================================
@@ -353,7 +355,9 @@ public final class FaceTrackerActivity extends AppCompatActivity implements
      * at long distances.
      */
     private void createCameraSource() {
-
+        if (mCameraSource != null) {
+            return;
+        }
         FaceDetector detector = createFaceDetector();
         //TODO it should be modified because CameraSource is not needed  for CameraAPI
         mCameraSource = new CameraSource.Builder(this, detector)
@@ -402,8 +406,8 @@ public final class FaceTrackerActivity extends AppCompatActivity implements
                 //user granted all the needed permission,so reset pref_NeverSayAgain to false
                 PermissionUtil.setIfNeverSayAgain(mContext, false);
             }
-            createCameraSource();
             mPermissionPage = null;
+            createCameraSource();
         } else {
             requestPermissions();
         }
@@ -417,6 +421,15 @@ public final class FaceTrackerActivity extends AppCompatActivity implements
         if (mChartPage != null) {
             if (!Objects.equals(mCameraSource.getNextVideoName(), GalleryUtil.getLastVideoFileName())) {
                 mChartPage.findViewById(R.id.video_intent_view).setVisibility(View.INVISIBLE);
+            }
+        }
+
+        if (mClearEffect) {
+            if (mVideoView != null && mVideoView.isAvailable()) {
+                mVideoView.setResourceId(mVideoView.getBlackBufferEffect(),
+                        mVideoView.getCorrectShader());
+                mVideoView.playMediaPlayer();
+                mClearEffect = false;
             }
         }
     }
@@ -436,8 +449,10 @@ public final class FaceTrackerActivity extends AppCompatActivity implements
         resetGuiElementState();
         mSensorManager.unregisterListener(this);
         mPreview.stop();
-        mVideoView.setVisibility(View.GONE);
-        mVideoView.stopMediaPlayerAndRenderer();
+        if (mVideoView != null) {
+            mVideoView.stopMediaPlayerAndRenderer();
+            mClearEffect = true;
+        }
     }
 
     @Override

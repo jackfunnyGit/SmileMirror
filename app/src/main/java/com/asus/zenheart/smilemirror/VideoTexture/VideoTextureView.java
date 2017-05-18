@@ -8,9 +8,8 @@ import android.view.TextureView;
 
 
 /**
- *  VideoTextureView can used to play the video in the texture view.
- *  You just need to create and setResourceId.
- *
+ * VideoTextureView can used to play the video in the texture view.
+ * You just need to create and setResourceId.
  */
 
 public class VideoTextureView extends TextureView {
@@ -21,6 +20,7 @@ public class VideoTextureView extends TextureView {
     private int mEffectId;
     private int mShaderId;
     private VideoCompletionCallback mCallback;
+
     public void setCompletionListener(VideoCompletionCallback callback) {
         mCallback = callback;
     }
@@ -43,7 +43,6 @@ public class VideoTextureView extends TextureView {
     /**
      * Set the video which we want to play. If  we do not call this function, it will play the default video.
      * This function is very important, if you don't call it and your application will crash.
-     *
      */
     public void setResourceId(int effectId, int shaderId) {
         mEffectId = effectId;
@@ -82,7 +81,6 @@ public class VideoTextureView extends TextureView {
 
     /**
      * Play the media player which includes the video data.
-     *
      */
     public void playMediaPlayer() {
         if (isAvailable()) {
@@ -112,18 +110,19 @@ public class VideoTextureView extends TextureView {
      * {@link VideoTextureView#stopMediaPlayerAndRenderer()} before create another new one.
      */
     public void stopMediaPlayer() {
-        if (mMediaPlayer != null) {
-            if (mMediaPlayer.isPlaying()) {
+        try {
+            if (mMediaPlayer != null && mMediaPlayer.isPlaying()) {
                 mMediaPlayer.stop();
+                mMediaPlayer.release();
+                mMediaPlayer = null;
             }
-            mMediaPlayer.release();
-            mMediaPlayer = null;
+        } catch (Exception e) {
+            e.printStackTrace();
         }
     }
 
     /**
      * Media player is playing or not.
-     *
      */
     public boolean isPlayingMediaPlayer() {
         return mMediaPlayer != null && mMediaPlayer.isPlaying();
