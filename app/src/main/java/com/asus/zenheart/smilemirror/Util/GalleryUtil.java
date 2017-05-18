@@ -40,7 +40,7 @@ public class GalleryUtil {
         return path + allFiles[allFiles.length - 1];
     }
 
-    private static int getVideoFileNumbers() {
+    public static int getVideoFileNumbers() {
         String path = Environment.getExternalStorageDirectory().getPath() + RECORDING_PATH;
         File folder = new File(path);
         String[] allFiles = folder.list();
@@ -58,7 +58,10 @@ public class GalleryUtil {
 
         if (allFiles == null) {
             return null;
+        } else if (allFiles.length == 0) {
+            return null;
         }
+
         return allFiles[allFiles.length - 1];
     }
 
@@ -69,7 +72,7 @@ public class GalleryUtil {
         if (file.exists() || file.mkdirs()) {
             SimpleDateFormat dateFormat = new SimpleDateFormat("'CV'_yyyyMMdd_HHmmss", Locale.US);
             String date = dateFormat.format(new java.util.Date());
-            return String.format("%s/%s.mp4", fileDir, date);
+            return String.format("%s%s.mp4", fileDir, date);
         } else {
             Log.e(LOG_TAG, "Fail to make dir at " + file + "... return default ExternalDirectory ");
             return Environment.getExternalStorageDirectory().getAbsolutePath();

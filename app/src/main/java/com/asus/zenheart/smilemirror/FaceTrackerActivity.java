@@ -419,7 +419,8 @@ public final class FaceTrackerActivity extends AppCompatActivity implements
         startCameraSource();
 
         if (mChartPage != null) {
-            if (!Objects.equals(mCameraSource.getNextVideoName(), GalleryUtil.getLastVideoFileName())) {
+            if (!Objects.equals(mCameraSource.getNextVideoName(), GalleryUtil.getLastVideoFileName())
+                    | GalleryUtil.getVideoFileNumbers() == 0) {
                 mChartPage.findViewById(R.id.video_intent_view).setVisibility(View.INVISIBLE);
             }
         }
