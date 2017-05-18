@@ -74,12 +74,20 @@ class SpeechCursorAdapter extends RecyclerView.Adapter<SpeechCursorAdapter.ViewH
         int type = mCursor.getInt(mCursor.getColumnIndex(SpeechContract.TYPE));
 
         holder.itemView.setActivated(mSelectedItem.get(position, false));
+
         if (holder.itemView.isActivated()) {
             holder.mTypeView.setImageResource(R.drawable.check);
+            if (type == 0) {
+                holder.mTitle.setText(mCursor.
+                        getString(mCursor.getColumnIndex(SpeechContract.TITLE)));
+            } else {
+                holder.mTitle.setText(setSampleSpeechTitle(type));
+            }
         } else {
             if (type == 0) {
                 holder.mTypeView.setImageResource(R.drawable.inputtext_add);
-                holder.mTitle.setText(mCursor.getString(mCursor.getColumnIndex(SpeechContract.TITLE)));
+                holder.mTitle.setText(mCursor.
+                        getString(mCursor.getColumnIndex(SpeechContract.TITLE)));
             } else {
                 holder.mTypeView.setImageResource(R.drawable.inputtext_default);
                 holder.mTitle.setText(setSampleSpeechTitle(type));
