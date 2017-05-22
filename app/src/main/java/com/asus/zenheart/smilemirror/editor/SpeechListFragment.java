@@ -80,13 +80,16 @@ public class SpeechListFragment extends Fragment implements LoaderManager.Loader
                 newSpeech();
             }
         });
-        final Toolbar toolbar = (Toolbar) view.findViewById(R.id.editor_list_toolbar);
-        mActivity.setSupportActionBar(toolbar);
+        final Toolbar toolBar = (Toolbar) view.findViewById(R.id.editor_list_toolbar);
+        mActivity.setSupportActionBar(toolBar);
         getActivity().setTitle(R.string.editor_title_bar_text);
 
-        toolbar.setTitleTextColor(mContext.getColor(R.color.smile_text_color));
-        toolbar.setNavigationIcon(R.drawable.back);
-        toolbar.setNavigationOnClickListener(new View.OnClickListener() {
+        toolBar.setTitleTextColor(mContext.getColor(R.color.smile_text_color));
+        toolBar.setNavigationIcon(R.drawable.back);
+        if (toolBar.getNavigationIcon() != null) {
+            toolBar.getNavigationIcon().setAutoMirrored(true);
+        }
+        toolBar.setNavigationOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
                 Intent intent = new Intent(mContext, FaceTrackerActivity.class);

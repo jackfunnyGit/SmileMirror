@@ -85,6 +85,7 @@ public class ModePagerAdapter extends PagerAdapter {
             final ImageView imageViewBack = (ImageView) view.findViewById(R.id.back_image_view);
             mTitleToast = (TextView) view.findViewById(R.id.title_toast);
             showTitleToast();
+            imageViewBack.getDrawable().setAutoMirrored(true);
             imageViewBack.setOnClickListener(new View.OnClickListener() {
                 @Override
                 public void onClick(View v) {
