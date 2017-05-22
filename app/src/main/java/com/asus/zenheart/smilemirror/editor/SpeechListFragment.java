@@ -243,14 +243,10 @@ public class SpeechListFragment extends Fragment implements LoaderManager.Loader
             }
             Formatter formatter = new Formatter().format("%d", selectedItem);
             showDeleteCheckDialog(mAdapter.getSelectedItem(), formatter.toString());
-            actionMode.finish();
-
             return true;
         } else if (itemId == R.id.editor_action_menu_select_one) {
             showRenameCheckDialog(mAdapter.getSelectedItem());
-            actionMode.finish();
             return true;
-
         } else {
             return false;
         }
@@ -287,6 +283,7 @@ public class SpeechListFragment extends Fragment implements LoaderManager.Loader
                         renameData(currentPosition, titleEditText.getText().toString());
                     }
                 }
+                mActionMode.finish();
             }
         });
         builder.setNegativeButton(R.string.editor_check_cancel,
@@ -345,12 +342,14 @@ public class SpeechListFragment extends Fragment implements LoaderManager.Loader
                         String.format(mContext.getString(R.string.delete_script_toast),
                                 itemCount), Toast.LENGTH_LONG);
                 toast.show();
+                mActionMode.finish();
             }
         });
         builder.setNegativeButton(R.string.editor_check_cancel,
                 new DialogInterface.OnClickListener() {
                     @Override
                     public void onClick(DialogInterface dialog, int which) {
+                        mActionMode.finish();
                     }
                 });
         alertDialog = builder.create();
