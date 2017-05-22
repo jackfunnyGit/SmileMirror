@@ -23,7 +23,6 @@
         <!-- used to replace tool bar-->
         <item name="windowNoTitle">true</item>
         <item name="windowActionBar">false</item>
-        <item name="android:windowFullscreen">?android:windowNoTitle</item>
         <item name="toolbarStyle">@style/ToolBarStyle</item>
         <item name="windowActionModeOverlay">true</item>
         <item name="actionModeStyle">@style/ActionMode</item>
