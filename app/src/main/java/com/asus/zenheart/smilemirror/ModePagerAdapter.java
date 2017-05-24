@@ -365,7 +365,6 @@ public class ModePagerAdapter extends PagerAdapter {
                             imageViewRecord.setVisibility(View.INVISIBLE);
                             scrollTextView.setRepeatMode(false)
                                     .start(VerticalScrollTextView.FIRST_DELAY_TIME_MILLS);
-                            dragView.setImageResource(R.drawable.drag_disable);
                             imageViewPlay.setText(R.string.teleprompter_button_text_stop);
                             dragView.setEnabled(false);
                             countView.starCount();
