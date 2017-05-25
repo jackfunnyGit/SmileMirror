@@ -29,11 +29,12 @@
             android:layout_margin="@dimen/editor_add_plus_padding"
             android:id="@+id/editor_add_button"
             android:src="@drawable/add"
-            app:backgroundTint="@color/editor_add_plus_color"
             android:scaleType="center"
             android:layout_gravity="bottom|end"
             android:layout_alignParentBottom="true"
-            android:layout_alignParentEnd="true"/>
+            android:layout_alignParentEnd="true"
+            app:backgroundTint="@color/editor_add_plus_color"
+            app:fabSize="normal"/>
 
     <android.support.v7.widget.Toolbar
             android:id="@+id/editor_list_toolbar"

@@ -36,7 +36,7 @@
         android:layout_centerVertical="true"
         android:layout_centerHorizontal="true"
         android:text="@string/sm_tutorial_main_page_content"
-        android:textColor="@android:color/white"
+        android:textColor="@color/sm_color_gray_tutorial_text"
         android:textSize="@dimen/tutorial_page_small_text_size"/>
 
     <ImageView

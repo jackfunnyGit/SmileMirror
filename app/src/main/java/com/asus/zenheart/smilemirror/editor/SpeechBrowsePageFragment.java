@@ -245,22 +245,19 @@ public class SpeechBrowsePageFragment extends Fragment {
     }
 
     private void showTextSizeRadioDialog() {
-
+        AlertDialog.Builder builder = new AlertDialog.Builder(mContext);
         final int preferenceFontSize = (int) PrefsUtils.getFloatPreference(mContext,
                 PrefsUtils.PREFS_SPEECH_TEXT_SIZE, VerticalScrollTextView.TEXT_SIZE.NORMAL);
 
         CharSequence[] fontSizeText = {mContext.getString(R.string.font_size_large),
                 mContext.getString(R.string.font_size_default), mContext.getString(
                 R.string.font_size_small)};
-        AlertDialog alertDialog;
-        AlertDialog.Builder builder = new AlertDialog.Builder(mContext);
         builder.setTitle(R.string.font_size);
         builder.setSingleChoiceItems(fontSizeText,
                 FONT_SIZE_ARRAY.indexOfValue(preferenceFontSize),
                 new DialogInterface.OnClickListener() {
                     public void onClick(DialogInterface dialog, int itemPosition) {
                         mTextSize = FONT_SIZE_ARRAY.get(itemPosition);
-
                         mPresentText.setTextSize(mTextSize);
                         mPresentText.invalidate();
                         PrefsUtils.setFloatPreference(mContext,
@@ -275,7 +272,7 @@ public class SpeechBrowsePageFragment extends Fragment {
                     public void onClick(DialogInterface dialog, int which) {
                     }
                 });
-        alertDialog = builder.create();
+        final AlertDialog alertDialog = builder.create();
         alertDialog.show();
     }
 }

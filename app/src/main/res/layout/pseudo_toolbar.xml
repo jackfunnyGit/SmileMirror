@@ -25,11 +25,11 @@
         android:ellipsize="end"
         android:maxLines="1"
         android:textColor="@android:color/white"
-        android:textSize="@dimen/sm_presentation_title_text_size"/>
+        android:textSize="@dimen/sm_editor_tool_bar_title_text_size"/>
 
     <ImageView
         android:id="@id/image_list"
-        android:layout_width="@dimen/sm_coach_mode_pseudo_bar_height"
+        android:layout_width="@dimen/sm_coach_mode_pseudo_bar_width"
         android:layout_height="match_parent"
         android:layout_centerVertical="true"
         android:layout_toStartOf="@+id/image_setting"
@@ -38,7 +38,7 @@
 
     <ImageView
         android:id="@id/image_setting"
-        android:layout_width="@dimen/sm_coach_mode_pseudo_bar_height"
+        android:layout_width="@dimen/sm_coach_mode_pseudo_bar_width"
         android:layout_height="match_parent"
         android:layout_alignParentEnd="true"
         android:layout_centerVertical="true"

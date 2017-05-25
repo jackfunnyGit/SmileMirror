@@ -14,7 +14,7 @@
             android:layout_alignParentTop="true"
             android:layout_marginTop="@dimen/sm_tutorial_coach_page_text_script_list_top_margin"
             android:text="@string/sm_tutorial_coach__page_text_script_list"
-            android:textColor="@android:color/white"
+            android:textColor="@color/sm_color_gray_tutorial_text"
             android:textSize="@dimen/tutorial_page_small_text_size"/>
 
     <TextView
@@ -25,7 +25,7 @@
         android:layout_marginTop="@dimen/sm_tutorial_coach_page_text_start_practice_top_margin"
         android:text="@string/sm_tutorial_coach_page_text_start_practice"
         android:textAlignment="textStart"
-        android:textColor="@android:color/white"
+        android:textColor="@color/sm_color_gray_tutorial_text"
         android:textSize="@dimen/tutorial_page_small_text_size"/>
 
     <TextView
@@ -46,17 +46,17 @@
         android:layout_marginBottom="@dimen/sm_tutorial_coach_page_text_review_video_bottom_margin"
         android:text="@string/sm_tutorial_coach_page_text_review_video"
         android:textAlignment="textStart"
-        android:textColor="@android:color/white"
+        android:textColor="@color/sm_color_gray_tutorial_text"
         android:textSize="@dimen/tutorial_page_small_text_size"/>
 
     <ImageView
-        android:layout_width="@dimen/sm_coach_mode_pseudo_bar_height"
+        android:layout_width="@dimen/sm_coach_mode_pseudo_bar_width"
         android:layout_height="@dimen/sm_coach_mode_pseudo_bar_height"
         android:layout_alignParentEnd="true"
         android:layout_alignParentTop="true"
         android:layout_marginEnd="@dimen/sm_tutorial_coach_page_image_list_end_margin"
         android:scaleType="center"
-        android:src="@drawable/list"/>
+        android:src="@drawable/list_tutorial_disable"/>
 
     
     <Button
@@ -79,7 +79,7 @@
         android:layout_alignParentBottom="true"
         android:layout_alignParentStart="true"
         android:layout_marginBottom="@dimen/coach_mode_video_icon_padding"
-        android:src="@drawable/video"/>
+        android:src="@drawable/video_tutorial_disable"/>
 
     <ImageView
         android:id="@+id/tutorial_close_image"

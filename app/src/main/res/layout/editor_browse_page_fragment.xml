@@ -44,14 +44,25 @@
                 android:layout_centerHorizontal="true"
                 android:layout_centerVertical="true"
                 android:layout_alignParentBottom="true"
-                android:layout_toStartOf="@+id/seekBarTextSize"
+                android:layout_toStartOf="@+id/seekBarBorder"
                 android:layout_toEndOf="@+id/seekBarSpeed"
-                android:paddingLeft="@dimen/editor_scrolling_bar_padding"
-                android:paddingRight="@dimen/editor_scrolling_bar_padding"
+                android:layout_marginStart="@dimen/editor_scrolling_bar_padding_left"
+                android:layout_marginEnd="@dimen/editor_scrolling_bar_padding_right"
                 android:max="4"
                 android:progressTint="@color/editor_seek_bar_progress_color"
                 android:progressBackgroundTint="@android:color/white"
-                android:thumbTint="@color/editor_seek_bar_progress_color"/>
+                android:thumb="@drawable/green_circle"
+                android:splitTrack="false"/>
+
+        <View
+                android:id="@+id/seekBarBorder"
+                android:layout_width="@dimen/editor_list_card__divider_width"
+                android:layout_height="match_parent"
+                android:background="@android:color/darker_gray"
+                android:layout_toStartOf="@+id/seekBarTextSize"
+                android:layout_marginTop="@dimen/editor_scrolling_bar_divider_margin"
+                android:layout_marginBottom="@dimen/editor_scrolling_bar_divider_margin"
+                android:layout_marginEnd="@dimen/editor_scrolling_bar_margin"/>
 
         <ImageView
                 android:id="@+id/seekBarTextSize"

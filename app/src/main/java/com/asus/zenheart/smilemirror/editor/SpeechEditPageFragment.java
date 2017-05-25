@@ -13,6 +13,7 @@ import android.support.v4.app.Fragment;
 import android.support.v4.app.FragmentManager;
 import android.support.v4.app.FragmentTransaction;
 import android.support.v7.app.AppCompatActivity;
+import android.support.v7.widget.PagerSnapHelper;
 import android.support.v7.widget.Toolbar;
 import android.text.Editable;
 import android.text.TextWatcher;
@@ -162,8 +163,11 @@ public class SpeechEditPageFragment extends Fragment {
 
             @Override
             public void onTextChanged(CharSequence s, int start, int before, int count) {
-                if (toolBar.getMenu().findItem(R.id.editor_edit_menu_save) != null) {
-                    toolBar.getMenu().findItem(R.id.editor_edit_menu_save).setIcon(R.drawable.save);
+                MenuItem toolBarItem = toolBar.getMenu().findItem(R.id.editor_edit_menu_save);
+                if (toolBarItem != null && s.length() > 0) {
+                    toolBarItem.setIcon(R.drawable.save);
+                } else {
+                    toolBarItem.setIcon(R.drawable.save_disable);
                 }
             }
 

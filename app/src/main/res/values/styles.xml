@@ -16,6 +16,7 @@
         <item name="android:windowFullscreen">true</item>
         <item name="android:windowContentOverlay">@null</item>
         <item name="android:alertDialogTheme">@style/Theme.AsusRes.Dialog.Alert</item>
+        <item name="colorAccent">@color/asusres_accent_material_light</item>
     </style>
 
     <!-- Coach editor theme -->
@@ -23,35 +24,52 @@
         <!-- used to replace tool bar-->
         <item name="windowNoTitle">true</item>
         <item name="windowActionBar">false</item>
-        <item name="toolbarStyle">@style/ToolBarStyle</item>
         <item name="windowActionModeOverlay">true</item>
-        <item name="actionModeStyle">@style/ActionMode</item>
+        <item name="toolbarStyle">@style/ToolBarStyle</item>
+        <item name="toolbarNavigationButtonStyle">@style/NavigationButtonStyle</item>
+        <item name="actionButtonStyle">@style/ActionButtonStyle</item>
+        <item name="actionModeStyle">@style/ActionModeStyle</item>
         <item name="actionModeCloseDrawable">@drawable/back</item>
         <item name="android:alertDialogTheme">@style/DarkAlertDialog</item>
+        <item name="colorAccent">@color/asusres_accent_material_light</item>
     </style>
 
     <style name="DarkAlertDialog" parent="Theme.AsusRes.Dialog.Alert">
         <item name="android:buttonStyle">@style/TextAppearance.AsusRes.Widget.Button</item>
     </style>
 
-    <style name="ToolBarStyle" parent="Base.Widget.AppCompat.Toolbar">
+    <style name="ToolBarStyle" parent="Widget.AppCompat.Toolbar">
         <item name="android:titleTextStyle">@style/ToolBarTitleStyle</item>
     </style>
 
     <style name="ToolBarTitleStyle" parent="TextAppearance.Widget.AppCompat.Toolbar.Title">
         <item name="android:textColor">@android:color/white</item>
-        <item name="android:textSize">@dimen/editor_tool_bar_text_size</item>
+        <item name="android:textSize">@dimen/sm_editor_tool_bar_title_text_size</item>
     </style>
 
-    <style name="ActionMode" parent="@style/Widget.AppCompat.ActionMode">
+    <style name="ActionModeStyle" parent="@style/Widget.AppCompat.ActionMode">
         <item name="background">@android:color/black</item>
-        <item name="titleTextStyle">@style/ActionModeTitle</item>
+        <item name="titleTextStyle">@style/ActionModeTitleStyle</item>
+        <item name="actionButtonStyle">@style/ActionButtonStyle</item>
     </style>
 
-    <style name="ActionModeTitle" parent="@style/TextAppearance.AppCompat.Widget.ActionBar.Title">
+    <style name="ActionModeTitleStyle" parent="@style/TextAppearance.AppCompat.Widget.ActionBar.Title">
         <item name="android:textColor">@android:color/white</item>
-        <item name="android:textSize">@dimen/editor_tool_bar_text_size</item>
+        <item name="android:textSize">@dimen/sm_editor_tool_bar_title_text_size</item>
     </style>
+
+    <style name="NavigationButtonStyle" parent="@style/Widget.AppCompat.Toolbar.Button.Navigation">
+        <item name="android:minWidth">0dp</item>
+        <item name="android:paddingEnd">@dimen/sm_editor_tool_bar_navigation_button_padding</item>
+        <item name="android:paddingStart">@dimen/sm_editor_tool_bar_navigation_button_padding</item>
+    </style>
+
+    <style name="ActionButtonStyle" parent="@android:style/Widget.ActionButton">
+        <item name="android:minWidth">0dp</item>
+        <item name="android:paddingEnd">@dimen/sm_editor_tool_bar_action_button_padding</item>
+        <item name="android:paddingStart">@dimen/sm_editor_tool_bar_action_button_padding</item>
+    </style>
+
     <!-- elements style  -->
     <style name="PopupMenuTheme" parent="ThemeOverlay.AppCompat.Dark.ActionBar">
     </style>

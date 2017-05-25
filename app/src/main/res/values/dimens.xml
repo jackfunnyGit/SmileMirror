@@ -22,7 +22,6 @@
     <!-- toast text and image -->
     <dimen name="mode_toast_padding">3dp</dimen>
     <!-- couch mode -->
-    <dimen name="sm_coach_mode_pseudo_bar_height">56dp</dimen>
     <dimen name="coach_mode_setting_icon_width">32dp</dimen>
     <dimen name="coach_mode_setting_icon_height">32dp</dimen>
     <dimen name="coach_mode_setting_icon_padding">10dp</dimen>
@@ -48,7 +47,7 @@
     <dimen name="coach_mode_video_thumbnail_length">40dp</dimen>
     <dimen name="sm_application_name_toast_top_margin">12dp</dimen>
     <dimen name="sm_presentation_back_top_margin">12dp</dimen>
-    <dimen name="sm_presentation_back_start_margin">14dp</dimen>
+    <dimen name="sm_presentation_back_start_margin">9dp</dimen>
     <!-- Vertical text view padding-->
     <dimen name="vertical_text_view_width_padding">23dp</dimen>
     <!-- histogram chart -->
@@ -68,8 +67,8 @@
     <dimen name="tutorial_page_title_top_padding">140dp</dimen>
     <dimen name="tutorial_page_content_top_padding">315dp</dimen>
     <dimen name="tutorial_page_title_width">200dp</dimen>
-    <dimen name="tutorial_page_big_text_size">24dp</dimen>
-    <dimen name="tutorial_page_small_text_size">18dp</dimen>
+    <dimen name="tutorial_page_big_text_size">23dp</dimen>
+    <dimen name="tutorial_page_small_text_size">15dp</dimen>
     <!-- tutorial coach page -->
     <dimen name="sm_tutorial_coach_page_text_script_list_top_margin">56dp</dimen>
     <dimen name="sm_tutorial_coach_page_text_start_practice_top_margin">8dp</dimen>
@@ -80,27 +79,34 @@
     <dimen name="sm_tutorial_coach_page_text_start_practice_text_width">160dp</dimen>
     <dimen name="sm_tutorial_coach_page_text_title_text_width">200dp</dimen>
     <dimen name="sm_tutorial_coach_page_text_review_video_text_width">100dp</dimen>
-    <dimen name="sm_tutorial_coach_page_image_list_end_margin">33dp</dimen>
     <!-- SmileMirror text  value -->
     <dimen name="sm_smile_text_size">23dp</dimen>
     <dimen name="sm_mode_text_size">15sp</dimen>
     <dimen name="sm_teleprompter_text_size">16dp</dimen>
     <dimen name="sm_countdown_text_size">133dp</dimen>
-    <dimen name="sm_presentation_title_text_size">24dp</dimen>
+    <dimen name="sm_tutorial_coach_page_image_list_end_margin">25dp</dimen>
+    <!-- SmileMirror text in dp value -->
+    <dimen name="smile_text_size">24dp</dimen>
+    <dimen name="mode_text_size">16dp</dimen>
+    <dimen name="teleprompter_text_size">16dp</dimen>
+    <dimen name="countdown_text_size">133dp</dimen>
+    <dimen name="presentation_title_text_size">24dp</dimen>
     <dimen name="sm_chart_page_statistics_title_text_size">24dp</dimen>
     <dimen name="sm_chart_page_duration_text_size">16dp</dimen>
     <dimen name="sm_title_toast_text_size">23dp</dimen>
     <!-- Editor value -->
     <dimen name="editor_list_card_padding">23dp</dimen>
-    <dimen name="editor_list_card__divider_width">0.5dp</dimen>
+    <dimen name="editor_list_card__divider_width">1px</dimen>
     <dimen name="editor_list_type_img_padding">16dp</dimen>
     <dimen name="editor_list_text_layout_padding">8dp</dimen>
     <dimen name="editor_list_text_layout_padding_left">16dp</dimen>
     <dimen name="editor_scrolling_bar_height">57dp</dimen>
     <dimen name="editor_scrolling_bar_margin">20dp</dimen>
-    <dimen name="editor_scrolling_bar_padding">18dp</dimen>
+    <dimen name="editor_scrolling_bar_padding_left">8dp</dimen>
+    <dimen name="editor_scrolling_bar_padding_right">20dp</dimen>
+    <dimen name="editor_scrolling_bar_divider_margin">12dp</dimen>
     <dimen name="editor_add_plus_padding">16dp</dimen>
-    <dimen name="sm_editor_tool_bar_height">56dp</dimen>
+    <dimen name="editor_edit_page_padding">20dp</dimen>
     <!-- Editor text value -->
     <dimen name="editor_dialog_title_size">40dp</dimen>
     <dimen name="editor_dialog_click_text_size">30dp</dimen>
@@ -108,9 +114,6 @@
     <dimen name="editor_list_date_text_size">14dp</dimen>
     <dimen name="editor_list_title_date_size">16dp</dimen>
     <dimen name="editor_edit_page_text_size">20dp</dimen>
-    <dimen name="editor_tool_bar_padding">14dp</dimen>
-    <dimen name="editor_action_mode_padding">26dp</dimen>
-    <dimen name="editor_tool_bar_text_size">24dp</dimen>
     <!-- Multi player -->
     <dimen name="crown_bottom_padding">10dp</dimen>
     <!-- border line -->
@@ -130,4 +133,11 @@
     <dimen name="permission_page_button_text_size">16sp</dimen>
     <!-- nine patch padding -->
     <dimen name="sm_nine_patch_padding">6dp</dimen>
+    <!-- Tool bar -->
+    <dimen name="sm_coach_mode_pseudo_bar_height">56dp</dimen>
+    <dimen name="sm_coach_mode_pseudo_bar_width">48dp</dimen>
+    <dimen name="sm_editor_tool_bar_height">56dp</dimen>
+    <dimen name="sm_editor_tool_bar_title_text_size">23dp</dimen>
+    <dimen name="sm_editor_tool_bar_action_button_padding">8dp</dimen>
+    <dimen name="sm_editor_tool_bar_navigation_button_padding">9dp</dimen>
 </resources>
