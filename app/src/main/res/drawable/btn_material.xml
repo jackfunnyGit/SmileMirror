@@ -2,6 +2,6 @@
 
 
 <ripple xmlns:android="http://schemas.android.com/apk/res/android"
-        android:color="@color/asusres_button_ripple_dark">
+        android:color="@color/sm_color_black_opacity_19">
     <item android:drawable="@drawable/btn_shape_material"/>
 </ripple>

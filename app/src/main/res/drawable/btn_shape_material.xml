@@ -1,11 +1,10 @@
 <?xml version="1.0" encoding="utf-8"?>
 <inset xmlns:android="http://schemas.android.com/apk/res/android"
-       android:insetBottom="6dp"
-       android:insetLeft="0dp"
-       android:insetRight="0dp"
-       android:insetTop="6dp">
+       android:insetBottom="@dimen/sm_nine_patch_padding"
+       android:insetLeft="@dimen/sm_nine_patch_padding"
+       android:insetRight="@dimen/sm_nine_patch_padding"
+       android:insetTop="@dimen/sm_nine_patch_padding">
 
     <nine-patch
-        android:src="@drawable/asusres_btn_default_normal_storkes_mtrl"
-        android:tint="@color/asusres_button_strokes_dark_disabled"/>
+        android:src="@drawable/brn"/>
 </inset>

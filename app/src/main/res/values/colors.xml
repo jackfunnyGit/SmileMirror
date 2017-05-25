@@ -31,5 +31,7 @@
     <!-- Permission page -->
     <color name="permission_button_tint_color">#FF0DAFED</color>
     <color name="permission_page_content_text_color">#FFBEBEBE</color>
+    <!-- nine patch background -->
+    <color name="sm_color_black_opacity_19">#30000000</color>
 
 </resources>

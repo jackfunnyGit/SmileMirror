@@ -128,5 +128,6 @@
     <dimen name="permission_page_button_top_margin">10dp</dimen>
     <dimen name="permission_page_button_bottom_margin">25dp</dimen>
     <dimen name="permission_page_button_text_size">16sp</dimen>
-
+    <!-- nine patch padding -->
+    <dimen name="sm_nine_patch_padding">6dp</dimen>
 </resources>
