@@ -69,7 +69,7 @@ public class HistogramChartView extends View {
     private void initHistogramChart(Context context) {
         mContext = context;
         mResources = context.getResources();
-        mPaddingWidth = mResources.getDimension(R.dimen.vertical_text_view_width_padding);
+        mPaddingWidth = mResources.getDimension(R.dimen.sm_vertical_text_view_width_padding);
         mPaddingTop = mResources.getDimension(R.dimen.sm_histogram_chart_top_padding);
         mPaint = new Paint();
         mTextPaint = new Paint();

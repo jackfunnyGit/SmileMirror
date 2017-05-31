@@ -24,7 +24,7 @@
     <RelativeLayout
             android:id="@+id/seekBarLayout"
             android:layout_width="match_parent"
-            android:layout_height="@dimen/editor_scrolling_bar_height"
+            android:layout_height="@dimen/sm_editor_scrolling_bar_height"
             android:background="@color/teleprompter_background_color">
 
         <ImageView
@@ -32,7 +32,7 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_alignParentStart="true"
-                android:layout_marginStart="@dimen/editor_scrolling_bar_margin"
+                android:layout_marginStart="@dimen/sm_editor_scrolling_bar_margin"
                 android:layout_centerVertical="true"
                 android:src="@drawable/speed"/>
 
@@ -46,8 +46,8 @@
                 android:layout_alignParentBottom="true"
                 android:layout_toStartOf="@+id/seekBarBorder"
                 android:layout_toEndOf="@+id/seekBarSpeed"
-                android:layout_marginStart="@dimen/editor_scrolling_bar_padding_left"
-                android:layout_marginEnd="@dimen/editor_scrolling_bar_padding_right"
+                android:layout_marginStart="@dimen/sm_editor_scrolling_bar_padding_left"
+                android:layout_marginEnd="@dimen/sm_editor_scrolling_bar_padding_right"
                 android:max="4"
                 android:progressTint="@color/editor_seek_bar_progress_color"
                 android:progressBackgroundTint="@android:color/white"
@@ -56,20 +56,20 @@
 
         <View
                 android:id="@+id/seekBarBorder"
-                android:layout_width="@dimen/editor_list_card__divider_width"
+                android:layout_width="@dimen/sm_editor_list_card_divider_width"
                 android:layout_height="match_parent"
                 android:background="@android:color/darker_gray"
                 android:layout_toStartOf="@+id/seekBarTextSize"
-                android:layout_marginTop="@dimen/editor_scrolling_bar_divider_margin"
-                android:layout_marginBottom="@dimen/editor_scrolling_bar_divider_margin"
-                android:layout_marginEnd="@dimen/editor_scrolling_bar_margin"/>
+                android:layout_marginTop="@dimen/sm_editor_scrolling_bar_divider_margin"
+                android:layout_marginBottom="@dimen/sm_editor_scrolling_bar_divider_margin"
+                android:layout_marginEnd="@dimen/sm_editor_scrolling_bar_margin"/>
 
         <ImageView
                 android:id="@+id/seekBarTextSize"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_alignParentEnd="true"
-                android:layout_marginEnd="@dimen/editor_scrolling_bar_margin"
+                android:layout_marginEnd="@dimen/sm_editor_scrolling_bar_margin"
                 android:layout_centerVertical="true"
                 android:src="@drawable/text"/>
     </RelativeLayout>

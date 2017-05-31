@@ -2,13 +2,13 @@
 <FrameLayout
         xmlns:android="http://schemas.android.com/apk/res/android"
         android:layout_width="match_parent"
-        android:layout_height="wrap_content"
+        android:layout_height="@dimen/sm_editor_list_card_item_height"
         android:orientation="vertical"
         android:background="@android:color/black">
 
     <RelativeLayout
             android:layout_width="match_parent"
-            android:layout_height="wrap_content"
+            android:layout_height="match_parent"
             android:background="@drawable/editor_list_item_background"
             android:orientation="horizontal">
 
@@ -16,7 +16,7 @@
                 android:id="@+id/editor_list_type_img"
                 android:layout_width="wrap_content"
                 android:layout_height="match_parent"
-                android:layout_marginStart="@dimen/editor_list_type_img_padding"
+                android:layout_marginStart="@dimen/sm_editor_list_type_img_padding"
                 android:layout_centerVertical="true"/>
 
         <LinearLayout
@@ -26,39 +26,39 @@
                 android:orientation="vertical"
                 android:layout_centerVertical="true"
                 android:layout_toEndOf="@+id/editor_list_type_img"
-                android:layout_marginStart="@dimen/editor_list_type_img_padding"
-                android:layout_marginEnd="@dimen/editor_list_type_img_padding">
+                android:layout_marginStart="@dimen/sm_editor_list_type_img_padding"
+                android:layout_marginEnd="@dimen/sm_editor_list_type_img_padding">
 
             <TextView
                     android:id="@+id/editor_list_title"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:maxLines="1"
-                    android:textSize="@dimen/editor_list_title_text_size"
+                    android:textSize="@dimen/sm_editor_list_title_text_size"
                     android:textColor="@android:color/white"/>
 
             <TextView
                     android:id="@+id/editor_list_date"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:textSize="@dimen/editor_list_date_text_size"
+                    android:textSize="@dimen/sm_editor_list_date_text_size"
                     android:textColor="@color/editor_list_date_text_color"/>
         </LinearLayout>
     </RelativeLayout>
 
     <View
             android:layout_width="match_parent"
-            android:layout_height="@dimen/editor_list_card__divider_width"
+            android:layout_height="@dimen/sm_editor_list_card_divider_width"
             android:layout_gravity="top"
-            android:layout_marginStart="@dimen/editor_list_type_img_padding"
-            android:layout_marginEnd="@dimen/editor_list_type_img_padding"
+            android:layout_marginStart="@dimen/sm_editor_list_type_img_padding"
+            android:layout_marginEnd="@dimen/sm_editor_list_type_img_padding"
             android:background="@color/editor_list_card__divider_color"/>
 
     <View
             android:layout_width="match_parent"
-            android:layout_height="@dimen/editor_list_card__divider_width"
+            android:layout_height="@dimen/sm_editor_list_card_divider_width"
             android:layout_gravity="bottom"
-            android:layout_marginStart="@dimen/editor_list_type_img_padding"
-            android:layout_marginEnd="@dimen/editor_list_type_img_padding"
+            android:layout_marginStart="@dimen/sm_editor_list_type_img_padding"
+            android:layout_marginEnd="@dimen/sm_editor_list_type_img_padding"
             android:background="@color/editor_list_card__divider_color"/>
 </FrameLayout>

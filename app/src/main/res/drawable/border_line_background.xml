@@ -5,12 +5,12 @@
        android:shape="rectangle">
 
     <stroke
-        android:width="@dimen/border_line_stroke_width"
+        android:width="@dimen/sm_border_line_stroke_width"
         android:color="@color/border_line_color"/>
     <padding
-        android:bottom="@dimen/border_line_padding"
-        android:left="@dimen/border_line_padding"
-        android:right="@dimen/border_line_padding"
-        android:top="@dimen/border_line_padding"/>
+        android:bottom="@dimen/sm_border_line_padding"
+        android:left="@dimen/sm_border_line_padding"
+        android:right="@dimen/sm_border_line_padding"
+        android:top="@dimen/sm_border_line_padding"/>
 
 </shape>

@@ -2,15 +2,15 @@
 <com.asus.zenheart.smilemirror.PseudoToolBar android:id="@+id/title_layout"
                                              xmlns:android="http://schemas.android.com/apk/res/android"
                                              android:layout_width="match_parent"
-                                             android:layout_height="@dimen/sm_coach_mode_pseudo_bar_height"
+                                             android:layout_height="@dimen/sm_pseudo_bar_height"
                                              android:background="@android:color/black">
 
     <ImageView
         android:id="@+id/image_back"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginStart="@dimen/sm_presentation_back_start_margin"
-        android:layout_marginTop="@dimen/sm_presentation_back_top_margin"
+        android:layout_marginStart="@dimen/sm_pseudo_bar_presentation_back_start_margin"
+        android:layout_marginTop="@dimen/sm_pseudo_bar_presentation_back_top_margin"
         android:src="@drawable/back_shadow"/>
 
     <TextView
@@ -18,7 +18,7 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_centerVertical="true"
-        android:layout_marginStart="@dimen/presentation_title_padding"
+        android:layout_marginStart="@dimen/sm_pseudo_bar_presentation_title_margin"
 
         android:layout_toEndOf="@+id/image_back"
         android:layout_toStartOf="@+id/image_list"
@@ -29,7 +29,7 @@
 
     <ImageView
         android:id="@id/image_list"
-        android:layout_width="@dimen/sm_coach_mode_pseudo_bar_width"
+        android:layout_width="@dimen/sm_pseudo_bar_width"
         android:layout_height="match_parent"
         android:layout_centerVertical="true"
         android:layout_toStartOf="@+id/image_setting"
@@ -38,7 +38,7 @@
 
     <ImageView
         android:id="@id/image_setting"
-        android:layout_width="@dimen/sm_coach_mode_pseudo_bar_width"
+        android:layout_width="@dimen/sm_pseudo_bar_width"
         android:layout_height="match_parent"
         android:layout_alignParentEnd="true"
         android:layout_centerVertical="true"

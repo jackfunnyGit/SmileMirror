@@ -15,7 +15,7 @@
             android:layout_marginTop="@dimen/sm_tutorial_coach_page_text_script_list_top_margin"
             android:text="@string/sm_tutorial_coach__page_text_script_list"
             android:textColor="@color/sm_color_gray_tutorial_text"
-            android:textSize="@dimen/tutorial_page_small_text_size"/>
+            android:textSize="@dimen/sm_tutorial_page_small_text_size"/>
 
     <TextView
         android:layout_width="@dimen/sm_tutorial_coach_page_text_start_practice_text_width"
@@ -26,7 +26,7 @@
         android:text="@string/sm_tutorial_coach_page_text_start_practice"
         android:textAlignment="textStart"
         android:textColor="@color/sm_color_gray_tutorial_text"
-        android:textSize="@dimen/tutorial_page_small_text_size"/>
+        android:textSize="@dimen/sm_tutorial_page_small_text_size"/>
 
     <TextView
         android:layout_width="@dimen/sm_tutorial_coach_page_text_title_text_width"
@@ -35,7 +35,7 @@
         android:text="@string/sm_tutorial_coach_page_text_title"
         android:textAlignment="center"
         android:textColor="@color/sm_color_green_tutorial_page"
-        android:textSize="@dimen/tutorial_page_big_text_size"/>
+        android:textSize="@dimen/sm_tutorial_page_big_text_size"/>
 
     <TextView
         android:id="@+id/tutorial_text_review_video"
@@ -47,11 +47,11 @@
         android:text="@string/sm_tutorial_coach_page_text_review_video"
         android:textAlignment="textStart"
         android:textColor="@color/sm_color_gray_tutorial_text"
-        android:textSize="@dimen/tutorial_page_small_text_size"/>
+        android:textSize="@dimen/sm_tutorial_page_small_text_size"/>
 
     <ImageView
-        android:layout_width="@dimen/sm_coach_mode_pseudo_bar_width"
-        android:layout_height="@dimen/sm_coach_mode_pseudo_bar_height"
+        android:layout_width="@dimen/sm_pseudo_bar_width"
+        android:layout_height="@dimen/sm_pseudo_bar_height"
         android:layout_alignParentEnd="true"
         android:layout_alignParentTop="true"
         android:layout_marginEnd="@dimen/sm_tutorial_coach_page_image_list_end_margin"
@@ -70,15 +70,15 @@
         android:backgroundTint="@color/teleprompter_button_text_color"
         android:text="@string/teleprompter_button_text_start"
         android:textColor="@color/teleprompter_button_text_color"
-        android:textSize="@dimen/teleprompter_button_text_size"/>
+        android:textSize="@dimen/sm_coach_mode_teleprompter_button_text_size"/>
 
     <ImageView
         android:id="@+id/video_image_view"
-        android:layout_width="@dimen/coach_mode_video_icon_width"
-        android:layout_height="@dimen/coach_mode_video_icon_height"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
         android:layout_alignParentBottom="true"
         android:layout_alignParentStart="true"
-        android:layout_marginBottom="@dimen/coach_mode_video_icon_padding"
+        android:layout_marginBottom="@dimen/sm_coach_mode_intent_icon_margin"
         android:src="@drawable/video_tutorial_disable"/>
 
     <ImageView

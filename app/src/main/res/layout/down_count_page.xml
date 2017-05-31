@@ -5,8 +5,8 @@
 
     <com.asus.zenheart.smilemirror.GUIView.DownCountView
         android:id="@+id/down_count_view"
-        android:layout_width="@dimen/count_down_page_width_size"
-        android:layout_height="@dimen/count_down_page_height_size"
+        android:layout_width="@dimen/sm_count_down_page_length"
+        android:layout_height="@dimen/sm_count_down_page_length"
         android:layout_centerInParent="true"/>
 
 

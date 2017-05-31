@@ -6,12 +6,12 @@
               android:background="@android:color/black"
               android:gravity="center"
               android:orientation="vertical"
-              android:paddingEnd="@dimen/permission_page_start_end_padding"
-              android:paddingStart="@dimen/permission_page_start_end_padding">
+              android:paddingEnd="@dimen/sm_permission_page_start_end_padding"
+              android:paddingStart="@dimen/sm_permission_page_start_end_padding">
 
     <android.support.v4.widget.Space
         android:layout_width="match_parent"
-        android:layout_height="@dimen/permission_page_title_top_margin"/>
+        android:layout_height="@dimen/sm_permission_page_title_top_margin"/>
 
     <TextView
         android:id="@+id/permission_agreement_title"
@@ -21,12 +21,12 @@
         android:maxLines="2"
         android:textAlignment="center"
         android:textColor="@color/permission_button_tint_color"
-        android:textSize="@dimen/permission_agreement_title_text_size"
+        android:textSize="@dimen/sm_permission_agreement_title_text_size"
         tools:text="@string/sm_permission_title"/>
 
     <android.support.v4.widget.Space
         android:layout_width="match_parent"
-        android:layout_height="@dimen/permission_page_content_top_margin"/>
+        android:layout_height="@dimen/sm_permission_page_content_top_margin"/>
 
     <TextView
         android:id="@+id/permission_agreement_content"
@@ -37,12 +37,12 @@
         android:scrollbars="vertical"
         android:textAlignment="center"
         android:textColor="@color/permission_page_content_text_color"
-        android:textSize="@dimen/permission_agreement_content_text_size"
+        android:textSize="@dimen/sm_permission_agreement_content_text_size"
         tools:text="@string/sm_permission_content"/>
 
     <android.support.v4.widget.Space
         android:layout_width="match_parent"
-        android:layout_height="@dimen/permission_page_image_top_margin"/>
+        android:layout_height="@dimen/sm_permission_page_image_top_margin"/>
 
     <ImageView
         android:id="@+id/image"
@@ -54,7 +54,7 @@
 
     <android.support.v4.widget.Space
         android:layout_width="match_parent"
-        android:layout_height="@dimen/permission_page_button_top_margin"/>
+        android:layout_height="@dimen/sm_permission_page_button_top_margin"/>
 
     <Button
         android:id="@+id/permission_button"
@@ -64,6 +64,6 @@
 
     <android.support.v4.widget.Space
         android:layout_width="match_parent"
-        android:layout_height="@dimen/permission_page_button_bottom_margin"/>
+        android:layout_height="@dimen/sm_permission_page_button_bottom_margin"/>
 
 </LinearLayout>

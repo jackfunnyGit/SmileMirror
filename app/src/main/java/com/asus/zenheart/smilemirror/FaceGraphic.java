@@ -170,7 +170,7 @@ public class FaceGraphic extends GraphicOverlay.Graphic {
         // Resize the video texture view.
         resizeVideoTextureView(mVideoView, left, top, faceWindowWidth / ORIGINAL_FACE_WIDTH,
                 mCameraSourcePreview.getScreenRotation(), mCameraSourcePreview.getHeight());
-        final float smileTextPadding = mResources.getDimension(R.dimen.smile_text_padding);
+        final float smileTextMargin = mResources.getDimension(R.dimen.sm_smile_mode_smile_text_margin);
 
         // Draw the face effect.
         if (getAddingEffect()) {
@@ -178,7 +178,7 @@ public class FaceGraphic extends GraphicOverlay.Graphic {
             drawSmileLevelIcon(mResources, canvas, faceWindowWidth, faceWindowHeight,
                     right, top);
             drawSmileText(mResources, canvas, mFaceTextPaint, face
-                    .getIsSmilingProbability(), x, top - smileTextPadding);
+                    .getIsSmilingProbability(), x, top - smileTextMargin);
 
             // play the smile effects in the singlePlayer mode.
             if (smileScore > SMILE_LEVEL_L4) {
@@ -259,7 +259,7 @@ public class FaceGraphic extends GraphicOverlay.Graphic {
      * {@link #mBoxPaint}  is used to draw face box
      */
     private void initPaint(Context context) {
-        final float faceTextSize = mResources.getDimensionPixelSize(R.dimen.sm_smile_text_size);
+        final float faceTextSize = mResources.getDimensionPixelSize(R.dimen.sm_smile_mode_text_size);
         final int shadowColor = ContextCompat.getColor(context, R.color.smile_text_shadow_color);
         mFaceTextPaint = new Paint();
         mFaceTextPaint.setTextSize(faceTextSize);
@@ -392,7 +392,7 @@ public class FaceGraphic extends GraphicOverlay.Graphic {
     private void drawCrown(@NonNull Resources resources, @NonNull Canvas canvas, float width,
             float height, float x, float y) {
         final int crownResource = R.drawable.crown;
-        final float topPadding = resources.getDimension(R.dimen.crown_bottom_padding);
+        final float topPadding = resources.getDimension(R.dimen.sm_smile_mode_crown_bottom_padding);
         BitmapDrawable crown = (BitmapDrawable) resources.getDrawable(crownResource, null);
 
         Bitmap output = BitmapUtil.decodeSampledBitmapFromResource(resources,

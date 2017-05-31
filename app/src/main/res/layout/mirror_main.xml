@@ -28,11 +28,11 @@
 
     <com.asus.zenheart.smilemirror.GUIView.SmileIndicatorView
         android:id="@+id/smile_indicator"
-        android:layout_width="@dimen/smile_indicator_width"
-        android:layout_height="@dimen/smile_indicator_height"
+        android:layout_width="@dimen/sm_smile_mode_indicator_width"
+        android:layout_height="@dimen/sm_smile_mode_indicator_height"
         android:layout_alignParentBottom="true"
         android:layout_centerHorizontal="true"
-        android:layout_marginBottom="@dimen/smile_indicator_bottom_padding"/>
+        android:layout_marginBottom="@dimen/sm_smile_mode_indicator_bottom_margin"/>
 
     <TextView
         android:id="@+id/toast_text"
@@ -40,11 +40,11 @@
         android:layout_height="wrap_content"
         android:layout_above="@id/smile_indicator"
         android:layout_centerHorizontal="true"
-        android:layout_marginBottom="@dimen/mode_toast_padding"
+        android:layout_marginBottom="@dimen/sm_mode_toast_bottom_margin"
         android:drawableTop="@drawable/smile_mode"
         android:text="@string/smile_mode"
         android:textColor="@android:color/white"
-        android:textSize="@dimen/sm_mode_text_size"/>
+        android:textSize="@dimen/sm_mode_toast_text_size"/>
 
     <com.asus.zenheart.smilemirror.BorderViewPager
         android:id="@+id/viewpager"

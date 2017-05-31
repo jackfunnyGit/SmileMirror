@@ -103,7 +103,7 @@ public class VerticalScrollTextView extends TextView implements View.OnTouchList
         mContext = context;
         final Resources resources = mContext.getResources();
         mDisplayMetrics = resources.getDisplayMetrics();
-        mPaddingShift = (int) resources.getDimension(R.dimen.vertical_text_view_width_padding);
+        mPaddingShift = (int) resources.getDimension(R.dimen.sm_vertical_text_view_width_padding);
         mPaint = getPaint();
         mText = (String) getText();
         updateTextStyle();

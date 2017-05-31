@@ -9,24 +9,24 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_alignParentTop="true"
-        android:layout_marginTop="@dimen/tutorial_page_title_top_padding"/>
+        android:layout_marginTop="@dimen/sm_tutorial_page_title_top_margin"/>
 
     <TextView
-        android:layout_width="@dimen/tutorial_page_title_width"
+        android:layout_width="@dimen/sm_tutorial_page_title_width"
         android:layout_height="wrap_content"
         android:layout_alignBottom="@id/space_title_align_target"
         android:layout_centerHorizontal="true"
         android:text="@string/sm_tutorial_main_page_title"
         android:textAlignment="center"
         android:textColor="@color/sm_color_green_tutorial_page"
-        android:textSize="@dimen/tutorial_page_big_text_size"/>
+        android:textSize="@dimen/sm_tutorial_page_big_text_size"/>
 
     <Space
         android:id="@+id/space_content_align_target"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_alignParentTop="true"
-        android:layout_marginTop="@dimen/tutorial_page_content_top_padding"/>
+        android:layout_marginTop="@dimen/sm_tutorial_page_content_top_margin"/>
 
     <TextView
         android:layout_width="wrap_content"
@@ -37,7 +37,7 @@
         android:layout_centerHorizontal="true"
         android:text="@string/sm_tutorial_main_page_content"
         android:textColor="@color/sm_color_gray_tutorial_text"
-        android:textSize="@dimen/tutorial_page_small_text_size"/>
+        android:textSize="@dimen/sm_tutorial_page_small_text_size"/>
 
     <ImageView
         android:id="@+id/tutorial_close_image"

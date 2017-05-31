@@ -6,12 +6,12 @@
 
     <ImageView
         android:id="@+id/video_image_view"
-        android:layout_width="@dimen/coach_mode_video_icon_width"
-        android:layout_height="@dimen/coach_mode_video_icon_height"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
         android:layout_alignParentBottom="true"
         android:layout_alignParentStart="true"
-        android:layout_marginBottom="@dimen/coach_mode_video_icon_padding"
-        android:layout_marginStart="@dimen/coach_mode_video_icon_padding"
+        android:layout_marginBottom="@dimen/sm_coach_mode_intent_icon_margin"
+        android:layout_marginStart="@dimen/sm_coach_mode_intent_icon_margin"
         android:src="@drawable/video"
         android:visibility="invisible"/>
 
@@ -23,7 +23,7 @@
 
         android:id="@+id/vertical_scroll_textview"
         android:layout_width="match_parent"
-        android:layout_height="@dimen/teleprompter_height"
+        android:layout_height="@dimen/sm_coach_mode_teleprompter_height"
         android:layout_alignParentStart="true"
         android:layout_below="@id/pseudo_toolbar"
         android:background="@color/teleprompter_background_color"
@@ -33,7 +33,7 @@
         android:id="@+id/controller_bar"
         layout="@layout/controller_bar"
         android:layout_width="match_parent"
-        android:layout_height="@dimen/coach_mode_lower_layout_height"
+        android:layout_height="@dimen/sm_coach_mode_lower_layout_height"
         android:layout_below="@id/vertical_scroll_textview"/>
 
     <com.asus.zenheart.smilemirror.GUIView.CounterView
@@ -42,13 +42,13 @@
         android:layout_height="wrap_content"
         android:layout_alignParentBottom="true"
         android:layout_alignParentStart="true"
-        android:layout_marginBottom="@dimen/coach_mode_recording_icon_padding"
-        android:layout_marginStart="@dimen/coach_mode_recording_icon_padding"
-        android:drawablePadding="@dimen/coach_mode_recording_inner_padding"
+        android:layout_marginBottom="@dimen/sm_coach_mode_recording_icon_margin"
+        android:layout_marginStart="@dimen/sm_coach_mode_recording_icon_margin"
+        android:drawablePadding="@dimen/sm_coach_mode_recording_inner_padding"
         android:drawableStart="@drawable/rec_text"
         android:gravity="center_vertical"
         android:textColor="@android:color/white"
-        android:textSize="@dimen/coach_mode_recording_view_text_size"
+        android:textSize="@dimen/sm_coach_mode_recording_view_text_size"
         android:visibility="invisible"/>
 
     <View

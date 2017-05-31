@@ -83,7 +83,7 @@ public class ModePagerAdapter extends PagerAdapter {
         if (mIndexOfLayout[position] == R.layout.smile_mode) {
             view = mLayoutInflater.inflate(R.layout.smile_mode, container, false);
             final ImageView imageViewBack = (ImageView) view.findViewById(R.id.back_image_view);
-            mTitleToast = (TextView) view.findViewById(R.id.title_toast);
+            mTitleToast = (TextView) view.findViewById(R.id.application_name_toast);
             showTitleToast();
             imageViewBack.getDrawable().setAutoMirrored(true);
             imageViewBack.setOnClickListener(new View.OnClickListener() {

@@ -78,7 +78,7 @@
         <item name="android:layout_alignParentBottom">true</item>
         <item name="android:layout_centerHorizontal">true</item>
         <item name="android:background">@drawable/sm_button_click_selector</item>
-        <item name="android:layout_marginBottom">@dimen/close_image_bottom_margin</item>
+        <item name="android:layout_marginBottom">@dimen/sm_close_image_bottom_margin</item>
         <item name="android:layout_width">wrap_content</item>
         <item name="android:layout_height">wrap_content</item>
     </style>

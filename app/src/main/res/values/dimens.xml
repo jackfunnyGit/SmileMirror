@@ -1,143 +1,102 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
-    <!-- SmileMirror dp value -->
-    <dimen name="smile_face_window_line_width">9dp</dimen>
-    <dimen name="smile_text_padding">18dp</dimen>
-    <dimen name="smile_icon_width">70dp</dimen>
-    <dimen name="smile_icon_height">70dp</dimen>
-    <dimen name="teleprompter_ui_object_padding">32dp</dimen>
-    <dimen name="teleprompter_height">90dp</dimen>
-    <dimen name="teleprompter_text_padding">23dp</dimen>
-    <dimen name="teleprompter_status_bar_object">10dp</dimen>
-    <dimen name="teleprompter_button_text_size">15sp</dimen>
-    <dimen name="gallery_icon_width">34dp</dimen>
-    <dimen name="gallery_icon_height">34dp</dimen>
-    <dimen name="gallery_icon_padding">23dp</dimen>
-    <dimen name="close_icon_width">84dp</dimen>
-    <dimen name="close_icon_height">84dp</dimen>
-    <!-- smile indicator -->
-    <dimen name="smile_indicator_width">120dp</dimen>
-    <dimen name="smile_indicator_height">44dp</dimen>
-    <dimen name="smile_indicator_bottom_padding">23dp</dimen>
-    <!-- toast text and image -->
-    <dimen name="mode_toast_padding">3dp</dimen>
-    <!-- couch mode -->
-    <dimen name="coach_mode_setting_icon_width">32dp</dimen>
-    <dimen name="coach_mode_setting_icon_height">32dp</dimen>
-    <dimen name="coach_mode_setting_icon_padding">10dp</dimen>
-    <dimen name="coach_mode_list_icon_width">32dp</dimen>
-    <dimen name="coach_mode_list_icon_height">32dp</dimen>
-    <dimen name="coach_mode_list_icon_padding">25dp</dimen>
-    <dimen name="presentation_title_padding">23dp</dimen>
-    <dimen name="coach_mode_lower_layout_height">57dp</dimen>
-    <dimen name="coach_mode_drag_icon_width">57dp</dimen>
-    <dimen name="coach_mode_drag_icon_height">57dp</dimen>
-    <dimen name="coach_mode_drag_icon_padding">13dp</dimen>
-    <dimen name="coach_mode_drag_icon_top_padding">13dp</dimen>
-    <dimen name="coach_mode_play_icon_width">57dp</dimen>
-    <dimen name="coach_mode_play_icon_height">57dp</dimen>
-    <dimen name="coach_mode_video_icon_width">32dp</dimen>
-    <dimen name="coach_mode_video_icon_height">32dp</dimen>
-    <dimen name="coach_mode_video_icon_padding">23dp</dimen>
-    <dimen name="coach_mode_recording_icon_width">64dp</dimen>
-    <dimen name="coach_mode_recording_icon_height">32dp</dimen>
-    <dimen name="coach_mode_recording_icon_padding">23dp</dimen>
-    <dimen name="coach_mode_recording_inner_padding">8dp</dimen>
-    <dimen name="coach_mode_recording_view_text_size">16dp</dimen>
-    <dimen name="coach_mode_video_thumbnail_length">40dp</dimen>
+    <!-- Smile mode -->
+    <dimen name="sm_smile_mode_text_size">23dp</dimen>
+    <dimen name="sm_smile_mode_smile_text_margin">18dp</dimen>
+    <dimen name="sm_coach_mode_teleprompter_height">90dp</dimen>
+    <dimen name="sm_coach_mode_teleprompter_button_text_size">15sp</dimen>
+    <dimen name="sm_smile_mode_gallery_icon_margin">23dp</dimen>
+    <dimen name="sm_smile_mode_crown_bottom_padding">10dp</dimen>
+    <!-- Smile indicator -->
+    <dimen name="sm_smile_mode_indicator_width">120dp</dimen>
+    <dimen name="sm_smile_mode_indicator_height">44dp</dimen>
+    <dimen name="sm_smile_mode_indicator_bottom_margin">23dp</dimen>
+    <!-- Toast text and image -->
+    <dimen name="sm_mode_toast_bottom_margin">3dp</dimen>
+    <dimen name="sm_mode_toast_text_size">15sp</dimen>
     <dimen name="sm_application_name_toast_top_margin">12dp</dimen>
-    <dimen name="sm_presentation_back_top_margin">12dp</dimen>
-    <dimen name="sm_presentation_back_start_margin">9dp</dimen>
-    <!-- Vertical text view padding-->
-    <dimen name="vertical_text_view_width_padding">23dp</dimen>
-    <!-- histogram chart -->
-    <dimen name="histogram_chart_bar_width">70dp</dimen>
-    <dimen name="histogram_chart_bar_height">320dp</dimen>
-    <dimen name="histogram_chart_bar_image_width">70dp</dimen>
+    <dimen name="sm_application_name_toast_text_size">23dp</dimen>
+    <!-- Coach mode -->
+    <dimen name="sm_coach_mode_lower_layout_height">57dp</dimen>
+    <dimen name="sm_coach_mode_drag_icon_length">57dp</dimen>
+    <dimen name="sm_coach_mode_intent_icon_margin">23dp</dimen>
+    <dimen name="sm_coach_mode_recording_icon_margin">23dp</dimen>
+    <dimen name="sm_coach_mode_recording_inner_padding">8dp</dimen>
+    <dimen name="sm_coach_mode_recording_view_text_size">16dp</dimen>
+    <dimen name="sm_coach_mode_video_thumbnail_length">40dp</dimen>
+    <!-- Vertical text view -->
+    <dimen name="sm_vertical_text_view_width_padding">23dp</dimen>
+    <!-- Histogram chart -->
     <dimen name="sm_histogram_chart_top_padding">24dp</dimen>
     <dimen name="sm_histogram_chart_text_size">16dp</dimen>
-    <!-- chart page-->
+    <!-- Chart page -->
     <dimen name="sm_chart_page_title_text_top_margin">26dp</dimen>
     <dimen name="sm_chart_page_histogram_top_margin">26dp</dimen>
     <dimen name="sm_chart_page_duration_text_margin">24dp</dimen>
-    <!-- count down page -->
-    <dimen name="count_down_page_width_size">190dp</dimen>
-    <dimen name="count_down_page_height_size">190dp</dimen>
-    <!-- tutorial page -->
-    <dimen name="tutorial_page_title_top_padding">140dp</dimen>
-    <dimen name="tutorial_page_content_top_padding">315dp</dimen>
-    <dimen name="tutorial_page_title_width">200dp</dimen>
-    <dimen name="tutorial_page_big_text_size">23dp</dimen>
-    <dimen name="tutorial_page_small_text_size">15dp</dimen>
-    <!-- tutorial coach page -->
+    <dimen name="sm_chart_page_statistics_title_text_size">24dp</dimen>
+    <dimen name="sm_chart_page_duration_text_size">16dp</dimen>
+    <!-- Count down page -->
+    <dimen name="sm_count_down_page_length">190dp</dimen>
+    <dimen name="sm_count_down_page_text_size">133dp</dimen>
+    <!-- Tutorial page -->
+    <dimen name="sm_tutorial_page_title_top_margin">140dp</dimen>
+    <dimen name="sm_tutorial_page_content_top_margin">315dp</dimen>
+    <dimen name="sm_tutorial_page_title_width">200dp</dimen>
+    <dimen name="sm_tutorial_page_big_text_size">23dp</dimen>
+    <dimen name="sm_tutorial_page_small_text_size">15dp</dimen>
+    <!-- Tutorial coach page -->
     <dimen name="sm_tutorial_coach_page_text_script_list_top_margin">56dp</dimen>
     <dimen name="sm_tutorial_coach_page_text_start_practice_top_margin">8dp</dimen>
-    <dimen name="sm_tutorial_coach_page_text_review_video_bottom_margin">64dp</dimen>
+    <dimen name="sm_tutorial_coach_page_text_review_video_bottom_margin">74dp</dimen>
     <dimen name="sm_tutorial_coach_page_image_play_top_margin">146dp</dimen>
     <dimen name="sm_tutorial_coach_page_start_end_margin">23dp</dimen>
     <dimen name="sm_tutorial_coach_page_text_script_list_text_width">120dp</dimen>
     <dimen name="sm_tutorial_coach_page_text_start_practice_text_width">160dp</dimen>
     <dimen name="sm_tutorial_coach_page_text_title_text_width">200dp</dimen>
     <dimen name="sm_tutorial_coach_page_text_review_video_text_width">100dp</dimen>
-    <!-- SmileMirror text  value -->
-    <dimen name="sm_smile_text_size">23dp</dimen>
-    <dimen name="sm_mode_text_size">15sp</dimen>
-    <dimen name="sm_teleprompter_text_size">16dp</dimen>
-    <dimen name="sm_countdown_text_size">133dp</dimen>
     <dimen name="sm_tutorial_coach_page_image_list_end_margin">25dp</dimen>
-    <!-- SmileMirror text in dp value -->
-    <dimen name="smile_text_size">24dp</dimen>
-    <dimen name="mode_text_size">16dp</dimen>
-    <dimen name="teleprompter_text_size">16dp</dimen>
-    <dimen name="countdown_text_size">133dp</dimen>
-    <dimen name="presentation_title_text_size">24dp</dimen>
-    <dimen name="sm_chart_page_statistics_title_text_size">24dp</dimen>
-    <dimen name="sm_chart_page_duration_text_size">16dp</dimen>
-    <dimen name="sm_title_toast_text_size">23dp</dimen>
-    <!-- Editor value -->
-    <dimen name="editor_list_card_padding">23dp</dimen>
-    <dimen name="editor_list_card__divider_width">1px</dimen>
-    <dimen name="editor_list_type_img_padding">16dp</dimen>
-    <dimen name="editor_list_text_layout_padding">8dp</dimen>
-    <dimen name="editor_list_text_layout_padding_left">16dp</dimen>
-    <dimen name="editor_scrolling_bar_height">57dp</dimen>
-    <dimen name="editor_scrolling_bar_margin">20dp</dimen>
-    <dimen name="editor_scrolling_bar_padding_left">8dp</dimen>
-    <dimen name="editor_scrolling_bar_padding_right">20dp</dimen>
-    <dimen name="editor_scrolling_bar_divider_margin">12dp</dimen>
-    <dimen name="editor_add_plus_padding">16dp</dimen>
-    <dimen name="editor_edit_page_padding">20dp</dimen>
-    <!-- Editor text value -->
-    <dimen name="editor_dialog_title_size">40dp</dimen>
-    <dimen name="editor_dialog_click_text_size">30dp</dimen>
-    <dimen name="editor_list_title_text_size">18dp</dimen>
-    <dimen name="editor_list_date_text_size">14dp</dimen>
-    <dimen name="editor_list_title_date_size">16dp</dimen>
-    <dimen name="editor_edit_page_text_size">20dp</dimen>
-    <!-- Multi player -->
-    <dimen name="crown_bottom_padding">10dp</dimen>
-    <!-- border line -->
-    <dimen name="border_line_stroke_width">1dp</dimen>
-    <dimen name="border_line_padding">1dp</dimen>
-    <!-- zenHeart common UI -->
-    <dimen name="close_image_bottom_margin">27dp</dimen>
-    <!-- Permission Page -->
-    <dimen name="permission_agreement_title_text_size">18sp</dimen>
-    <dimen name="permission_agreement_content_text_size">15sp</dimen>
-    <dimen name="permission_page_start_end_padding">36dp</dimen>
-    <dimen name="permission_page_title_top_margin">62dp</dimen>
-    <dimen name="permission_page_content_top_margin">15dp</dimen>
-    <dimen name="permission_page_image_top_margin">21dp</dimen>
-    <dimen name="permission_page_button_top_margin">10dp</dimen>
-    <dimen name="permission_page_button_bottom_margin">25dp</dimen>
-    <dimen name="permission_page_button_text_size">16sp</dimen>
-    <!-- nine patch padding -->
-    <dimen name="sm_nine_patch_padding">6dp</dimen>
+    <!-- Editor -->
+    <dimen name="sm_editor_list_card_divider_width">1px</dimen>
+    <dimen name="sm_editor_list_card_item_height">56dp</dimen>
+    <dimen name="sm_editor_list_type_img_padding">16dp</dimen>
+    <dimen name="sm_editor_list_text_layout_padding">8dp</dimen>
+    <dimen name="sm_editor_list_text_layout_padding_left">16dp</dimen>
+    <dimen name="sm_editor_scrolling_bar_height">57dp</dimen>
+    <dimen name="sm_editor_scrolling_bar_margin">20dp</dimen>
+    <dimen name="sm_editor_scrolling_bar_padding_left">8dp</dimen>
+    <dimen name="sm_editor_scrolling_bar_padding_right">20dp</dimen>
+    <dimen name="sm_editor_add_plus_padding">16dp</dimen>
+    <dimen name="sm_editor_edit_page_padding">20dp</dimen>
+    <dimen name="sm_editor_list_title_text_size">15sp</dimen>
+    <dimen name="sm_editor_list_date_text_size">13sp</dimen>
+    <dimen name="sm_editor_edit_page_text_size">20dp</dimen>
+    <dimen name="sm_editor_scrolling_bar_divider_margin">12dp</dimen>
+    <!-- Border line -->
+    <dimen name="sm_border_line_stroke_width">1dp</dimen>
+    <dimen name="sm_border_line_padding">1dp</dimen>
+    <!-- ZenHeart common UI -->
+    <dimen name="sm_close_image_bottom_margin">27dp</dimen>
+    <!-- Permission page -->
+    <dimen name="sm_permission_agreement_title_text_size">18sp</dimen>
+    <dimen name="sm_permission_agreement_content_text_size">15sp</dimen>
+    <dimen name="sm_permission_page_start_end_padding">36dp</dimen>
+    <dimen name="sm_permission_page_title_top_margin">62dp</dimen>
+    <dimen name="sm_permission_page_content_top_margin">15dp</dimen>
+    <dimen name="sm_permission_page_image_top_margin">21dp</dimen>
+    <dimen name="sm_permission_page_button_top_margin">10dp</dimen>
+    <dimen name="sm_permission_page_button_bottom_margin">25dp</dimen>
+    <dimen name="sm_permission_page_button_text_size">16sp</dimen>
     <!-- Tool bar -->
-    <dimen name="sm_coach_mode_pseudo_bar_height">56dp</dimen>
-    <dimen name="sm_coach_mode_pseudo_bar_width">48dp</dimen>
     <dimen name="sm_editor_tool_bar_height">56dp</dimen>
     <dimen name="sm_editor_tool_bar_title_text_size">23dp</dimen>
     <dimen name="sm_editor_tool_bar_action_button_padding">8dp</dimen>
     <dimen name="sm_editor_tool_bar_navigation_button_padding">9dp</dimen>
+    <!-- Pseudo bar -->
+    <dimen name="sm_pseudo_bar_height">56dp</dimen>
+    <dimen name="sm_pseudo_bar_width">48dp</dimen>
+    <dimen name="sm_pseudo_bar_presentation_title_margin">23dp</dimen>
+    <dimen name="sm_pseudo_bar_presentation_back_top_margin">12dp</dimen>
+    <dimen name="sm_pseudo_bar_presentation_back_start_margin">9dp</dimen>
+    <!-- nine patch padding -->
+    <dimen name="sm_nine_patch_padding">6dp</dimen>
 </resources>
