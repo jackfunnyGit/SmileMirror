@@ -100,6 +100,7 @@ public final class FaceTrackerActivity extends AppCompatActivity implements
     private ViewGroup mContainer;
     private View mChartPage;
     private View mPermissionPage;
+    private View mTutorialPage;
 
     private SensorManager mSensorManager;
     // Smile video TextureView
@@ -220,10 +221,12 @@ public final class FaceTrackerActivity extends AppCompatActivity implements
         }
         if (layoutId == R.layout.tutorial_main_page) {
             hideGuiElement();
+        } else {
+            mSmileIndicatorView.setVisibility(View.INVISIBLE);
         }
-        final View tutorialView = LayoutInflater.from(mContext)
+        mTutorialPage = LayoutInflater.from(mContext)
                 .inflate(layoutId, mContainer, false);
-        ImageView imageView = (ImageView) tutorialView.findViewById(R.id.tutorial_close_image);
+        ImageView imageView = (ImageView) mTutorialPage.findViewById(R.id.tutorial_close_image);
         if (imageView == null) {
             return;
         }
@@ -231,27 +234,29 @@ public final class FaceTrackerActivity extends AppCompatActivity implements
             @Override
             public void onClick(View v) {
                 PrefsUtils.setBooleanPreference(mContext, prefKey, false);
-                mContainer.removeView(tutorialView);
+                mContainer.removeView(mTutorialPage);
+                mTutorialPage = null;
                 if (layoutId == R.layout.tutorial_main_page) {
                     showGuiElement();
                     showTitleToast();
                     AnimationUtil.showToast(mToastTextView,
                             R.string.coach_mode, R.drawable.conversation_mode);
                 } else if (layoutId == R.layout.tutorial_coach_page) {
+                    mSmileIndicatorView.setVisibility(View.VISIBLE);
                     AnimationUtil.showToast(mToastTextView,
                             R.string.coach_mode, R.drawable.conversation_mode);
                 }
             }
 
         });
-        tutorialView.setOnTouchListener(new View.OnTouchListener() {
+        mTutorialPage.setOnTouchListener(new View.OnTouchListener() {
             @Override
             public boolean onTouch(View v, MotionEvent event) {
                 //absorb user's touch event to prevent unexpected touch
                 return true;
             }
         });
-        mContainer.addView(tutorialView);
+        mContainer.addView(mTutorialPage);
     }
 
     /**
@@ -326,6 +331,10 @@ public final class FaceTrackerActivity extends AppCompatActivity implements
     }
 
     private void resetGuiElementState() {
+        if (mTutorialPage != null) {
+            //tutorial page is covered so resetGUi is not needed
+            return;
+        }
         mPagerAdapter.resetGuiElementState();
         mViewpager.setSwipeEnabled(true);
         showGuiElement();
@@ -419,7 +428,8 @@ public final class FaceTrackerActivity extends AppCompatActivity implements
         startCameraSource();
 
         if (mChartPage != null) {
-            if (!Objects.equals(mCameraSource.getNextVideoName(), GalleryUtil.getLastVideoFileName())
+            if (!Objects
+                    .equals(mCameraSource.getNextVideoName(), GalleryUtil.getLastVideoFileName())
                     | GalleryUtil.getVideoFileNumbers() == 0) {
                 mChartPage.findViewById(R.id.video_intent_view).setVisibility(View.INVISIBLE);
             }
@@ -456,16 +466,6 @@ public final class FaceTrackerActivity extends AppCompatActivity implements
         }
     }
 
-    @Override
-    public void onRestoreInstanceState(Bundle bundle) {
-        super.onRestoreInstanceState(bundle);
-        LogUtils.d(TAG, "onRestoreInstanceState ");
-        if (bundle != null && mViewpager != null) {
-            //TT-986185 to reset ViewPager to the initial state when the activity is killed unexpectedly,
-            //like: adjust displaySize in settings or killed by the system to free up memory
-            mViewpager.setCurrentItem(0);
-        }
-    }
 
     /**
      * Releases the resources associated with the camera source, the associated detector, and the
@@ -717,7 +717,6 @@ public final class FaceTrackerActivity extends AppCompatActivity implements
         }
 
     }
-
 
 }
 

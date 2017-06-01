@@ -1,6 +1,7 @@
 package com.asus.zenheart.smilemirror;
 
 import android.content.Context;
+import android.os.Parcelable;
 import android.support.v4.view.ViewPager;
 import android.util.AttributeSet;
 import android.view.MotionEvent;
@@ -49,6 +50,15 @@ public class BorderViewPager extends ViewPager {
     @Override
     public boolean onTouchEvent(MotionEvent ev) {
         return mSwipeEnabled && super.onTouchEvent(ev);
+    }
+
+    @Override
+    public Parcelable onSaveInstanceState(){
+        super.onSaveInstanceState();
+        //TT-986185 to reset ViewPager to the initial state when the activity is killed unexpectedly.
+        //Therefore,we do not save the current position of the viewPager
+        //like: adjust displaySize in settings or killed by the system to free up memory
+        return null;
     }
 
     /**

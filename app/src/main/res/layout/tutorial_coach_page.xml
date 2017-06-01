@@ -8,20 +8,20 @@
 
 
     <TextView
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_alignParentEnd="true"
-            android:layout_alignParentTop="true"
-            android:layout_marginTop="@dimen/sm_tutorial_coach_page_text_script_list_top_margin"
-            android:text="@string/sm_tutorial_coach__page_text_script_list"
-            android:textColor="@color/sm_color_gray_tutorial_text"
-            android:textSize="@dimen/sm_tutorial_page_small_text_size"/>
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignParentEnd="true"
+        android:layout_alignParentTop="true"
+        android:layout_marginTop="@dimen/sm_tutorial_coach_page_text_script_list_top_margin"
+        android:text="@string/sm_tutorial_coach__page_text_script_list"
+        android:textColor="@color/sm_color_gray_tutorial_text"
+        android:textSize="@dimen/sm_tutorial_page_small_text_size"/>
 
     <TextView
         android:layout_width="@dimen/sm_tutorial_coach_page_text_start_practice_text_width"
         android:layout_height="wrap_content"
         android:layout_alignParentEnd="true"
-        android:layout_below="@+id/image_play"
+
         android:layout_marginTop="@dimen/sm_tutorial_coach_page_text_start_practice_top_margin"
         android:text="@string/sm_tutorial_coach_page_text_start_practice"
         android:textAlignment="textStart"
@@ -58,19 +58,6 @@
         android:scaleType="center"
         android:src="@drawable/list_tutorial_disable"/>
 
-    
-    <Button
-        android:id="@id/image_play"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_alignParentTop="true"
-        android:layout_centerHorizontal="true"
-        android:layout_marginTop="@dimen/sm_tutorial_coach_page_image_play_top_margin"
-        android:background="@drawable/btn_material"
-        android:backgroundTint="@color/teleprompter_button_text_color"
-        android:text="@string/teleprompter_button_text_start"
-        android:textColor="@color/teleprompter_button_text_color"
-        android:textSize="@dimen/sm_coach_mode_teleprompter_button_text_size"/>
 
     <ImageView
         android:id="@+id/video_image_view"
