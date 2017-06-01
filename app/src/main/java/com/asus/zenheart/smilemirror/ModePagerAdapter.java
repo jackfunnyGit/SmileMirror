@@ -169,6 +169,7 @@ public class ModePagerAdapter extends PagerAdapter {
 
     //TODO: rename in the future
     public static class ViewHolder {
+        private static final int PLAY_BUTTON_DELAY_TIME = 1000;
         public final ImageView imageViewRecord;
         public final Button buttonPlay;
         public final ImageView dragView;
@@ -372,6 +373,13 @@ public class ModePagerAdapter extends PagerAdapter {
                             scrollTextView.setRepeatMode(false)
                                     .start(VerticalScrollTextView.FIRST_DELAY_TIME_MILLS);
                             buttonPlay.setText(R.string.teleprompter_button_text_stop);
+                            buttonPlay.setEnabled(false);
+                            buttonPlay.postDelayed(new Runnable() {
+                                @Override
+                                public void run() {
+                                    buttonPlay.setEnabled(true);
+                                }
+                            },PLAY_BUTTON_DELAY_TIME);
                             dragView.setEnabled(false);
                             countView.starCount();
                             countView.setVisibility(View.VISIBLE);
