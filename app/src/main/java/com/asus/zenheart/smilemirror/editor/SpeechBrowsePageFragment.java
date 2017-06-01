@@ -21,13 +21,17 @@ import android.view.MenuItem;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.ImageView;
+import android.widget.ScrollView;
 import android.widget.SeekBar;
 
 import com.asus.zenheart.smilemirror.FaceTrackerActivity;
 import com.asus.zenheart.smilemirror.R;
+import com.asus.zenheart.smilemirror.Util.LogUtils;
 import com.asus.zenheart.smilemirror.Util.PrefsUtils;
 import com.asus.zenheart.smilemirror.GUIView.VerticalScrollTextView;
 import com.asus.zenheart.smilemirror.editor.database.SpeechContract;
+
+import java.util.Locale;
 
 public class SpeechBrowsePageFragment extends Fragment {
 

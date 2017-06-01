@@ -1,13 +1,13 @@
 package com.asus.zenheart.smilemirror.Util;
 
+import android.animation.ObjectAnimator;
+import android.support.annotation.IntRange;
 import android.support.annotation.NonNull;
 import android.view.View;
 import android.view.animation.AlphaAnimation;
 import android.view.animation.Animation;
 import android.view.animation.LinearInterpolator;
 import android.widget.TextView;
-
-import com.asus.zenheart.smilemirror.ui.camera.CameraSource;
 
 //TODO rename and refactor in the future, factory should not be used like this
 public class AnimationUtil {
@@ -47,8 +47,8 @@ public class AnimationUtil {
     /**
      * Helper method to retrieve a String value from {@link TextView}.
      *
-     * @param toastView A {@link TextView} object.
-     * @param stringId The text view string
+     * @param toastView  A {@link TextView} object.
+     * @param stringId   The text view string
      * @param drawableId If the toast shown with the icon, please enter the drawableId.If not, please enter value 0.
      */
     public static void showToast(@NonNull TextView toastView, int stringId, int drawableId) {
@@ -84,5 +84,20 @@ public class AnimationUtil {
         return blinkAnimation;
     }
 
-
+    /**
+     * Copy from ZenHeartAnimation
+     * Only support default interpolator
+     * {@link android.view.animation.AccelerateDecelerateInterpolator} & {@link LinearInterpolator}
+     */
+    public static ObjectAnimator getObjectAnimator(
+            @NonNull final View target, @NonNull final String propertyName,
+            final int startScrollY, final int endScrollY,
+            @IntRange(from = 1) final long duration, @IntRange(from = 0) final long startDelay) {
+        ObjectAnimator objectAnimator = ObjectAnimator.ofInt(
+                target, propertyName, startScrollY, endScrollY);
+        objectAnimator.setDuration(duration);
+        objectAnimator.setStartDelay(startDelay);
+        objectAnimator.setInterpolator(new LinearInterpolator());
+        return objectAnimator;
+    }
 }

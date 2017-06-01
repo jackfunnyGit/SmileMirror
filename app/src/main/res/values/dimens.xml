@@ -26,6 +26,8 @@
     <dimen name="sm_coach_mode_video_thumbnail_length">40dp</dimen>
     <!-- Vertical text view -->
     <dimen name="sm_vertical_text_view_width_padding">23dp</dimen>
+    <dimen name="sm_vertical_text_view_white_line_stroke">1px</dimen>
+    <dimen name="sm_vertical_text_view_white_line_height">2px</dimen>
     <!-- Histogram chart -->
     <dimen name="sm_histogram_chart_top_padding">24dp</dimen>
     <dimen name="sm_histogram_chart_text_size">16dp</dimen>

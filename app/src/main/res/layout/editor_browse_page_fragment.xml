@@ -18,15 +18,20 @@
             android:layout_width="match_parent"
             android:layout_height="0dp"
             android:layout_weight="1"
-            android:background="@color/teleprompter_background_color"
-            android:textColor="@android:color/white"/>
+            android:paddingEnd="@dimen/sm_vertical_text_view_width_padding"
+            android:paddingStart="@dimen/sm_vertical_text_view_width_padding"
+            android:background="@color/teleprompter_background_color"/>
 
     <RelativeLayout
             android:id="@+id/seekBarLayout"
             android:layout_width="match_parent"
             android:layout_height="@dimen/sm_editor_scrolling_bar_height"
             android:background="@color/teleprompter_background_color">
-
+        <View
+            android:id="@+id/white_line"
+            android:layout_width="match_parent"
+            android:layout_height="@dimen/sm_vertical_text_view_white_line_height"
+            android:background="@drawable/white_line_background"/>
         <ImageView
                 android:id="@+id/seekBarSpeed"
                 android:layout_width="wrap_content"

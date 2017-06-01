@@ -8,13 +8,12 @@ import android.graphics.drawable.Drawable;
 import android.support.annotation.NonNull;
 import android.util.AttributeSet;
 import android.util.Log;
-import android.widget.TextView;
 
 import com.asus.zenheart.smilemirror.Util.PrefsUtils;
 
 import java.util.Locale;
 
-public class CounterView extends TextView {
+public class CounterView extends android.support.v7.widget.AppCompatTextView {
     private static final String LOG_TAG = "CounterView";
     private static final int DELAY_TIME_MILLS = 1000;
     private static final int INDEX_COMPOUND_START = 0;

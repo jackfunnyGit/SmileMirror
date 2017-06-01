@@ -14,7 +14,7 @@ public class LogUtils {
      * If set false,loggable is returned by {@link Log#isLoggable(String, int)}.
      */
     private static final boolean LOCAL_LOGGABLE = true;
-    private static final int LOCAL_LOG_LEVEL = LogLevel.VERBOSE;
+    private static final int LOCAL_LOG_LEVEL = LogLevel.SHOWALL;
 
     public @interface LogLevel {
         int SHOWALL = 0;

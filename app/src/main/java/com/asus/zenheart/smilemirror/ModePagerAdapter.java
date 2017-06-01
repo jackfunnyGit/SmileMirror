@@ -1,10 +1,14 @@
 package com.asus.zenheart.smilemirror;
 
 import android.app.AlertDialog;
+import android.content.ContentResolver;
 import android.content.Context;
 import android.content.DialogInterface;
 import android.content.Intent;
+import android.database.Cursor;
+import android.os.AsyncTask;
 import android.support.annotation.NonNull;
+import android.support.annotation.WorkerThread;
 import android.support.v4.view.PagerAdapter;
 import android.util.Log;
 import android.view.ContextThemeWrapper;
@@ -26,7 +30,9 @@ import com.asus.zenheart.smilemirror.Util.AnimationUtil;
 import com.asus.zenheart.smilemirror.Util.GalleryUtil;
 import com.asus.zenheart.smilemirror.Util.PrefsUtils;
 import com.asus.zenheart.smilemirror.editor.SpeechEditorActivity;
+import com.asus.zenheart.smilemirror.editor.database.SpeechContract;
 
+import java.lang.ref.WeakReference;
 import java.util.ArrayList;
 
 public class ModePagerAdapter extends PagerAdapter {
@@ -132,7 +138,6 @@ public class ModePagerAdapter extends PagerAdapter {
         mViewHolder.isRecording = false;
     }
 
-
     public void hideGuiElementInCoach() {
         if (mViewHolder == null) {
             return;
@@ -165,7 +170,7 @@ public class ModePagerAdapter extends PagerAdapter {
     //TODO: rename in the future
     public static class ViewHolder {
         public final ImageView imageViewRecord;
-        public final Button imageViewPlay;
+        public final Button buttonPlay;
         public final ImageView dragView;
         public final CounterView countView;
         public final ImageView imageViewList;
@@ -176,6 +181,7 @@ public class ModePagerAdapter extends PagerAdapter {
         public final View controllerView;
         public final DownCountView downCountView;
         public final PseudoToolBar pseudoToolBar;
+        public final TextView titleTextView;
         public boolean isRecording;
 
         private Context mContext;
@@ -186,7 +192,7 @@ public class ModePagerAdapter extends PagerAdapter {
             mContext = context;
             mContainer = container;
             imageViewRecord = (ImageView) view.findViewById(R.id.video_image_view);
-            imageViewPlay = (Button) view.findViewById(R.id.image_play);
+            buttonPlay = (Button) view.findViewById(R.id.image_play);
             dragView = (ImageView) view.findViewById(R.id.image_drag);
             countView = (CounterView) view.findViewById(R.id.count_view);
             imageViewList = (ImageView) view.findViewById(R.id.image_list);
@@ -198,10 +204,10 @@ public class ModePagerAdapter extends PagerAdapter {
             downCountView = (DownCountView) countPageView.findViewById(R.id.down_count_view);
             pseudoToolBar = (PseudoToolBar) view.findViewById(R.id.pseudo_toolbar);
             controllerView = view.findViewById(R.id.controller_bar);
+            titleTextView = (TextView) view.findViewById(R.id.text_present_tittle);
             if (context instanceof ActivityCallback) {
                 mCallback = (ActivityCallback) context;
             }
-
             initViewListener();
         }
 
@@ -252,10 +258,10 @@ public class ModePagerAdapter extends PagerAdapter {
         }
 
         private void initImageViewPlay() {
-            if (imageViewPlay == null) {
+            if (buttonPlay == null) {
                 return;
             }
-            imageViewPlay.setOnClickListener(new View.OnClickListener() {
+            buttonPlay.setOnClickListener(new View.OnClickListener() {
                 @Override
                 public void onClick(View v) {
                     if (isRecording) {
@@ -365,7 +371,7 @@ public class ModePagerAdapter extends PagerAdapter {
                             imageViewRecord.setVisibility(View.INVISIBLE);
                             scrollTextView.setRepeatMode(false)
                                     .start(VerticalScrollTextView.FIRST_DELAY_TIME_MILLS);
-                            imageViewPlay.setText(R.string.teleprompter_button_text_stop);
+                            buttonPlay.setText(R.string.teleprompter_button_text_stop);
                             dragView.setEnabled(false);
                             countView.starCount();
                             countView.setVisibility(View.VISIBLE);
@@ -424,11 +430,20 @@ public class ModePagerAdapter extends PagerAdapter {
         }
 
         /**
+         * Load textContent by {@link LoadContentTask}
+         */
+        private void loadContentToView(long contentId) {
+            final LoadContentTask task = new LoadContentTask(scrollTextView, titleTextView,
+                    buttonPlay, contentId);
+            task.executeOnExecutor(AsyncTask.THREAD_POOL_EXECUTOR);
+        }
+
+        /**
          * To reset the gui element to the initial state
          */
         public void resetGuiElement() {
             imageViewRecord.setVisibility(View.VISIBLE);
-            imageViewPlay.setText(R.string.teleprompter_button_text_start);
+            buttonPlay.setText(R.string.teleprompter_button_text_start);
             dragView.setEnabled(true);
             countView.setVisibility(View.INVISIBLE);
             countView.stopCount();
@@ -436,9 +451,9 @@ public class ModePagerAdapter extends PagerAdapter {
         }
 
         public void refreshViewContent() {
-            scrollTextView.loadContentToView(
+            loadContentToView(
                     PrefsUtils.getLongPreference(mContext, PrefsUtils.PREFS_SPEECH_ID, 1));
-            scrollTextView.updateTextStyle();
+            scrollTextView.updateTextPref();
         }
 
         public void hideGuiElementInCoach() {
@@ -449,7 +464,103 @@ public class ModePagerAdapter extends PagerAdapter {
             pseudoToolBar.setInterceptTouchEvent(false);
         }
 
+    }
 
+    private static class LoadContentTask extends AsyncTask<Void, Void, String[]> {
+
+        private static final String[] PROJECTION = new String[]{
+                SpeechContract.CONTENT, SpeechContract.TITLE, SpeechContract._ID,
+                SpeechContract.TYPE};
+
+        private static final int INDEX_CONTENT = 0;
+        private static final int INDEX_TITLE = 1;
+        private static final int INDEX_ID = 2;
+        private static final int INDEX_TYPE = 3;
+
+        private final WeakReference<Context> mContextReference;
+        private final WeakReference<VerticalScrollTextView> mTextViewReference;
+        private final WeakReference<TextView> mTitleTextReference;
+        private final WeakReference<Button> mButtonReference;
+        private final long mContentId;
+        private boolean mButtonEnabled = true;
+
+        public LoadContentTask(@NonNull VerticalScrollTextView verticalScrollTextView,
+                @NonNull TextView titleText, @NonNull Button button, long id) {
+
+            mContextReference = new WeakReference<>(verticalScrollTextView.getContext());
+            mTextViewReference = new WeakReference<>(verticalScrollTextView);
+            mTitleTextReference = new WeakReference<>(titleText);
+            mButtonReference = new WeakReference<>(button);
+            mContentId = id;
+        }
+
+        @Override
+        @WorkerThread
+        protected String[] doInBackground(Void... params) {
+            final Context context = mContextReference.get();
+            if (context == null) return null;
+
+            ContentResolver resolver = context.getContentResolver();
+            try (Cursor cursor = resolver
+                    .query(SpeechContract.SPEECH_URI, PROJECTION, null, null, null)) {
+
+                if (cursor == null) {
+                    Log.w(LOG_TAG, "cursor is null,which is not expected error");
+                    return null;
+                }
+                if (cursor.getCount() == 0) {
+                    mButtonEnabled = false;
+                    return new String[]{
+                            context.getString(R.string.sm_speech_content_create_script), ""};
+                }
+                cursor.moveToPosition(-1);
+                while (cursor.moveToNext()) {
+                    if (mContentId == cursor.getInt(INDEX_ID)) {
+                        int type = cursor.getInt(INDEX_TYPE);
+                        if (type == 1) {
+                            return new String[]{context.getString(
+                                    R.string.editor_example_one_content),
+                                    context.getString(R.string.editor_example_one_title)};
+                        } else if (type == 2) {
+                            return new String[]{context.getString(
+                                    R.string.editor_example_two_content),
+                                    context.getString(R.string.editor_example_two_title)};
+                        } else if (type == 3) {
+                            return new String[]{context.getString(
+                                    R.string.editor_example_three_content),
+                                    context.getString(R.string.editor_example_three_title)};
+                        } else if (type == 4) {
+                            return new String[]{context.getString(
+                                    R.string.editor_example_four_content),
+                                    context.getString(R.string.editor_example_four_title)};
+                        } else {
+                            return new String[]{cursor.getString(INDEX_CONTENT),
+                                    cursor.getString(INDEX_TITLE)};
+                        }
+                    }
+                }
+                mButtonEnabled = false;
+                return new String[]{context.getString(
+                        R.string.sm_speech_content_select_script), ""};
+            }
+        }
+
+        @Override
+        protected void onPostExecute(String[] content) {
+            if (content == null) return;
+
+            // Show loaded content on UI
+            final VerticalScrollTextView scrollTextView = mTextViewReference.get();
+            final TextView titleText = mTitleTextReference.get();
+            final TextView button = mButtonReference.get();
+            if (scrollTextView != null && titleText != null && button != null) {
+                scrollTextView.setText(content[INDEX_CONTENT]);
+                titleText.setText(content[INDEX_TITLE]);
+                button.setEnabled(mButtonEnabled);
+            }
+            //TODO: Remove the task from active tasks set
+
+        }
     }
 
 }
