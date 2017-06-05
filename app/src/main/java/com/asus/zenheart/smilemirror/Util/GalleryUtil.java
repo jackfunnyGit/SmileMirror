@@ -114,7 +114,7 @@ public class GalleryUtil {
         context.sendBroadcast(mediaScanIntent);
     }
     public static void intentToGallery(Context context) {
-        if (!autoRecordingIsExist() | getVideoFileNumbers() == 0) {
+        if (!autoRecordingIsExist() || getVideoFileNumbers() == 0) {
             showTheToast(context, context.getString(R.string.sm_recording_folder_miss_toast));
             return;
         }

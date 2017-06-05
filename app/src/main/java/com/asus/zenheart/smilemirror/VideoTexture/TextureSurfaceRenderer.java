@@ -4,6 +4,8 @@ import android.graphics.SurfaceTexture;
 import android.opengl.EGL14;
 import android.opengl.GLUtils;
 
+import com.asus.zenheart.smilemirror.Util.LogUtils;
+
 import javax.microedition.khronos.egl.EGL10;
 import javax.microedition.khronos.egl.EGLConfig;
 import javax.microedition.khronos.egl.EGLContext;
@@ -11,7 +13,9 @@ import javax.microedition.khronos.egl.EGLDisplay;
 import javax.microedition.khronos.egl.EGLSurface;
 
 abstract class TextureSurfaceRenderer implements Runnable {
+    private static final String TAG = "TextureSurfaceRenderer";
     private final SurfaceTexture mSurfaceTexture;
+    private final int[] mVersion = new int[2];
     private final int mWidth;
     private final int mHeight;
 
@@ -20,6 +24,7 @@ abstract class TextureSurfaceRenderer implements Runnable {
     private EGLDisplay mEglDisplay;
     private EGLSurface mEglSurface;
     private boolean mIsRunning = false;
+    private RendererReadyCallback mCallback;
 
     TextureSurfaceRenderer(SurfaceTexture surfaceTexture, int width, int height) {
         mSurfaceTexture = surfaceTexture;
@@ -29,6 +34,9 @@ abstract class TextureSurfaceRenderer implements Runnable {
         Thread thread = new Thread(this);
         thread.start();
     }
+    void setRendererReadyListener(RendererReadyCallback callback) {
+        mCallback = callback;
+    }
 
     /**
      * Helper function to init the Egl, including  EglDisplay, EglSurface and EglContext.
@@ -37,8 +45,7 @@ abstract class TextureSurfaceRenderer implements Runnable {
     private void initEGL() {
         mEgl = (EGL10) EGLContext.getEGL();
         mEglDisplay = mEgl.eglGetDisplay(EGL10.EGL_DEFAULT_DISPLAY);
-        int[] version = new int[2];
-        mEgl.eglInitialize(mEglDisplay, version);
+        mEgl.eglInitialize(mEglDisplay, mVersion);
 
         EGLConfig eglConfig = chooseEglConfig();
         mEglSurface = mEgl.eglCreateWindowSurface(mEglDisplay, eglConfig, mSurfaceTexture, null);
@@ -61,8 +68,15 @@ abstract class TextureSurfaceRenderer implements Runnable {
 
     @Override
     public void run() {
-        initEGL();
-        initGLComponents();
+        try {
+            initEGL();
+            initGLComponents();
+            if (mCallback != null) {
+                mCallback.onGLComponentsReady();
+            }
+        } catch (RuntimeException e) {
+            LogUtils.e(TAG, "Init GL fail", e);
+        }
         while (mIsRunning) {
             if (draw()) {
                 mEgl.eglSwapBuffers(mEglDisplay, mEglSurface);
@@ -95,6 +109,10 @@ abstract class TextureSurfaceRenderer implements Runnable {
     public abstract void clearSurface();
 
     public abstract void setVideoSize(int width, int height);
+
+    interface RendererReadyCallback {
+        void onGLComponentsReady();
+    }
 
     /**
      * Create a context for the drawing api.

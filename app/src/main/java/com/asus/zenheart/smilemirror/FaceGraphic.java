@@ -190,12 +190,7 @@ public class FaceGraphic extends GraphicOverlay.Graphic {
                     mEffect = false;
                 }
                 if (mEffect && !mVideoView.isPlayingMediaPlayer()) {
-                    mVideoView.post(new Runnable() {
-                        @Override
-                        public void run() {
-                            mVideoView.playMediaPlayer();
-                        }
-                    });
+                    mVideoView.playMediaPlayer();
                 }
             }
         } else {

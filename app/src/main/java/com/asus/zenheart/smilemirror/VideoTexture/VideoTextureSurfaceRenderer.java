@@ -98,6 +98,7 @@ class VideoTextureSurfaceRenderer extends TextureSurfaceRenderer implements
     }
 
     private void setupGraphics() {
+        if (mShaderProgram == -1) {
         final String vertexShader = RawResourceReader(mContext, R.raw.vertex_sharder);
         final String fragmentShader = RawResourceReader(mContext, mFragmentShaderResId);
 
@@ -106,7 +107,6 @@ class VideoTextureSurfaceRenderer extends TextureSurfaceRenderer implements
         final int fragmentShaderHandle = ShaderHelper
                 .compileShader(GLES20.GL_FRAGMENT_SHADER, fragmentShader);
 
-        if (mShaderProgram == -1) {
             mShaderProgram = ShaderHelper
                     .createAndLinkProgram(vertexShaderHandle, fragmentShaderHandle,
                             new String[]{"texture", "vPosition", "vTexCoordinate",

@@ -105,9 +105,7 @@ public final class FaceTrackerActivity extends AppCompatActivity implements
     private SensorManager mSensorManager;
     // Smile video TextureView
     private SmileVideoTextureView mVideoView;
-
     private ShiningImageView mShiningImageViews;
-
     private boolean mClearEffect = false;
 
     //==============================================================================================
@@ -428,9 +426,8 @@ public final class FaceTrackerActivity extends AppCompatActivity implements
         startCameraSource();
 
         if (mChartPage != null) {
-            if (!Objects
-                    .equals(mCameraSource.getNextVideoName(), GalleryUtil.getLastVideoFileName())
-                    | GalleryUtil.getVideoFileNumbers() == 0) {
+            if (!Objects.equals(mCameraSource.getNextVideoName(), GalleryUtil.getLastVideoFileName())
+                    || GalleryUtil.getVideoFileNumbers() == 0) {
                 mChartPage.findViewById(R.id.video_intent_view).setVisibility(View.INVISIBLE);
             }
         }
@@ -439,6 +436,7 @@ public final class FaceTrackerActivity extends AppCompatActivity implements
             if (mVideoView != null && mVideoView.isAvailable()) {
                 mVideoView.setResourceId(mVideoView.getBlackBufferEffect(),
                         mVideoView.getCorrectShader());
+                mVideoView.initMediaPlayer();
                 mVideoView.playMediaPlayer();
                 mClearEffect = false;
             }
