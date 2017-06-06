@@ -1,0 +1,78 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources xmlns:android="http://schemas.android.com/apk/res/android" xmlns:tools="http://schemas.android.com/tools" xmlns:xliff="urn:oasis:names:tc:xliff:document:1.2">
+    <!-- Menu Item Names -->
+    <string name="editor_menu_item_save">"सहेजें"</string>
+    <string name="editor_menu_item_rename">"नाम बदलें"</string>
+    <string name="editor_menu_item_edit">"संपादित करें"</string>
+    <string name="editor_menu_item_delete">"हटाएं"</string>
+    <string name="editor_menu_item_mirror">"ठीक है"</string>
+    <string name="coach_mode_menu_item_auto_record">"ऑटो-रिकॉर्ड वीडियो"</string>
+    <!-- Smile Mirror -->
+    <string name="sm_app_name">"Smile Mirror"</string>
+    <string name="smile_level_one_text">"क्या आप मुस्कुरा रहे हैं?"</string>
+    <string name="smile_level_two_text">"बेहतर हो रहा है!"</string>
+    <string name="smile_level_three_text">"बहुत अच्छा!"</string>
+    <string name="smile_level_four_text">"परिपूर्ण!"</string>
+    <string name="sm_speech_content_create_script">"स्क्रिप्ट सूची बटन पर टैप करें और एक नई स्क्रिप्ट बनाएं।"</string>
+    <string name="sm_speech_content_select_script">"स्क्रिप्ट सूची बटन पर टैप करें और एक स्क्रिप्ट चुनें।"</string>
+    <string name="smile_mode">"मुस्कान मोड"</string>
+    <string name="coach_mode">"वार्तालाप मोड"</string>
+    <!-- chart page -->
+    <string name="chart_page_smile_statistics">"मुस्कान सांख्यिकी"</string>
+    <string name="chart_page_smile_duration">"अवधि: "</string>
+    <!-- Editor -->
+    <string name="editor_save_new_file_title">"स्क्रिप्ट सहेजें"</string>
+    <string name="editor_save_file_title">"सहेजें"</string>
+    <string name="editor_modify_file_title">"स्क्रिप्ट संशोधित"</string>
+    <string name="editor_save_file_description">"क्या आप परिवर्तनों को सहेजना चाहते हैं?"</string>
+    <string name="editor_check_yes">"हां"</string>
+    <string name="editor_check_cancel">"रद्द"</string>
+    <string name="editor_check_discard">"छोड़ें"</string>
+    <string name="editor_save_file_hint">"कृपया स्क्रिप्ट शीर्ष इनपुट करें"</string>
+    <string name="editor_edit_script">"स्क्रिप्ट संपादित करें"</string>
+    <string name="editor_delete_script">"स्क्रिप्ट हटाएं"</string>
+    <string name="delete_script_description">"चयनित स्क्रिप्ट(टों) को हटाएं?"</string>
+    <string name="delete_script_toast">"%1$s स्क्रिप्ट(टों) को हटाया गया है"</string>
+    <string name="editor_title_bar_text">"स्क्रिप्ट सूची"</string>
+    <string name="editor_script_title">"पूर्वावलोकन"</string>
+    <string name="font_size">"फॉन्ट आकार"</string>
+    <string name="font_size_large">"बड़ा"</string>
+    <string name="font_size_default">"डिफॉल्ट"</string>
+    <string name="font_size_small">"छोटा"</string>
+    <string name="editor_select_item">"%1$s चयनित"</string>
+    <string name="editor_default_date">"प्रिलोडेड स्क्रिप्ट"</string>
+    <string name="editor_content_hint">"टेक्स्ट इनपुट करें"</string>
+    <string name="editor_title_hint">"नई स्क्रिप्ट"</string>
+    <string name="editor_menu_title_rename">"नाम बदलें"</string>
+    <string name="sm_editor_add_script_remind">"एक नई स्क्रिप्ट बनाने के लिए \"+\" टैप करें।"</string>
+    <!-- Example Speeches -->
+    <string name="editor_example_one_title">"आत्म-परिचय (15 सेकेंड्स)"</string>
+    <string name="editor_example_one_content">"सुप्रभात। मेरा नाम (name) है। मैं पिछले तीन वर्षों से प्रोफेसर स्मिथ की प्रयोगशाला में शोध कर रहा हूं। मैं यहां पर अपने कैरियर विकल्पों की खोज करने तथा दल में मेरी विशेषज्ञता द्वारा किए जा सकने वाले योगदान को लेकर बहुत रोमांचित हूं।"</string>
+    <string name="editor_example_two_title">"किसी से अचालक मिलना"</string>
+    <string name="editor_example_two_content">"नमस्कार (name)! काफी लम्बे समय से मेरी आपसे मुलाकात नहीं हुई है। आप आजकल क्या कर रहे हैं?\nखेद है, परन्तु मुझे जाना है। आपसे बात करके बहुत अच्छा लगा। फिर कभी पुन: मिलते हैं!"</string>
+    <string name="editor_example_three_title">"आत्म-परिचय (1 मिनट)"</string>
+    <string name="editor_example_three_content">"नमस्ते, मेरा नाम (name) है।  मेरे विचार में मेरी तीन मुख्य विशेषताएं हैं:\nमैं लोगों का आत्मविश्‍वास अच्छे से बढ़ा सकता हूं, और मैं दल के लक्ष्य को हासिल करने के लिए दल का नेतृत्व कर सकता हूं। मैं एक बार विश्वविद्यालय में बैडमिन्टन टीम का कप्तान रहा हूं, और हमारी टीम कॉलेज कप में रनर-अप थी। यह विद्यालय टीम का अब तक का सबसे अच्छा परिणाम था।\nदूसरी बात, मैं बहुत ही परिणाम-उन्मुखी हूं। चाहे कोई भी क्षेत्र क्यों ना हो, मैं हमेशा सबसे कम सम्भव समय में कठिनाईयों पर विजय प्राप्त कर सकता हूं, तथा एक शीर्ष-स्तरीय प्रदर्शन के साथ लक्ष्य हासिल कर सकता हूं। जब मैं अपनी भूतपर्व कम्पनी में एक परियोजना प्रबन्धक था, तो मैंने लगातार 24 महीनों तक प्रदर्शन लक्ष्यों को हासिल किया था।\nअंत में मेरे पास एक उद्यमी भावना है। मुझे अक्सर नए व्यवसाय को हैंडल करने का कार्य दिया जाता है। पिछले सीजन में मैंने अपनी भूतपूर्व कम्पनी में \"कॉफी शिक्षा तथा प्रशिक्षण क्रियाकलाप\' पेश किया था। यह बहुत ही सफल था, और वर्ष के अंत तक मेरी कक्षाएं पूरी तरह से बुक थीं।\nइन अभिलक्षणों के आधार पर मुझे विश्वास है कि मैं कम्पनी में एक बेहतरीन योगदान कर सकता हूं। धन्यवाद।"</string>
+    <string name="editor_example_four_title">"होटल फ्रंट डेस्क"</string>
+    <string name="editor_example_four_content">"सुप्रभात, सर। मैं आपकी किस प्रकार से सहायता कर सकता हूं?\nक्या आपके पास एक आरक्षण है?\nक्या आप मुझे अपनी आईडी या पासपोर्ट दिखा सकते हैं?\nक्या आप एक सिंगल रूम या डबल रूम चाहेंगे?\nआप कितने दिन ठहरेंगे?\nकृपया मुझे बताएं कि क्या आपको कोई और चीज चाहिए, आपका दिन शुभ हो!"</string>
+    <!-- tutorial page  -->
+    <string name="sm_tutorial_main_page_title">"अपनी सर्वश्रेष्ठ मुस्कान आजमाएं!"</string>
+    <string name="sm_tutorial_main_page_content">"मोड बदलने के लिए स्वाइप करें"</string>
+    <string name="sm_tutorial_coach__page_text_script_list">"स्क्रिप्ट सूची"</string>
+    <string name="sm_tutorial_coach_page_text_start_practice">"प्रैक्टिस आरम्भ करें"</string>
+    <string name="sm_tutorial_coach_page_text_title">"एक वार्तालाप के दौरान अपनी मुस्कान का अभ्यास करें"</string>
+    <string name="sm_tutorial_coach_page_text_review_video">"वीडियो की समीक्षा करें"</string>
+    <!-- alert dialog  -->
+    <string name="sm_alert_dialog_auto_recording_title">"ऑटो-रिकॉर्ड वीडियो को बंद करें?"</string>
+    <string name="sm_alert_dialog_auto_recording_message">"एक बार बंद होने के बाद, सिस्टम वार्तालाप मोड में वीडियो नहीं रिकॉर्ड करेगा।"</string>
+    <!-- toast -->
+    <string name="sm_recording_folder_miss_toast">"गैलरी में कोई वार्तालाप वीडियो नहीं"</string>
+    <string name="sm_gallery_disabled_toast">"गैलरी अक्षम है"</string>
+    <!--Permission -->
+    <string name="sm_permission_title">"अनुमति अनुरोध"</string>
+    <string name="sm_permission_content">"<b><font color="#ffffff">Smile Mirror</font></b> को स्क्रीन पर आपकी मिरर्ड इमेज दर्शाने, तथा वैकल्पिक रूप से वार्तालाप मोड में वीडियो को रिकॉर्ड करने, जिसकी आप बाद में समीक्षा कर सकते हैं, के लिए <b><font color="#ffffff">कैमरा</font></b>, <b><font color="#ffffff">माइक्रोफ़ोन</font></b>, तथा <b><font color="#ffffff">मेमोरी</font></b> अनुमतियों की आवश्यकता है।"</string>
+    <string name="sm_permission_button_text">"चालू करें"</string>
+    <!--Storage full -->
+    <string name="storage_full">"संग्रहण पूरा भर गया है"</string>
+    <string name="storage_full_for_script">"स्क्रिप्ट सहेजने के लिए पर्याप्त संग्रहण स्थान नहीं है।"</string>
+    <!--Download page-->
+</resources>

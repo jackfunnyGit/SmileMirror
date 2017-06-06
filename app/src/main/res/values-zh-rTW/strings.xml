@@ -10,11 +10,11 @@
     <!-- Smile Mirror -->
     <string name="sm_app_name">"微笑鏡子"</string>
     <string name="smile_level_one_text">"你有在微笑嗎？"</string>
-    <string name="smile_level_two_text">"還不錯"</string>
+    <string name="smile_level_two_text">"還不錯！"</string>
     <string name="smile_level_three_text">"漂亮！"</string>
     <string name="smile_level_four_text">"完美！"</string>
-    <string name="sm_speech_content_create_script">"請進入腳本清單建立一個新的腳本"</string>
-    <string name="sm_speech_content_select_script">"請進入腳本清單選擇一個腳本"</string>
+    <string name="sm_speech_content_create_script">"點選腳本清單按鈕建立一個新的腳本。"</string>
+    <string name="sm_speech_content_select_script">"點選腳本清單按鈕選擇一個腳本。"</string>
     <string name="smile_mode">"微笑模式"</string>
     <string name="coach_mode">"對談模式"</string>
     <string name="teleprompter_button_text_start">"開始"</string>
@@ -26,8 +26,8 @@
     <string name="editor_save_new_file_title">"儲存腳本"</string>
     <string name="editor_save_file_title">"儲存"</string>
     <string name="editor_modify_file_title">"腳本已修改"</string>
-    <string name="editor_save_file_description">"要儲存您的修改嗎?"</string>
-    <string name="editor_check_yes">"確定"</string>
+    <string name="editor_save_file_description">"要儲存您的修改嗎？"</string>
+    <string name="editor_check_yes">"是"</string>
     <string name="editor_check_cancel">"取消"</string>
     <string name="editor_check_discard">"捨棄"</string>
     <string name="editor_save_file_hint">"請輸入腳本標題"</string>
@@ -35,48 +35,48 @@
     <string name="editor_delete_script">"刪除腳本"</string>
     <string name="delete_script_description">"刪除選擇的腳本？"</string>
     <string name="delete_script_toast">"%1$s 個腳本已被刪除"</string>
-    <string name="editor_title_bar_text">"對談腳本清單"</string>
+    <string name="editor_title_bar_text">"腳本清單"</string>
     <string name="editor_script_title">"預覽"</string>
     <string name="font_size">"字體大小"</string>
-    <string name="font_size_large">"大型"</string>
+    <string name="font_size_large">"大"</string>
     <string name="font_size_default">"預設"</string>
-    <string name="font_size_small">"小型"</string>
-    <string name="editor_select_item">"已選 %1$s 個"</string>
+    <string name="font_size_small">"小"</string>
+    <string name="editor_select_item">"已選取 %1$s 個"</string>
     <string name="editor_default_date">"預載腳本"</string>
     <string name="editor_content_hint">"輸入文字"</string>
     <string name="editor_title_hint">"新腳本"</string>
     <string name="editor_menu_title_rename">"重新命名"</string>
-    <string name="sm_editor_add_script_remind">"點擊\"+\"按鈕以建立新的腳本"</string>
+    <string name="sm_editor_add_script_remind">"點選「+」按鈕建立新的腳本"</string>
     <!-- Example Speeches -->
-    <string name="editor_example_one_title">"自我介紹 (15秒)"</string>
-    <string name="editor_example_one_content">"您好，我是(名字)。我過去三年在史密斯教授的實驗室裡從事火箭科學的研究。我很高興能在這裡繼續發展我的專業，運用我的專業知識，貢獻給整個團隊。"</string>
+    <string name="editor_example_one_title">"自我介紹  (15 秒)"</string>
+    <string name="editor_example_one_content">"您好，我是 (名字)。我過去三年在史密斯教授的實驗室裡從事火箭科學的研究。我很高興能在這裡繼續發展我的專業，運用我的專業知識，貢獻給整個團隊。"</string>
     <string name="editor_example_two_title">"巧遇認識的人"</string>
-    <string name="editor_example_two_content">"嗨 (名字)！好久不見了！你最近在忙什麼 ?\n很高興遇見你，但是不巧我現在有事得先離開。我們再約個時間聚一下！"</string>
-    <string name="editor_example_three_title">"自我介紹 (一分鐘)"</string>
-    <string name="editor_example_three_content">"您好，我是(名字)。我想介紹我個人的三項特質：\n第一，我是一個team player，我善於激勵士氣，帶領全隊達成目標。我曾經擔任大學羽毛球隊的隊長，帶領球隊拿到當年度大專盃的亞軍，是校隊有史以來的最好成績。\n第二，我非常的結果導向，不管是在哪一個單位，我總是能在最短時間內排除困難，創造績效，達成目標。我在前公司擔任專案經理的時候，就從接到任務開始，連續24個月都能達成業績目標。\n最後，我具有創業的精神，常常被賦予新事業的任務。上一季，我在前公司導入「咖啡教育訓練活動」，受到極大歡迎，到年底前的所有報名場次已經一位難求。\n基於以上特質，我相信我能為本公司做出一定的貢獻。謝謝。"</string>
+    <string name="editor_example_two_content">"嗨 (名字)！好久不見了！你最近在忙什麼？\n很高興遇見你，但是不巧我現在有事得先離開。我們再約個時間聚一下！"</string>
+    <string name="editor_example_three_title">"自我介紹 (1分鐘)"</string>
+    <string name="editor_example_three_content">"您好，我是 (名字)。我想介紹我個人的三項特質：\n第一，我是一個 team player，我善於激勵士氣，帶領全隊達成目標。我曾經擔任大學羽毛球隊的隊長，帶領球隊拿到當年度大專盃的亞軍，是校隊有史以來的最好成績。\n第二，我非常的結果導向，不管是在哪一個單位，我總是能在最短時間內排除困難，創造績效，達成目標。我在前公司擔任專案經理的時候，從接到任務開始，連續 24 個月都能達成業績目標。\n最後，我具有創業的精神，常常被賦予新事業的任務。上一季，我在前公司導入「咖啡教育訓練活動」，受到極大歡迎，到年底前的所有報名場次已經一位難求。\n基於以上特質，我相信我能為本公司做出一定的貢獻。謝謝。"</string>
     <string name="editor_example_four_title">"飯店櫃台人員"</string>
-    <string name="editor_example_four_content">"先生早安。我能為您服務嗎？\n請問您有預約嗎？\n可以請您提供您的身份證明檔或護照嗎？\n您需要一間單人房，還是雙人房？\n請問您要停留多少天？\n如果您還有其他需求，請讓我們知道。希望您住宿愉快！"</string>
+    <string name="editor_example_four_content">"先生早安。我能為您服務嗎？\n請問您有預約嗎？\n可以請您提供您的身分證明或護照嗎？\n您需要一間單人房，還是雙人房？\n請問您要停留多少天？\n如果您還有其他需求，請讓我們知道。希望您住宿愉快！"</string>
     <!-- tutorial page  -->
     <string name="sm_tutorial_main_page_title">"給自己一個最燦爛的笑容吧！"</string>
     <string name="sm_tutorial_main_page_content">"左右滑動切換模式"</string>
-    <string name="sm_tutorial_coach__page_text_script_list">"對談腳本清單"</string>
+    <string name="sm_tutorial_coach__page_text_script_list">"腳本清單"</string>
     <string name="sm_tutorial_coach_page_text_start_practice">"開始練習"</string>
     <string name="sm_tutorial_coach_page_text_title">"練習在對談過程中保持微笑"</string>
-    <string name="sm_tutorial_coach_page_text_review_video">"檢視對談影片"</string>
+    <string name="sm_tutorial_coach_page_text_review_video">"檢視影片"</string>
     <!-- alert dialog  -->
     <string name="sm_alert_dialog_auto_recording_title">"關閉自動錄影？"</string>
-    <string name="sm_alert_dialog_auto_recording_message">"關閉後，對談練習過程中將不會進行錄影以供事後檢視。確定要關閉？"</string>
+    <string name="sm_alert_dialog_auto_recording_message">"關閉後，對談練習過程中將不會進行錄影。"</string>
     <!-- toast -->
     <string name="sm_recording_folder_miss_toast">"圖片庫中沒有對談影片"</string>
-    <string name="sm_gallery_disabled_toast">"圖片庫目前停用中"</string>
+    <string name="sm_gallery_disabled_toast">"圖片庫目前已停用"</string>
     <string name="sm_need_network_toast">"請連接網路"</string>
     <!--Permission -->
-    <string name="sm_permission_title">"請同意以下授權"</string>
-    <string name="sm_permission_content">"<b><font color="#ffffff">微笑鏡子</font></b>必須取得<b><font color="#ffffff">相機</font></b>、<b><font color="#ffffff">麥克風</font></b>與<b><font color="#ffffff">儲存空間</font></b>的存取權才能顯示您的鏡射影像，以及在對談練習過程中，可以選擇進行錄影以提供練習後的檢視。"</string>
+    <string name="sm_permission_title">"權限要求"</string>
+    <string name="sm_permission_content">"<b><font color="#ffffff">微笑鏡子</font></b>必須取得<b><font color="#ffffff">相機</font></b>、<b><font color="#ffffff">麥克風</font></b>和<b><font color="#ffffff">儲存</font></b>的存取權才能在螢幕上顯示您的鏡射影像，以及在對談練習過程中，可以選擇進行錄影以提供練習後的檢視。"</string>
     <string name="sm_permission_button_text">"開啟"</string>
     <!--Storage full -->
     <string name="storage_full">"儲存空間已滿"</string>
-    <string name="storage_full_for_script">"儲存空間不足，無法儲存腳本"</string>
+    <string name="storage_full_for_script">"儲存空間不足，無法儲存腳本。"</string>
     <!--Download page-->
     <string name="sm_download_page_title_text">"您需要更新Google Play服務元件。請檢查您的網路設定，再試一次"</string>
     <string name="sm_progressbar_text">"更新中"</string>

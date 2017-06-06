@@ -1,0 +1,78 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources xmlns:android="http://schemas.android.com/apk/res/android" xmlns:tools="http://schemas.android.com/tools" xmlns:xliff="urn:oasis:names:tc:xliff:document:1.2">
+    <!-- Menu Item Names -->
+    <string name="editor_menu_item_save">"Guardar"</string>
+    <string name="editor_menu_item_rename">"Cambiar nombre"</string>
+    <string name="editor_menu_item_edit">"Editar"</string>
+    <string name="editor_menu_item_delete">"Eliminar"</string>
+    <string name="editor_menu_item_mirror">"Aceptar"</string>
+    <string name="coach_mode_menu_item_auto_record">"Grabar vídeo automáticamente"</string>
+    <!-- Smile Mirror -->
+    <string name="sm_app_name">"Smile Mirror"</string>
+    <string name="smile_level_one_text">"¿Está sonriendo?"</string>
+    <string name="smile_level_two_text">"¡Mucho mejor!"</string>
+    <string name="smile_level_three_text">"¡Genial!"</string>
+    <string name="smile_level_four_text">"¡Perfecto!"</string>
+    <string name="sm_speech_content_create_script">"Pulse en el botón de lista de guiones y cree un guion nuevo."</string>
+    <string name="sm_speech_content_select_script">"Pulse en el botón de lista de guiones y seleccione un guion."</string>
+    <string name="smile_mode">"Modo sonrisa"</string>
+    <string name="coach_mode">"Modo conversación"</string>
+    <!-- chart page -->
+    <string name="chart_page_smile_statistics">"Estadísticas de sonrisas"</string>
+    <string name="chart_page_smile_duration">"Duración: "</string>
+    <!-- Editor -->
+    <string name="editor_save_new_file_title">"Guardar guion"</string>
+    <string name="editor_save_file_title">"Guardar"</string>
+    <string name="editor_modify_file_title">"Guion modificado"</string>
+    <string name="editor_save_file_description">"¿Desea guardar sus cambios?"</string>
+    <string name="editor_check_yes">"Sí"</string>
+    <string name="editor_check_cancel">"Cancelar"</string>
+    <string name="editor_check_discard">"Descartar"</string>
+    <string name="editor_save_file_hint">"Escriba el título del guion"</string>
+    <string name="editor_edit_script">"Editar guion"</string>
+    <string name="editor_delete_script">"Eliminar guion"</string>
+    <string name="delete_script_description">"¿Eliminar guiones seleccionados?"</string>
+    <string name="delete_script_toast">"%1$s guion(es) eliminado(s)"</string>
+    <string name="editor_title_bar_text">"Lista de guiones"</string>
+    <string name="editor_script_title">"Vista previa"</string>
+    <string name="font_size">"Tamaño de fuente"</string>
+    <string name="font_size_large">"Grande"</string>
+    <string name="font_size_default">"Predeterminado"</string>
+    <string name="font_size_small">"Pequeño"</string>
+    <string name="editor_select_item">"%1$s seleccionado(s)"</string>
+    <string name="editor_default_date">"Guion precargado"</string>
+    <string name="editor_content_hint">"Introduzca texto"</string>
+    <string name="editor_title_hint">"Nuevo guion"</string>
+    <string name="editor_menu_title_rename">"Cambiar nombre"</string>
+    <string name="sm_editor_add_script_remind">"Pulse \"+\" para crear un guion nuevo."</string>
+    <!-- Example Speeches -->
+    <string name="editor_example_one_title">"Presentación (15 segundos)"</string>
+    <string name="editor_example_one_content">"Buenos días. Me llamo (nombre). Desde hace tres años investigo en el laboratorio del Profesor Smith. Estoy muy interesado en buscar opciones laborales aquí y ver de qué modo mi experiencia puede ser de utilidad para el equipo."</string>
+    <string name="editor_example_two_title">"Presentarse a alguien"</string>
+    <string name="editor_example_two_content">"Hola, (nombre): ¡Cuánto tiempo sin verte! ¿Dónde has andado últimamente?\nLo siento, pero me tengo que ir. Me ha encantado hablar contigo. ¡Nos vemos!"</string>
+    <string name="editor_example_three_title">"Presentación (1 minuto)"</string>
+    <string name="editor_example_three_content">"Hola, soy (nombre). Considero que tengo tres cualidades:\nEn primer lugar, me gusta trabajar en equipo. Soy bueno levantando la moral y puedo dirigir el equipo para lograr sus objetivos. Fui capitán del equipo de bádminton en la universidad y nuestro equipo terminó segundo en la copa universitaria, el mejor resultado del equipo de la facultad de toda su historia.\nEn segundo lugar, me gusta trabajar con objetivos. Independientemente del campo, siempre consigo superar las adversidades en el menor tiempo posible y conseguir los objetivos con un excelente rendimiento. Cuando trabajaba como responsable de proyecto en mi empresa anterior, conseguí superar los objetivos de rendimiento durante 24 meses consecutivos.\nPor último, tengo espíritu emprendedor. Me suelen encargar la gestión de nuevos asuntos. El año pasado presenté \"actividades de formación a la hora del café\" en mi antiguo empleo. Tuvo mucho éxito, y todas las clases estuvieron llenas hasta que acabó el año.\nA partir de estas características, considero que puedo ser de gran utilidad para la empresa. Gracias."</string>
+    <string name="editor_example_four_title">"Recepción del hotel"</string>
+    <string name="editor_example_four_content">"Buenos días, caballero. ¿En qué puedo ayudarle?\n¿Tiene reserva?\n¿Me deja su documento de identidad o pasaporte, por favor?\n¿Desea una habitación sencilla o doble?\n¿Cuánto tiempo se va a quedar?\nIndíquenos si necesita algo y ¡tenga una agradable estancia!"</string>
+    <!-- tutorial page  -->
+    <string name="sm_tutorial_main_page_title">"¡Pruebe su mejor sonrisa!"</string>
+    <string name="sm_tutorial_main_page_content">"Deslice para cambiar de modo"</string>
+    <string name="sm_tutorial_coach__page_text_script_list">"Lista de guiones"</string>
+    <string name="sm_tutorial_coach_page_text_start_practice">"Comenzar a practicar"</string>
+    <string name="sm_tutorial_coach_page_text_title">"Practique su sonrisa durante una conversación"</string>
+    <string name="sm_tutorial_coach_page_text_review_video">"Revisar vídeos"</string>
+    <!-- alert dialog  -->
+    <string name="sm_alert_dialog_auto_recording_title">"Apagar vídeo de grabación automática?"</string>
+    <string name="sm_alert_dialog_auto_recording_message">"Una vez acabado, el sistema dejará de grabar vídeos en modo conversación."</string>
+    <!-- toast -->
+    <string name="sm_recording_folder_miss_toast">"Ningún vídeo de conversación en la Galería"</string>
+    <string name="sm_gallery_disabled_toast">"La galería está desactivada"</string>
+    <!--Permission -->
+    <string name="sm_permission_title">"Solicitud de permiso"</string>
+    <string name="sm_permission_content">"<b><font color="#ffffff">Smile Mirror</font></b> requiere los permisos <b><font color="#ffffff">Cámara</font></b>, <b><font color="#ffffff">Micrófono</font></b> y <b><font color="#ffffff">Almacenamiento</font></b> para mostrar su imagen reflejada en la pantalla y para, opcionalmente, grabar vídeo en modo conversación para que lo revise más tarde."</string>
+    <string name="sm_permission_button_text">"Activar"</string>
+    <!--Storage full -->
+    <string name="storage_full">"Almacenamiento lleno"</string>
+    <string name="storage_full_for_script">"No hay espacio de almacenamiento suficiente para guardar el guion."</string>
+    <!--Download page-->
+</resources>

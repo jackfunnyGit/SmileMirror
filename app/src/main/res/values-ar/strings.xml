@@ -1,0 +1,78 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources xmlns:android="http://schemas.android.com/apk/res/android" xmlns:tools="http://schemas.android.com/tools" xmlns:xliff="urn:oasis:names:tc:xliff:document:1.2">
+    <!-- Menu Item Names -->
+    <string name="editor_menu_item_save">"حفظ"</string>
+    <string name="editor_menu_item_rename">"إعادة تسمية"</string>
+    <string name="editor_menu_item_edit">"تحرير"</string>
+    <string name="editor_menu_item_delete">"حذف"</string>
+    <string name="editor_menu_item_mirror">"موافق"</string>
+    <string name="coach_mode_menu_item_auto_record">"تسجيل تلقائي للفيديو"</string>
+    <!-- Smile Mirror -->
+    <string name="sm_app_name">"Smile Mirror"</string>
+    <string name="smile_level_one_text">"هل أنت تبتسم؟"</string>
+    <string name="smile_level_two_text">"أتتحسن!"</string>
+    <string name="smile_level_three_text">"لطيف!"</string>
+    <string name="smile_level_four_text">"مثالي!"</string>
+    <string name="sm_speech_content_create_script">"المس فوق زر قائمة النصوص وأنشئ نصًا جديدًا."</string>
+    <string name="sm_speech_content_select_script">"المس فوق زر قائمة النصوص وحدد نصًا."</string>
+    <string name="smile_mode">"وضع الابتسام"</string>
+    <string name="coach_mode">"وضع المحادثة"</string>
+    <!-- chart page -->
+    <string name="chart_page_smile_statistics">"إحصائيات الابتسام"</string>
+    <string name="chart_page_smile_duration">"المدة:"</string>
+    <!-- Editor -->
+    <string name="editor_save_new_file_title">"حفظ النص"</string>
+    <string name="editor_save_file_title">"حفظ"</string>
+    <string name="editor_modify_file_title">"تم تعديل النص"</string>
+    <string name="editor_save_file_description">"هل تريد حفظ تغييراتك؟"</string>
+    <string name="editor_check_yes">"نعم"</string>
+    <string name="editor_check_cancel">"إلغاء"</string>
+    <string name="editor_check_discard">"تجاهل"</string>
+    <string name="editor_save_file_hint">"يرجى إدخال عنوان النص"</string>
+    <string name="editor_edit_script">"تحرير النص"</string>
+    <string name="editor_delete_script">"حذف النص"</string>
+    <string name="delete_script_description">"حذف النص (النصوص) المحددة؟"</string>
+    <string name="delete_script_toast">"لقد تم حذف %1$s نص (نصوص)"</string>
+    <string name="editor_title_bar_text">"قائمة النصوص"</string>
+    <string name="editor_script_title">"معاينة"</string>
+    <string name="font_size">"حجم الخط"</string>
+    <string name="font_size_large">"كبير"</string>
+    <string name="font_size_default">"الافتراضي"</string>
+    <string name="font_size_small">"صغير"</string>
+    <string name="editor_select_item">"تم تحديد %1$s"</string>
+    <string name="editor_default_date">"نص محمل مسبقًا"</string>
+    <string name="editor_content_hint">"إدخال النص"</string>
+    <string name="editor_title_hint">"نص جديد"</string>
+    <string name="editor_menu_title_rename">"إعادة تسمية"</string>
+    <string name="sm_editor_add_script_remind">"المس \"+\" لإنشاء نص جديد."</string>
+    <!-- Example Speeches -->
+    <string name="editor_example_one_title">"مقدمة ذاتية (15 ثانية)"</string>
+    <string name="editor_example_one_content">"صباح الخير. اسمي (الاسم). أنا أقوم بإجراء الأبحاث في مختبر البروفيسور سميث على مدار الثلاث سنوات الماضية. أنا متحمس جدًا لاستكشاف خياراتي الوظيفية هنا ومعرفة كيف يمكن لخبراتي أن تساهم مع الفريق."</string>
+    <string name="editor_example_two_title">"لقاء شخص ما مصادفة"</string>
+    <string name="editor_example_two_content">"مرحبًا (الاسم)! أنا لم أرك منذ أمد بعيد! ما الذي كنت بصدد القيام به مؤخرًا؟\nمعذرة، ولكن أنا مضطر للذهاب. لقد كان من الرائع المحادثة معك. لنلتقي معًا مرة أخرى في وقت ما!"</string>
+    <string name="editor_example_three_title">"مقدمة ذاتية (1 دقيقة)"</string>
+    <string name="editor_example_three_content">"مرحبًا، أنا (الاسم). أنا أعتقد أن لدي ثلاث نقاط قوية:\nأولاً، أنا أعمل ضمن الفريق. أنا أجيد رفع الروح المعنوية ويمكنني قيادة الفريق لتحقيق أهدافه. كنت ذات مرة كابتن فريق كرة الريشة في الجامعة، وحصل فريقنا على المركز الثاني في كأس الكلية. كانت أفضل نتيجة سبق لفريق الكلية تحقيقها من قبل.\nثانيًا، أنا أركز جدًا على النتائج. ومهما كان المجال، يمكنني دائمًا التغلب على الصعاب في أقصر وقت ممكن وتحقيق الأهداف بأفضل أداء. عندما كنت مدير مشروعات في شركتي السابقة، تمكنت من تحقيق أهداف الأداء لمدة 24 شهرًا متتابعًا.\nأخيرًا، لدي روح ريادة الأعمال. أنا عادة ما يتم تكليفي بالتعامل مع الأعمال الجديدة. في الموسم الماضي، قمت بإدخال \"أنشطة تعليم وتدريب القهوة\" في شركتي السابقة. كانت ناجحة جدًا، وكانت كل الفصول محجوزة بالكامل حتى نهاية السنة.\nبناءًا على هذه السمات، أعتقد أن بإمكاني أن أقدم إسهامًا كبيرًا في شركتكم. شكرًا لكم."</string>
+    <string name="editor_example_four_title">"المكتب الأمامي للفندق"</string>
+    <string name="editor_example_four_content">"صباح الخير، سيدي. كيف يمكنني مساعدتك؟\nهل لديك حجز؟\nهل يمكنني الحصول على هويتك أو جواز سفرك، من فضلك؟\nهل تريد غرفة مفردة أم زوجية؟\nكم يومًا ستقيم؟\nبرجاء إبلاغنا إذا احتجت أي شيء آخر، مع أمنياتنا بإقامة رائعة!"</string>
+    <!-- tutorial page  -->
+    <string name="sm_tutorial_main_page_title">"جرب أفضل ابتسامة لديك!"</string>
+    <string name="sm_tutorial_main_page_content">"اسحب لتبديل الوضع"</string>
+    <string name="sm_tutorial_coach__page_text_script_list">"قائمة النصوص"</string>
+    <string name="sm_tutorial_coach_page_text_start_practice">"ابدأ الممارسة"</string>
+    <string name="sm_tutorial_coach_page_text_title">"مارس ابتسامتك خلال المحادثة"</string>
+    <string name="sm_tutorial_coach_page_text_review_video">"استعرض الفيديوهات"</string>
+    <!-- alert dialog  -->
+    <string name="sm_alert_dialog_auto_recording_title">"أوقف تشغيل التسجيل التلقائي للفيديو؟"</string>
+    <string name="sm_alert_dialog_auto_recording_message">"بمجرد إيقاف تشغيله، لن يسجل النظام فيديوهات في وضع المحادثة."</string>
+    <!-- toast -->
+    <string name="sm_recording_folder_miss_toast">"لا توجد فيديوهات محادثة في المعرض"</string>
+    <string name="sm_gallery_disabled_toast">"المعرض معطل"</string>
+    <!--Permission -->
+    <string name="sm_permission_title">"طلب الإذن"</string>
+    <string name="sm_permission_content">"يتطلب <b><font color="#ffffff">Smile Mirror</font></b> أذونات <b><font color="#ffffff">الكاميرا</font></b>،  و<b><font color="#ffffff">الميكروفون</font></b>، و<b><font color="#ffffff">التخزين</font></b> لعرض صورتك المنعكسة على الشاشة، وللتسجيل الاختياري للفيديو في وضع المحادثة من أجلك لتستعرضه لاحقًا."</string>
+    <string name="sm_permission_button_text">"تشغيل"</string>
+    <!--Storage full -->
+    <string name="storage_full">"التخزين ممتلئ"</string>
+    <string name="storage_full_for_script">"لا توجد مساحة تخزين كافية لحفظ النص."</string>
+    <!--Download page-->
+</resources>

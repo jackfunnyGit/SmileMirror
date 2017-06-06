@@ -1,0 +1,78 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources xmlns:android="http://schemas.android.com/apk/res/android" xmlns:tools="http://schemas.android.com/tools" xmlns:xliff="urn:oasis:names:tc:xliff:document:1.2">
+    <!-- Menu Item Names -->
+    <string name="editor_menu_item_save">"Uložiť"</string>
+    <string name="editor_menu_item_rename">"Premenovať"</string>
+    <string name="editor_menu_item_edit">"Upraviť"</string>
+    <string name="editor_menu_item_delete">"Odstrániť"</string>
+    <string name="editor_menu_item_mirror">"OK"</string>
+    <string name="coach_mode_menu_item_auto_record">"Autom. nahrať video"</string>
+    <!-- Smile Mirror -->
+    <string name="sm_app_name">"Smile Mirror"</string>
+    <string name="smile_level_one_text">"Usmievate sa?"</string>
+    <string name="smile_level_two_text">"Skúste to lepšie!"</string>
+    <string name="smile_level_three_text">"Dobre!"</string>
+    <string name="smile_level_four_text">"Výborne!"</string>
+    <string name="sm_speech_content_create_script">"Ťuknite na tlačidlo zoznamu skriptov a vytvorte nový skript."</string>
+    <string name="sm_speech_content_select_script">"Ťuknite na tlačidlo zoznamu skriptov a vyberte skript."</string>
+    <string name="smile_mode">"Režim úsmevu"</string>
+    <string name="coach_mode">"Režim konverzácie"</string>
+    <!-- chart page -->
+    <string name="chart_page_smile_statistics">"Štatistiky úsmevu"</string>
+    <string name="chart_page_smile_duration">"Trvanie: "</string>
+    <!-- Editor -->
+    <string name="editor_save_new_file_title">"Uložiť skript"</string>
+    <string name="editor_save_file_title">"Uložiť"</string>
+    <string name="editor_modify_file_title">"Skript zmenený"</string>
+    <string name="editor_save_file_description">"Chcete uložiť zmeny?"</string>
+    <string name="editor_check_yes">"Áno"</string>
+    <string name="editor_check_cancel">"Zrušiť"</string>
+    <string name="editor_check_discard">"Zahodiť"</string>
+    <string name="editor_save_file_hint">"Zadajte názov skriptu"</string>
+    <string name="editor_edit_script">"Upraviť skript"</string>
+    <string name="editor_delete_script">"Odstrániť skript"</string>
+    <string name="delete_script_description">"Odstrániť vybrané skripty?"</string>
+    <string name="delete_script_toast">"Odstránené skripty: %1$s"</string>
+    <string name="editor_title_bar_text">"Zoznam skriptov"</string>
+    <string name="editor_script_title">"Ukážka"</string>
+    <string name="font_size">"Veľkosť písma"</string>
+    <string name="font_size_large">"Veľké"</string>
+    <string name="font_size_default">"Predvolené"</string>
+    <string name="font_size_small">"Malé"</string>
+    <string name="editor_select_item">"%1$s vybrané"</string>
+    <string name="editor_default_date">"Predvolený skript"</string>
+    <string name="editor_content_hint">"Zadajte text"</string>
+    <string name="editor_title_hint">"Nový skript"</string>
+    <string name="editor_menu_title_rename">"Premenovať"</string>
+    <string name="sm_editor_add_script_remind">"Ťuknutím na \"+\" vytvorte nový skript."</string>
+    <!-- Example Speeches -->
+    <string name="editor_example_one_title">"Úvodné predstavenie (15 sekúnd)"</string>
+    <string name="editor_example_one_content">"Dobré ráno. Volám sa (meno). V uplynulých troch rokoch som pracoval na výskume v laboratóriu profesora Novotného. Som nadšený, že tu môžem preskúmať možnosti svojho rastu a vidieť, ako moje skúsenosti môžu prispieť tímu."</string>
+    <string name="editor_example_two_title">"Štuchnutie niekoho"</string>
+    <string name="editor_example_two_content">"Ahoj (meno)! Roky som ťa nevidel! Čo nového robíš?\nPrepáč, ale musím už ísť. Bolo to skvelé sa s tebou porozprávať. Dúfam, že sa zase niekedy stretneme!"</string>
+    <string name="editor_example_three_title">"Úvodné predstavenie (1 minúta)"</string>
+    <string name="editor_example_three_content">"Ahoj, som (meno). Verím, že mám tri silné miesta:\nPo prvé: som tímový hráč. Som dobrý v posilňovaní morálky a dokážem viesť tím tak, aby dosiahol svoje ciele. Bol som kapitán badmintonového tímu na univerzite a náš tím bol jednotka. tento školský tím dosiahol najlepšie výsledky v celej svojej histórii.\nPo druhé: zameriavam sa na výsledky. Nezáleží na tom, v akom odbore, vždy dokážem prekonávať ťažkosti v čo najkratšom čase a dosahovať ciele s najlepším výkonom. Keď som bol projektový manažér v minulom zamestnaní, dokázal som po dobu 24 mesiacov po sebe plniť výkonnostné ciele.\nA nakoniec: mám podnikateľského ducha. často mám za úlohu zvládnuť nové formy podnikania. V minulom období som v poslednom zamestnaní predstavil \"proces vzdelávania a školenia v oblasti kávy\". Malo to veľký úspech a všetky triedy boli obsadené až do konca roka.\nNa základe týchto charakteristík verím, že môžem byť veľkým prínosom pre vašu spoločnosť. Ďakujem."</string>
+    <string name="editor_example_four_title">"Hotelová služba"</string>
+    <string name="editor_example_four_content">"Dobré ráno, pane. Ako vám môžem pomôcť?\nMáte rezerváciu?\nMôžem poprosiť váš občiansky preukaz alebo pas?\nChcete jednolôžkovú alebo dvojlôžkovú izbu?\nAko dlho u nás zostanete?\nDajte nám vedieť, ak budete niečo potrebovať. Prajem vám príjemný pobyt!"</string>
+    <!-- tutorial page  -->
+    <string name="sm_tutorial_main_page_title">"Skúste čo najlepší úsmev!"</string>
+    <string name="sm_tutorial_main_page_content">"Potiahnutím prepnite režim"</string>
+    <string name="sm_tutorial_coach__page_text_script_list">"Zoznam skriptov"</string>
+    <string name="sm_tutorial_coach_page_text_start_practice">"Začať cvičenie"</string>
+    <string name="sm_tutorial_coach_page_text_title">"Nacvičte si svoj úsmev pri konverzácii"</string>
+    <string name="sm_tutorial_coach_page_text_review_video">"Prezrieť videá"</string>
+    <!-- alert dialog  -->
+    <string name="sm_alert_dialog_auto_recording_title">"Vypnúť autom. nahrávanie videa?"</string>
+    <string name="sm_alert_dialog_auto_recording_message">"Keď bude vypnuté, systém nebude nahrávať videá v režime konverzácie."</string>
+    <!-- toast -->
+    <string name="sm_recording_folder_miss_toast">"Žiadne konverzačné videá v Galérii"</string>
+    <string name="sm_gallery_disabled_toast">"Galéria je vypnutá"</string>
+    <!--Permission -->
+    <string name="sm_permission_title">"Žiadosť o povolenie"</string>
+    <string name="sm_permission_content">"Aplikácia <b><font color="#ffffff">Smile Mirror</font></b> vyžaduje povolenia <b><font color="#ffffff">Fotoaparát</font></b>, <b><font color="#ffffff">Mikrofón</font></b> a <b><font color="#ffffff">Úložisko</font></b> na zobrazovanie zrkadlového obrazu na obrazovke a voliteľne nahrávanie videa v režime konverzácie na neskoršie prezeranie."</string>
+    <string name="sm_permission_button_text">"Zapnúť"</string>
+    <!--Storage full -->
+    <string name="storage_full">"Úložisko plné"</string>
+    <string name="storage_full_for_script">"Nedostatok miesta na uloženie skriptu."</string>
+    <!--Download page-->
+</resources>

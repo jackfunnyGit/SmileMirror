@@ -1,0 +1,78 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources xmlns:android="http://schemas.android.com/apk/res/android" xmlns:tools="http://schemas.android.com/tools" xmlns:xliff="urn:oasis:names:tc:xliff:document:1.2">
+    <!-- Menu Item Names -->
+    <string name="editor_menu_item_save">"သိမ္းပါ"</string>
+    <string name="editor_menu_item_rename">"အမည္ေျပာင္းပါ"</string>
+    <string name="editor_menu_item_edit">"တည္းျဖတ္ပါ"</string>
+    <string name="editor_menu_item_delete">"ဖ်က္ပါ"</string>
+    <string name="editor_menu_item_mirror">"အုိေက"</string>
+    <string name="coach_mode_menu_item_auto_record">"ဗီဒီယုိကုိ ေအာ္တုိမွတ္တမ္းတင္ပါ"</string>
+    <!-- Smile Mirror -->
+    <string name="sm_app_name">"Smile Mirror"</string>
+    <string name="smile_level_one_text">"သင္ ျပံဳးေနပါသလား။"</string>
+    <string name="smile_level_two_text">"ပုိေကာင္းလာပါၿပီ။"</string>
+    <string name="smile_level_three_text">"ေကာင္းပါတယ္။"</string>
+    <string name="smile_level_four_text">"အေကာင္းဆံုးပဲ။"</string>
+    <string name="sm_speech_content_create_script">"ဇာတ္ညႊန္းစာရင္း ခလုတ္ေပၚတြင္ ႏွိပ္ၿပီးေနာက္ ဇာတ္ညႊန္းအသစ္ကုိ ဖန္တီးပါ။"</string>
+    <string name="sm_speech_content_select_script">"ဇာတ္ညႊန္းစာရင္း ခလုတ္ေပၚတြင္ ႏွိပ္ၿပီးေနာက္ ဇာတ္ညႊန္းကုိ ေရြးပါ။"</string>
+    <string name="smile_mode">"အျပံဳးမုဒ္"</string>
+    <string name="coach_mode">"စကားဝုိင္း မုဒ္"</string>
+    <!-- chart page -->
+    <string name="chart_page_smile_statistics">"အျပံဳး ကိန္းဂဏန္းအခ်က္မ်ား"</string>
+    <string name="chart_page_smile_duration">"ၾကာခ်ိန္-"</string>
+    <!-- Editor -->
+    <string name="editor_save_new_file_title">"ဇာတ္ညႊန္းကုိ သိမ္းပါ"</string>
+    <string name="editor_save_file_title">"သိမ္းပါ"</string>
+    <string name="editor_modify_file_title">"ဇာတ္ညႊန္းကုိ ျပင္ဆင္မြမ္းမံၿပီး"</string>
+    <string name="editor_save_file_description">"အေျပာင္းအလဲမ်ားကုိ သိမ္းထားလုိပါသလား။"</string>
+    <string name="editor_check_yes">"ဟုတ္"</string>
+    <string name="editor_check_cancel">"ပယ္ဖ်က္ပါ"</string>
+    <string name="editor_check_discard">"ဖယ္ထုတ္ပါ"</string>
+    <string name="editor_save_file_hint">"ဇာတ္ညႊန္းေခါင္းစဥ္ ထည့္ပါ"</string>
+    <string name="editor_edit_script">"ဇာတ္ညႊန္းကုိ တည္းျဖတ္ပါ"</string>
+    <string name="editor_delete_script">"ဇာတ္ညႊန္းကုိ ဖ်က္ပါ"</string>
+    <string name="delete_script_description">"ေရြးထားသည့္ ဇာတ္ညႊန္း(မ်ား) ကုိ ဖ်က္မလား။"</string>
+    <string name="delete_script_toast">"ဇာတ္ညႊန္း %1$s (ခု) ကုိ ဖ်က္ၿပီးပါၿပီ"</string>
+    <string name="editor_title_bar_text">"ဇာတ္ညႊန္း စာရင္း"</string>
+    <string name="editor_script_title">"အစမ္းၾကည့္"</string>
+    <string name="font_size">"စာလံုးအရြယ္အစား"</string>
+    <string name="font_size_large">"ႀကီး"</string>
+    <string name="font_size_default">"မူလ"</string>
+    <string name="font_size_small">"ေသး"</string>
+    <string name="editor_select_item">"%1$s ကုိ ေရြးခ်ယ္ထားသည္"</string>
+    <string name="editor_default_date">"ႀကိဳဖြင့္ထားေသာ ဇာတ္ညႊန္း"</string>
+    <string name="editor_content_hint">"စာသား ထည့္ပါ"</string>
+    <string name="editor_title_hint">"ဇာတ္ညႊန္း အသစ္"</string>
+    <string name="editor_menu_title_rename">"အမည္ေျပာင္းပါ"</string>
+    <string name="sm_editor_add_script_remind">"ဇာတ္ညႊန္းအသစ္ဖန္တီးရန္ \"+\" ကုိ ႏွိပ္ပါ။"</string>
+    <!-- Example Speeches -->
+    <string name="editor_example_one_title">"ကုိယ္တုိင္-မိတ္ဆက္ (၁၅ စကၠန္႔)"</string>
+    <string name="editor_example_one_content">"မဂၤလာပါ။ ကြ်န္ေတာ္/မအမည္ကေတာ့ (အမည္) ျဖစ္ပါတယ္။ လြန္ခဲ့တဲ့ သံုးႏွစ္လံုးလံုး ပါေမာကၡ စမစ္ရဲ႕ ဓာတ္ခြဲစမ္းသပ္ခန္းထဲမွာ သုေတသနေတြ လုပ္ေနခဲ့ပါတယ္။ ဒီမွာ ကြ်န္ေတာ္/မအတြက္ အလုပ္အကုိင္ အခြင့္အလမ္းေတြ ရွာေဖြၿပီး ကြ်န္ေတာ္/မရဲ႕ ကြ်မ္းက်င္မႈက အဖြဲ႕အတြက္ ဘယ္လုိပါဝင္ကူညီေပးႏုိင္သလဲဆုိတာကုိ ျမင္ေတြ႕ရတာ အရမ္း စိတ္လႈပ္ရွားဖုိ႔ေကာင္းပါတယ္။"</string>
+    <string name="editor_example_two_title">"တစ္ေယာက္ေယာက္ႏွင့္ ေတြ႕ျခင္း"</string>
+    <string name="editor_example_two_content">"မဂၤလာပါ (အမည္) ေရ။ မေတြ႕တာ ေတာ္ေတာ္ၾကာၿပီ။ ဘာေတြ လုပ္ေနလဲ။\nေဆာရီးေနာ္၊ ငါ သြားရေတာ့မယ္။ မင္းနဲ႔ စကားေျပာရတာ ေကာင္းပါတယ္။ ေနာက္မွ ေတြ႕မယ္။"</string>
+    <string name="editor_example_three_title">"ကုိယ္တုိင္မိတ္ဆက္ (၁ မိနစ္)"</string>
+    <string name="editor_example_three_content">"မဂၤလာပါ၊ ကြ်န္ေတာ္/မကေတာ့ (အမည္) ျဖစ္ပါတယ္။ ကြ်န္ေတာ္/မမွာ ခုိင္မာတဲ့ အခ်က္သံုးခ်က္ရွိပါတယ္-\nပထမတစ္ခုက ကြ်န္ေတာ္/မက အဖြဲ႕လုိက္ ေဆာင္ရြက္တတ္သူ တစ္ဦး ျဖစ္ပါတယ္။ အဖြဲ႕ဝင္ေတြရဲ႕ စိတ္ဓာတ္ကုိ ျမႇင့္တင္ေပးႏုိင္တဲ့အျပင္ ပန္းတုိင္ေတြေရာက္ရွိေအာင္လည္း အဖြဲ႕ကုိ ဦးေဆာင္ႏုိင္ပါတယ္။ တကၠသုိလ္မွာတုန္းက ၾကက္ေတာင္အဖြဲ႕ရဲ႕ ေခါင္းေဆာင္အျဖစ္လည္း ေဆာင္ရြက္ခဲ့ဖူးပါတယ္။ ကြ်န္ေတာ္/မရဲ႕ အဖြဲ႕က တကၠသုိလ္ဖလားကုိ ရရွိခဲ့ပါတယ္။ အဲ့ဒါက ေက်ာင္းအဖြဲ႕ရဲ႕ အေကာင္းဆံုး ရလဒ္တစ္ခု ျဖစ္ခဲ့ပါတယ္။\nဒုတိယ တစ္ခ်က္ကေတာ့ ကြ်န္ေတာ္/မက ရလဒ္ကုိ အရမ္း အေလးထားပါတယ္။ ဘယ္လုိ နယ္ပယ္မွာပဲျဖစ္ျဖစ္ အခက္အခဲေတြကုိ အခ်ိန္တုိအတြင္း ေက်ာ္လႊားႏုိင္ၿပီးေတာ့ အေကာင္းဆံုး စြမ္းေဆာင္ရည္ေတြနဲ႔ ပန္းတုိင္ကုိ ေရာက္ရွိခဲ့ပါတယ္။ အရင္ကုမၸဏီမွာ ပေရာဂ်က္မန္ေနဂ်ာ လုပ္တုန္းက စြမ္းေဆာင္ရည္အတြက္ သတ္မွတ္ခ်က္ေတြကုိ ၂၄ လ ဆက္တုိက္ ျပည့္မီေအာင္ လုပ္ေဆာင္ေပးႏုိင္ခဲ့ပါတယ္။\nေနာက္ဆံုး အခ်က္ကေတာ့ ကြ်န္ေတာ္/မမွာ စြန္႔ဦးတီထြင္တတ္တဲ့ စိတ္ကူးစိတ္သန္းေတြ ရွိပါတယ္။ လုပ္ငန္းအသစ္ေတြကုိ လုပ္ေဆာင္ဖုိ႔ မၾကာခဏဆုိသလုိ တာဝန္ေပးခံရပါတယ္။ ၿပီးခဲ့တဲ့ရာသီကဆုိရင္ ကြ်န္ေတာ္/မက \"ေကာ္ဖီ ပညာေရးနဲ႔ သင္တန္းဖြင့္လွစ္မႈေတြ\" ကုိ အရင္ကုမၸဏီမွာ လုပ္ေပးခဲ့ရပါတယ္။ အရမ္းလည္း ေအာင္ျမင္ခဲ့ၿပီး ႏွစ္ကုန္တဲ့အထိ အတန္းတုိင္းမွာ လူျပည့္ေနပါတယ္။\nဒီစရုိက္လကၡဏာေတြကုိ အေျခခံၿပီး ကြ်န္ေတာ္/မအေနနဲ႔ ကုမၸဏီအတြက္ အေကာင္းဆံုး ပါဝင္အားျဖည့္ေပးႏုိင္မယ္လုိ႔ ယံုၾကည္ပါတယ္။ ေက်းဇူးတင္ပါတယ္။"</string>
+    <string name="editor_example_four_title">"ဟုိတယ္ ဧည့္ႀကိဳေကာင္တာ"</string>
+    <string name="editor_example_four_content">"မဂၤလာ နံနက္ခင္းပါ ခင္ဗ်ာ။ ဘာမ်ား ကူညီေပးရမလဲ။\nႀကိဳတင္ၿပီး မွာယူထားတာမ်ား ရွိပါသလား။\nလူႀကီးမင္းရဲ႕ ID ဒါမွမဟုတ္ ႏုိင္ငံကူးလက္မွတ္ကုိ ၾကည့္ပါရေစ။\nတစ္ေယာက္ခန္း၊ ႏွစ္ေယာက္ခန္း ဘာမ်ား လုိခ်င္ပါသလဲ။\nဘယ္ႏွစ္ရက္ ေနမွာပါလဲ။\nတျခားလုိအပ္တာရွိရင္လည္း ေျပာပါ။ ေပ်ာ္ရႊင္ပါေစခင္ဗ်ာ။"</string>
+    <!-- tutorial page  -->
+    <string name="sm_tutorial_main_page_title">"သင့္ရဲ႕ အေကာင္းဆံုးအျပံဳးကုိ ျပံဳးျပပါ။"</string>
+    <string name="sm_tutorial_main_page_content">"မုဒ္ေျပာင္းရန္ ပြတ္ဆြဲပါ"</string>
+    <string name="sm_tutorial_coach__page_text_script_list">"ဇာတ္ညႊန္း စာရင္း"</string>
+    <string name="sm_tutorial_coach_page_text_start_practice">"စတင္ေလ့က်င့္ပါ"</string>
+    <string name="sm_tutorial_coach_page_text_title">"စကားေျပာေနစဥ္ အျပံဳးေလ့က်င့္ပါ"</string>
+    <string name="sm_tutorial_coach_page_text_review_video">"ဗီဒီယုိမ်ားကုိ ျပန္သံုးသပ္ပါ"</string>
+    <!-- alert dialog  -->
+    <string name="sm_alert_dialog_auto_recording_title">"ဗီဒီယုိကုိ ေအာ္တုိမွတ္တမ္းတင္ပါကုိ ပိတ္မလား။"</string>
+    <string name="sm_alert_dialog_auto_recording_message">"ပိတ္လုိက္လွ်င္ စနစ္သည္ စကားဝုိင္း မုဒ္တြင္ ဗီဒီယုိမ်ားကုိ မွတ္တမ္းတင္မည္ မဟုတ္ပါ။"</string>
+    <!-- toast -->
+    <string name="sm_recording_folder_miss_toast">"ပံုျပခန္းထဲတြင္ စကားဝုိင္း ဗီဒီယုိမ်ား မရွိပါ"</string>
+    <string name="sm_gallery_disabled_toast">"ပံုျပခန္းကုိ ပိတ္ထားသည္"</string>
+    <!--Permission -->
+    <string name="sm_permission_title">"ခြင့္ျပဳခ်က္ ေတာင္းဆုိမႈ"</string>
+    <string name="sm_permission_content">"<b><font color="#ffffff">Smile Mirror</font></b> သည္ စခရင္ေပၚတြင္ မွန္ထဲတြင္ ထင္ဟပ္ေနေသာ သင့္ပံုကုိ ျပသရန္ႏွင့္ ေနာက္ပုိင္းတြင္ သင္ ျပန္သံုးသပ္ႏုိင္ရန္ စကားဝုိင္း မုဒ္တြင္ ဗီဒီယုိကုိ မွတ္တမ္းတင္ရန္ <b><font color="#ffffff">ကင္မရာ</font></b>၊ <b><font color="#ffffff">မုိက္ခရုိဖုန္း</font></b> ႏွင့္ <b><font color="#ffffff">သုိေလွာင္ခန္း</font></b> ခြင့္ျပဳခ်က္မ်ား လုိအပ္သည္။"</string>
+    <string name="sm_permission_button_text">"ဖြင့္ပါ"</string>
+    <!--Storage full -->
+    <string name="storage_full">"သုိေလွာင္ခန္း ျပည့္ေနၿပီ"</string>
+    <string name="storage_full_for_script">"ဇာတ္ညႊန္းကုိ သိမ္းရန္ သုိေလွာင္ခန္းေနရာ မလံုေလာက္ပါ။"</string>
+    <!--Download page-->
+</resources>

@@ -1,0 +1,78 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources xmlns:android="http://schemas.android.com/apk/res/android" xmlns:tools="http://schemas.android.com/tools" xmlns:xliff="urn:oasis:names:tc:xliff:document:1.2">
+    <!-- Menu Item Names -->
+    <string name="editor_menu_item_save">"Lưu"</string>
+    <string name="editor_menu_item_rename">"Đổi tên"</string>
+    <string name="editor_menu_item_edit">"Chỉnh sửa"</string>
+    <string name="editor_menu_item_delete">"Xóa"</string>
+    <string name="editor_menu_item_mirror">"OK"</string>
+    <string name="coach_mode_menu_item_auto_record">"Tự động quay video"</string>
+    <!-- Smile Mirror -->
+    <string name="sm_app_name">"Smile Mirror"</string>
+    <string name="smile_level_one_text">"Bạn đang mỉm cười?"</string>
+    <string name="smile_level_two_text">"Trở nên tốt hơn!"</string>
+    <string name="smile_level_three_text">"Rất đẹp!"</string>
+    <string name="smile_level_four_text">"Hoàn hảo!"</string>
+    <string name="sm_speech_content_create_script">"Chạm vào nút danh sách bản ghi và tạo bản ghi mới."</string>
+    <string name="sm_speech_content_select_script">"Chạm vào nút danh sách bản ghi và chọn một bản ghi."</string>
+    <string name="smile_mode">"Chế độ mỉm cười"</string>
+    <string name="coach_mode">"Chế độ trò chuyện"</string>
+    <!-- chart page -->
+    <string name="chart_page_smile_statistics">"Thống kê nụ cười"</string>
+    <string name="chart_page_smile_duration">"Thời lượng: "</string>
+    <!-- Editor -->
+    <string name="editor_save_new_file_title">"Lưu bản ghi"</string>
+    <string name="editor_save_file_title">"Lưu"</string>
+    <string name="editor_modify_file_title">"Đã chỉnh sửa bản ghi"</string>
+    <string name="editor_save_file_description">"Bạn có muốn lưu các thay đổi của mình?"</string>
+    <string name="editor_check_yes">"Có"</string>
+    <string name="editor_check_cancel">"Hủy"</string>
+    <string name="editor_check_discard">"Hủy bỏ"</string>
+    <string name="editor_save_file_hint">"Vui lòng nhập tiêu đề bản ghi"</string>
+    <string name="editor_edit_script">"Chỉnh sửa bản ghi"</string>
+    <string name="editor_delete_script">"Xóa bản ghi"</string>
+    <string name="delete_script_description">"Xóa (các) bản ghi được chọn?"</string>
+    <string name="delete_script_toast">"%1$s bản ghi đã bị xóa"</string>
+    <string name="editor_title_bar_text">"Danh sách bản ghi"</string>
+    <string name="editor_script_title">"Xem trước"</string>
+    <string name="font_size">"Kích thước phông chữ"</string>
+    <string name="font_size_large">"Lớn"</string>
+    <string name="font_size_default">"Mặc định"</string>
+    <string name="font_size_small">"Nhỏ"</string>
+    <string name="editor_select_item">"%1$s được chọn"</string>
+    <string name="editor_default_date">"Bản ghi được tải sẵn"</string>
+    <string name="editor_content_hint">"Nhập văn bản"</string>
+    <string name="editor_title_hint">"Bản ghi mới"</string>
+    <string name="editor_menu_title_rename">"Đổi tên"</string>
+    <string name="sm_editor_add_script_remind">"Chạm \"+\" để tạo bản ghi mới."</string>
+    <!-- Example Speeches -->
+    <string name="editor_example_one_title">"Tự giới thiệu (15 giây)"</string>
+    <string name="editor_example_one_content">"Xin chào. Tôi tên là (name). Tôi đang làm nghiên cứu tại phòng nghiên cứu của Giáo sư Smith trong suốt ba năm qua. Tôi rất háo hức khám phá các tùy chọn công việc của mình tại đây và xem cách chuyên môn của tôi có thể đóng góp cho đội ngũ nghiên cứu."</string>
+    <string name="editor_example_two_title">"Đâm sầm vào ai đó"</string>
+    <string name="editor_example_two_content">"Xin chào (name)! Đã rất lâu rồi tôi chưa gặp bạn! Bạn dạo này thế nào?\nRất tiếc, nhưng tôi phải đi bây giờ. Thật vui khi trò chuyện với bạn. Hãy cùng nhau trò chuyện sau nhé!"</string>
+    <string name="editor_example_three_title">"Tự giới thiệu (1 phút)"</string>
+    <string name="editor_example_three_content">"Xin chào, tôi là (name). Tôi tin rằng mình có ba điểm mạnh:\nTrước tiên, tôi là người làm việc nhóm tốt. Tôi giỏi động viên tinh thần và có thể dẫn dắt một đội đạt được các mục tiêu của họ. Tôi từng là đội trưởng của đội cầu lông tại trường đại học, và đội của chúng tôi đã giành chức vô địch trong giải vô địch các trường đại học. Đó là thành tích tốt nhất của đội.\nThứ hai, tôi là người rất chú trọng vào kết quả. Dù là lĩnh vực gì, tôi luôn có thể vượt qua các khó khăn trong thời gian ngắn nhất có thể và đạt được các mục tiêu với thành tích tốt nhất. Khi tôi là giám đốc dự án tại công ty cũ, tôi có thể hoàn thành các mục tiêu hoạt động trong vòng 24 tháng liên tiếp.\nCuối cùng, tôi là người có tinh thần doanh nhân. Tôi thường được trao nhiệm vụ thực hiện các công việc kinh doanh mới. Mùa trước, tôi đã giới thiệu \"các hoạt động đào tạo và tập huấn về cà phê\" tại công ty cũ. Hoạt động này rất thành công, và tất cả các lớp đã được đặt lịch kín cho đến hết năm.\nDựa trên những điểm này, tôi tin rằng mình có thể có những đóng góp quan trọng cho công ty. Trân trọng cảm ơn."</string>
+    <string name="editor_example_four_title">"Bàn lễ tân khách sạn"</string>
+    <string name="editor_example_four_content">"Chào buổi sáng, thưa ngài. Tôi có thể giúp gì cho ngài?\nNgài đã đặt phòng chứ?\nToi có thể xem ID hoặc hộ chiếu của ngài chứ?\nNgài muốn phòng đơn hay phòng đôi?\nNgài lưu trú bao nhiêu ngày?\nVui lòng hãy chúng tôi biết nếu ngài cần thêm gì nữa, và chúc ngài có thời gian lưu trú thú vị!"</string>
+    <!-- tutorial page  -->
+    <string name="sm_tutorial_main_page_title">"Hãy thử nụ cười đẹp nhất của bạn!"</string>
+    <string name="sm_tutorial_main_page_content">"Vuốt để bật chế độ"</string>
+    <string name="sm_tutorial_coach__page_text_script_list">"Danh sách bản ghi"</string>
+    <string name="sm_tutorial_coach_page_text_start_practice">"Bắt đầu thực hành"</string>
+    <string name="sm_tutorial_coach_page_text_title">"Thực hành mỉm cười trong suốt cuộc trò chuyện"</string>
+    <string name="sm_tutorial_coach_page_text_review_video">"Xem lại video"</string>
+    <!-- alert dialog  -->
+    <string name="sm_alert_dialog_auto_recording_title">"Tắt video tự động ghi?"</string>
+    <string name="sm_alert_dialog_auto_recording_message">"Khi đã tắt, hệ thống sẽ không ghi hình video trong chế độ trò chuyện."</string>
+    <!-- toast -->
+    <string name="sm_recording_folder_miss_toast">"Không có video trò chuyện trong Thư viện ảnh"</string>
+    <string name="sm_gallery_disabled_toast">"Thư viện ảnh đã bị vô hiệu hóa"</string>
+    <!--Permission -->
+    <string name="sm_permission_title">"Yêu cầu giấy phép"</string>
+    <string name="sm_permission_content">"<b><font color="#ffffff">Smile Mirror</font></b> cần có các giấy phép <b><font color="#ffffff">Máy ảnh</font></b>, <b><font color="#ffffff">Micrô</font></b>, và <b><font color="#ffffff">Bộ nhớ</font></b> để hiển thị ảnh trong gưởng của bạn trên màn hình, và để quay video một cách tùy chọn trong chế độ trò chuyện cho bạn để xem lại sau."</string>
+    <string name="sm_permission_button_text">"Bật"</string>
+    <!--Storage full -->
+    <string name="storage_full">"Bộ nhớ đầy"</string>
+    <string name="storage_full_for_script">"Không đủ dung lượng trống để lưu bản ghi."</string>
+    <!--Download page-->
+</resources>

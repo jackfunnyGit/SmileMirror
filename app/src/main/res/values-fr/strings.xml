@@ -1,0 +1,78 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources xmlns:android="http://schemas.android.com/apk/res/android" xmlns:tools="http://schemas.android.com/tools" xmlns:xliff="urn:oasis:names:tc:xliff:document:1.2">
+    <!-- Menu Item Names -->
+    <string name="editor_menu_item_save">"Enregistrer"</string>
+    <string name="editor_menu_item_rename">"Renommer"</string>
+    <string name="editor_menu_item_edit">"Modifier"</string>
+    <string name="editor_menu_item_delete">"Supprimer"</string>
+    <string name="editor_menu_item_mirror">"OK"</string>
+    <string name="coach_mode_menu_item_auto_record">"Enregistrement automatique de la vidéo"</string>
+    <!-- Smile Mirror -->
+    <string name="sm_app_name">"Smile Mirror"</string>
+    <string name="smile_level_one_text">"Souriez-vous ?"</string>
+    <string name="smile_level_two_text">"C'est mieux !"</string>
+    <string name="smile_level_three_text">"Bien !"</string>
+    <string name="smile_level_four_text">"Parfait !"</string>
+    <string name="sm_speech_content_create_script">"Appuyez sur le bouton de la liste des scripts et créez un nouveau script."</string>
+    <string name="sm_speech_content_select_script">"Appuyez sur le bouton de la liste des scripts et sélectionnez un script."</string>
+    <string name="smile_mode">"Mode Sourire"</string>
+    <string name="coach_mode">"Mode Conversation"</string>
+    <!-- chart page -->
+    <string name="chart_page_smile_statistics">"Statistiques de sourire"</string>
+    <string name="chart_page_smile_duration">"Durée :"</string>
+    <!-- Editor -->
+    <string name="editor_save_new_file_title">"Enregistrer le script"</string>
+    <string name="editor_save_file_title">"Enregistrer"</string>
+    <string name="editor_modify_file_title">"Scripte modifié"</string>
+    <string name="editor_save_file_description">"Voulez-vous enregistrer vos modifications ?"</string>
+    <string name="editor_check_yes">"Oui"</string>
+    <string name="editor_check_cancel">"Annuler"</string>
+    <string name="editor_check_discard">"Abandonner"</string>
+    <string name="editor_save_file_hint">"Configurez le titre du script."</string>
+    <string name="editor_edit_script">"Modifier le script"</string>
+    <string name="editor_delete_script">"Supprimer le script"</string>
+    <string name="delete_script_description">"Supprimer le ou les scripts sélectionnés ?"</string>
+    <string name="delete_script_toast">"%1$s script(s) ont été modifiés."</string>
+    <string name="editor_title_bar_text">"Liste des scripts"</string>
+    <string name="editor_script_title">"Aperçu"</string>
+    <string name="font_size">"Taille de la police"</string>
+    <string name="font_size_large">"Grande"</string>
+    <string name="font_size_default">"Par défaut"</string>
+    <string name="font_size_small">"Petite"</string>
+    <string name="editor_select_item">"%1$s sélectionné(s)"</string>
+    <string name="editor_default_date">"Script préchargé"</string>
+    <string name="editor_content_hint">"Saisir du texte"</string>
+    <string name="editor_title_hint">"Nouveau script"</string>
+    <string name="editor_menu_title_rename">"Renommer"</string>
+    <string name="sm_editor_add_script_remind">"Appuyez sur \"+\" pour créer un nouveau script."</string>
+    <!-- Example Speeches -->
+    <string name="editor_example_one_title">"Auto-intro (15 secondes)"</string>
+    <string name="editor_example_one_content">"Bonjour. Mon nom est (nom). Je fais des recherches au laboratoire du professeur Smith depuis ces trois dernières années. Je suis impatient(e) d'explorer mes options de carrière ici et de voir comment mon expertise peut contribuer à l'équipe."</string>
+    <string name="editor_example_two_title">"Rentrer dans quelqu'un"</string>
+    <string name="editor_example_two_content">"Bonjour (nom) ! Ça fait une éternité ! Que devenez-vous ?\nDésolé, mais je dois partir. C'était génial de discuter avec vous. Revoyons nous plus tard !"</string>
+    <string name="editor_example_three_title">"Auto-intro (1 minute)"</string>
+    <string name="editor_example_three_content">"Bonjour, je m'appelle (nom). Je pense avoir trois points forts :\nD'abord je suis membre d'une équipe de joueurs. Je suis bon(ne) pour remonter le moral et peut diriger l'équipe pour lui faire atteindre ses objectifs. J'ai été capitaine de l'équipe de badminton à l'université et notre équipe a été finaliste de la coupe de l'université. Ce fut le meilleur résultat de l'équipe de l'école à ce jour.\nEnsuite, je suis très axé(e) sur les résultats. Quel que soit le domaine, je peux toujours surmonter les difficultés dans le temps le plus bref possible et atteindre les objectifs avec des performances de premier ordre. Lorsque j'étais chef de projet dans mon ancienne société, j'ai pu atteindre les objectifs de performance pendant 24 mois de suite.\nEnfin, j'ai l'esprit d'entreprise. On me donne souvent pour tâche de gérer de nouvelles activités. La saison dernière, j'ai présenté \"Éducation au café et activités d'entraînement\" dans mon ancienne société. Cela a été un grand succès, et toutes les classes étaient complètement réservées jusqu'à la fin de l'année.\nD'après ces caractéristiques, je pense que je peux apporter une grande contribution à l'entreprise. Merci."</string>
+    <string name="editor_example_four_title">"Réception d'un hôtel"</string>
+    <string name="editor_example_four_content">"Bonjour, monsieur. Comment puis-je vous aider ?\nAvez-vous une réservation ?\nPuis-je voir votre carte d'identité ou votre passeport, s'il vous plaît ?\nDésirez-vous une chambre individuelle ou pour deux personnes ?\nCombien de jour avez-vous l'intention de séjourner ?\nN'hésitez pas à nous faire savoir vous haver besoin de quoi que ce soit et passez une excellente journée !"</string>
+    <!-- tutorial page  -->
+    <string name="sm_tutorial_main_page_title">"Essayez votre meilleur sourire !"</string>
+    <string name="sm_tutorial_main_page_content">"Glisser pour changer de mode"</string>
+    <string name="sm_tutorial_coach__page_text_script_list">"Liste des scripts"</string>
+    <string name="sm_tutorial_coach_page_text_start_practice">"Commencer l'entraînement"</string>
+    <string name="sm_tutorial_coach_page_text_title">"Entraînez-vous à sourire pendant une conversation."</string>
+    <string name="sm_tutorial_coach_page_text_review_video">"Revoir les vidéos"</string>
+    <!-- alert dialog  -->
+    <string name="sm_alert_dialog_auto_recording_title">"Désactiver l'enregistrement automatique de vidéo ?"</string>
+    <string name="sm_alert_dialog_auto_recording_message">"Une fois désactivé, le système n'enregistre plus les vidéos en mode conversation."</string>
+    <!-- toast -->
+    <string name="sm_recording_folder_miss_toast">"Pas de vidéo dans la galerie"</string>
+    <string name="sm_gallery_disabled_toast">"La galerie est désactivée"</string>
+    <!--Permission -->
+    <string name="sm_permission_title">"Demande d'autorisation"</string>
+    <string name="sm_permission_content"><b><font color="#ffffff">"Smile Mirror"</font></b>" nécessite les autorisations "<b><font color="#ffffff">"Appareil photo"</font></b>", "<b><font color="#ffffff">"Microphone"</font></b>" et "<b><font color="#ffffff">"Stockage"</font></b>" pour afficher votre image en miroir sur l'écran et éventuellement enregistrer une vidéo en mode conversation et que vous pourrez revoir ultérieurement."</string>
+    <string name="sm_permission_button_text">"Activer"</string>
+    <!--Storage full -->
+    <string name="storage_full">"Stockage plein"</string>
+    <string name="storage_full_for_script">"Pas assez d'espace de stockage pour enregistrer le script."</string>
+    <!--Download page-->
+</resources>

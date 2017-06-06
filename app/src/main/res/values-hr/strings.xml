@@ -1,0 +1,78 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources xmlns:android="http://schemas.android.com/apk/res/android" xmlns:tools="http://schemas.android.com/tools" xmlns:xliff="urn:oasis:names:tc:xliff:document:1.2">
+    <!-- Menu Item Names -->
+    <string name="editor_menu_item_save">"Spremi"</string>
+    <string name="editor_menu_item_rename">"Preimenuj"</string>
+    <string name="editor_menu_item_edit">"Uredi"</string>
+    <string name="editor_menu_item_delete">"Obriši"</string>
+    <string name="editor_menu_item_mirror">"U REDU"</string>
+    <string name="coach_mode_menu_item_auto_record">"Automatsko snimanje videoisječka"</string>
+    <!-- Smile Mirror -->
+    <string name="sm_app_name">"Smile Mirror"</string>
+    <string name="smile_level_one_text">"Smijete li se?"</string>
+    <string name="smile_level_two_text">"Bolje!"</string>
+    <string name="smile_level_three_text">"Lijepo!"</string>
+    <string name="smile_level_four_text">"Savršeno!"</string>
+    <string name="sm_speech_content_create_script">"Dotaknite gumb popisa skripti i izradite novu skriptu."</string>
+    <string name="sm_speech_content_select_script">"Dotaknite gumb popisa skripti i odaberite skriptu."</string>
+    <string name="smile_mode">"Način osmijeha"</string>
+    <string name="coach_mode">"Način razgovora"</string>
+    <!-- chart page -->
+    <string name="chart_page_smile_statistics">"Statistika osmjega"</string>
+    <string name="chart_page_smile_duration">"Trajanje:"</string>
+    <!-- Editor -->
+    <string name="editor_save_new_file_title">"Spremi skriptu"</string>
+    <string name="editor_save_file_title">"Spremi"</string>
+    <string name="editor_modify_file_title">"Skripta izmjenjena"</string>
+    <string name="editor_save_file_description">"Želite li spremiti izmjene?"</string>
+    <string name="editor_check_yes">"Da"</string>
+    <string name="editor_check_cancel">"Poništi"</string>
+    <string name="editor_check_discard">"Odbaci"</string>
+    <string name="editor_save_file_hint">"Upišite naziv skripte"</string>
+    <string name="editor_edit_script">"Uredi skriptu"</string>
+    <string name="editor_delete_script">"Obriši skriptu"</string>
+    <string name="delete_script_description">"Obrisati odabranu skriptu(-e)?"</string>
+    <string name="delete_script_toast">"%1$s skripta je obrisana"</string>
+    <string name="editor_title_bar_text">"Popis skripti"</string>
+    <string name="editor_script_title">"Pregled"</string>
+    <string name="font_size">"Veličina fonta"</string>
+    <string name="font_size_large">"Veliko"</string>
+    <string name="font_size_default">"Zadano"</string>
+    <string name="font_size_small">"Malo"</string>
+    <string name="editor_select_item">"%1$s odabrano"</string>
+    <string name="editor_default_date">"Ponovno učitana skripta"</string>
+    <string name="editor_content_hint">"Unos teksta"</string>
+    <string name="editor_title_hint">"Nova skripta"</string>
+    <string name="editor_menu_title_rename">"Preimenuj"</string>
+    <string name="sm_editor_add_script_remind">"Dotaknite \"+\" za izradu nove skripte."</string>
+    <!-- Example Speeches -->
+    <string name="editor_example_one_title">"Samoulaz (15 sekunda)"</string>
+    <string name="editor_example_one_content">"Dobro jutro. Moje ime je (ime). Vršio sam istraživanja u laboratoriju profesora Smitha tijekom zadnje tri godine. Vrlo sam uzbuđen što sam istraživao opcije davatelja usluge i vidio kako moja ekspretiza može pridonijeti timu."</string>
+    <string name="editor_example_two_title">"Udaranje u nekog"</string>
+    <string name="editor_example_two_content">"Zdravo (ime)! Nisam te vidio godinama! Zašto si kasno došao?\nŽao mi je, moram ići. Bilo mi je drago pričati s tobom. Nađimo se ponovno ponekad!"</string>
+    <string name="editor_example_three_title">"Uvod (1 minuta)"</string>
+    <string name="editor_example_three_content">"Zdravo, ja sam (ime). Mislim da ispunjavam tri glavna uvjeta:\nPrvo, timski sam igrač. Dobar sam u podizanju morala i mogu voditi tim do postizanja njihovih ciljeva. Bio sam kapiten badminton tima na sveučilištu i naš tim je osvojio kup. To je bio najbolji rezultat sveučilišta svih vremena.\nDrugo, vrlo sam usmjeren na rezultat. Bez obzira o čemu se radi, uvijek mogu prevladati poteškoće u najkraćem mogućem vremenu i postići ciljeve vrhuskom učinkovitošću. Kada sam bio upravitelj projekta u bivšoj tvrtki, uzastopno sam udovoljavao ciljevima 24 mjeseca.\nKonačno, imam poduzetnički duh. Često sam zadužen za rad s novim tvrtkama. Prošle sezone predstavio sam \"vježbu za kavu i aktivnosti\" u mojoj bivšoj tvrtki. Bilo je vrlo uspješno, a svi su razredi bili rezervirani do kraja godine.\nNa temelju tih karakteristika, vjerujem da mogu dati veliki doprinos tvrtki. Hvala."</string>
+    <string name="editor_example_four_title">"Recepcija hotela"</string>
+    <string name="editor_example_four_content">"Dobro jutro gospodine. Kako vam mogu pomoći?\nImate li rezervaciju?\nMogu li, molim vas, dobiti vašu osobnu iskaznicu ili putovnicu?\nŽelite li jednokrevetnu ili dvokrevetnu sobu?\nKoliko dana ostajete?\nMolimo da nam kažete ako još trebate bilo što i ugodan vam boravak!"</string>
+    <!-- tutorial page  -->
+    <string name="sm_tutorial_main_page_title">"Isprobajte vaš najbolji osmjeh!"</string>
+    <string name="sm_tutorial_main_page_content">"Pomaknite u način prebacivanja"</string>
+    <string name="sm_tutorial_coach__page_text_script_list">"Popis skripti"</string>
+    <string name="sm_tutorial_coach_page_text_start_practice">"Počnite s vježbom"</string>
+    <string name="sm_tutorial_coach_page_text_title">"Vježbajte svoj osmijeh tijekom razgovora"</string>
+    <string name="sm_tutorial_coach_page_text_review_video">"Pregled videoisječka"</string>
+    <!-- alert dialog  -->
+    <string name="sm_alert_dialog_auto_recording_title">"Isključiti automatsko snimanje videoisječka?"</string>
+    <string name="sm_alert_dialog_auto_recording_message">"Kada se isključi, sustav ne snima videoisječke u načinu razgovora."</string>
+    <!-- toast -->
+    <string name="sm_recording_folder_miss_toast">"U Galeriji nema videoisječaka razgovora"</string>
+    <string name="sm_gallery_disabled_toast">"Galerija je onemogućena"</string>
+    <!--Permission -->
+    <string name="sm_permission_title">"Zahtjev za dopuštenje"</string>
+    <string name="sm_permission_content">"<b><font color="#ffffff">Smile Mirror</font></b> zahtjeva dopuštenja za <b><font color="#ffffff">Kamera</font></b>, <b><font color="#ffffff">Mikrofon</font></b> i <b><font color="#ffffff">Prostor za pohranu</font></b> za prikaz zrcalne slike na zaslonu, te opcionalno snimi videozapis u načinu razgovora za vaš kasniji pregled."</string>
+    <string name="sm_permission_button_text">"Uključi"</string>
+    <!--Storage full -->
+    <string name="storage_full">"Prostor za pohranu je pun"</string>
+    <string name="storage_full_for_script">"Nema dovoljno prostora za spremanje skripte."</string>
+    <!--Download page-->
+</resources>

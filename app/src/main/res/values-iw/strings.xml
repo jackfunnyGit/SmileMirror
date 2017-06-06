@@ -1,0 +1,78 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources xmlns:android="http://schemas.android.com/apk/res/android" xmlns:tools="http://schemas.android.com/tools" xmlns:xliff="urn:oasis:names:tc:xliff:document:1.2">
+    <!-- Menu Item Names -->
+    <string name="editor_menu_item_save">"שמור"</string>
+    <string name="editor_menu_item_rename">"שנה שם"</string>
+    <string name="editor_menu_item_edit">"ערוך"</string>
+    <string name="editor_menu_item_delete">"מחק"</string>
+    <string name="editor_menu_item_mirror">"אישור"</string>
+    <string name="coach_mode_menu_item_auto_record">"הקלטה אוטומטית של ווידיאו"</string>
+    <!-- Smile Mirror -->
+    <string name="sm_app_name">"Smile Mirror"</string>
+    <string name="smile_level_one_text">"האם אתה מחייך?"</string>
+    <string name="smile_level_two_text">"מרגיש טוב יותר!"</string>
+    <string name="smile_level_three_text">"יפה!"</string>
+    <string name="smile_level_four_text">"מושלם!"</string>
+    <string name="sm_speech_content_create_script">"הקש על לחצן רשימת התסריטים וצור תסריט חדש."</string>
+    <string name="sm_speech_content_select_script">"הקש על לחצן רשימת התסריטים ובחר תסריט."</string>
+    <string name="smile_mode">"מצב חיוך"</string>
+    <string name="coach_mode">"מצב שיחה"</string>
+    <!-- chart page -->
+    <string name="chart_page_smile_statistics">"סטטיסטיקת חיוכים"</string>
+    <string name="chart_page_smile_duration">"משך: "</string>
+    <!-- Editor -->
+    <string name="editor_save_new_file_title">"שמור תסריט"</string>
+    <string name="editor_save_file_title">"שמור"</string>
+    <string name="editor_modify_file_title">"התסריט תוקן"</string>
+    <string name="editor_save_file_description">"התרצה לשמור את השינויים?"</string>
+    <string name="editor_check_yes">"כן"</string>
+    <string name="editor_check_cancel">"ביטול"</string>
+    <string name="editor_check_discard">"דחה"</string>
+    <string name="editor_save_file_hint">"הקלד כותרת תסריט"</string>
+    <string name="editor_edit_script">"ערך תסריט"</string>
+    <string name="editor_delete_script">"מחק תסריט"</string>
+    <string name="delete_script_description">"האם למחוק את התסריטים שנבחרו?"</string>
+    <string name="delete_script_toast">"%1$s תסריטים נמחקו"</string>
+    <string name="editor_title_bar_text">"רשימת תסריטים"</string>
+    <string name="editor_script_title">"תצוגה מקדימה"</string>
+    <string name="font_size">"גודל גופן"</string>
+    <string name="font_size_large">"גדול"</string>
+    <string name="font_size_default">"ברירת מחדל"</string>
+    <string name="font_size_small">"קטן"</string>
+    <string name="editor_select_item">"%1$s נבחרו"</string>
+    <string name="editor_default_date">"תסריט טעון מראש"</string>
+    <string name="editor_content_hint">"הקלד טקסט"</string>
+    <string name="editor_title_hint">"תסריט חדש"</string>
+    <string name="editor_menu_title_rename">"שנה שם"</string>
+    <string name="sm_editor_add_script_remind">"הקש על \"+\" כדי ליצור תסריט חדש."</string>
+    <!-- Example Speeches -->
+    <string name="editor_example_one_title">"הצגה עצמית (15 שניות)"</string>
+    <string name="editor_example_one_content">"בוקר טוב, שמי הוא (שם). עסקתי במחקר במעבדה של פרופ' סמית במשך למעלה משלוש השנים האחרונות. אני נרגש מהאפשרות לבדוק את אפשרויות הקריירה שלי כאן ולראות כיצד המומחיות שלי עשויה לתרום לצוות."</string>
+    <string name="editor_example_two_title">"היתקלות במישהו"</string>
+    <string name="editor_example_two_content">"אהלן (שם) לא ראיתיך זה עדן ועידנים! במה אתה עוסק לאחרונה?\nמצטער אבל אני חייב ללכת. היה נפלא לשוחח אתך. בוא נפגש שוב בקרוב!"</string>
+    <string name="editor_example_three_title">"הצגה עצמית (דקה אחת)"</string>
+    <string name="editor_example_three_content">"שלום, אני (שם). אני מאמין שיש לי שלוש נקודות חזקות: \nראשית, אני שחקן צוות. אני טוב בלהעלות את המוראל ואני יכול להוביל את הצוות להשגת יעדיו. תפקדתי בעבר כקפטיין של קבוצת בדמינגטון באוניברסיטה וקבוצתנו בגיעה לגמר גביע המכללות. זה היה ההישג הטוב ביותר של הקבוצה מעולם. \nשנית, אני מאוד מוכוון-מטרה. מבלי להתחשב בתחום, אני יכול להתגבר על קשיים בדרך הקצרה ביותר האפשרית ולהשיג יעדים תוך הפגנת ביצועים ברמה הטובה ביותר. כאשר ניהלתי פרויקט בחברה הקודמת, הייתי מסוגל להשיג יעדי ביצוע במשך 24 חודשים עוקבים. \nולסיום, יש בי רוח יזמית. לעתים קרובות מטילים עלי את המשימה לטפל בעסקים חדשים. שיעור אחרון בחברה הקודמת יזמתי והובלתי מיזם \"קפה, למידה ותרגול\". המיזם הצליח מאוד ובכול הכיתות הייתה הרשמה מלאה עד סוף השנה. \nבהתבסס על אפיונים אלה, אני מאמין שאוכל לתרום בצורה משמעותית לחברה. תודה."</string>
+    <string name="editor_example_four_title">"דלפק קבלה במלון"</string>
+    <string name="editor_example_four_content">"בוקר טוב אדוני, במה אוכל לעזור לך?\nהאם הזמנת מקום?\nתן לי בבקשה את תעודת הזהות או את הדרכון שלך?\nהאם תרצה חדר יחיד או חדר כפול?\nכמה ימים בכוונתך להתארח אצלנו?\nאנא הודע לנו אם תזדקק למשהו נוסף, ומאחלים לך שהיה נפלאה!"</string>
+    <!-- tutorial page  -->
+    <string name="sm_tutorial_main_page_title">"נסה את החיוך הטוב ביותר שלך!"</string>
+    <string name="sm_tutorial_main_page_content">"החלק להחלפת מצב"</string>
+    <string name="sm_tutorial_coach__page_text_script_list">"רשימת תסריטים"</string>
+    <string name="sm_tutorial_coach_page_text_start_practice">"התחל לתרגל"</string>
+    <string name="sm_tutorial_coach_page_text_title">"תרגל חיוך במהלך שיחה"</string>
+    <string name="sm_tutorial_coach_page_text_review_video">"סקור סרטוני ווידיאו"</string>
+    <!-- alert dialog  -->
+    <string name="sm_alert_dialog_auto_recording_title">"השבת את ההקלטה האוטומטית של ווידיאו"</string>
+    <string name="sm_alert_dialog_auto_recording_message">"לאחר ההשבתה, המערכת לא תקליט יותר קטעי ווידיאו במצב שיחה."</string>
+    <!-- toast -->
+    <string name="sm_recording_folder_miss_toast">"אין בגלריה סרטוני ווידיאו של שיחות"</string>
+    <string name="sm_gallery_disabled_toast">"הגלריה מושבתת"</string>
+    <!--Permission -->
+    <string name="sm_permission_title">"בקשת הרשאה"</string>
+    <string name="sm_permission_content">"היישומון <b><font color="#ffffff">Smile Mirror</font></b> זקוק להרשאות <b><font color="#ffffff">מצלמה</font></b>, <b><font color="#ffffff">מיקרופון</font></b>, ו<b><font color="#ffffff">אחסון</font></b> כדי להציג את תמונת המראה שלך על המרקע וכדי להקליט, אופציונלית, סרטוני ווידיאו במצב שיחה ולסקור אותם מאוחר יותר."</string>
+    <string name="sm_permission_button_text">"הפעל"</string>
+    <!--Storage full -->
+    <string name="storage_full">"אחסון מלא"</string>
+    <string name="storage_full_for_script">"אין מספיק מקום פנוי באחסון לשמירת התסריט."</string>
+    <!--Download page-->
+</resources>

@@ -1,0 +1,78 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources xmlns:android="http://schemas.android.com/apk/res/android" xmlns:tools="http://schemas.android.com/tools" xmlns:xliff="urn:oasis:names:tc:xliff:document:1.2">
+    <!-- Menu Item Names -->
+    <string name="editor_menu_item_save">"Simpan"</string>
+    <string name="editor_menu_item_rename">"Nama Semula"</string>
+    <string name="editor_menu_item_edit">"Edit"</string>
+    <string name="editor_menu_item_delete">"Padam"</string>
+    <string name="editor_menu_item_mirror">"OK"</string>
+    <string name="coach_mode_menu_item_auto_record">"Rakam auto video"</string>
+    <!-- Smile Mirror -->
+    <string name="sm_app_name">"Smile Mirror"</string>
+    <string name="smile_level_one_text">"Adakah anda tersenyum?"</string>
+    <string name="smile_level_two_text">"Semakin baik!"</string>
+    <string name="smile_level_three_text">"Bagus!"</string>
+    <string name="smile_level_four_text">"Sempurna!"</string>
+    <string name="sm_speech_content_create_script">"Ketik pada butang senarai skrip dan cipta skrip baharu."</string>
+    <string name="sm_speech_content_select_script">"Ketik pada butang senarai skrip dan pilih skrip."</string>
+    <string name="smile_mode">"Mod senyum"</string>
+    <string name="coach_mode">"Mod perbualan"</string>
+    <!-- chart page -->
+    <string name="chart_page_smile_statistics">"Statistik senyum"</string>
+    <string name="chart_page_smile_duration">"Tempoh: "</string>
+    <!-- Editor -->
+    <string name="editor_save_new_file_title">"Simpan skrip"</string>
+    <string name="editor_save_file_title">"Simpan"</string>
+    <string name="editor_modify_file_title">"Skrip diubah suai"</string>
+    <string name="editor_save_file_description">"Adakah anda mahu menyimpan perubahan anda?"</string>
+    <string name="editor_check_yes">"Ya"</string>
+    <string name="editor_check_cancel">"Batal"</string>
+    <string name="editor_check_discard">"Buang"</string>
+    <string name="editor_save_file_hint">"Sila masukkan tajuk skrip"</string>
+    <string name="editor_edit_script">"Edit skrip"</string>
+    <string name="editor_delete_script">"Padam skrip"</string>
+    <string name="delete_script_description">"Padam skrip yang dipilih?"</string>
+    <string name="delete_script_toast">"%1$s skrip telah dipadamkan"</string>
+    <string name="editor_title_bar_text">"Senarai skrip"</string>
+    <string name="editor_script_title">"Pratonton"</string>
+    <string name="font_size">"Saiz fon"</string>
+    <string name="font_size_large">"Besar"</string>
+    <string name="font_size_default">"Lalai"</string>
+    <string name="font_size_small">"Kecil"</string>
+    <string name="editor_select_item">"%1$s dipilih"</string>
+    <string name="editor_default_date">"Skrip dipramuat"</string>
+    <string name="editor_content_hint">"Teks input"</string>
+    <string name="editor_title_hint">"Skrip baharu"</string>
+    <string name="editor_menu_title_rename">"Nama Semula"</string>
+    <string name="sm_editor_add_script_remind">"Ketik \"+\" untuk mencipta skrip baharu."</string>
+    <!-- Example Speeches -->
+    <string name="editor_example_one_title">"Pengenalan kendiri (15 saat)"</string>
+    <string name="editor_example_one_content">"Selamat pagi. Nama saya ialah (name). Saya telah melakukan penyelidikan dalam makmal Profesor Smith sejak tiga tahun lalu. Saya sangat teruja untuk meneroka pilihan kerjaya saya di sini dan melihat cara untuk menyumbang kepada pasukan melalui kepakaran saya."</string>
+    <string name="editor_example_two_title">"Bertembung dengan seseorang"</string>
+    <string name="editor_example_two_content">"Hai (name)! Sudah lama saya tidak bertemu kamu! Apa yang kamu lakukan kebelakangan ini?\nMaaf, saya kena pergi dulu. Seronok berbual dengan kamu. Mari bertemu lagi lain kali!"</string>
+    <string name="editor_example_three_title">"Pengenalan kendiri (1 minit)"</string>
+    <string name="editor_example_three_content">"Helo, saya (name). Saya percaya saya ada tiga kekuatan utama:\nPertama, saya pemain pasukan. Saya pandai meningkatkan moral dan saya boleh mengetuai pasukan untuk mencapai matlamat mereka. Saya pernah menjadi kapten pasukan badminton di universiti dan pasukan kami menjadi naib juara piala kolej. Ia keputusan terbaik yang pernah diperoleh pasukan sekolah.\nKedua, saya sangat berorientasikan hasil. Tanpa mengira bidang, saya sentiasa dapat mengatasi kesukaran dalam masa paling singkat dan mencapai matlamat dengan prestasi yang hebat. Ketika saya menjadi pengurus projek di syarikat lama saya, saya dapat memenuhi sasaran prestasi selama 24 bulan berturut-turut.\nAkhir sekali, saya mempunyai semangat keusahawanan. Saya sering diberikan tugas untuk mengendalikan perniagaan baharu. Pada musim lalu, saya telah memperkenalkan \"aktiviti pendidikan dan latihan kopi\" di syarikat lama saya. Ia sangat berjaya dan semua kelas sudah habis ditempah sehingga akhir tahun.\nBerdasarkan ciri ini, saya percaya saya boleh memberi sumbangan yang hebat kepada syarikat. Terima kasih."</string>
+    <string name="editor_example_four_title">"Meja bantuan hotel"</string>
+    <string name="editor_example_four_content">"Selamat pagi, tuan. Bagaimana saya boleh membantu?\nAnda ada membuat tempahan??\nBoleh berikan saya ID atau pasport anda?\nAnda ingin bilik seorang atau bilik berdua?\nBerapa lamakah anda akan menginap?\nSila beritahu kami jika anda memerlukan apa-apa bantuan dan semoga seronok menginap!"</string>
+    <!-- tutorial page  -->
+    <string name="sm_tutorial_main_page_title">"Cuba berikan senyuman terbaik anda!"</string>
+    <string name="sm_tutorial_main_page_content">"Leret untuk menukar mod"</string>
+    <string name="sm_tutorial_coach__page_text_script_list">"Senarai skrip"</string>
+    <string name="sm_tutorial_coach_page_text_start_practice">"Mula berlatih"</string>
+    <string name="sm_tutorial_coach_page_text_title">"Latih senyuman anda semasa perbualan"</string>
+    <string name="sm_tutorial_coach_page_text_review_video">"Semak video"</string>
+    <!-- alert dialog  -->
+    <string name="sm_alert_dialog_auto_recording_title">"Matikan rakam auto video?"</string>
+    <string name="sm_alert_dialog_auto_recording_message">"Sebaik sahaja dimatikan, sistem tidak akan merakam video dalam mod perbualan."</string>
+    <!-- toast -->
+    <string name="sm_recording_folder_miss_toast">"Tiada video perbualan dalam Galeri"</string>
+    <string name="sm_gallery_disabled_toast">"Galeri dinyahdayakan"</string>
+    <!--Permission -->
+    <string name="sm_permission_title">"Permintaan keizinan"</string>
+    <string name="sm_permission_content">"<b><font color="#ffffff">Smile Mirror</font></b> memerlukan keizinan <b><font color="#ffffff">Kamera</font></b>, <b><font color="#ffffff">Mikrofon</font></b> dan <b><font color="#ffffff">Storan</font></b> untuk menunjukkan imej bercermin anda pada skrin dan untuk merakam video dalam mod perbualan secara pilihan untuk semakan anda kemudian."</string>
+    <string name="sm_permission_button_text">"Hidupkan"</string>
+    <!--Storage full -->
+    <string name="storage_full">"Storan penuh"</string>
+    <string name="storage_full_for_script">"Ruang storan tidak mencukupi untuk menyimpan skrip."</string>
+    <!--Download page-->
+</resources>

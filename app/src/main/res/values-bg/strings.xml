@@ -1,0 +1,78 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources xmlns:android="http://schemas.android.com/apk/res/android" xmlns:tools="http://schemas.android.com/tools" xmlns:xliff="urn:oasis:names:tc:xliff:document:1.2">
+    <!-- Menu Item Names -->
+    <string name="editor_menu_item_save">"Записване"</string>
+    <string name="editor_menu_item_rename">"Преименуване"</string>
+    <string name="editor_menu_item_edit">"Редактиране"</string>
+    <string name="editor_menu_item_delete">"Изтриване"</string>
+    <string name="editor_menu_item_mirror">"OK"</string>
+    <string name="coach_mode_menu_item_auto_record">"Автоматичен запис на видео"</string>
+    <!-- Smile Mirror -->
+    <string name="sm_app_name">"Smile Mirror"</string>
+    <string name="smile_level_one_text">"Усмихвате ли се?"</string>
+    <string name="smile_level_two_text">"Усъвършенствате се!"</string>
+    <string name="smile_level_three_text">"Браво!"</string>
+    <string name="smile_level_four_text">"Идеално!"</string>
+    <string name="sm_speech_content_create_script">"Докоснете бутона за списък със сценарии и създайте нов сценарий."</string>
+    <string name="sm_speech_content_select_script">"Докоснете бутона за списък със сценарии и изберете сценарий."</string>
+    <string name="smile_mode">"Режим на усмивка"</string>
+    <string name="coach_mode">"Режим на разговор"</string>
+    <!-- chart page -->
+    <string name="chart_page_smile_statistics">"Статистика за усмивките"</string>
+    <string name="chart_page_smile_duration">"Продължителност: "</string>
+    <!-- Editor -->
+    <string name="editor_save_new_file_title">"Записване на сценария"</string>
+    <string name="editor_save_file_title">"Записване"</string>
+    <string name="editor_modify_file_title">"Сценарият е променен"</string>
+    <string name="editor_save_file_description">"Искате ли да запазите промените?"</string>
+    <string name="editor_check_yes">"Да"</string>
+    <string name="editor_check_cancel">"Отказ"</string>
+    <string name="editor_check_discard">"Отхвърляне"</string>
+    <string name="editor_save_file_hint">"Моля, въведете заглавие на сценария"</string>
+    <string name="editor_edit_script">"Редактиране на сценарий"</string>
+    <string name="editor_delete_script">"Изтриване на сценарий"</string>
+    <string name="delete_script_description">"Изтриване на избрания(ите) сценарий(и)?"</string>
+    <string name="delete_script_toast">"%1$s изтрит(и) сценарий(и) "</string>
+    <string name="editor_title_bar_text">"Списък със сценарии"</string>
+    <string name="editor_script_title">"Предварителен изглед"</string>
+    <string name="font_size">"Размер на шрифта"</string>
+    <string name="font_size_large">"Голям"</string>
+    <string name="font_size_default">"По подразбиране"</string>
+    <string name="font_size_small">"Малък"</string>
+    <string name="editor_select_item">"%1$s избран/и"</string>
+    <string name="editor_default_date">"Предварително зареден сценарий"</string>
+    <string name="editor_content_hint">"Входящ текст"</string>
+    <string name="editor_title_hint">"Нов сценарий"</string>
+    <string name="editor_menu_title_rename">"Преименуване"</string>
+    <string name="sm_editor_add_script_remind">"Докоснете \"+\", за да създадете нов сценарий."</string>
+    <!-- Example Speeches -->
+    <string name="editor_example_one_title">"Представяне (15 секунди)"</string>
+    <string name="editor_example_one_content">"Добро утро. Казвам се (име). През последните три години провеждах проучване в лабораторията на професор Смит. Нямам търпение да разбера за кариерните възможности тук и да видя как опитът ми може да е от полза на екипа."</string>
+    <string name="editor_example_two_title">"Случайна среща с някого"</string>
+    <string name="editor_example_two_content">"Здрасти, (име)! Не съм те виждал от сто години! Как я караш?\nСъжалявам, но трябва да тръгвам. Радвам се, че си поприказвахме. Някой път трябва да се видим!"</string>
+    <string name="editor_example_three_title">"Представяне (1 минута)"</string>
+    <string name="editor_example_three_content">"Здравейте, казвам се (име). Вярвам, че имам три силни качества:\nПърво, аз съм отборен играч. Добър съм в това да поддържам високия дух в екипа и мога да водя хората към постигане на целите. В университета бях капитан на отбора по бадминтон и отборът ни беше един от претендентите за колежанската купа. Това беше най-високият резултат, постиган някога от отбора.\nНа второ място, аз съм изключително ориентиран към резултатите. Без значение от областта на работа, винаги мога да се справя с трудностите възможно най-бързо и да постигам целите си чрез възможно най-добра производителност. Когато бях мениджър на проекти в предишната си месторабота, успях да изпълня поставените цели за 24 последователни месеца.\nЗа финал ще споделя, че притежавам предприемачески дух. Често ми поверяват работата с нови клиенти. Миналия сезон в предишната фирма въведох \"семинари и обучения, свързани с кафето\". Беше много успешно начинание и всички часове бяха запълнени до края на годината.\nНа базата на тези характеристики вярвам, че бих могъл да бъда чудесно попълнение към фирмата. Благодаря ви."</string>
+    <string name="editor_example_four_title">"Рецепцията на хотел"</string>
+    <string name="editor_example_four_content">"Добро утро, господине. С какво мога да помогна?\nИмате ли резервация?\nБихте ли ми показали свой паспорт или лична карта?\nЕдинична или двойна стая предпочитате?\nКолко дни ще останете?\nМоля, уведомете ни, ако имате нужда от нещо друго. Хубав ден!"</string>
+    <!-- tutorial page  -->
+    <string name="sm_tutorial_main_page_title">"Опитайте най-хубавата си усмивка!"</string>
+    <string name="sm_tutorial_main_page_content">"Плъзнете, за да смените режима"</string>
+    <string name="sm_tutorial_coach__page_text_script_list">"Списък със сценарии"</string>
+    <string name="sm_tutorial_coach_page_text_start_practice">"Започнете да се упражнявате"</string>
+    <string name="sm_tutorial_coach_page_text_title">"Упражнявайте усмивката си по време на разговор"</string>
+    <string name="sm_tutorial_coach_page_text_review_video">"Преглед на видеоклипове"</string>
+    <!-- alert dialog  -->
+    <string name="sm_alert_dialog_auto_recording_title">"Изключване на автоматичния запис на видео?"</string>
+    <string name="sm_alert_dialog_auto_recording_message">"Когато опцията е изключена, системата няма да записва видеоклипове в режим на разговор."</string>
+    <!-- toast -->
+    <string name="sm_recording_folder_miss_toast">"В галерията няма видеоклипове от разговори"</string>
+    <string name="sm_gallery_disabled_toast">"Галерията е деактивирана"</string>
+    <!--Permission -->
+    <string name="sm_permission_title">"Искане за разрешение"</string>
+    <string name="sm_permission_content">"<b><font color="#ffffff">Smile Mirror</font></b> изисква разрешения за <b><font color="#ffffff">камерата</font></b>, <b><font color="#ffffff">микрофона</font></b> и <b><font color="#ffffff">мястото за съхранение</font></b>, за да показва огледалното ви изображение на екрана и по желание да записва видео в режим на разговор, което да прегледате по-късно."</string>
+    <string name="sm_permission_button_text">"Включване"</string>
+    <!--Storage full -->
+    <string name="storage_full">"Мястото за съхранение е пълно"</string>
+    <string name="storage_full_for_script">"Няма достатъчно място за съхранение, за да запишете сценария."</string>
+    <!--Download page-->
+</resources>

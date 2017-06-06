@@ -1,0 +1,78 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources xmlns:android="http://schemas.android.com/apk/res/android" xmlns:tools="http://schemas.android.com/tools" xmlns:xliff="urn:oasis:names:tc:xliff:document:1.2">
+    <!-- Menu Item Names -->
+    <string name="editor_menu_item_save">"Kaydet"</string>
+    <string name="editor_menu_item_rename">"Yeniden adlandır"</string>
+    <string name="editor_menu_item_edit">"Düzenle"</string>
+    <string name="editor_menu_item_delete">"Sil"</string>
+    <string name="editor_menu_item_mirror">"Tamam"</string>
+    <string name="coach_mode_menu_item_auto_record">"Otomatik video kaydet"</string>
+    <!-- Smile Mirror -->
+    <string name="sm_app_name">"Smile Mirror"</string>
+    <string name="smile_level_one_text">"Gülümsüyor musunuz?"</string>
+    <string name="smile_level_two_text">"Daha iyi oluyor!"</string>
+    <string name="smile_level_three_text">"Güzel!"</string>
+    <string name="smile_level_four_text">"Harika!"</string>
+    <string name="sm_speech_content_create_script">"Komut dosyası listesi düğmesine dokunun ve yeni bir komut dosyası oluşturun."</string>
+    <string name="sm_speech_content_select_script">"Komut dosyası listesi düğmesine dokunun ve bir komut dosyası seçin."</string>
+    <string name="smile_mode">"Gülmseme modu"</string>
+    <string name="coach_mode">"Konuşma modu"</string>
+    <!-- chart page -->
+    <string name="chart_page_smile_statistics">"Gülümseme istatistikleri"</string>
+    <string name="chart_page_smile_duration">"Süre: "</string>
+    <!-- Editor -->
+    <string name="editor_save_new_file_title">"Komut dosyasını kaydet"</string>
+    <string name="editor_save_file_title">"Kaydet"</string>
+    <string name="editor_modify_file_title">"Komut dosyası değiştirildi"</string>
+    <string name="editor_save_file_description">"Değişikliklerinizi kaydetmek istiyor musunuz?"</string>
+    <string name="editor_check_yes">"Evet"</string>
+    <string name="editor_check_cancel">"İptal et"</string>
+    <string name="editor_check_discard">"Kaldır"</string>
+    <string name="editor_save_file_hint">"Lütfen komut dosyası başlığı ekleyin"</string>
+    <string name="editor_edit_script">"Komut dosyasını düzenle"</string>
+    <string name="editor_delete_script">"Komut dosyasını sil"</string>
+    <string name="delete_script_description">"Komut dosyası/dosyaları silinsin mi?"</string>
+    <string name="delete_script_toast">"%1$s komut dosyası/dosyaları silindi"</string>
+    <string name="editor_title_bar_text">"Komut dosyası listesi"</string>
+    <string name="editor_script_title">"Önizleme"</string>
+    <string name="font_size">"Yazı tipi boyutu"</string>
+    <string name="font_size_large">"Büyük"</string>
+    <string name="font_size_default">"Varsayılan"</string>
+    <string name="font_size_small">"Küçük"</string>
+    <string name="editor_select_item">"%1$s seçildi"</string>
+    <string name="editor_default_date">"Önceden yüklenen komut dosyaları"</string>
+    <string name="editor_content_hint">"Giriş metni"</string>
+    <string name="editor_title_hint">"Yeni komut dosyası"</string>
+    <string name="editor_menu_title_rename">"Yeniden adlandır"</string>
+    <string name="sm_editor_add_script_remind">"Yeni bir komut dosyası oluşturmak için \"+\"ya dokunun."</string>
+    <!-- Example Speeches -->
+    <string name="editor_example_one_title">"Kendini tanıtma (15 saniye)"</string>
+    <string name="editor_example_one_content">"Günaydın. Benim adım (isim). Son üç yıldır Profesör Smith'in laboratuvarında araştırma yapıyorum. Burada kariyer seçeneklerimi keşfetmekten ve ekibime nasıl katkıda bulunabileceğimi görmekten heyecan duyuyorum."</string>
+    <string name="editor_example_two_title">"Birisiyle karşılaşmak"</string>
+    <string name="editor_example_two_content">"Merhaba (isim)! Yıllardır seni görmüyorum! Son zamanlarda neler yapıyorsun?\nÜzgünüm, ancak gitmem gerekiyor. Seninle sohbet etmek harikaydı. Daha sonra da beraber zaman geçirelim!"</string>
+    <string name="editor_example_three_title">"Kendini tanıtma (1 dakika)"</string>
+    <string name="editor_example_three_content">"Merhaba, ben (isim). Üç güçlü noktamın olduğuna inanıyorum:\nBirincisi, takım oyuncusuyum. Moral yükseltme konusunda  iyiyim ve takımın hedeflerine ulaşmasında liderlik edebilirim. Bir zamanlar üniversitede badminton takımı kaptanı olarak görev yaptım. Ekibimiz üniversite takımında ve üniversite finansörlüğünde ikinci sıradaydı. Okul takımının en iyi sonucuydu.\nİkinci olarak, sonuç odaklıyım. Alan olmasa da en kısa sürede zorlukları aşabilirim ve en iyi performansla hedeflere ulaşabilirim. Eski şirketimde bir proje yöneticisi olduğumda, 24 ay üst üste performans hedeflerini yakaladım.\nSon olarak, girişimci bir ruhum var. Geçen sezon eski şirketime \"kahve eğitimi ve eğitim faaliyetleri \" sundum. Çok başarılıydı ve tüm sınıflar yıl sonuna kadar tamamen ayrılmıştı.\nBu özelliklere dayanarak inanıyorum ki şirkete büyük katkı sağlayabilirim. Teşekkür ederim. "</string>
+    <string name="editor_example_four_title">"Otel resepsiyonu"</string>
+    <string name="editor_example_four_content">"Günaydın, efendim? Size nasıl yardımcı olabilirim?\nRezervasyonunuz var mı?\nKimliğinize veya pasaportunuza bakabilir miyim?\nTek kişililk mi yoksa çift kişilik oda mı istersiniz?\nKaç gün kalacaksınız?\nBaşka bir şeye ihtiyacınız olursa lütfen bizi bilgilendirin ve iyi zaman geçirin!"</string>
+    <!-- tutorial page  -->
+    <string name="sm_tutorial_main_page_title">"En iyi gülümsemenizi deneyin!"</string>
+    <string name="sm_tutorial_main_page_content">"Mod değiştirmek için kaydır"</string>
+    <string name="sm_tutorial_coach__page_text_script_list">"Komut dosyası listesi"</string>
+    <string name="sm_tutorial_coach_page_text_start_practice">"Uygulamaya başla"</string>
+    <string name="sm_tutorial_coach_page_text_title">"Konuşma esnasında gülümse"</string>
+    <string name="sm_tutorial_coach_page_text_review_video">"Videoları gözden geçir"</string>
+    <!-- alert dialog  -->
+    <string name="sm_alert_dialog_auto_recording_title">"Videoları otomatik kaydetme kapatılsın mı?"</string>
+    <string name="sm_alert_dialog_auto_recording_message">"Kapatıldığında sistem konuşma modunda videoları kaydetmez."</string>
+    <!-- toast -->
+    <string name="sm_recording_folder_miss_toast">"Gsleride konuşma videosu yok"</string>
+    <string name="sm_gallery_disabled_toast">"Galeri devre dışı bırakıldı"</string>
+    <!--Permission -->
+    <string name="sm_permission_title">"İzin talebi"</string>
+    <string name="sm_permission_content"><b><font color="#ffffff">"Smile Mirror"</font></b>"'nın ekranda yansıtılan görüntünüzü göstermek ve konuma modundayken daha sonra gözden geçirebilmeniz için isteğe bağlı olarak video kaydetmesi için "<b><font color="#ffffff">"Kamera"</font></b>", "<b><font color="#ffffff">"Mikrofon"</font></b>", ve "<b><font color="#ffffff">"Depolama"</font></b>" izinlerine ihtiyacı var."</string>
+    <string name="sm_permission_button_text">"Aç"</string>
+    <!--Storage full -->
+    <string name="storage_full">"Depolama tamamen dolu"</string>
+    <string name="storage_full_for_script">"Komut dosyasını kaydetmek için yeterli alan yok."</string>
+    <!--Download page-->
+</resources>

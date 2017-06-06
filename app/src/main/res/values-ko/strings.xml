@@ -1,0 +1,78 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources xmlns:android="http://schemas.android.com/apk/res/android" xmlns:tools="http://schemas.android.com/tools" xmlns:xliff="urn:oasis:names:tc:xliff:document:1.2">
+    <!-- Menu Item Names -->
+    <string name="editor_menu_item_save">"저장"</string>
+    <string name="editor_menu_item_rename">"이름 바꾸기"</string>
+    <string name="editor_menu_item_edit">"편집"</string>
+    <string name="editor_menu_item_delete">"삭제"</string>
+    <string name="editor_menu_item_mirror">"확인"</string>
+    <string name="coach_mode_menu_item_auto_record">"자동 동영상 녹화"</string>
+    <!-- Smile Mirror -->
+    <string name="sm_app_name">"Smile Mirror"</string>
+    <string name="smile_level_one_text">"웃고 있습니까?"</string>
+    <string name="smile_level_two_text">"더 나은 결과를 확인하세요!"</string>
+    <string name="smile_level_three_text">"좋아요!"</string>
+    <string name="smile_level_four_text">"완벽해요!"</string>
+    <string name="sm_speech_content_create_script">"스크립트 목록 버튼을 탭하고 새 스크립트를 생성하십시오."</string>
+    <string name="sm_speech_content_select_script">"스크립트 목록 버튼을 탭하고 스크립트를 선택하십시오."</string>
+    <string name="smile_mode">"스마일 모드"</string>
+    <string name="coach_mode">"대화 모드"</string>
+    <!-- chart page -->
+    <string name="chart_page_smile_statistics">"스마일 통계"</string>
+    <string name="chart_page_smile_duration">"기간:"</string>
+    <!-- Editor -->
+    <string name="editor_save_new_file_title">"스크립트 저장"</string>
+    <string name="editor_save_file_title">"저장"</string>
+    <string name="editor_modify_file_title">"스크립트 수정됨"</string>
+    <string name="editor_save_file_description">"변경 내용을 저장하시겠습니까?"</string>
+    <string name="editor_check_yes">"예"</string>
+    <string name="editor_check_cancel">"취소"</string>
+    <string name="editor_check_discard">"삭제"</string>
+    <string name="editor_save_file_hint">"스크립트 제목을 입력하십시오."</string>
+    <string name="editor_edit_script">"스크립트 편집"</string>
+    <string name="editor_delete_script">"스크립트 삭제"</string>
+    <string name="delete_script_description">"선택한 스크립트를 삭제하시겠습니까?"</string>
+    <string name="delete_script_toast">"%1$s개 스크립트가 삭제되었습니다."</string>
+    <string name="editor_title_bar_text">"스크립트 목록"</string>
+    <string name="editor_script_title">"미리보기"</string>
+    <string name="font_size">"글꼴 크기"</string>
+    <string name="font_size_large">"크게"</string>
+    <string name="font_size_default">"기본값"</string>
+    <string name="font_size_small">"작게"</string>
+    <string name="editor_select_item">"%1$s개 선택"</string>
+    <string name="editor_default_date">"미리 로드된 스크립트"</string>
+    <string name="editor_content_hint">"텍스트 입력"</string>
+    <string name="editor_title_hint">"새 스크립트"</string>
+    <string name="editor_menu_title_rename">"이름 바꾸기"</string>
+    <string name="sm_editor_add_script_remind">"새 스크립트를 만들려면 \"+\"를 탭하십시오."</string>
+    <!-- Example Speeches -->
+    <string name="editor_example_one_title">"셀프 인트로(15초)"</string>
+    <string name="editor_example_one_content">"안녕하세요, 저는 (name)입니다. 저는 지난 3년간 Smith 교수님의 연구실에서 연구 작업을 진행해오고 있습니다. 이곳에서 제 진로 옵션을 탐험하고 제가 가진 전문지식이 팀에 어떻게 기여하는지를 확인할 수 있는 기회를 갖게 되어 매우 흥분되어 있습니다."</string>
+    <string name="editor_example_two_title">"우연한 만남"</string>
+    <string name="editor_example_two_content">"(name)님 안녕하세요! 오래간만입니다! 어떻게 지냈셨나요?\n미안하지만 가봐야 해요. 즐거운 대화였습니다. 다음에 다시 만나요!"</string>
+    <string name="editor_example_three_title">"셀프 인트로(1분)"</string>
+    <string name="editor_example_three_content">"안녕하세요, (name)입니다. 저는 3가지의 강점을 갖고 있습니다.\n먼저, 저는 팀 플레이어입니다. 즉, 사기를 높이고 팀원들이 목표를 달성하도록 이끌 수 있습니다. 대학교에서는 배드민턴팀의 주장을 맡았었고, 대학교 대회에서 2위를 했었습니다. 학교에서 거둔 최고의 결과였죠.\n둘째로, 저는 매우 결과 지향적인 사람입니다. 어떤 분야든 항상 최단 기간 내에 문제를 극복해서 최고의 성과로 목표를 달성할 수 있습니다. 이전 회사에서 프로젝트 매니저로 재직할 때, 24개월 동안 연속해서 성과 목표를 충족하였습니다.\n마지막으로, 저는 기업가 정신을 갖고 있습니다. 제게는 종종 새로운 비즈니스를 처리하는 과제가 주어집니다. 지난 시즌에는 이전 회사에서 \"커피 교육 및 트레이닝 활동\"을 도입하였습니다. 결과는 매우 성공적이었고 연말까지 모든 수업의 예약이 다 찼습니다.\n이와 같은 특성을 바탕으로 저는 제가 회사에 커다란 기여를 할 수 있을 것이라 확신합니다. 감사합니다."</string>
+    <string name="editor_example_four_title">"호텔 프런트 데스크"</string>
+    <string name="editor_example_four_content">"안녕하십니까? 무엇을 도와 드릴까요?\n예약을 하셨습니까?\nID나 여권을 보여주시겠습니까?\n싱글룸 또는 더블룸 중 어떤 것을 원하시나요?\n몇 일 투숙하실 건가요?\n다른 필요한 것이 있으면 언제든지 말씀해 주십시오. 즐거운 시간 되십시오!"</string>
+    <!-- tutorial page  -->
+    <string name="sm_tutorial_main_page_title">"최대한 웃으세요!"</string>
+    <string name="sm_tutorial_main_page_content">"모드를 전환하려면 밀어서 이동하십시오."</string>
+    <string name="sm_tutorial_coach__page_text_script_list">"스크립트 목록"</string>
+    <string name="sm_tutorial_coach_page_text_start_practice">"연습 시작"</string>
+    <string name="sm_tutorial_coach_page_text_title">"대화 중 미소 짓기 연습"</string>
+    <string name="sm_tutorial_coach_page_text_review_video">"동영상 리뷰"</string>
+    <!-- alert dialog  -->
+    <string name="sm_alert_dialog_auto_recording_title">"자동 동영상 녹화 기능을 끄시겠습니까?"</string>
+    <string name="sm_alert_dialog_auto_recording_message">"기능이 꺼지면 시스템이 대화 모드에서 동영상을 녹화하지 않습니다."</string>
+    <!-- toast -->
+    <string name="sm_recording_folder_miss_toast">"갤러리에 대화 동영상 없음"</string>
+    <string name="sm_gallery_disabled_toast">"갤러리가 비활성화되었습니다."</string>
+    <!--Permission -->
+    <string name="sm_permission_title">"권한 요청"</string>
+    <string name="sm_permission_content">"<b><font color="#ffffff">Smile Mirror</font></b>에 <b><font color="#ffffff">카메라</font></b>, <b><font color="#ffffff">마이크</font></b> 및 <b><font color="#ffffff">저장</font></b> 권한이 있어야 화면에 미러된 이미지를 표시하고, 선택적으로 나중에 확인하기 위해 대화 모드로 동영상을 녹화할 수 있습니다."</string>
+    <string name="sm_permission_button_text">"켜기"</string>
+    <!--Storage full -->
+    <string name="storage_full">"저장소 가득 참"</string>
+    <string name="storage_full_for_script">"스크립트를 저장할 저장 공간이 부족합니다."</string>
+    <!--Download page-->
+</resources>

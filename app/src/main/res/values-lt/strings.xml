@@ -1,0 +1,78 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources xmlns:android="http://schemas.android.com/apk/res/android" xmlns:tools="http://schemas.android.com/tools" xmlns:xliff="urn:oasis:names:tc:xliff:document:1.2">
+    <!-- Menu Item Names -->
+    <string name="editor_menu_item_save">"Išsaugoti"</string>
+    <string name="editor_menu_item_rename">"Pervadinti"</string>
+    <string name="editor_menu_item_edit">"Redaguoti"</string>
+    <string name="editor_menu_item_delete">"Naikinti"</string>
+    <string name="editor_menu_item_mirror">"Gerai"</string>
+    <string name="coach_mode_menu_item_auto_record">"Automatiškai įrašyti vaizdo įrašą"</string>
+    <!-- Smile Mirror -->
+    <string name="sm_app_name">"Smile Mirror"</string>
+    <string name="smile_level_one_text">"Ar šypsotės?"</string>
+    <string name="smile_level_two_text">"Jau geriau!"</string>
+    <string name="smile_level_three_text">"Gražu!"</string>
+    <string name="smile_level_four_text">"Puiku!"</string>
+    <string name="sm_speech_content_create_script">"Bakstelėkite scenarijų sąrašo mygtuką ir sukurkite naują scenarijų."</string>
+    <string name="sm_speech_content_select_script">"Bakstelėkite scenarijų sąrašo mygtuką ir pasirinkite scenarijų."</string>
+    <string name="smile_mode">"Šypsenos režimas"</string>
+    <string name="coach_mode">"Pokalbio režimas"</string>
+    <!-- chart page -->
+    <string name="chart_page_smile_statistics">"Šypsenų statistika"</string>
+    <string name="chart_page_smile_duration">"Trukmė: "</string>
+    <!-- Editor -->
+    <string name="editor_save_new_file_title">"Išsaugoti scenarijų"</string>
+    <string name="editor_save_file_title">"Išsaugoti"</string>
+    <string name="editor_modify_file_title">"Scenarijus pakeistas"</string>
+    <string name="editor_save_file_description">"Ar norite išsaugoti savo pakeitimus?"</string>
+    <string name="editor_check_yes">"Taip"</string>
+    <string name="editor_check_cancel">"Atšaukti"</string>
+    <string name="editor_check_discard">"Atsisakyti"</string>
+    <string name="editor_save_file_hint">"Įrašykite scenarijaus antraštę"</string>
+    <string name="editor_edit_script">"Redaguoti scenarijų"</string>
+    <string name="editor_delete_script">"Naikinti scenarijų"</string>
+    <string name="delete_script_description">"Naikinti pasirinktą (-us) scenarijų (-us)?"</string>
+    <string name="delete_script_toast">"%1$s scenarijus (-ai) ištrintas (-i)"</string>
+    <string name="editor_title_bar_text">"Scenarijų sąrašas"</string>
+    <string name="editor_script_title">"Peržiūra"</string>
+    <string name="font_size">"Šrifto dydis"</string>
+    <string name="font_size_large">"Didelis"</string>
+    <string name="font_size_default">"Numatytasis"</string>
+    <string name="font_size_small">"Mažas"</string>
+    <string name="editor_select_item">"Pasirinkta: %1$s"</string>
+    <string name="editor_default_date">"Iš anksto įkeltas scenarijus"</string>
+    <string name="editor_content_hint">"Įvesti tekstą"</string>
+    <string name="editor_title_hint">"Naujas scenarijus"</string>
+    <string name="editor_menu_title_rename">"Pervadinti"</string>
+    <string name="sm_editor_add_script_remind">"Bakstelėkite „+“ norėdami sukurti naują scenarijų."</string>
+    <!-- Example Speeches -->
+    <string name="editor_example_one_title">"Prisistatymas (15 s)"</string>
+    <string name="editor_example_one_content">"Labas rytas. Mano vardas (vardas). Paskutinius trejus metus atlieku tyrimus profesoriaus Smito laboratorijoje. Nekantrauju čia sužinoti savo karjeros galimybes ir pamatyti, kiek mano patirtis gali prisidėti prie komandos."</string>
+    <string name="editor_example_two_title">"Su kažkuo susitikus"</string>
+    <string name="editor_example_two_content">"Labas, (vardas)! Nesimatėme jau visą amžinybę! Ką paskutiniu metu veiki?\nGaila, bet turiu eiti. Buvo malonu pasikalbėti. Vėl kada nors susitikime!"</string>
+    <string name="editor_example_three_title">"Prisistatymas (1 m)"</string>
+    <string name="editor_example_three_content">"Sveiki, aš (vardas). Manau, kad turiu tris stipriąsias savybes:\nPirmiausia, galiu dirbti komandoje. Gerai sekasi pakelti moralę ir galiu padėti komandai pasiekti tikslus. Kažkada universitete buvau badmintono komandos kapitonas, o mūsų komanda dalyvavo koledžo taurės varžybose. Pasiekėme geriausią visų laikų mokyklos komandos rezultatą.\nAntra, aš itin moku siekti rezultatų. Kad ir kokia sritis, visada kuo greičiau susitvarkau su sunkumais ir įgyvendinu tikslus su aukščiausiais pasiekimais. Kai ankstesnėje įmonėje dirbau projektų vadovu, sugebėjau įvykdyti darbo tikslus 24 mėnesius iš eilės.\nGaliausiai, turiu verslumo sugebėjimų. Man dažnai patikimos naujos verslo valdymo užduotys. Praeitą sezoną savo ankstesnėje įmonėje pristačiau „švietimo ir mokymo apie kavą veiklą“. Ji buvo labai sėkminga, todėl visi užsiėmimai buvo visiškai užsakyti iki metų pabaigos.\nAš tikiu, atsižvelgdamas į šias savybes, kad įmonei būčiau labai naudingas. Dėkoju."</string>
+    <string name="editor_example_four_title">"Viešbučio registratūra"</string>
+    <string name="editor_example_four_content">"Labas rytas, ponia. Kaip galėčiau jums padėti?\nAr esate rezervavę kambarį?\nAr galėčiau gauti jūsų tapatybės kortelę arba pasą?\nAr pageidautumėte kambario vienam, ar dviem?\nKiek dienų ketinate apsistoti?\nPrašom pranešti, jei reikia dar ko nors, o dabar linkiu puikios viešnagės!"</string>
+    <!-- tutorial page  -->
+    <string name="sm_tutorial_main_page_title">"Kuo gražiau nusišypsokite!"</string>
+    <string name="sm_tutorial_main_page_content">"Braukti norint perjungti režimą"</string>
+    <string name="sm_tutorial_coach__page_text_script_list">"Scenarijų sąrašas"</string>
+    <string name="sm_tutorial_coach_page_text_start_practice">"Pradėti mokytis"</string>
+    <string name="sm_tutorial_coach_page_text_title">"Pasimokyti šypsotis per pokalbį"</string>
+    <string name="sm_tutorial_coach_page_text_review_video">"Vaizdo įrašų apžvalga"</string>
+    <!-- alert dialog  -->
+    <string name="sm_alert_dialog_auto_recording_title">"Išjungti automatinį vaizdo įrašo įrašymą?"</string>
+    <string name="sm_alert_dialog_auto_recording_message">"Kai išjungta, sistema pokalbio režimu neįrašys vaizdo įrašų."</string>
+    <!-- toast -->
+    <string name="sm_recording_folder_miss_toast">"Nėra pokalbių vaizdo įrašų galerijoje"</string>
+    <string name="sm_gallery_disabled_toast">"Galerija išjungta"</string>
+    <!--Permission -->
+    <string name="sm_permission_title">"Leidimo prašymas"</string>
+    <string name="sm_permission_content">"<b><font color="#ffffff">Smile Mirror</font></b> prašo <b><font color="#ffffff">Kameros</font></b>, <b><font color="#ffffff">Mikrofono</font></b> ir <b><font color="#ffffff">Saugyklos</font></b> leidimų, kad ekrane galėtų rodyti jūsų atsispindintį vaizdą ir pokalbio režimu pasirinktinai įrašyti vaizdo įrašą, kurį būtų galima vėliau peržiūrėti."</string>
+    <string name="sm_permission_button_text">"Įjungti"</string>
+    <!--Storage full -->
+    <string name="storage_full">"Saugykla pilna"</string>
+    <string name="storage_full_for_script">"Neužtenka saugyklos vietos scenarijui išsaugoti."</string>
+    <!--Download page-->
+</resources>

@@ -1,0 +1,78 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources xmlns:android="http://schemas.android.com/apk/res/android" xmlns:tools="http://schemas.android.com/tools" xmlns:xliff="urn:oasis:names:tc:xliff:document:1.2">
+    <!-- Menu Item Names -->
+    <string name="editor_menu_item_save">"Salvar"</string>
+    <string name="editor_menu_item_rename">"Renomear"</string>
+    <string name="editor_menu_item_edit">"Editar"</string>
+    <string name="editor_menu_item_delete">"Excluir"</string>
+    <string name="editor_menu_item_mirror">"OK"</string>
+    <string name="coach_mode_menu_item_auto_record">"Gravar vídeo no automático"</string>
+    <!-- Smile Mirror -->
+    <string name="sm_app_name">"Smile Mirror"</string>
+    <string name="smile_level_one_text">"Você está sorrindo?"</string>
+    <string name="smile_level_two_text">"Melhorando!"</string>
+    <string name="smile_level_three_text">"Ótimo!"</string>
+    <string name="smile_level_four_text">"Perfeito!"</string>
+    <string name="sm_speech_content_create_script">"Toque no botão da lista do texto e crie um novo texto."</string>
+    <string name="sm_speech_content_select_script">"Toque no botão da lista do texto e selecione um novo texto."</string>
+    <string name="smile_mode">"Modo sorriso"</string>
+    <string name="coach_mode">"Modo conversa"</string>
+    <!-- chart page -->
+    <string name="chart_page_smile_statistics">"Estatísticas de sorrisos"</string>
+    <string name="chart_page_smile_duration">"Duração: "</string>
+    <!-- Editor -->
+    <string name="editor_save_new_file_title">"Salvar texto"</string>
+    <string name="editor_save_file_title">"Salvar"</string>
+    <string name="editor_modify_file_title">"Texto modificado"</string>
+    <string name="editor_save_file_description">"Deseja salvar suas alterações?"</string>
+    <string name="editor_check_yes">"Sim"</string>
+    <string name="editor_check_cancel">"Cancelar"</string>
+    <string name="editor_check_discard">"Descartar"</string>
+    <string name="editor_save_file_hint">"Insira um título para o texto"</string>
+    <string name="editor_edit_script">"Editar texto"</string>
+    <string name="editor_delete_script">"Excluir texto"</string>
+    <string name="delete_script_description">"Excluir texto(s) selecionado(s)?"</string>
+    <string name="delete_script_toast">"%1$s texto(s) excluído(s)"</string>
+    <string name="editor_title_bar_text">"Lista de texto"</string>
+    <string name="editor_script_title">"Visualizar"</string>
+    <string name="font_size">"Tamanho da fonte"</string>
+    <string name="font_size_large">"Grande"</string>
+    <string name="font_size_default">"Padrão"</string>
+    <string name="font_size_small">"Pequena"</string>
+    <string name="editor_select_item">"%1$s selecionado(s)"</string>
+    <string name="editor_default_date">"Texto pré-carregado"</string>
+    <string name="editor_content_hint">"Inserir texto"</string>
+    <string name="editor_title_hint">"Novo texto"</string>
+    <string name="editor_menu_title_rename">"Renomear"</string>
+    <string name="sm_editor_add_script_remind">"Toque \"+\" para criar um novo texto."</string>
+    <!-- Example Speeches -->
+    <string name="editor_example_one_title">"Auto-apresentação (15 segundos)"</string>
+    <string name="editor_example_one_content">"Bom dia. Meu nome é (nome). Eu pesquiso no laboratório do Professor Smith há três anos. Estou muito feliz em poder explorar minhas opções de carreira aqui e ver de que forma minha especialidade poderá contribuir com a equipe."</string>
+    <string name="editor_example_two_title">"Reencontrando em alguém"</string>
+    <string name="editor_example_two_content">"Oi (nome)! Não te vejo há muito tempo! O que tem feito?\nDesculpe, mas tenho que ir. Foi ótimo falar com você. Vamos nos encotrar novamente!"</string>
+    <string name="editor_example_three_title">"Auto-apresentação (1 minuto)"</string>
+    <string name="editor_example_three_content">"Olá, eu sou (nome). Acho que tenho três pontos fortes:\nPrimeiro, gosto de trabalhar em equipe. Sou bom em levantar a moral e consigo liderar equipes para alcançarem seus objetivos. Já fui capitão da equipe de badminton na universidade e nossa equipe foi vice-campeã na faculdade. Foi o melhor resultado de equipe na época.\nSegundo, sou muito orientado para resultados. Não interessa o campo, posso superar as dificultades no menor tempo possível e alcançar os objeitvos com desempenho de alto nível. Quando era gerente de projetos na empresa anterior, atingi as metas de desemepnho por 24 meses consecutivos.\nPor fim, gostaria de dizer que tenho espírito empreendedor. Sou sempre designado a lidar com novos negócios. Alguns meses atrás, eu apresentei \"educação em café e atividades de treinamento\" em minha empresa anterior. Fui muito bem-sucedido e todas as aulas estavam lotadas até final do ano.\nCom base nestas características, eu acredito poder contribuir bastante para a empresa. Muito obrigado."</string>
+    <string name="editor_example_four_title">"Recepção do hotel"</string>
+    <string name="editor_example_four_content">"Bom dia, senhor(a). Posso ajudá-lo(a)?\nHá reserva em seu nome?\nPor favor, preciso de sua identidade ou passaporte?\nDeseja uma apartamento solteiro ou casal?\nQuantos dias irá ficar?\nPor favor, informe-nos se precisar de algo mais. Tenha um ótimo dia!"</string>
+    <!-- tutorial page  -->
+    <string name="sm_tutorial_main_page_title">"Dê seu melhor sorriso!"</string>
+    <string name="sm_tutorial_main_page_content">"Deslize para trocar o modo"</string>
+    <string name="sm_tutorial_coach__page_text_script_list">"Lista de texto"</string>
+    <string name="sm_tutorial_coach_page_text_start_practice">"Comece a praticar"</string>
+    <string name="sm_tutorial_coach_page_text_title">"Pratique seu sorriso durante conversas"</string>
+    <string name="sm_tutorial_coach_page_text_review_video">"Reveja os vídeos novamente"</string>
+    <!-- alert dialog  -->
+    <string name="sm_alert_dialog_auto_recording_title">"Desligue a gravação automática de vídeo?"</string>
+    <string name="sm_alert_dialog_auto_recording_message">"Assim que desligar, o sistema não gravará vídeos no modo conversa."</string>
+    <!-- toast -->
+    <string name="sm_recording_folder_miss_toast">"Nenhum vídeo de conversa na Galeria"</string>
+    <string name="sm_gallery_disabled_toast">"Galeria desativada"</string>
+    <!--Permission -->
+    <string name="sm_permission_title">"Solicitação de permissão"</string>
+    <string name="sm_permission_content">"<b><font color="#ffffff">Smile Mirror</font></b> requer permissões de <b><font color="#ffffff">Câmera</font></b>, <b><font color="#ffffff">Microfone</font></b>, e <b><font color="#ffffff">Armazenamento</font></b> para mostrar imagens refletidas na imagem na tela e para gravar vídeos opcionalmente no modo conversa para você rever mais tarde."</string>
+    <string name="sm_permission_button_text">"Ligar"</string>
+    <!--Storage full -->
+    <string name="storage_full">"Armazenagem cheia"</string>
+    <string name="storage_full_for_script">"Não há espaço de armazenagem suficiente para salvar o texto."</string>
+    <!--Download page-->
+</resources>

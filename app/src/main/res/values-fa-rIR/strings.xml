@@ -1,0 +1,78 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources xmlns:android="http://schemas.android.com/apk/res/android" xmlns:tools="http://schemas.android.com/tools" xmlns:xliff="urn:oasis:names:tc:xliff:document:1.2">
+    <!-- Menu Item Names -->
+    <string name="editor_menu_item_save">"ذخیره"</string>
+    <string name="editor_menu_item_rename">"تغییر نام"</string>
+    <string name="editor_menu_item_edit">"ویرایش"</string>
+    <string name="editor_menu_item_delete">"حذف"</string>
+    <string name="editor_menu_item_mirror">"تأیید"</string>
+    <string name="coach_mode_menu_item_auto_record">"ضبط خودکار ویدیو"</string>
+    <!-- Smile Mirror -->
+    <string name="sm_app_name">"Smile Mirror"</string>
+    <string name="smile_level_one_text">"لبخند می زنید؟"</string>
+    <string name="smile_level_two_text">"بهتر شد!"</string>
+    <string name="smile_level_three_text">"خوب است!"</string>
+    <string name="smile_level_four_text">"عالی است!"</string>
+    <string name="sm_speech_content_create_script">"روی دکمه لیست اسکریپت ضربه بزنید و یک اسکریپت جدید ایجاد کنید."</string>
+    <string name="sm_speech_content_select_script">"روی دکمه لیست اسکریپت ضربه بزنید و یک اسکریپت انتخاب کنید."</string>
+    <string name="smile_mode">"حالت خنده"</string>
+    <string name="coach_mode">"حالت گفتگو"</string>
+    <!-- chart page -->
+    <string name="chart_page_smile_statistics">"آمارهای خنده"</string>
+    <string name="chart_page_smile_duration">"مدت زمان: "</string>
+    <!-- Editor -->
+    <string name="editor_save_new_file_title">"ذخیره اسکریپت"</string>
+    <string name="editor_save_file_title">"ذخیره"</string>
+    <string name="editor_modify_file_title">"اسکریپت تغییر یافت"</string>
+    <string name="editor_save_file_description">"می خواهید تغییرات را ذخیره کنید؟"</string>
+    <string name="editor_check_yes">"بله"</string>
+    <string name="editor_check_cancel">"لغو"</string>
+    <string name="editor_check_discard">"صرف نظر کردن"</string>
+    <string name="editor_save_file_hint">"لطفاً عنوان اسکریپت را وارد کنید"</string>
+    <string name="editor_edit_script">"ویرایش اسکریپت"</string>
+    <string name="editor_delete_script">"حذف اسکریپت"</string>
+    <string name="delete_script_description">"اسکریپت(های) انتخاب شده حذف شود؟"</string>
+    <string name="delete_script_toast">"%1$s اسکریپت حذف شد"</string>
+    <string name="editor_title_bar_text">"لیست اسکریپت"</string>
+    <string name="editor_script_title">"پیش نمایش"</string>
+    <string name="font_size">"اندازه فونت"</string>
+    <string name="font_size_large">"بزرگ"</string>
+    <string name="font_size_default">"پیش فرض"</string>
+    <string name="font_size_small">"کوچک"</string>
+    <string name="editor_select_item">"%1$s مورد انتخاب شد"</string>
+    <string name="editor_default_date">"اسکریپت از قبل بارگیری شده"</string>
+    <string name="editor_content_hint">"وارد کردن متن"</string>
+    <string name="editor_title_hint">"اسکریپت جدید"</string>
+    <string name="editor_menu_title_rename">"تغییر نام"</string>
+    <string name="sm_editor_add_script_remind">"برای ایجاد یک اسکریپت جدید، روی \"+\" ضربه بزنید."</string>
+    <!-- Example Speeches -->
+    <string name="editor_example_one_title">"معرفی خود (15 ثانیه)"</string>
+    <string name="editor_example_one_content">"صبح بخیر. نام من (نام) است. در طی سه سال گذشته در آزمایشگاه پروفسور اسمیت کار تحقیقاتی انجام می دهم. خیلی هیجان زده هستم که در گزینه های کاری ام کاوش کنم و ببینم که چگونه مهارت های من به تیم کمک می کند."</string>
+    <string name="editor_example_two_title">"برخورد با کسی"</string>
+    <string name="editor_example_two_content">"سلام (نام)! خیلی وقته ندیدمت! چه کارها می کنی؟\nمتأسفم، باید بروم. چت خیلی خوبی بود. بیا هر از گاهی با هم صحبت کنیم!"</string>
+    <string name="editor_example_three_title">"معرفی خود (1 دقیقه)"</string>
+    <string name="editor_example_three_content">"سلام، من (نام) هستم. به عقیده خودم سه نقطه قوت دارم:\nاول اینکه من روحیه تیمی خوبی دارم. در تقویت روحیه مهارت دارم و می توانم تیم را در جهت دستیابی به اهدافش رهبری کنم. قبلاً کاپیتان تیم بدمینتون دانشگاه بودم و تیم ما نایب قهرمان کاپ دانشکده بود. این بهترین نتیجه ای بود که تیم تا به آن موقع بدست آورده بود.\nدوم اینکه من خیلی به نتیجه اهمیت می دهم. فرقی نمی کند در چه زمینه ای باشد، من همیشه در کوتاه ترین زمان ممکن بر مشکلات غلبه می کنم و با بهترین عملکرد به اهداف می رسم. وقتی در شرکت قبلی مدیر پروژه بودم، موفق شدم به مدت 24 ماه متوالی به تمام عملکردهای هدف برسم.\nو در نهایت من روحیه کارآفرینی دارم. همیشه وظیفه رسیدگی به کسب و کارهای جدید به من محول می شود. در فصل گذشته، من \"فعالیت های مربیگری و آموزش  قهوه\" را در شرکت قبلی ام معرفی کردم. این تجربه بسیار موفق بود و تمام کلاس ها تا پایان سال رزرو شد.\nبا توجه به ویژگی هایی که گفتم، فکر می کنم کمک شایانی به شرکت خواهم کرد. با تشکر."</string>
+    <string name="editor_example_four_title">"میز پذیرش هتل"</string>
+    <string name="editor_example_four_content">"صبح بخیر، آقا. چه کمکی می توانم به شما بکنم؟\nاز قبل رزرو کرده اید؟\nشناسه یا پاسپورتتان را به من می دهید؟\nاتاق یک تخته یا دو تخته می خواهید؟\nچند روز اقامت دارید؟\nاگر چیز دیگری لازم داشتید لطفاً به ما اطلاع دهید، اقامت خوبی داشته باشید!"</string>
+    <!-- tutorial page  -->
+    <string name="sm_tutorial_main_page_title">"بهترین لبخند خود را امتحان کنید!"</string>
+    <string name="sm_tutorial_main_page_content">"به حالت تغییر بکشید"</string>
+    <string name="sm_tutorial_coach__page_text_script_list">"لیست اسکریپت"</string>
+    <string name="sm_tutorial_coach_page_text_start_practice">"تمرین را شروع کنید"</string>
+    <string name="sm_tutorial_coach_page_text_title">"در حین گفتگو، لبخند را تمرین کنید"</string>
+    <string name="sm_tutorial_coach_page_text_review_video">"مرور ویدیوها"</string>
+    <!-- alert dialog  -->
+    <string name="sm_alert_dialog_auto_recording_title">"ضبط خودکار ویدیو غیرفعال شود؟"</string>
+    <string name="sm_alert_dialog_auto_recording_message">"وقتی غیرفعال شد، سیستم ویدیوها را در حالت گفتگو ضبط نمی کند."</string>
+    <!-- toast -->
+    <string name="sm_recording_folder_miss_toast">"عدم وجود ویدیوی گفتگو در گالری"</string>
+    <string name="sm_gallery_disabled_toast">"گالری غیرفعال است"</string>
+    <!--Permission -->
+    <string name="sm_permission_title">"درخواست مجوز"</string>
+    <string name="sm_permission_content">"<b><font color="#ffffff">Smile Mirror</font></b> جهت نمایش تصویر آینه شده روی صفحه و ضبط اختیاری ویدیو در حالت گفتگو برای مرور در فرصت دیگر، به مجوزهای <b><font color="#ffffff">دوربین</font></b>، <b><font color="#ffffff">میکروفن</font></b> و <b><font color="#ffffff">حافظه</font></b> نیاز دارد."</string>
+    <string name="sm_permission_button_text">"فعال کردن"</string>
+    <!--Storage full -->
+    <string name="storage_full">"حافظه پر است"</string>
+    <string name="storage_full_for_script">"فضای ذخیره کافی برای ذخیره اسکریپت موجود نیست."</string>
+    <!--Download page-->
+</resources>
