@@ -17,6 +17,8 @@
     <string name="sm_speech_content_select_script">"點選腳本清單按鈕選擇一個腳本。"</string>
     <string name="smile_mode">"微笑模式"</string>
     <string name="coach_mode">"對談模式"</string>
+    <string name="teleprompter_button_text_start">"開始"</string>
+    <string name="teleprompter_button_text_stop">"停止"</string>
     <!-- chart page -->
     <string name="chart_page_smile_statistics">"微笑統計"</string>
     <string name="chart_page_smile_duration">"總長度："</string>
@@ -67,6 +69,7 @@
     <!-- toast -->
     <string name="sm_recording_folder_miss_toast">"圖片庫中沒有對談影片"</string>
     <string name="sm_gallery_disabled_toast">"圖片庫目前已停用"</string>
+    <string name="sm_need_network_toast">"請連接網路"</string>
     <!--Permission -->
     <string name="sm_permission_title">"權限要求"</string>
     <string name="sm_permission_content">"<b><font color="#ffffff">微笑鏡子</font></b>必須取得<b><font color="#ffffff">相機</font></b>、<b><font color="#ffffff">麥克風</font></b>和<b><font color="#ffffff">儲存</font></b>的存取權才能在螢幕上顯示您的鏡射影像，以及在對談練習過程中，可以選擇進行錄影以提供練習後的檢視。"</string>
@@ -75,4 +78,7 @@
     <string name="storage_full">"儲存空間已滿"</string>
     <string name="storage_full_for_script">"儲存空間不足，無法儲存腳本。"</string>
     <!--Download page-->
+    <string name="sm_download_page_title_text">"需安裝 Google Play 服務外掛程式，微笑鏡子才能運作。 請連接網路後重試。"</string>
+    <string name="sm_progressbar_text">"更新中..."</string>
+    <string name="sm_download_page_button_text">"重試"</string>
 </resources>

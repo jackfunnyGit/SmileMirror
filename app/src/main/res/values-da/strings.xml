@@ -17,6 +17,8 @@
     <string name="sm_speech_content_select_script">"Tryk på knappen til scriptlisten, og vælg et script."</string>
     <string name="smile_mode">"Smiletilstand"</string>
     <string name="coach_mode">"Samtaletilstand"</string>
+    <string name="teleprompter_button_text_start">"Start"</string>
+    <string name="teleprompter_button_text_stop">"Stop"</string>
     <!-- chart page -->
     <string name="chart_page_smile_statistics">"Smilestatistikker"</string>
     <string name="chart_page_smile_duration">"Varighed: "</string>
@@ -67,6 +69,7 @@
     <!-- toast -->
     <string name="sm_recording_folder_miss_toast">"Ingen samtalevideoer i Galleri"</string>
     <string name="sm_gallery_disabled_toast">"Galleri er deaktiveret"</string>
+    <string name="sm_need_network_toast">"Opret forbindelse til et netværk"</string>
     <!--Permission -->
     <string name="sm_permission_title">"Tilladelsesanmodning"</string>
     <string name="sm_permission_content">"<b><font color="#ffffff">Smile Mirror</font></b> kræver <b><font color="#ffffff">Kamera</font></b>-, <b><font color="#ffffff">Mikrofon</font></b>- og <b><font color="#ffffff">Lagerplads</font></b>-tilladelser til at vise dit spejlbillede på skærmen og evt. optage video i samtaletilstanden, som du kan gennemgå senere."</string>
@@ -75,4 +78,7 @@
     <string name="storage_full">"Lager fyldt"</string>
     <string name="storage_full_for_script">"Ikke nok lagerplads til at gemme scriptet."</string>
     <!--Download page-->
+    <string name="sm_download_page_title_text">"En plug-in til Google Play-tjenester er nødvendig, at at Smile Mirror kan fungere. Opret forbindelse til et netværk, og prøv igen."</string>
+    <string name="sm_progressbar_text">"Opdaterer..."</string>
+    <string name="sm_download_page_button_text">"Prøv igen"</string>
 </resources>

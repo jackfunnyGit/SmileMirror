@@ -17,8 +17,8 @@
     <string name="sm_speech_content_select_script">"Tap on the script list button and select a script."</string>
     <string name="smile_mode">"Smile mode"</string>
     <string name="coach_mode">"Conversation mode"</string>
-    <string name="teleprompter_button_text_start">"start"</string>
-    <string name="teleprompter_button_text_stop">"stop"</string>
+    <string name="teleprompter_button_text_start">"Start"</string>
+    <string name="teleprompter_button_text_stop">"Stop"</string>
     <!-- chart page -->
     <string name="chart_page_smile_statistics">"Smile statistics"</string>
     <string name="chart_page_smile_duration">"Duration: "</string>
@@ -69,7 +69,7 @@
     <!-- toast -->
     <string name="sm_recording_folder_miss_toast">"No conversation videos in Gallery"</string>
     <string name="sm_gallery_disabled_toast">"Gallery is disabled"</string>
-    <string name="sm_need_network_toast">"Please turn on network"</string>
+    <string name="sm_need_network_toast">"Please connect to a network"</string>
     <!--Permission -->
     <string name="sm_permission_title">"Permission request"</string>
     <string name="sm_permission_content">"<b><font color="#ffffff">Smile Mirror</font></b> requires <b><font color="#ffffff">Camera</font></b>, <b><font color="#ffffff">Microphone</font></b>, and <b><font color="#ffffff">Storage</font></b> permissions to show your mirrored image on the screen, and to optionally record video in conversation mode for you to review later."</string>
@@ -78,7 +78,7 @@
     <string name="storage_full">"Storage full"</string>
     <string name="storage_full_for_script">"Not enough storage space to save the script."</string>
     <!--Download page-->
-    <string name="sm_download_page_title_text">"You need to update your Google Play services component. Please check your network settings and try again."</string>
-    <string name="sm_progressbar_text">"Updating"</string>
+    <string name="sm_download_page_title_text">"A plug-in for Google Play services is needed for the Smile Mirror to work. Please connect to a network and try again."</string>
+    <string name="sm_progressbar_text">"Updating..."</string>
     <string name="sm_download_page_button_text">"Retry"</string>
 </resources>

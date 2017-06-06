@@ -17,6 +17,8 @@
     <string name="sm_speech_content_select_script">"Tik op de scriptlijstknop en selecteer een script."</string>
     <string name="smile_mode">"Glimlachmodus"</string>
     <string name="coach_mode">"Conversatiemodus"</string>
+    <string name="teleprompter_button_text_start">"Starten"</string>
+    <string name="teleprompter_button_text_stop">"Stoppen"</string>
     <!-- chart page -->
     <string name="chart_page_smile_statistics">"Glimlachstatistieken"</string>
     <string name="chart_page_smile_duration">"Duur: "</string>
@@ -67,6 +69,7 @@
     <!-- toast -->
     <string name="sm_recording_folder_miss_toast">"Geen conversatievideo's in galerij"</string>
     <string name="sm_gallery_disabled_toast">"Galerij is uitgeschakeld"</string>
+    <string name="sm_need_network_toast">"Maak een netwerkverbinding"</string>
     <!--Permission -->
     <string name="sm_permission_title">"Machtigingsverzoek"</string>
     <string name="sm_permission_content">"<b><font color="#ffffff">Smile Mirror</font></b> vereist de machtigingen <b><font color="#ffffff">Camera</font></b>, <b><font color="#ffffff">Microfoon</font></b> en <b><font color="#ffffff">Opslagruimte</font></b> om uw spiegelafbeelding op het scherm weer te geven en optioneel video op te nemen in de conversatiemodus zodat u later de video kunt bekijken."</string>
@@ -75,4 +78,7 @@
     <string name="storage_full">"Opslag vol"</string>
     <string name="storage_full_for_script">"Onvoldoende ruimte om het script op te slaan."</string>
     <!--Download page-->
+    <string name="sm_download_page_title_text">"Smile Mirror vereist de installatie van een invoegtoepassing voor Google Play-services. Maak een netwerkverbinding en probeer het opnieuw."</string>
+    <string name="sm_progressbar_text">"Bezig met bijwerken..."</string>
+    <string name="sm_download_page_button_text">"Opnieuw proberen"</string>
 </resources>

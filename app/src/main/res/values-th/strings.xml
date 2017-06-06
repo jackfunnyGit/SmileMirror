@@ -17,6 +17,8 @@
     <string name="sm_speech_content_select_script">"แตะที่ปุ่มรายชื่อสคริปต์ แล้วเลือกสคริปต์"</string>
     <string name="smile_mode">"โหมดยิ้ม"</string>
     <string name="coach_mode">"โหมดการสนทนา"</string>
+    <string name="teleprompter_button_text_start">"เริ่มต้น"</string>
+    <string name="teleprompter_button_text_stop">"หยุด"</string>
     <!-- chart page -->
     <string name="chart_page_smile_statistics">"สถิติการยิ้ม"</string>
     <string name="chart_page_smile_duration">"ระยะเวลา: "</string>
@@ -67,6 +69,7 @@
     <!-- toast -->
     <string name="sm_recording_folder_miss_toast">"ไม่มีวิดีโอการสนทนาในแกลเลอรี"</string>
     <string name="sm_gallery_disabled_toast">"แกลเลอรีถูกปิดใช้งานไว้"</string>
+    <string name="sm_need_network_toast">"กรุณาเชื่อมต่อเครือข่าย"</string>
     <!--Permission -->
     <string name="sm_permission_title">"ต้องการสิทธิ"</string>
     <string name="sm_permission_content">"<b><font color="#ffffff">Smile Mirror</font></b> ต้องการสิทธิใน<b><font color="#ffffff">กล้อง</font></b> <b><font color="#ffffff">ไมโครโฟน</font></b> และ<b><font color="#ffffff">ที่เก็บข้อมูล</font></b> เพื่อแสดงภาพสะท้อนของคุณบนหน้าจอ และเพื่อให้คุณเลือกถ่ายวิดีโอในโหมดการสนทนา เพื่อตรวจดูได้ในภายหลัง"</string>
@@ -75,4 +78,7 @@
     <string name="storage_full">"ที่เก็บข้อมูลเต็ม"</string>
     <string name="storage_full_for_script">"มีพื้นที่ว่างไม่เพียงพอสำหรับการบันทึกสคริปต์"</string>
     <!--Download page-->
+    <string name="sm_download_page_title_text">"คุณต้องใช้ปลั๊กอินสำหรับบริการ Google Play เพื่อให้ Smile Mirror ทำงานได้ กรุณาเชื่อมต่อเครือข่าย แล้วลองอีกครั้ง"</string>
+    <string name="sm_progressbar_text">"กำลังอัปเดต..."</string>
+    <string name="sm_download_page_button_text">"ลองใหม่"</string>
 </resources>

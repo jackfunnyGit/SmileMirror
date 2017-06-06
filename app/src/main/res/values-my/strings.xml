@@ -16,6 +16,8 @@
     <string name="sm_speech_content_select_script">"ဇာတ်ညွှန်းစာရင်း ခလုတ်ပေါ်တွင် နှိပ်ပြီးနောက် ဇာတ်ညွှန်းကို ရွေးပါ။"</string>
     <string name="smile_mode">"အပြုံးမုဒ်"</string>
     <string name="coach_mode">"စကားဝိုင်း မုဒ်"</string>
+    <string name="teleprompter_button_text_start">"စတင်ပါ"</string>
+    <string name="teleprompter_button_text_stop">"ရပ်ပါ"</string>
     <!-- chart page -->
     <string name="chart_page_smile_statistics">"အပြုံး ကိန်းဂဏန်းအချက်များ"</string>
     <string name="chart_page_smile_duration">"ကြာချိန်-"</string>
@@ -66,6 +68,7 @@
     <!-- toast -->
     <string name="sm_recording_folder_miss_toast">"ပုံပြခန်းထဲတွင် စကားဝိုင်း ဗီဒီယိုများ မရှိပါ"</string>
     <string name="sm_gallery_disabled_toast">"ပုံပြခန်းကို ပိတ်ထားသည်"</string>
+    <string name="sm_need_network_toast">"ကွန်ရက်နှင့် ချိတ်ဆက်ပါ"</string>
     <!--Permission -->
     <string name="sm_permission_title">"ခွင့်ပြုချက် တောင်းဆိုမှု"</string>
     <string name="sm_permission_content">"<b><font color="#ffffff">Smile Mirror</font></b> သည် စခရင်ပေါ်တွင် မှန်ထဲတွင် ထင်ဟပ်နေသော သင့်ပုံကို ပြသရန်နှင့် နောက်ပိုင်းတွင် သင် ပြန်သုံးသပ်နိုင်ရန် စကားဝိုင်း မုဒ်တွင် ဗီဒီယိုကို မှတ်တမ်းတင်ရန် <b><font color="#ffffff">ကင်မရာ</font></b>၊ <b><font color="#ffffff">မိုက်ခရိုဖုန်း</font></b> နှင့် <b><font color="#ffffff">သိုလှောင်ခန်း</font></b> ခွင့်ပြုချက်များ လိုအပ်သည်။"</string>
@@ -74,4 +77,7 @@
     <string name="storage_full">"သိုလှောင်ခန်း ပြည့်နေပြီ"</string>
     <string name="storage_full_for_script">"ဇာတ်ညွှန်းကို သိမ်းရန် သိုလှောင်ခန်းနေရာ မလုံလောက်ပါ။"</string>
     <!--Download page-->
+    <string name="sm_download_page_title_text">"Smile Mirror အလုပ်လုပ်စေရန် ဂူဂဲလ်ပလေး ဝန်ဆောင်မှုများအတွက် ပလပ်အင် လိုသည်။ ကွန်ရက်နှင့် ချိတ်ဆက်ပြီး ထပ်ကြိုးစားပါ။"</string>
+    <string name="sm_progressbar_text">"အပ်ဒိတ်လုပ်နေသည်..."</string>
+    <string name="sm_download_page_button_text">"ပြန်ကြိုးစားပါ"</string>
 </resources>

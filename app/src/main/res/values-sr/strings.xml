@@ -17,6 +17,8 @@
     <string name="sm_speech_content_select_script">"Kucnite na dugme za listu skripti i izaberite skriptu."</string>
     <string name="smile_mode">"Režim osmeha"</string>
     <string name="coach_mode">"Režim razgovora"</string>
+    <string name="teleprompter_button_text_start">"Započni"</string>
+    <string name="teleprompter_button_text_stop">"Zaustavi"</string>
     <!-- chart page -->
     <string name="chart_page_smile_statistics">"Statistike osmeha"</string>
     <string name="chart_page_smile_duration">"Trajanje: "</string>
@@ -67,6 +69,7 @@
     <!-- toast -->
     <string name="sm_recording_folder_miss_toast">"Nema video snimaka razgovora u aplikaciji Galerija"</string>
     <string name="sm_gallery_disabled_toast">"Galerija je onemogućena"</string>
+    <string name="sm_need_network_toast">"Povežite se sa mrežom"</string>
     <!--Permission -->
     <string name="sm_permission_title">"Zahtev za dozvolom"</string>
     <string name="sm_permission_content">"<b><font color="#ffffff">Smile Mirror</font></b> zahteva dozvole za aplikacije <b><font color="#ffffff">Kamera</font></b>, <b><font color="#ffffff">Mikrofon</font></b> i <b><font color="#ffffff">Skladište</font></b> da bi prikazala preslikanu sliku na ekranu i da bi opciono snimila video snimak u režimu razgovora da biste ga pregledali kasnije."</string>
@@ -75,4 +78,7 @@
     <string name="storage_full">"Skladište je puno"</string>
     <string name="storage_full_for_script">"Nema dovoljno prostora na skladištu za čuvanje skripta."</string>
     <!--Download page-->
+    <string name="sm_download_page_title_text">"Potrebna je dodatna komponenta za Google Play usluge da bi radila aplikacija Smile Mirror. Povežite se na mrežu i pokušajte ponovo."</string>
+    <string name="sm_progressbar_text">"Ažurira se..."</string>
+    <string name="sm_download_page_button_text">"Pokušaj ponovo"</string>
 </resources>

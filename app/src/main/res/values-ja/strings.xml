@@ -17,6 +17,8 @@
     <string name="sm_speech_content_select_script">"スクリプトリストボタンをタップして、スクリプトを選択します。"</string>
     <string name="smile_mode">"スマイルモード"</string>
     <string name="coach_mode">"会話モード"</string>
+    <string name="teleprompter_button_text_start">"開始"</string>
+    <string name="teleprompter_button_text_stop">"停止"</string>
     <!-- chart page -->
     <string name="chart_page_smile_statistics">"スマイル統計"</string>
     <string name="chart_page_smile_duration">"時間："</string>
@@ -67,6 +69,7 @@
     <!-- toast -->
     <string name="sm_recording_folder_miss_toast">"ギャラリーに会話ビデオなし"</string>
     <string name="sm_gallery_disabled_toast">"ギャラリーが無効です"</string>
+    <string name="sm_need_network_toast">"ネットワークに接続してください"</string>
     <!--Permission -->
     <string name="sm_permission_title">"パーミッション要求"</string>
     <string name="sm_permission_content">"<b><font color="#ffffff">Smile Mirror</font></b> は、画面にミラー画像を表示したり、必要に応じて後で確認するために会話モードでビデオ録画するのに、<b><font color="#ffffff">カメラ</font></b>、<b><font color="#ffffff">マイク</font></b>、<b><font color="#ffffff">ストレージ</font></b>のパーミッションが必要です。"</string>
@@ -75,4 +78,7 @@
     <string name="storage_full">"空き容量なしl"</string>
     <string name="storage_full_for_script">"スクリプトを保存するための十分な空き容量がありません。"</string>
     <!--Download page-->
+    <string name="sm_download_page_title_text">"Google Playサービス用プラグインがSmile Mirrorを起動させるのに必要です。ネットワークに接続して、もう一度行ってください。"</string>
+    <string name="sm_progressbar_text">"更新中..."</string>
+    <string name="sm_download_page_button_text">"再試行"</string>
 </resources>

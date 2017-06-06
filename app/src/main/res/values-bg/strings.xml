@@ -17,6 +17,8 @@
     <string name="sm_speech_content_select_script">"Докоснете бутона за списък със сценарии и изберете сценарий."</string>
     <string name="smile_mode">"Режим на усмивка"</string>
     <string name="coach_mode">"Режим на разговор"</string>
+    <string name="teleprompter_button_text_start">"Старт"</string>
+    <string name="teleprompter_button_text_stop">"Стоп"</string>
     <!-- chart page -->
     <string name="chart_page_smile_statistics">"Статистика за усмивките"</string>
     <string name="chart_page_smile_duration">"Продължителност: "</string>
@@ -67,6 +69,7 @@
     <!-- toast -->
     <string name="sm_recording_folder_miss_toast">"В галерията няма видеоклипове от разговори"</string>
     <string name="sm_gallery_disabled_toast">"Галерията е деактивирана"</string>
+    <string name="sm_need_network_toast">"Моля, свържете се към мрежа"</string>
     <!--Permission -->
     <string name="sm_permission_title">"Искане за разрешение"</string>
     <string name="sm_permission_content">"<b><font color="#ffffff">Smile Mirror</font></b> изисква разрешения за <b><font color="#ffffff">камерата</font></b>, <b><font color="#ffffff">микрофона</font></b> и <b><font color="#ffffff">мястото за съхранение</font></b>, за да показва огледалното ви изображение на екрана и по желание да записва видео в режим на разговор, което да прегледате по-късно."</string>
@@ -75,4 +78,7 @@
     <string name="storage_full">"Мястото за съхранение е пълно"</string>
     <string name="storage_full_for_script">"Няма достатъчно място за съхранение, за да запишете сценария."</string>
     <!--Download page-->
+    <string name="sm_download_page_title_text">"Нужен е плъгин за услугите на Google Play, за да може Smile Mirror да работи. Моля, свържете се към мрежа и опитайте отново."</string>
+    <string name="sm_progressbar_text">"Актуализиране..."</string>
+    <string name="sm_download_page_button_text">"Повторен опит"</string>
 </resources>

@@ -17,6 +17,8 @@
     <string name="sm_speech_content_select_script">"Atingeţi butonul listă scripturi şi selectaţi un script."</string>
     <string name="smile_mode">"Mod zâmbet"</string>
     <string name="coach_mode">"Mod conversaţie"</string>
+    <string name="teleprompter_button_text_start">"Start"</string>
+    <string name="teleprompter_button_text_stop">"Stop"</string>
     <!-- chart page -->
     <string name="chart_page_smile_statistics">"Statistici zâmbete"</string>
     <string name="chart_page_smile_duration">"Durată: "</string>
@@ -67,6 +69,7 @@
     <!-- toast -->
     <string name="sm_recording_folder_miss_toast">"Niciun video conversaţie în Galerie"</string>
     <string name="sm_gallery_disabled_toast">"Galeria este dezactivată"</string>
+    <string name="sm_need_network_toast">"Conectaţi-vă la o reţea"</string>
     <!--Permission -->
     <string name="sm_permission_title">"Solicitare acces"</string>
     <string name="sm_permission_content">"<b><font color="#ffffff">Smile Mirror</font></b> necesită acces la <b><font color="#ffffff">Camera foto</font></b>, <b><font color="#ffffff">Microfon</font></b> şi <b><font color="#ffffff">Stocare</font></b> pentru a vă afişa imaginea dvs. în oglindă pe ecran şi, opţional, de a înregistra videoclipuri în modul conversaţie pentru ca dvs. să le vizionaţi mai târziu."</string>
@@ -75,4 +78,7 @@
     <string name="storage_full">"Stocare plină"</string>
     <string name="storage_full_for_script">"Nu există suficient spaţiu pentru a salva scriptul."</string>
     <!--Download page-->
+    <string name="sm_download_page_title_text">"Este necesar un plug-in pentru serviciile Google Play pentru ca Smile Mirror să funcţioneze. Conectaţi-vă la o reţea şi încercaţi din nou."</string>
+    <string name="sm_progressbar_text">"Se actualizează..."</string>
+    <string name="sm_download_page_button_text">"Reîncercare"</string>
 </resources>

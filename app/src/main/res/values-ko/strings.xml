@@ -17,6 +17,8 @@
     <string name="sm_speech_content_select_script">"스크립트 목록 버튼을 탭하고 스크립트를 선택하십시오."</string>
     <string name="smile_mode">"스마일 모드"</string>
     <string name="coach_mode">"대화 모드"</string>
+    <string name="teleprompter_button_text_start">"시작"</string>
+    <string name="teleprompter_button_text_stop">"중지"</string>
     <!-- chart page -->
     <string name="chart_page_smile_statistics">"스마일 통계"</string>
     <string name="chart_page_smile_duration">"기간:"</string>
@@ -67,6 +69,7 @@
     <!-- toast -->
     <string name="sm_recording_folder_miss_toast">"갤러리에 대화 동영상 없음"</string>
     <string name="sm_gallery_disabled_toast">"갤러리가 비활성화되었습니다."</string>
+    <string name="sm_need_network_toast">"네트워크에 연결하십시오."</string>
     <!--Permission -->
     <string name="sm_permission_title">"권한 요청"</string>
     <string name="sm_permission_content">"<b><font color="#ffffff">Smile Mirror</font></b>에 <b><font color="#ffffff">카메라</font></b>, <b><font color="#ffffff">마이크</font></b> 및 <b><font color="#ffffff">저장</font></b> 권한이 있어야 화면에 미러된 이미지를 표시하고, 선택적으로 나중에 확인하기 위해 대화 모드로 동영상을 녹화할 수 있습니다."</string>
@@ -75,4 +78,7 @@
     <string name="storage_full">"저장소 가득 참"</string>
     <string name="storage_full_for_script">"스크립트를 저장할 저장 공간이 부족합니다."</string>
     <!--Download page-->
+    <string name="sm_download_page_title_text">"Smile Mirror가 작동하려면 Google Play 서비스용 플러그인이 필요합니다. 네트워크에 연결하고 다시 시도하십시오."</string>
+    <string name="sm_progressbar_text">"업데이트 중..."</string>
+    <string name="sm_download_page_button_text">"다시 시도"</string>
 </resources>

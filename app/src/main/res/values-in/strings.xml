@@ -17,6 +17,8 @@
     <string name="sm_speech_content_select_script">"Ketuk tombol daftar skrip dan pilih skrip."</string>
     <string name="smile_mode">"Mode senyum"</string>
     <string name="coach_mode">"Mode percakapan"</string>
+    <string name="teleprompter_button_text_start">"Mulai"</string>
+    <string name="teleprompter_button_text_stop">"Berhenti"</string>
     <!-- chart page -->
     <string name="chart_page_smile_statistics">"Statistik senyum"</string>
     <string name="chart_page_smile_duration">"Durasi: "</string>
@@ -67,6 +69,7 @@
     <!-- toast -->
     <string name="sm_recording_folder_miss_toast">"Tidak ada video percakapan dalam Galeri"</string>
     <string name="sm_gallery_disabled_toast">"Galeri dinonaktifkan"</string>
+    <string name="sm_need_network_toast">"Sambungkan ke jaringan"</string>
     <!--Permission -->
     <string name="sm_permission_title">"Permintaan izin"</string>
     <string name="sm_permission_content">"<b><font color="#ffffff">Smile Mirror</font></b> memerlukan izin <b><font color="#ffffff">Kamera</font></b>, <b><font color="#ffffff">Mikrofon</font></b>, dan <b><font color="#ffffff">Penyimpanan</font></b> untuk menampilkan gambar cermin Anda pada layar, dan secara opsional merekam video dalam mode percakapan untuk Anda periksa nanti."</string>
@@ -75,4 +78,7 @@
     <string name="storage_full">"Penyimpanan penuh"</string>
     <string name="storage_full_for_script">"Ruang penyimpanan tidak cukup untuk menyimpan skrip."</string>
     <!--Download page-->
+    <string name="sm_download_page_title_text">"Plug-in untuk layanan Google Play diperlukan agar Smile Mirror dapat bekerja. Sambungkan ke jaringan dan coba lagi."</string>
+    <string name="sm_progressbar_text">"Memperbarui..."</string>
+    <string name="sm_download_page_button_text">"Coba kembali"</string>
 </resources>

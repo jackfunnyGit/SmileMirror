@@ -17,6 +17,8 @@
     <string name="sm_speech_content_select_script">"Komut dosyası listesi düğmesine dokunun ve bir komut dosyası seçin."</string>
     <string name="smile_mode">"Gülmseme modu"</string>
     <string name="coach_mode">"Konuşma modu"</string>
+    <string name="teleprompter_button_text_start">"Başla"</string>
+    <string name="teleprompter_button_text_stop">"Durdur"</string>
     <!-- chart page -->
     <string name="chart_page_smile_statistics">"Gülümseme istatistikleri"</string>
     <string name="chart_page_smile_duration">"Süre: "</string>
@@ -67,6 +69,7 @@
     <!-- toast -->
     <string name="sm_recording_folder_miss_toast">"Gsleride konuşma videosu yok"</string>
     <string name="sm_gallery_disabled_toast">"Galeri devre dışı bırakıldı"</string>
+    <string name="sm_need_network_toast">"Lütfen bir ağa bağlanın"</string>
     <!--Permission -->
     <string name="sm_permission_title">"İzin talebi"</string>
     <string name="sm_permission_content"><b><font color="#ffffff">"Smile Mirror"</font></b>"'nın ekranda yansıtılan görüntünüzü göstermek ve konuma modundayken daha sonra gözden geçirebilmeniz için isteğe bağlı olarak video kaydetmesi için "<b><font color="#ffffff">"Kamera"</font></b>", "<b><font color="#ffffff">"Mikrofon"</font></b>", ve "<b><font color="#ffffff">"Depolama"</font></b>" izinlerine ihtiyacı var."</string>
@@ -75,4 +78,7 @@
     <string name="storage_full">"Depolama tamamen dolu"</string>
     <string name="storage_full_for_script">"Komut dosyasını kaydetmek için yeterli alan yok."</string>
     <!--Download page-->
+    <string name="sm_download_page_title_text">"Google Play hizmetlerinde Smile Mirror'ın çalışabilmesi için bir eklenti gerekli, lütfen bir ağa bağlanın ve tekrar deneyin."</string>
+    <string name="sm_progressbar_text">"Güncelleniyor..."</string>
+    <string name="sm_download_page_button_text">"Yeniden dene"</string>
 </resources>

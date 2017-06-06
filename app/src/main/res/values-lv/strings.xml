@@ -17,6 +17,8 @@
     <string name="sm_speech_content_select_script">"Pieskarieties skriptu saraksta pogai un atlasiet skriptu."</string>
     <string name="smile_mode">"Smaida režīms"</string>
     <string name="coach_mode">"Sarunu režīms"</string>
+    <string name="teleprompter_button_text_start">"Sākt"</string>
+    <string name="teleprompter_button_text_stop">"Apturēt"</string>
     <!-- chart page -->
     <string name="chart_page_smile_statistics">"Smaidu statistika"</string>
     <string name="chart_page_smile_duration">"Ilgums:"</string>
@@ -67,6 +69,7 @@
     <!-- toast -->
     <string name="sm_recording_folder_miss_toast">"Sadaļā Galerija nav sarunas video"</string>
     <string name="sm_gallery_disabled_toast">"Galerija ir atspējota"</string>
+    <string name="sm_need_network_toast">"Izveidojiet tīkla savienojumu"</string>
     <!--Permission -->
     <string name="sm_permission_title">"Atļauju pieprasījums"</string>
     <string name="sm_permission_content">"Lietotnei <b><font color="#ffffff">Smile Mirror</font></b> nepieciešama piekļuves atļauja programmai <b><font color="#ffffff">Kamera</font></b>, <b><font color="#ffffff">Mikrofons</font></b> un <b><font color="#ffffff">Krātuve</font></b>, lai ekrānā rādītu spoguļoto attēlu un sarunu režīmā pēc izvēles ierakstītu video, lai vēlāk pārskatītu."</string>
@@ -75,4 +78,7 @@
     <string name="storage_full">"Krātuve ir pilna"</string>
     <string name="storage_full_for_script">"Krātuvē nepietiek vietas, lai saglabātu skriptu."</string>
     <!--Download page-->
+    <string name="sm_download_page_title_text">"Lai lietotne Smile Mirror darbotos, ir nepieciešams Google Play spraudnis. Izveidojiet tīkla savienojumu un mēģiniet vēlreiz."</string>
+    <string name="sm_progressbar_text">"Notiek atjaunināšana..."</string>
+    <string name="sm_download_page_button_text">"Atkārtot"</string>
 </resources>

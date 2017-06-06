@@ -17,6 +17,8 @@
     <string name="sm_speech_content_select_script">"Klepněte na tlačítko seznamu skriptů a vyberte skript."</string>
     <string name="smile_mode">"Režim úsměvu"</string>
     <string name="coach_mode">"Režim konverzace"</string>
+    <string name="teleprompter_button_text_start">"Spustit"</string>
+    <string name="teleprompter_button_text_stop">"Zastavit"</string>
     <!-- chart page -->
     <string name="chart_page_smile_statistics">"Statistiky úsměvů"</string>
     <string name="chart_page_smile_duration">"Délka trvání: "</string>
@@ -67,6 +69,7 @@
     <!-- toast -->
     <string name="sm_recording_folder_miss_toast">"Žádná videa z rozhovorů v Galerii"</string>
     <string name="sm_gallery_disabled_toast">"Galerie je zakázaná"</string>
+    <string name="sm_need_network_toast">"Připojte se prosím k síti"</string>
     <!--Permission -->
     <string name="sm_permission_title">"Žádost o oprávnění"</string>
     <string name="sm_permission_content">"<b><font color="#ffffff">Smile Mirror</font></b> vyžaduje oprávnění <b><font color="#ffffff">Fotoaparát</font></b>, <b><font color="#ffffff">Mikrofon</font></b> a <b><font color="#ffffff">Úložiště</font></b> pro zobrazení obrazu v zrcadle na obrazovce a volitelný záznam videa v režimu rozhovoru, na které se můžete podívat později."</string>
@@ -75,4 +78,7 @@
     <string name="storage_full">"Úložiště je plné"</string>
     <string name="storage_full_for_script">"Nedostatek úložiště pro uložení skriptu."</string>
     <!--Download page-->
+    <string name="sm_download_page_title_text">"Aby aplikace Smile Mirror fungovala, je vyžadován zásuvný modul pro služby Google Play. Připojte se prosím k síti a zkuste to znovu."</string>
+    <string name="sm_progressbar_text">"Probíhá aktualizace..."</string>
+    <string name="sm_download_page_button_text">"Opakovat"</string>
 </resources>

@@ -17,6 +17,8 @@
     <string name="sm_speech_content_select_script">"Trykk på skriptlisteknappen og velg et skript."</string>
     <string name="smile_mode">"Smilemodus"</string>
     <string name="coach_mode">"Samtalemodus"</string>
+    <string name="teleprompter_button_text_start">"Start"</string>
+    <string name="teleprompter_button_text_stop">"Stopp"</string>
     <!-- chart page -->
     <string name="chart_page_smile_statistics">"Smilestatistikk"</string>
     <string name="chart_page_smile_duration">"Varighet: "</string>
@@ -67,6 +69,7 @@
     <!-- toast -->
     <string name="sm_recording_folder_miss_toast">"Ingen samtalevideoer i Galleri"</string>
     <string name="sm_gallery_disabled_toast">"Galleri er deaktivert"</string>
+    <string name="sm_need_network_toast">"Koble til et nettverk"</string>
     <!--Permission -->
     <string name="sm_permission_title">"Forespørsel om tillatelse"</string>
     <string name="sm_permission_content">"<b><font color="#ffffff">Smile Mirror</font></b> trenger tillatelser for <b><font color="#ffffff">Kamera</font></b>, <b><font color="#ffffff">Mikrofon</font></b> og <b><font color="#ffffff">Lagring</font></b> for å vise speilbilde på skjermen og ta opp videoer i samtalemodus, slik at du kan se på dem senere."</string>
@@ -75,4 +78,7 @@
     <string name="storage_full">"Lagringsplass full"</string>
     <string name="storage_full_for_script">"Ikke nok lagringsplass til å lagre skriptet."</string>
     <!--Download page-->
+    <string name="sm_download_page_title_text">"Du trenger en et programtillegg for Google Play-tjenester for at Smile Mirror skal fungere. Koble til et nettverk og prøv på nytt."</string>
+    <string name="sm_progressbar_text">"Oppdaterer..."</string>
+    <string name="sm_download_page_button_text">"Prøv på nytt"</string>
 </resources>

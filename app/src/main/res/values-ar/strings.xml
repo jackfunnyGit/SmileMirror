@@ -17,6 +17,8 @@
     <string name="sm_speech_content_select_script">"المس فوق زر قائمة النصوص وحدد نصًا."</string>
     <string name="smile_mode">"وضع الابتسام"</string>
     <string name="coach_mode">"وضع المحادثة"</string>
+    <string name="teleprompter_button_text_start">"بدء"</string>
+    <string name="teleprompter_button_text_stop">"إيقاف"</string>
     <!-- chart page -->
     <string name="chart_page_smile_statistics">"إحصائيات الابتسام"</string>
     <string name="chart_page_smile_duration">"المدة:"</string>
@@ -67,6 +69,7 @@
     <!-- toast -->
     <string name="sm_recording_folder_miss_toast">"لا توجد فيديوهات محادثة في المعرض"</string>
     <string name="sm_gallery_disabled_toast">"المعرض معطل"</string>
+    <string name="sm_need_network_toast">"يرجى الاتصال بشبكة"</string>
     <!--Permission -->
     <string name="sm_permission_title">"طلب الإذن"</string>
     <string name="sm_permission_content">"يتطلب <b><font color="#ffffff">Smile Mirror</font></b> أذونات <b><font color="#ffffff">الكاميرا</font></b>،  و<b><font color="#ffffff">الميكروفون</font></b>، و<b><font color="#ffffff">التخزين</font></b> لعرض صورتك المنعكسة على الشاشة، وللتسجيل الاختياري للفيديو في وضع المحادثة من أجلك لتستعرضه لاحقًا."</string>
@@ -75,4 +78,7 @@
     <string name="storage_full">"التخزين ممتلئ"</string>
     <string name="storage_full_for_script">"لا توجد مساحة تخزين كافية لحفظ النص."</string>
     <!--Download page-->
+    <string name="sm_download_page_title_text">"هناك حاجة إلى مكون إضافي لخدمات Google Play لكي يعمل Smile Mirror. يرجى الاتصال بشبكة والمحاولة مرة أخرى."</string>
+    <string name="sm_progressbar_text">"جاري التحديث..."</string>
+    <string name="sm_download_page_button_text">"إعادة المحاولة"</string>
 </resources>

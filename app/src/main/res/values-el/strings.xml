@@ -17,6 +17,8 @@
     <string name="sm_speech_content_select_script">"Πατήστε στο κουμπί λίστας σεναρίων και επιλέξτε ένα σενάριο."</string>
     <string name="smile_mode">"Κατάσταση χαμόγελου"</string>
     <string name="coach_mode">"Κατάσταση συνομιλίας"</string>
+    <string name="teleprompter_button_text_start">"Έναρξη"</string>
+    <string name="teleprompter_button_text_stop">"Τερματισμός"</string>
     <!-- chart page -->
     <string name="chart_page_smile_statistics">"Στατιστικά χαμόγελου"</string>
     <string name="chart_page_smile_duration">"Διάρκεια: "</string>
@@ -67,6 +69,7 @@
     <!-- toast -->
     <string name="sm_recording_folder_miss_toast">"Δεν υπάρχουν βίντεο με συνομιλίες στη Συλλογή"</string>
     <string name="sm_gallery_disabled_toast">"Η Συλλογή είναι απενεργοποιημένη"</string>
+    <string name="sm_need_network_toast">"Συνδεθείτε σε ένα δίκτυο"</string>
     <!--Permission -->
     <string name="sm_permission_title">"Αίτημα άδειας"</string>
     <string name="sm_permission_content">"Η εφαρμογή <b><font color="#ffffff">Smile Mirror</font></b> χρειάζεται άδεια πρόσβασης σε <b><font color="#ffffff">Κάμερα</font></b>, <b><font color="#ffffff">Μικρόφωνο</font></b> και <b><font color="#ffffff">Αποθηκευτικό χώρο</font></b> ώστε να προβάλλει την κατοπτρική εικόνα σας στην οθόνη και, προαιρετικά, να καταγράφει βίντεο σε κατάσταση συνομιλίας, που μπορείτε να εξετάζετε αργότερα."</string>
@@ -75,4 +78,7 @@
     <string name="storage_full">"Αποθηκευτικός χώρος πλήρης"</string>
     <string name="storage_full_for_script">"Δεν υπάρχει επαρκής αποθηκευτικός χώρος για την αποθήκευση του σεναρίου."</string>
     <!--Download page-->
+    <string name="sm_download_page_title_text">"Για να λειτουργήσει η εφαρμογή Smile Mirror απαιτείται ένα πρόσθετο για τις υπηρεσίες Google Play. Συνδεθείτε σε ένα δίκτυο και προσπαθήστε ξανά."</string>
+    <string name="sm_progressbar_text">"Ενημέρωση..."</string>
+    <string name="sm_download_page_button_text">"Επανάληψη προσπάθειας"</string>
 </resources>

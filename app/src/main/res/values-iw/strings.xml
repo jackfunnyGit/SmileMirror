@@ -17,6 +17,8 @@
     <string name="sm_speech_content_select_script">"הקש על לחצן רשימת התסריטים ובחר תסריט."</string>
     <string name="smile_mode">"מצב חיוך"</string>
     <string name="coach_mode">"מצב שיחה"</string>
+    <string name="teleprompter_button_text_start">"התחל"</string>
+    <string name="teleprompter_button_text_stop">"עצור"</string>
     <!-- chart page -->
     <string name="chart_page_smile_statistics">"סטטיסטיקת חיוכים"</string>
     <string name="chart_page_smile_duration">"משך: "</string>
@@ -67,6 +69,7 @@
     <!-- toast -->
     <string name="sm_recording_folder_miss_toast">"אין בגלריה סרטוני ווידיאו של שיחות"</string>
     <string name="sm_gallery_disabled_toast">"הגלריה מושבתת"</string>
+    <string name="sm_need_network_toast">"עליך להתחבר לרשת"</string>
     <!--Permission -->
     <string name="sm_permission_title">"בקשת הרשאה"</string>
     <string name="sm_permission_content">"היישומון <b><font color="#ffffff">Smile Mirror</font></b> זקוק להרשאות <b><font color="#ffffff">מצלמה</font></b>, <b><font color="#ffffff">מיקרופון</font></b>, ו<b><font color="#ffffff">אחסון</font></b> כדי להציג את תמונת המראה שלך על המרקע וכדי להקליט, אופציונלית, סרטוני ווידיאו במצב שיחה ולסקור אותם מאוחר יותר."</string>
@@ -75,4 +78,7 @@
     <string name="storage_full">"אחסון מלא"</string>
     <string name="storage_full_for_script">"אין מספיק מקום פנוי באחסון לשמירת התסריט."</string>
     <!--Download page-->
+    <string name="sm_download_page_title_text">"דרוש תוסף לשירותי Google Play כדי לאפשר ליישומון Smile Mirror לתפקד. התחבר לרשת ונסה שנית."</string>
+    <string name="sm_progressbar_text">"מעדכן..."</string>
+    <string name="sm_download_page_button_text">"נסה שנית"</string>
 </resources>

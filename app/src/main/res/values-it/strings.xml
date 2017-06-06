@@ -17,6 +17,8 @@
     <string name="sm_speech_content_select_script">"Tocca il pulsante elenco script e seleziona un nuovo script."</string>
     <string name="smile_mode">"Modalità sorriso"</string>
     <string name="coach_mode">"Modalità conversazione"</string>
+    <string name="teleprompter_button_text_start">"Inizia"</string>
+    <string name="teleprompter_button_text_stop">"Stop"</string>
     <!-- chart page -->
     <string name="chart_page_smile_statistics">"Statistiche sorriso"</string>
     <string name="chart_page_smile_duration">"Durata:"</string>
@@ -67,6 +69,7 @@
     <!-- toast -->
     <string name="sm_recording_folder_miss_toast">"Nessun video conversazione Galleria"</string>
     <string name="sm_gallery_disabled_toast">"Galleria disattivata"</string>
+    <string name="sm_need_network_toast">"Connetti a una rete"</string>
     <!--Permission -->
     <string name="sm_permission_title">"Richiesta autorizzazione"</string>
     <string name="sm_permission_content"><b><font color="#ffffff">"Smile Mirror"</font></b>" richiede le autorizzazioni per "<b><font color="#ffffff">"Fotocamera"</font></b>", "<b><font color="#ffffff">"Microfono"</font></b>" e "<b><font color="#ffffff">"Archiviazione"</font></b>" per mostrare l'immagine riflessa sullo schermo e per registrare, facoltativamente, video in modalità conversazione, sa rivedere in seguito."</string>
@@ -75,4 +78,7 @@
     <string name="storage_full">"Storage pieno"</string>
     <string name="storage_full_for_script">"Spazio di archiviazione insufficiente per salvare lo script."</string>
     <!--Download page-->
+    <string name="sm_download_page_title_text">"Per il funzionamento di Smile Mirror è necessario un plug-in per i servizi Google Play. Connettersi a una rete e riprovare."</string>
+    <string name="sm_progressbar_text">"Aggiornamento in corso..."</string>
+    <string name="sm_download_page_button_text">"Riprova"</string>
 </resources>

@@ -17,6 +17,8 @@
     <string name="sm_speech_content_select_script">"Bakstelėkite scenarijų sąrašo mygtuką ir pasirinkite scenarijų."</string>
     <string name="smile_mode">"Šypsenos režimas"</string>
     <string name="coach_mode">"Pokalbio režimas"</string>
+    <string name="teleprompter_button_text_start">"Pradžia"</string>
+    <string name="teleprompter_button_text_stop">"Stabdyti"</string>
     <!-- chart page -->
     <string name="chart_page_smile_statistics">"Šypsenų statistika"</string>
     <string name="chart_page_smile_duration">"Trukmė: "</string>
@@ -67,6 +69,7 @@
     <!-- toast -->
     <string name="sm_recording_folder_miss_toast">"Nėra pokalbių vaizdo įrašų galerijoje"</string>
     <string name="sm_gallery_disabled_toast">"Galerija išjungta"</string>
+    <string name="sm_need_network_toast">"Prisijunkite prie tinklo"</string>
     <!--Permission -->
     <string name="sm_permission_title">"Leidimo prašymas"</string>
     <string name="sm_permission_content">"<b><font color="#ffffff">Smile Mirror</font></b> prašo <b><font color="#ffffff">Kameros</font></b>, <b><font color="#ffffff">Mikrofono</font></b> ir <b><font color="#ffffff">Saugyklos</font></b> leidimų, kad ekrane galėtų rodyti jūsų atsispindintį vaizdą ir pokalbio režimu pasirinktinai įrašyti vaizdo įrašą, kurį būtų galima vėliau peržiūrėti."</string>
@@ -75,4 +78,7 @@
     <string name="storage_full">"Saugykla pilna"</string>
     <string name="storage_full_for_script">"Neužtenka saugyklos vietos scenarijui išsaugoti."</string>
     <!--Download page-->
+    <string name="sm_download_page_title_text">"Reikia „Google Play“ paslaugų priedo, kad veiktų „Smile Mirror“. Prisijunkite prie tinklo ir vėl bandykite."</string>
+    <string name="sm_progressbar_text">"Naujinama..."</string>
+    <string name="sm_download_page_button_text">"Vėl bandyti"</string>
 </resources>

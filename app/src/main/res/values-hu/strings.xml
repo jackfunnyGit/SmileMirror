@@ -17,6 +17,8 @@
     <string name="sm_speech_content_select_script">"Érintse meg a szövegkönyvlista gombot, és válasszon szövegkönyvet."</string>
     <string name="smile_mode">"Mosolygási mód"</string>
     <string name="coach_mode">"Beszélgetési mód"</string>
+    <string name="teleprompter_button_text_start">"Indítás"</string>
+    <string name="teleprompter_button_text_stop">"Leállítás"</string>
     <!-- chart page -->
     <string name="chart_page_smile_statistics">"Mosolygási statisztika"</string>
     <string name="chart_page_smile_duration">"Időtartam: "</string>
@@ -67,6 +69,7 @@
     <!-- toast -->
     <string name="sm_recording_folder_miss_toast">"Nincsenek beszélgetős videók a Galériában"</string>
     <string name="sm_gallery_disabled_toast">"A Galéria ki van kapcsolva"</string>
+    <string name="sm_need_network_toast">"Csatlakozzon hálózathoz"</string>
     <!--Permission -->
     <string name="sm_permission_title">"Engedélykérés"</string>
     <string name="sm_permission_content">"A <b><font color="#ffffff">Smile Mirror</font></b> a <b><font color="#ffffff">Fényképezőgép</font></b>, <b><font color="#ffffff">Mikrofon</font></b> és <b><font color="#ffffff">Tárhely</font></b> engedélyeket igényli, hogy tükörképét meg tudja jeleníteni a képernyőn, illetve a kérésére később visszanézhető videót tudjon rögzíteni beszélgetési módban."</string>
@@ -75,4 +78,7 @@
     <string name="storage_full">"Tárhely megtelt"</string>
     <string name="storage_full_for_script">"Nincs elég tárhely a szövegkönyv mentéséhez."</string>
     <!--Download page-->
+    <string name="sm_download_page_title_text">"A Smile Mirror használatához a Google Play szolgáltatások beépülő moduljára van szükség. Csatlakozzon a hálózathoz, és próbálja újra."</string>
+    <string name="sm_progressbar_text">"Frissítés..."</string>
+    <string name="sm_download_page_button_text">"Újra"</string>
 </resources>

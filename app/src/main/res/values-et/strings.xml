@@ -17,6 +17,8 @@
     <string name="sm_speech_content_select_script">"Puudutage stsenaariumiloendi nuppu ja valige stsenaarium."</string>
     <string name="smile_mode">"Naeratusrežiim"</string>
     <string name="coach_mode">"Vestlusrežiim"</string>
+    <string name="teleprompter_button_text_start">"Alusta"</string>
+    <string name="teleprompter_button_text_stop">"Lõpeta"</string>
     <!-- chart page -->
     <string name="chart_page_smile_statistics">"Naeratusstatistika"</string>
     <string name="chart_page_smile_duration">"Kestus: "</string>
@@ -67,6 +69,7 @@
     <!-- toast -->
     <string name="sm_recording_folder_miss_toast">"Galeriis pole ühtegi vestlusvideot"</string>
     <string name="sm_gallery_disabled_toast">"Galerii on välja lülitatud"</string>
+    <string name="sm_need_network_toast">"Looge võrguühendus"</string>
     <!--Permission -->
     <string name="sm_permission_title">"Loataotlus"</string>
     <string name="sm_permission_content">"<b><font color="#ffffff">Smile Mirroril</font></b> on vaja lube <b><font color="#ffffff">Kaamera</font></b>, <b><font color="#ffffff">Mikrofon</font></b> ja <b><font color="#ffffff">Mäluruum</font></b>, et näidata ekraanil teie peegelpilti ja vajaduse korral salvestada videot vestlusrežiimis, et saaksite seda hiljem vaadata."</string>
@@ -75,4 +78,7 @@
     <string name="storage_full">"Mäluruum on täis"</string>
     <string name="storage_full_for_script">"Stsenaariumi salvestamiseks pole piisavalt ruumi."</string>
     <!--Download page-->
+    <string name="sm_download_page_title_text">"Smile Mirrori töötamiseks on vaja Google Play teenuste lisandmoodulit. Looge võrguühendus ja proovige uuesti."</string>
+    <string name="sm_progressbar_text">"Värskendamine..."</string>
+    <string name="sm_download_page_button_text">"Proovi uuesti"</string>
 </resources>

@@ -17,6 +17,8 @@
     <string name="sm_speech_content_select_script">"روی دکمه لیست اسکریپت ضربه بزنید و یک اسکریپت انتخاب کنید."</string>
     <string name="smile_mode">"حالت خنده"</string>
     <string name="coach_mode">"حالت گفتگو"</string>
+    <string name="teleprompter_button_text_start">"شروع"</string>
+    <string name="teleprompter_button_text_stop">"توقف"</string>
     <!-- chart page -->
     <string name="chart_page_smile_statistics">"آمارهای خنده"</string>
     <string name="chart_page_smile_duration">"مدت زمان: "</string>
@@ -67,6 +69,7 @@
     <!-- toast -->
     <string name="sm_recording_folder_miss_toast">"عدم وجود ویدیوی گفتگو در گالری"</string>
     <string name="sm_gallery_disabled_toast">"گالری غیرفعال است"</string>
+    <string name="sm_need_network_toast">"لطفاً به یک شبکه متصل شوید"</string>
     <!--Permission -->
     <string name="sm_permission_title">"درخواست مجوز"</string>
     <string name="sm_permission_content">"<b><font color="#ffffff">Smile Mirror</font></b> جهت نمایش تصویر آینه شده روی صفحه و ضبط اختیاری ویدیو در حالت گفتگو برای مرور در فرصت دیگر، به مجوزهای <b><font color="#ffffff">دوربین</font></b>، <b><font color="#ffffff">میکروفن</font></b> و <b><font color="#ffffff">حافظه</font></b> نیاز دارد."</string>
@@ -75,4 +78,7 @@
     <string name="storage_full">"حافظه پر است"</string>
     <string name="storage_full_for_script">"فضای ذخیره کافی برای ذخیره اسکریپت موجود نیست."</string>
     <!--Download page-->
+    <string name="sm_download_page_title_text">"یک پلاگ این برای خدمات گوگل پلی لازم است تا Smile Mirror کار کند. لطفاً به یک شبکه متصل شوید و دوباره سعی کنید."</string>
+    <string name="sm_progressbar_text">"در حال به روزرسانی..."</string>
+    <string name="sm_download_page_button_text">"سعی مجدد"</string>
 </resources>

@@ -17,6 +17,8 @@
     <string name="sm_speech_content_select_script">"Нажмите на кнопку списка сценариев и выберите сценарий."</string>
     <string name="smile_mode">"Режим улыбки"</string>
     <string name="coach_mode">"Режим разговора"</string>
+    <string name="teleprompter_button_text_start">"Начать"</string>
+    <string name="teleprompter_button_text_stop">"Остановить"</string>
     <!-- chart page -->
     <string name="chart_page_smile_statistics">"Статистика улыбок"</string>
     <string name="chart_page_smile_duration">"Продолжительность: "</string>
@@ -67,6 +69,7 @@
     <!-- toast -->
     <string name="sm_recording_folder_miss_toast">"Нет видео разговоров в галерее"</string>
     <string name="sm_gallery_disabled_toast">"Галерея отключена"</string>
+    <string name="sm_need_network_toast">"Пожалуйста, подключитесь к сети"</string>
     <!--Permission -->
     <string name="sm_permission_title">"Запрос разрешения"</string>
     <string name="sm_permission_content">"<b><font color="#ffffff">Smile Mirror</font></b> требуются разрешения на доступ к <b><font color="#ffffff">камере</font></b>, <b><font color="#ffffff">микрофону</font></b> и <b><font color="#ffffff">памяти</font></b>, чтобы показывать ваше изображение на экране и записывать видео в режиме разговора (опционально) для дальнейшего просмотра."</string>
@@ -75,4 +78,7 @@
     <string name="storage_full">"Память заполнена"</string>
     <string name="storage_full_for_script">"Недостаточно места для сохранения сценария."</string>
     <!--Download page-->
+    <string name="sm_download_page_title_text">"Для работы Smile Mirror требуется подключаемый модуль Google Play. Подключитесь к сети и повторите попытку."</string>
+    <string name="sm_progressbar_text">"Обновление..."</string>
+    <string name="sm_download_page_button_text">"Повторить"</string>
 </resources>
