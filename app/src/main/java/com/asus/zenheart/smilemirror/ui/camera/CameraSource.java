@@ -715,6 +715,9 @@ public class CameraSource {
                     .isAvailable() + " or ImagePreview = " + mImagePreviewSize + " is not ready !!!");
             return;
         }
+        if (mMediaRecorder == null) {
+            mMediaRecorder = new MediaRecorder();
+        }
         try {
             closePreviewSession();
             setUpMediaRecorder();
@@ -768,8 +771,11 @@ public class CameraSource {
                     "can't stop Recording with CameraDevice,TextureView,or ImagePreview is not ready");
             return;
         }
-        mMediaRecorder.stop();
-        mMediaRecorder.reset();
+        if (mMediaRecorder != null) {
+            mMediaRecorder.stop();
+            mMediaRecorder.release();
+            mMediaRecorder = null;
+        }
         GalleryUtil.sendMediaScanIntent(mContext, mNextVideoAbsolutePath);
         startPreview();
     }
