@@ -1,0 +1,38 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:background="@android:color/black"
+                android:paddingEnd="@dimen/sm_download_page_start_end_padding"
+                android:paddingStart="@dimen/sm_download_page_start_end_padding">
+
+    <ImageView
+        android:id="@+id/download_page_image"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignParentTop="true"
+        android:layout_centerHorizontal="true"
+        android:layout_marginTop="@dimen/sm_download_page_image_margin"
+        android:src="@drawable/turn_on_network"/>
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_below="@id/download_page_image"
+        android:layout_marginTop="@dimen/sm_download_page_text_view_margin"
+        android:text="@string/sm_download_page_title_text"
+        android:textAlignment="center"
+        android:textColor="@android:color/white"
+        android:textSize="@dimen/sm_download_page_text_size"/>
+
+    <Button
+        android:id="@+id/restart_button"
+        style="@style/PermissionButtonStyle"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignParentBottom="true"
+        android:layout_centerHorizontal="true"
+        android:layout_marginBottom="@dimen/sm_download_page_button_margin"
+        android:text="@string/sm_download_page_button_text"/>
+
+</RelativeLayout>

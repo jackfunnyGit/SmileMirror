@@ -100,4 +100,10 @@
     <dimen name="sm_pseudo_bar_presentation_back_start_margin">12dp</dimen>
     <!-- nine patch padding -->
     <dimen name="sm_nine_patch_padding">6dp</dimen>
+    <!-- download page -->
+    <dimen name="sm_download_page_button_margin">25dp</dimen>
+    <dimen name="sm_download_page_start_end_padding">36dp</dimen>
+    <dimen name="sm_download_page_image_margin">62dp</dimen>
+    <dimen name="sm_download_page_text_view_margin">21dp</dimen>
+    <dimen name="sm_download_page_text_size">15sp</dimen>
 </resources>

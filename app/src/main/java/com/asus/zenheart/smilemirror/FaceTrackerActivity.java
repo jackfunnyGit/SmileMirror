@@ -18,6 +18,7 @@ package com.asus.zenheart.smilemirror;
 
 import android.annotation.TargetApi;
 import android.app.Dialog;
+import android.app.ProgressDialog;
 import android.content.Context;
 import android.content.Intent;
 import android.content.pm.PackageManager;
@@ -41,8 +42,10 @@ import android.view.TextureView;
 import android.view.View;
 import android.view.ViewGroup;
 import android.view.WindowManager;
+import android.widget.Button;
 import android.widget.ImageView;
 import android.widget.TextView;
+import android.widget.Toast;
 
 import com.asus.zenheart.smilemirror.GUIView.HistogramChartView;
 import com.asus.zenheart.smilemirror.GUIView.ShiningImageView;
@@ -50,9 +53,11 @@ import com.asus.zenheart.smilemirror.GUIView.SmileIndicatorView;
 import com.asus.zenheart.smilemirror.Util.AnimationUtil;
 import com.asus.zenheart.smilemirror.Util.GalleryUtil;
 import com.asus.zenheart.smilemirror.Util.LogUtils;
+import com.asus.zenheart.smilemirror.Util.NetWorkUtil;
 import com.asus.zenheart.smilemirror.Util.PermissionUtil;
 import com.asus.zenheart.smilemirror.Util.PrefsUtils;
 import com.asus.zenheart.smilemirror.VideoTexture.SmileVideoTextureView;
+import com.asus.zenheart.smilemirror.service.FaceDownloadService;
 import com.asus.zenheart.smilemirror.ui.camera.CameraSource;
 import com.asus.zenheart.smilemirror.ui.camera.CameraSourcePreview;
 import com.asus.zenheart.smilemirror.ui.camera.GraphicOverlay;
@@ -90,6 +95,8 @@ public final class FaceTrackerActivity extends AppCompatActivity implements
 
     // Exit animation duration
     private static final int SHINING_ANIMATION_DURATION = 600;
+    // download page progress bar time
+    private static final int PROGRESSBAR_UPDATE_TIME = 2000;
 
     // member field
     private Context mContext;
@@ -101,6 +108,7 @@ public final class FaceTrackerActivity extends AppCompatActivity implements
     private View mChartPage;
     private View mPermissionPage;
     private View mTutorialPage;
+    private View mDownloadPage;
 
     private SensorManager mSensorManager;
     // Smile video TextureView
@@ -124,6 +132,7 @@ public final class FaceTrackerActivity extends AppCompatActivity implements
         setContentView(R.layout.mirror_main);
         getWindow().addFlags(WindowManager.LayoutParams.FLAG_KEEP_SCREEN_ON);
         initView();
+        checkFaceDetectorAvailable();
 
     }
 
@@ -297,6 +306,49 @@ public final class FaceTrackerActivity extends AppCompatActivity implements
     }
 
     /**
+     * add a download page to tell the user to turn on the internet when the face library is
+     * not downloaded yet
+     */
+    private void addDownloadPage() {
+        mDownloadPage = LayoutInflater.from(mContext)
+                .inflate(R.layout.download_page, mContainer, false);
+        Button button = (Button) mDownloadPage.findViewById(R.id.restart_button);
+        button.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                if (NetWorkUtil.hasInternet(mContext)) {
+                    startService(new Intent(mContext, FaceDownloadService.class));
+                    final ProgressDialog progressDialog = ProgressDialog
+                            .show(FaceTrackerActivity.this, null,
+                                    mContext.getString(R.string.sm_progressbar_text));
+                    Handler handler = new Handler();
+                    handler.postDelayed(new Runnable() {
+                        @Override
+                        public void run() {
+                            progressDialog.dismiss();
+                            if (mDownloadPage != null) {
+                                mContainer.removeView(mDownloadPage);
+                                mDownloadPage=null;
+                            }
+                        }
+                    }, PROGRESSBAR_UPDATE_TIME);
+                } else {
+                    Toast toast = Toast.makeText(mContext,
+                            mContext.getString(R.string.sm_need_network_toast), Toast.LENGTH_SHORT);
+                    toast.show();
+                }
+            }
+        });
+        mDownloadPage.setOnTouchListener(new View.OnTouchListener() {
+            @Override
+            public boolean onTouch(View v, MotionEvent event) {
+                return true;
+            }
+        });
+        mContainer.addView(mDownloadPage);
+    }
+
+    /**
      * remove chartPage from the root container after user touch the close view
      */
     private void removeChartPageView() {
@@ -336,6 +388,25 @@ public final class FaceTrackerActivity extends AppCompatActivity implements
         mPagerAdapter.resetGuiElementState();
         mViewpager.setSwipeEnabled(true);
         showGuiElement();
+    }
+
+    /**
+     * Check if faceDetector is available. If isOperational return true,do nothing.
+     * If not,wait for library downloading with network when user uses smileMirror.
+     * Otherwise,show Download page.
+     */
+    private void checkFaceDetectorAvailable() {
+        FaceDetector detector = new FaceDetector.Builder(mContext)
+                .setClassificationType(FaceDetector.ALL_CLASSIFICATIONS)
+                .build();
+        LogUtils.d(TAG, "faceDetector is isOperational =" + detector.isOperational()
+                + " hasInternet " + NetWorkUtil.hasInternet(mContext));
+        if (detector.isOperational() || NetWorkUtil.hasInternet(mContext)) {
+            detector.release();
+            return;
+        }
+        //faceDetector download is not ready and network is not working
+        addDownloadPage();
     }
     // Jack ---
 
@@ -426,7 +497,8 @@ public final class FaceTrackerActivity extends AppCompatActivity implements
         startCameraSource();
 
         if (mChartPage != null) {
-            if (!Objects.equals(mCameraSource.getNextVideoName(), GalleryUtil.getLastVideoFileName())
+            if (!Objects
+                    .equals(mCameraSource.getNextVideoName(), GalleryUtil.getLastVideoFileName())
                     || GalleryUtil.getVideoFileNumbers() == 0) {
                 mChartPage.findViewById(R.id.video_intent_view).setVisibility(View.INVISIBLE);
             }
@@ -463,7 +535,6 @@ public final class FaceTrackerActivity extends AppCompatActivity implements
             mClearEffect = true;
         }
     }
-
 
     /**
      * Releases the resources associated with the camera source, the associated detector, and the

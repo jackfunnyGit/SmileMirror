@@ -9,6 +9,8 @@
     <!-- storage permission is for recorder-->
     <uses-permission android:name="android.permission.WRITE_EXTERNAL_STORAGE"/>
     <uses-permission android:name="android.permission.READ_EXTERNAL_STORAGE"/>
+    <!-- Network permission -->
+    <uses-permission android:name="android.permission.ACCESS_NETWORK_STATE"/>
 
     <application
             android:allowBackup="true"
@@ -31,7 +33,12 @@
                 android:enabled="true"
                 android:exported="false">
         </provider>
-
+        <!-- Declaring Service in Manifest -->
+        <service
+            android:name=".service.FaceDownloadService"
+            android:exported="false"
+            android:enabled="true"
+            android:process=":face"/>
     </application>
 
 </manifest>
