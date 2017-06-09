@@ -97,7 +97,7 @@ public class SpeechEditPageFragment extends Fragment {
                                 // only need to get the KEYCODE_BACK.
                                 if (keyCode == KeyEvent.KEYCODE_BACK &&
                                         event.getAction() == KeyEvent.ACTION_UP) {
-                                    mActivity.backToSpeechListFragment();
+                                    checkSaveOrExit();
                                     return true;
                                 }
                                 return false;
@@ -147,12 +147,7 @@ public class SpeechEditPageFragment extends Fragment {
         toolBar.setNavigationOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                if (mEditTextChanged) {
-                    saveCheckDialog();
-                } else {
-                    mActivity.hideKeyboard();
-                    mActivity.backToSpeechListFragment();
-                }
+                checkSaveOrExit();
             }
         });
         mEditText.addTextChangedListener(new TextWatcher() {
@@ -339,6 +334,15 @@ public class SpeechEditPageFragment extends Fragment {
                 });
         final AlertDialog alertDialog = builder.create();
         alertDialog.show();
+    }
+
+    private void checkSaveOrExit() {
+        if (mEditTextChanged) {
+            saveCheckDialog();
+        } else {
+            mActivity.hideKeyboard();
+            mActivity.backToSpeechListFragment();
+        }
     }
 }
 
