@@ -66,6 +66,9 @@
     <!-- alert dialog  -->
     <string name="sm_alert_dialog_auto_recording_title">"Turn off auto-record video?"</string>
     <string name="sm_alert_dialog_auto_recording_message">"Once turned off, the system will not record videos in conversation mode."</string>
+    <string name="sm_alert_dialog_camera_error_title">"Camera failed"</string>
+    <string name="sm_alert_dialog_camera_error_content">"An error occurred in your camera so Smile Mirror cannot run properly."</string>
+    <string name="sm_alert_dialog_ok">"OK"</string>
     <!-- toast -->
     <string name="sm_recording_folder_miss_toast">"No conversation videos in Gallery"</string>
     <string name="sm_gallery_disabled_toast">"Gallery is disabled"</string>

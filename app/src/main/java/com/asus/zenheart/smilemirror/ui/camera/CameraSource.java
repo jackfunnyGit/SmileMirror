@@ -17,7 +17,9 @@ package com.asus.zenheart.smilemirror.ui.camera;
 
 import android.annotation.SuppressLint;
 import android.app.Activity;
+import android.app.AlertDialog;
 import android.content.Context;
+import android.content.DialogInterface;
 import android.graphics.ImageFormat;
 import android.graphics.Matrix;
 import android.graphics.RectF;
@@ -46,6 +48,7 @@ import android.view.TextureView;
 import android.view.WindowManager;
 
 import com.asus.zenheart.smilemirror.FaceTrackerActivity;
+import com.asus.zenheart.smilemirror.R;
 import com.asus.zenheart.smilemirror.Util.GalleryUtil;
 import com.asus.zenheart.smilemirror.Util.LogUtils;
 import com.asus.zenheart.smilemirror.Util.PermissionUtil;
@@ -585,6 +588,17 @@ public class CameraSource {
                 @Override
                 public void onError(@NonNull CameraDevice camera, int error) {
                     Log.e(TAG, "onError -> " + error);
+                    AlertDialog.Builder builder = new AlertDialog.Builder(mContext);
+                    builder.setTitle(R.string.sm_alert_dialog_camera_error_title);
+                    builder.setMessage(R.string.sm_alert_dialog_camera_error_content);
+                    builder.setPositiveButton(R.string.sm_alert_dialog_ok,
+                            new DialogInterface.OnClickListener() {
+                                @Override
+                                public void onClick(DialogInterface dialog, int which) {
+                                    ((FaceTrackerActivity) mContext).finish();
+                                }
+                            });
+                    builder.create().show();
                     camera.close();
                 }
             }, null);
