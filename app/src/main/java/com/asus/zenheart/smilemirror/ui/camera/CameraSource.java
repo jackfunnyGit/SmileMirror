@@ -55,6 +55,7 @@ import com.google.android.gms.vision.Frame;
 import com.google.android.gms.vision.face.FaceDetector;
 
 import java.io.ByteArrayOutputStream;
+import java.io.File;
 import java.io.IOException;
 import java.lang.Thread.State;
 import java.lang.annotation.Retention;
@@ -772,11 +773,17 @@ public class CameraSource {
             return;
         }
         if (mMediaRecorder != null) {
-            mMediaRecorder.stop();
-            mMediaRecorder.release();
-            mMediaRecorder = null;
+            try {
+                mMediaRecorder.stop();
+                GalleryUtil.sendMediaScanIntent(mContext, mNextVideoAbsolutePath);
+            } catch (RuntimeException e) {
+                LogUtils.w(TAG,"mediaRecorder stop failed ",e);
+                new File(mNextVideoAbsolutePath).delete();
+            } finally {
+                mMediaRecorder.release();
+                mMediaRecorder = null;
+            }
         }
-        GalleryUtil.sendMediaScanIntent(mContext, mNextVideoAbsolutePath);
         startPreview();
     }
 
@@ -833,8 +840,6 @@ public class CameraSource {
     //==============================================================================================
     // static method
     //==============================================================================================
-
-
 
     /**
      * This method used to find front-camera id
