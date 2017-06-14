@@ -10,6 +10,7 @@ import android.graphics.PorterDuff;
 import android.graphics.PorterDuffXfermode;
 import android.graphics.Rect;
 import android.graphics.RectF;
+import android.support.annotation.NonNull;
 import android.util.TypedValue;
 
 
@@ -87,7 +88,7 @@ public class BitmapUtil {
      * @return The bitmap with the given corner and border.
      */
 
-    static Bitmap getRoundedCornerBitmap(Bitmap bitmap, int borderColor, int cornerDips,
+    static Bitmap getRoundedCornerBitmap(@NonNull Bitmap bitmap, int borderColor, int cornerDips,
             int borderDips, Context context) {
         Bitmap output = Bitmap.createBitmap(bitmap.getWidth(), bitmap.getHeight(),
                 Bitmap.Config.ARGB_8888);

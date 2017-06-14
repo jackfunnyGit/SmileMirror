@@ -801,9 +801,8 @@ public class CameraSource {
         startPreview();
     }
 
-    public String getNextVideoName() {
-        String[] nextVideoAbsolutePath = mNextVideoAbsolutePath.split("/");
-        return nextVideoAbsolutePath[7];
+    public String getNextVideoPath() {
+        return mNextVideoAbsolutePath;
     }
 
     /**

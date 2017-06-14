@@ -21,29 +21,25 @@ import java.io.File;
 import java.text.SimpleDateFormat;
 import java.util.Locale;
 
-//TODO: This class will rename in the future.
 public class GalleryUtil {
     private static final String LOG_TAG = "GalleryUtil";
-    private static final String RECORDING_PATH = "/ZenHeart/SmileMirror/AutoRecording/";
+    private static final String RECORDING_PATH = Environment.getExternalStorageDirectory().getPath()
+            + "/ZenHeart/SmileMirror/AutoRecording/";
     private static final String ASUS_GALLERY_PACKAGE_NAME = "com.asus.gallery";
     private static final int THUMBNAIL_BROKE_LENGTH = 3;
     private static final int THUMBNAIL_CORNER_SIZE = 3;
 
-    public static String getVideoFilePath() {
-        String path = Environment.getExternalStorageDirectory().getPath() + RECORDING_PATH;
-        File folder = new File(path);
-        String[] allFiles = folder.list();
-
-        if (allFiles == null) {
+    private static String[] getVideoFiles() {
+        File folder = new File(RECORDING_PATH);
+        String [] allFiles = folder.list();
+        if (allFiles == null || allFiles.length == 0) {
             return null;
         }
-        return path + allFiles[allFiles.length - 1];
+        return allFiles;
     }
 
     public static int getVideoFileNumbers() {
-        String path = Environment.getExternalStorageDirectory().getPath() + RECORDING_PATH;
-        File folder = new File(path);
-        String[] allFiles = folder.list();
+        String[] allFiles = getVideoFiles();
 
         if (allFiles == null) {
             return 0;
@@ -51,40 +47,37 @@ public class GalleryUtil {
         return allFiles.length;
     }
 
-    public static String getLastVideoFileName() {
-        String path = Environment.getExternalStorageDirectory().getPath() + RECORDING_PATH;
-        File folder = new File(path);
-        String[] allFiles = folder.list();
+    public static String getLastVideoName() {
+        String[] allFiles = getVideoFiles();
 
         if (allFiles == null) {
             return null;
-        } else if (allFiles.length == 0) {
-            return null;
         }
-
         return allFiles[allFiles.length - 1];
     }
 
+    public static String getLastVideoPath() {
+        return RECORDING_PATH + getLastVideoName();
+    }
+
     public static String getVideoFileName() {
-        final String fileDir = String.format("%s%s"
-                , Environment.getExternalStorageDirectory().getAbsolutePath(),RECORDING_PATH);
-        File file = new File(fileDir);
+        File file = new File(RECORDING_PATH);
         if (file.exists() || file.mkdirs()) {
             SimpleDateFormat dateFormat = new SimpleDateFormat("'CV'_yyyyMMdd_HHmmss", Locale.US);
             String date = dateFormat.format(new java.util.Date());
-            return String.format("%s%s.mp4", fileDir, date);
+            return String.format("%s%s.mp4", RECORDING_PATH, date);
         } else {
             Log.e(LOG_TAG, "Fail to make dir at " + file + "... return default ExternalDirectory ");
             return Environment.getExternalStorageDirectory().getAbsolutePath();
         }
     }
 
-    private static String getVideoBucketId(Context context) {
+    private static String getVideoBucketId(@NonNull Context context) {
         final String fileName = "AutoRecording";
         return getBucketId(context, fileName);
     }
 
-    private static String getBucketId(Context context, String fileName) {
+    private static String getBucketId(@NonNull Context context, @NonNull String fileName) {
         String bucketId = "";
 
         final String[] projection = new String[]{"DISTINCT " +
@@ -108,13 +101,14 @@ public class GalleryUtil {
     }
 
 
-    public static void sendMediaScanIntent(@NonNull Context context, @NonNull String filePath) {
+    public static void sendMediaScanIntent(@NonNull Context context, String filePath) {
         Intent mediaScanIntent = new Intent(Intent.ACTION_MEDIA_SCANNER_SCAN_FILE);
         mediaScanIntent.setData(Uri.fromFile(new File(filePath)));
         context.sendBroadcast(mediaScanIntent);
     }
-    public static void intentToGallery(Context context) {
-        if (!autoRecordingIsExist() || getVideoFileNumbers() == 0) {
+
+    public static void intentToGallery(@NonNull Context context) {
+        if (!pathIsExist(RECORDING_PATH) || getVideoFileNumbers() == 0) {
             showTheToast(context, context.getString(R.string.sm_recording_folder_miss_toast));
             return;
         }
@@ -126,7 +120,7 @@ public class GalleryUtil {
                     .build();
         }
         Intent intent = new Intent(Intent.ACTION_VIEW, mediaUri);
-        if (appInstalledOrNot(context, ASUS_GALLERY_PACKAGE_NAME)) {
+        if (appIsInstalled(context, ASUS_GALLERY_PACKAGE_NAME)) {
             intent.setPackage(ASUS_GALLERY_PACKAGE_NAME);
         }
         try {
@@ -137,15 +131,14 @@ public class GalleryUtil {
         }
     }
 
-    private static void showTheToast(Context context, String message) {
+    private static void showTheToast(@NonNull Context context, String message) {
         Toast toast = Toast.makeText(context, message, Toast.LENGTH_SHORT);
         toast.show();
     }
 
-    private static boolean appInstalledOrNot(Context context, String pkgName) {
-        PackageManager pm = context.getPackageManager();
+    private static boolean appIsInstalled(@NonNull Context context, String pkgName) {
         try {
-            pm.getPackageInfo(pkgName, PackageManager.GET_ACTIVITIES);
+            context.getPackageManager().getPackageInfo(pkgName, PackageManager.GET_ACTIVITIES);
             return true;
         } catch (PackageManager.NameNotFoundException e) {
             e.printStackTrace();
@@ -153,17 +146,12 @@ public class GalleryUtil {
         return false;
     }
 
-    private static boolean autoRecordingIsExist() {
-        String path = Environment.getExternalStorageDirectory().getPath() + RECORDING_PATH;
-        return pathIsExist(path);
-    }
-
     private static boolean pathIsExist(String path) {
         File file = new File(path);
         return file.exists();
     }
 
-    public static void mediaScan(final Context context, String path) {
+    public static void mediaScan(@NonNull final Context context, String path) {
         MediaScannerConnection.scanFile(
                 context,
                 new String[]{path}, null,
@@ -179,9 +167,12 @@ public class GalleryUtil {
                 });
     }
 
-    public static Bitmap createVideoThumbnail(Context context) {
+    public static Bitmap createVideoThumbnail(@NonNull Context context) {
         Bitmap bitmap = ThumbnailUtils
-                .createVideoThumbnail(getVideoFilePath(), MediaStore.Images.Thumbnails.MICRO_KIND);
+                .createVideoThumbnail(getLastVideoPath(), MediaStore.Images.Thumbnails.MICRO_KIND);
+        if (bitmap == null) {
+            return null;
+        }
         final int color = context.getResources()
                 .getColor(R.color.editor_video_thumbnail_color, null);
 

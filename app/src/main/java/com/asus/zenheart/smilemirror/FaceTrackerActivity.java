@@ -69,7 +69,6 @@ import com.google.android.gms.vision.face.Face;
 import com.google.android.gms.vision.face.FaceDetector;
 
 import java.io.IOException;
-import java.util.Objects;
 
 /**
  * Activity for the face tracker app.  This app detects faces with the rear facing camera, and draws
@@ -291,14 +290,11 @@ public final class FaceTrackerActivity extends AppCompatActivity implements
         ImageView videoIntentView = (ImageView) mChartPage.findViewById(R.id.video_intent_view);
         if (PrefsUtils.getBooleanPreference(mContext, PrefsUtils.PREFS_AUTO_RECORDING, true)) {
             Bitmap videoThumbnail = GalleryUtil.createVideoThumbnail(mContext);
-            if (videoThumbnail == null) {
-                return;
-            }
             videoIntentView.setImageBitmap(videoThumbnail);
             videoIntentView.setOnClickListener(new View.OnClickListener() {
                 @Override
                 public void onClick(View v) {
-                    GalleryUtil.mediaScan(mContext, GalleryUtil.getVideoFilePath());
+                    GalleryUtil.mediaScan(mContext, GalleryUtil.getLastVideoPath());
                 }
             });
         }
@@ -497,9 +493,12 @@ public final class FaceTrackerActivity extends AppCompatActivity implements
         startCameraSource();
 
         if (mChartPage != null) {
-            if (!Objects
-                    .equals(mCameraSource.getNextVideoName(), GalleryUtil.getLastVideoFileName())
-                    || GalleryUtil.getVideoFileNumbers() == 0) {
+            if (GalleryUtil.getLastVideoName() != null && mCameraSource.getNextVideoPath() != null) {
+                if (!mCameraSource.getNextVideoPath().contains(GalleryUtil.getLastVideoName())
+                        || GalleryUtil.getVideoFileNumbers() == 0) {
+                    mChartPage.findViewById(R.id.video_intent_view).setVisibility(View.INVISIBLE);
+                }
+            } else {
                 mChartPage.findViewById(R.id.video_intent_view).setVisibility(View.INVISIBLE);
             }
         }
