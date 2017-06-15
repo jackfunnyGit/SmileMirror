@@ -69,6 +69,7 @@ import com.google.android.gms.vision.face.Face;
 import com.google.android.gms.vision.face.FaceDetector;
 
 import java.io.IOException;
+import java.util.Locale;
 
 /**
  * Activity for the face tracker app.  This app detects faces with the rear facing camera, and draws
@@ -225,17 +226,21 @@ public final class FaceTrackerActivity extends AppCompatActivity implements
         if (!PrefsUtils.getBooleanPreference(mContext, prefKey, true)) {
             return;
         }
-        if (layoutId == R.layout.tutorial_main_page) {
-            hideGuiElement();
-        } else {
-            mSmileIndicatorView.setVisibility(View.INVISIBLE);
-        }
         mTutorialPage = LayoutInflater.from(mContext)
                 .inflate(layoutId, mContainer, false);
         ImageView imageView = (ImageView) mTutorialPage.findViewById(R.id.tutorial_close_image);
         if (imageView == null) {
             return;
         }
+        if (layoutId == R.layout.tutorial_main_page) {
+            hideGuiElement();
+        } else {
+            mSmileIndicatorView.setVisibility(View.INVISIBLE);
+            addPrefixNumber(R.id.tutorial_text_script_list, 1, mTutorialPage);
+            addPrefixNumber(R.id.tutorial_text_start_practice, 2, mTutorialPage);
+            addPrefixNumber(R.id.tutorial_text_review_video, 3, mTutorialPage);
+        }
+
         imageView.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
@@ -263,6 +268,11 @@ public final class FaceTrackerActivity extends AppCompatActivity implements
             }
         });
         mContainer.addView(mTutorialPage);
+    }
+
+    private void addPrefixNumber(int textId, int prefixNumber, View view) {
+        final TextView textView = (TextView) view.findViewById(textId);
+        textView.setText(String.format(Locale.US, "%d.%s", prefixNumber, textView.getText()));
     }
 
     /**
@@ -324,7 +334,7 @@ public final class FaceTrackerActivity extends AppCompatActivity implements
                             progressDialog.dismiss();
                             if (mDownloadPage != null) {
                                 mContainer.removeView(mDownloadPage);
-                                mDownloadPage=null;
+                                mDownloadPage = null;
                             }
                         }
                     }, PROGRESSBAR_UPDATE_TIME);
@@ -379,6 +389,10 @@ public final class FaceTrackerActivity extends AppCompatActivity implements
     private void resetGuiElementState() {
         if (mTutorialPage != null) {
             //tutorial page is covered so resetGUi is not needed
+            return;
+        }
+        if (mChartPage != null) {
+            //chart page is covered so resetGUi is not needed
             return;
         }
         mPagerAdapter.resetGuiElementState();
@@ -493,7 +507,8 @@ public final class FaceTrackerActivity extends AppCompatActivity implements
         startCameraSource();
 
         if (mChartPage != null) {
-            if (GalleryUtil.getLastVideoName() != null && mCameraSource.getNextVideoPath() != null) {
+            if (GalleryUtil.getLastVideoName() != null && mCameraSource
+                    .getNextVideoPath() != null) {
                 if (!mCameraSource.getNextVideoPath().contains(GalleryUtil.getLastVideoName())
                         || GalleryUtil.getVideoFileNumbers() == 0) {
                     mChartPage.findViewById(R.id.video_intent_view).setVisibility(View.INVISIBLE);

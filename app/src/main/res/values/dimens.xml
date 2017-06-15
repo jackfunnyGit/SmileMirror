@@ -54,8 +54,9 @@
     <dimen name="sm_tutorial_coach_page_text_script_list_text_width">120dp</dimen>
     <dimen name="sm_tutorial_coach_page_text_start_practice_text_width">160dp</dimen>
     <dimen name="sm_tutorial_coach_page_text_title_text_width">200dp</dimen>
-    <dimen name="sm_tutorial_coach_page_text_review_video_text_width">100dp</dimen>
+    <dimen name="sm_tutorial_coach_page_text_review_video_text_width">120dp</dimen>
     <dimen name="sm_tutorial_coach_page_image_list_end_margin">25dp</dimen>
+    <dimen name="sm_tutorial_coach_page_button_margin_top">146dp</dimen>
     <!-- Editor -->
     <dimen name="sm_editor_list_card_divider_width">1px</dimen>
     <dimen name="sm_editor_list_card_item_height">56dp</dimen>
